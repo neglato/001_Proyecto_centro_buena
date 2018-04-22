@@ -490,7 +490,7 @@ $activo=3;
             $user=$_SESSION['user'];
             $RESULT = consulta($conexion,"SELECT * 
                                           FROM proyectos 
-                                          WHERE id_proyecto in (SELECT id_proyecto 
+                                          WHERE mostrar like 0 and id_proyecto in (SELECT id_proyecto 
                                                                 FROM usuproy
                                                                 WHERE id_user = $user)
                                           "); 
