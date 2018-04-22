@@ -1,0 +1,19 @@
+<?php
+    session_start();
+    if(isset($_SESSION['lang'])){
+        if($_SESSION['lang']==1){
+            include('_include/UK-uk.php');
+            $lang=1;
+        }else{
+            include('_include/ES-es.php');
+            $lang=0;
+            }
+    }else{
+        include('_include/ES-es.php');
+        $lang=0;
+        }
+    session_destroy();
+    session_start();
+$_SESSION['lang']=$lang;
+    $_SESSION['msglo']=LOCOR;
+    header('Location: index.php');

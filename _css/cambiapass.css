@@ -1,0 +1,80 @@
+section article{
+    background-color: #1a5ad4;
+    padding-bottom: 10px;
+}
+section #text{
+    border-top: 2px solid limegreen;
+}
+section #text p{
+    padding-top: 10px;
+    width: 95%;
+    margin: 0px auto;
+    color: limegreen;
+    font-size: 1.4em;
+}
+section article fieldset{
+    width: 98%;
+    border: 2px solid limegreen;
+    margin: 0 auto;
+    
+}
+section article fieldset legend{
+    text-align: center;
+    font-size: 1.4em;
+    color: limegreen;
+}
+section article fieldset form button #edit{
+    display: none;
+}
+section article fieldset form button{
+    margin:20px 0 10px 32.5%;
+    margin-top: 20px;
+    width: 35%;
+    display: inline-block;
+    background-color: limegreen;
+    color:  #1a5ad4;
+    
+}
+section article fieldset form p{
+    margin-left: 5%;
+    width: 30%;
+    display: inline-block;
+    float: left;
+    clear: both;  
+    color: limegreen;
+    font-size: 1.4em;
+}
+section article fieldset form input{
+    width: 55%;
+    margin-top: 15px!important;
+    font-size: 1.4em;
+    margin-left: 5%;
+    padding: 5px;
+}
+
+.errorpass{
+    clear: both;
+    width: 100%!important;
+    color: darkred;
+    text-align: center;
+    margin-left: 0!important;
+    font-size: 1.2em;
+}
+.editar{
+    font-size: 1.5em;
+    color: #1a5ad4;
+}
+#lys{
+    background-color: antiquewhite!important;
+    height: 30px;
+}
+#logout {
+    width: 20%;
+    background-color: #1a5ad4;
+    padding: 2px;
+    text-align: center;
+    float: right;
+    list-style-type: none;
+    margin-top: -4px;
+    height: 30px;
+}

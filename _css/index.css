@@ -1,0 +1,52 @@
+section #galery figcaption{
+    display: none;
+    
+}
+section #galery{
+    width: 100%;
+}
+/*W3stilo slide show automatic*/
+.mySlides {
+    display:none;
+    width: 100%;
+}
+w3-content{
+    max-width:980px;
+    margin:auto
+}
+w3-section{
+    margin-top:16px!important;
+    margin-bottom:16px!important
+}
+/*fin slide show*/
+section figure{
+    width: 70%;
+    margin: 10px auto;
+}
+section #recent{
+    border: 2px solid #1a5ad4;
+    background-color: #1a5ad4;
+    text-align: center;
+}
+section #recent ul li{
+    list-style-type: none;
+}
+section #recent h1, section #recent ul li a{
+    color: limegreen;
+    text-decoration: none;
+}
+@media (min-width: 900px) {
+    section #galery{
+        width: 60%;
+        margin: 0 auto;
+    }
+    section #recent{
+        padding-top: 10px;
+        width: 100%;
+        padding-bottom: 10px;
+    }
+    section #recent h1, section #recent ul li a{
+        color: limegreen;
+        text-decoration: none;
+    }
+}

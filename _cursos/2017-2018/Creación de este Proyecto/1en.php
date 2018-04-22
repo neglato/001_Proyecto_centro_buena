@@ -1,0 +1,2 @@
+<h1>Creation of this Project</h1>
+<p>We decided to carry out this project as a final project, because Domingo suggested it to us, and the idea seemed right to us, although we have spent a lot of time and hours of work and effort, it has been worthwhile. I leave some photos of the creation process:</p>

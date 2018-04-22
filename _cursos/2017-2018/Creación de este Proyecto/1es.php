@@ -1,0 +1,2 @@
+<h1>Creación de este Proyecto</h1>
+<p>Decidimos realizar este proyecto como proyecto final, porque Domingo nos lo sugirió, y nos parecio bien la idea, aunque hemos pasado muchos sinsudores y horas de trabajo y esfruerzo, nos ha merecido la pena. Dejo algunas fotos del proceso de creacion:</p>

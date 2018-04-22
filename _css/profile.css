@@ -1,0 +1,177 @@
+/*Perfil*/
+section fieldset figure{
+    width: 50%;
+    margin: 5px auto;
+}
+section fieldset{
+    border: 2px solid limegreen;
+    padding-bottom: 10px;
+    width: 98%;
+    margin: 0 auto;
+}
+section #perfil{
+    border: none;
+    padding-bottom: 0;
+    width: 100%;
+}
+section fieldset legend{
+    font-size: 1.3em;
+    color: limegreen;
+    text-align: center;
+}
+section fieldset figure figcaption{
+    display: none;
+}
+section fieldset figure img{
+    width: 100%;
+    border-radius: 80px;
+} 
+section fieldset article{
+    background-color: #1a5ad4;
+    padding-bottom: 10px;
+}
+section fieldset article label, section fieldset article p{
+    color: limegreen;
+    font-size: 1.4em;
+    margin-top: 5px;
+    
+    
+}
+section fieldset article p{
+    width: 85%;
+    margin-left: 10%;
+}
+section fieldset article button{
+    background-color: limegreen;
+    font-size: 1.2em;
+    width: 15%;
+    margin:5% 5% 5% 80%;
+    text-align: center;
+}
+section fieldset article button #edit{
+    display: none;
+}
+.editar{
+    font-size: 1.5em;
+    color: #1a5ad4;
+    
+}
+/*Editar Perfil*/
+.cancel{
+    font-size: 1.5em;
+    color: darkred;
+}
+section fieldset article #buttonsyc button #edit{
+    display: none;
+}
+section fieldset article #fotoperfil #movil form input[type='file']{
+    opacity: 0;
+    width: 20%;
+    z-index: 1;
+    float: left;
+    height: 40px;
+    position: relative;
+    left: 2.5%;
+}
+section fieldset article #fotoperfil #pc{
+    display: none;
+}
+#buttonfot{
+    left: 2.5%;
+    width: 20%;
+    height: 40px;
+    display: inline-block;
+    margin:0!important;
+    z-index: 1;
+    position: absolute;
+}
+#buttonsbr{
+    position: absolute;
+    margin:0!important;
+    left: 27.5%;
+    z-index: 1;
+    width: 20%;
+    height: 40px;
+}
+#buttonre{
+    width: 20%;
+    height: 40px;
+    margin:0!important;
+    position: absolute;
+    left: 77.5%;
+}
+#buttoncan{
+    width: 20%;
+    height: 40px;
+    left:52.5%;
+    margin:0!important;
+    position: absolute;
+}
+#error{
+    margin: 0px !important;
+    width: 100%!important;
+    color: red;
+    clear: both;
+    text-align: center;
+}
+section #perfil  article #fotoperfil,section #perfil  article #datosperfil{
+    margin-bottom: 10px;
+}
+section #perfil #datosperfil p {
+    margin-left: 5%;
+    width: 35%;
+    display: inline-block;
+    float: left;
+    clear: both;
+}
+section #perfil #datosperfil input,section #perfil #datosperfil select{
+    width: 55%;
+    margin-top: 5px;
+    font-size: 1.4em;
+}
+section #perfil article #datosperfil form #buttonsyc  {
+padding: 20px 0;
+    width: 100%;
+}
+#dp, #propar{
+    width: 98%;
+    border: 2px solid limegreen;
+}
+#propar a{
+    text-decoration: none;
+    color: limegreen;
+}
+section #perfil article #datosperfil form #buttonsyc  button{
+    margin:0 0 0 10%;
+    width: 35%;
+    display: inline-block;
+} 
+section #perfil #pass input{
+    width: 55%;
+    margin-top: 30px;
+    font-size: 1.4em;
+}
+section #perfil #pass p{
+    margin-left: 5%;
+    width: 34%;
+    display: inline-block;
+    float: left;
+    clear: both;
+}
+section #perfil #pass button{
+    margin:20px 0 0 32.5%;
+    width: 35%;
+    display: inline-block;
+}
+section #perfil #separar{
+    height: 10px;
+    background-color: #1a5ad4;
+}
+.errorpass{
+    clear: both;
+    width: 100%!important;
+    color: darkred;
+    text-align: center;
+    margin-left: 0!important;
+    font-size: 1.2em;
+}

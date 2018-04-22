@@ -1,0 +1,169 @@
+section #submenu{
+    background-color: limegreen;
+    width: 100%;
+}
+section #submenu p{
+    color: #1a5ad4;
+    font-size: 1.3em;
+    padding: 3px 0 5px 0;
+    padding-left: 17%;
+}
+section article h1, section article p{
+    width: 96%;
+    margin: 0 auto;
+    padding-top: 3px;
+}
+section article h1{
+    text-align: center;
+}
+section article p{
+    text-align: left;
+}
+section #participado{
+    background-color:#1a5ad4;
+    padding-bottom: 10px;
+}
+section #participado #propar{
+    border: 2px solid limegreen;
+    width: 98%;
+    margin: 10px auto;
+    font-size: 1.2em;
+    padding-bottom: 10px;
+}
+section #participado #propar legend{
+    text-align: center;
+    color: limegreen;
+}
+section #participado #propar a{
+    display: block;
+    text-decoration: none;
+    color: limegreen;
+    width: 100%;
+    float: left;
+    clear: both;
+}
+section #participado #propar a p{
+    width: 60%;
+    color: limegreen;
+    float: left;
+    text-align: left;
+    margin-left: 2%;
+}
+section #participado #propar a #p2{
+    width: 30%;
+}
+/*Slide show gallery*/
+
+.img2 {
+  vertical-align: middle;
+    width: 100%;
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+  position: relative;
+    text-align: center;
+    width: 95%;
+    margin: 0 auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev{
+    left: 0;
+}
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color:limegreen;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: limegreen;
+    font-weight: bolder;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: limegreen;
+    font-weight: bolder;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+/*FIn slide show*/
+@media (min-width: 900px) {
+    /*Slide escritorio*/
+    .container {
+        width: 65%;
+        margin: 25px auto;
+    }
+    /*fin slideshow*/
+    #articulo p{
+        width: 80%;
+        margin: 5px auto;
+    } 
+    #articulo h1{
+        margin-bottom: 10px;
+    }
+    
+}
+

@@ -1,0 +1,66 @@
+section{
+    background-color: #1a5ad4;
+    overflow: hidden;
+    border-top: 2px solid limegreen;
+}
+section article{
+    text-align: center;
+    background-color: #1a5ad4;
+    
+}
+section article h1{
+    font-size: 1.4em;
+    font-weight: bolder;
+    color: limegreen;
+}
+section article ul li{
+     list-style-type: none;
+}
+section article ul #noproyects a{
+    text-decoration: none;
+    color: limegreen;
+    font-size: 1.3em!important;
+    pointer-events: none!important;
+    cursor: default!important;
+}
+section article ul li a{
+    text-decoration: none;
+    color: limegreen;
+    font-size: 1.3em!important;
+}
+.icono{
+    margin-left: 5px;
+    font-size: 1.5em;
+    color: limegreen!important;
+}
+.arriba{
+    transform: rotate(-180deg);
+    transition: 0.5s all;
+}
+.abajo{
+    transition: 0.5s all;
+}
+.oculto{
+    display: none;
+}
+
+@media (min-width: 900px) {
+    section #cursoA{
+        width: 50%;
+        float:left;
+        display: block;
+        clear: left;
+    }
+    section #cursoA #curso, section #cursoB #curso{
+        padding: 10px 0;
+    }
+        section #cursoB{
+        width: 50%;
+        float:right;
+        display: block;
+        clear: right;
+    }
+    section #proyectos{
+        width: 100%;
+    }
+}
