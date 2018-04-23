@@ -370,7 +370,7 @@ Comienza eliminar usuario*/
         </fieldset>
     </section>
     <?php /*Fin crear curso
-        comienza editar curso*/
+        comienza moficiar curso*/
     }else if(isset($_GET['rm']) and $_GET['rm']==2 and isset($_GET['rt']) and $_GET['rt']==2) { ?>
         <nav id="nav1">
               <div class="icon-bar">
@@ -382,7 +382,7 @@ Comienza eliminar usuario*/
         <nav id="nav2"class="oculto">
             <div class="icon-bar">
               <a href="?rm=1&rt=1&a=3" id="subenla1" onclick="desplegar2(this)"><i class="fas fa-user-plus ico"></i></a> 
-              <a href="?rm=1&rt=3&a=3"  id="subenla3" onclick="desplegar2(this)"><i class="fas fa-user-times ico"></i></a>
+              <a href="?rm=1&rt=2&a=3"  id="subenla2" onclick="desplegar2(this)"><i class="fas fa-user-md ico"></i></a>
               <a href="?rm=1&rt=3&a=3" id="subenla3" onclick="desplegar2(this)"><i class="fas fa-user-times ico"></i></a>  
             </div>
         </nav>
@@ -461,7 +461,7 @@ Comienza eliminar usuario*/
     </section>
             <?php }
                 
-/*Fin modifiar curso
+/*Fin modificar curso
 Comienza eliminar curso*/
         }elseif(isset($_GET['rm']) and $_GET['rm']==2 and isset($_GET['rt']) and $_GET['rt']==3){?>
             <nav id="nav1">
