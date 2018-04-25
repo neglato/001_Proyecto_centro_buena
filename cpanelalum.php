@@ -392,6 +392,50 @@ $activo=3;
 
             <fieldset id="fotodel">
                 <legend>Eliminar fotos</legend>
+                <?php  
+                    $imgAct= consulta($conexion,"SELECT * from imgproy where id_proyecto like $idp");
+                $totalImg= mysqli_num_rows($imgAct);
+                if($totalImg == 0){?>
+                    <p>Aun no hay fotos</p>
+                <?php }else{?>
+                <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <link href="_css/jquery.lwMultiSelect.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="_js/jquery.lwMultiSelect.js"></script>
+  <style>
+  .container { margin:150px auto; max-width:460px;
+      width: 70%;}
+  </style>
+        
+                   <p><select id="defaults" multiple="multiple">
+                   <?php
+                   while($img= mysqli_fetch_array($imgAct)){
+                       $idImg=$img['id_img'];
+                    $imagen=$img['imagen']; ?>
+                   <option value="<?=$idImg?>"><?=$imagen?></option>
+                   <?php }
+                    ?>
+                   </select>
+  </p>
+<script>
+jQuery('#defaults').lwMultiSelect();
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+           <?php }
+        ?>
             </fieldset>
         </section>
     <?php

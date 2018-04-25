@@ -52,24 +52,12 @@ function desplegar2Profe(elem){
         elem.classList.add('active'); 
 }
 
-/*funcion de desplegar en alumno cpanel*/
-function desplegarAlumn(menu,submenu){
-    menu.classList.add('active');
-    document.getElementById(submenu).classList.toggle('oculto');
-    document.getElementById('enlace1').classList.remove('active');
-}
-function modActive(enlace1, enlace2){
-    enlace1.classList.toggle('active');
-    enlace2.classList.toggle('active');
-}
-/*Para mostrar el contenido*/
-function mostrarCont(contenido, flecha){
-    contenido.classList.toggle('oculto');
-    flecha.classList.toggle("arriba");
-}
+
+
 
 
 /* Script para comprobar si existe el email (AJAX)*/
+
 
 
 function comprobarEmail(str){
@@ -165,8 +153,8 @@ function obtenParticipantes(idProy){
         
     if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
             
-        document.getElementById('iusu').innerHTML = xmlhttp.responseText;
-        document.getElementById('iusu').focus();
+        document.getElementById('iusuario').innerHTML = xmlhttp.responseText;
+        document.getElementById('iusuario').focus();
 
     }
     
@@ -205,8 +193,23 @@ function obtenNoParticipantes(idProyec){
     xmlhttp.send("q="+idProyec);
 }
 
+function ponerselect(opt){
+    document.getElementById('opt').getElementsByTagName('option').optSelected='selected';
+}
 
 
+//codigo select multiple 
+$().ready(function() 
+	{
+		$('.pasar').click(function() { return !$('#iusuario option:selected').remove().appendTo('#iusuario2'); });  
+		$('.quitar').click(function() { return !$('#iusuario2 option:selected').remove().appendTo('#iusuario'); });
+		$('.pasartodos').click(function() { $('#iusuario option').each(function() { $(this).remove().appendTo('#iusuario2'); }); });
+		$('.quitartodos').click(function() { $('#iusuario2 option').each(function() { $(this).remove().appendTo('#iusuario'); }); });
+		$('.submit').click(function() { $('#iusuario2 option').prop('selected', 'selected'); });
+        
+
+        
+	});
 
 
 
