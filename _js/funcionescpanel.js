@@ -53,6 +53,22 @@ function desplegar2Profe(elem){
 }
 
 
+/*funcion de desplegar en alumno cpanel*/
+function desplegarAlumn(menu,submenu){
+    menu.classList.add('active');
+    document.getElementById(submenu).classList.toggle('oculto');
+    document.getElementById('enlace1').classList.remove('active');
+}
+function modActive(enlace1, enlace2){
+    enlace1.classList.toggle('active');
+    enlace2.classList.toggle('active');
+}
+/*Para mostrar el contenido*/
+function mostrarCont(contenido, flecha){
+    contenido.classList.toggle('oculto');
+    flecha.classList.toggle("arriba");
+}
+
 
 
 
