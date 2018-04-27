@@ -133,7 +133,7 @@ a#proyprof{
 #adduser fieldset form button #edit, #usermod fieldset form button #edit, #userdel fieldset form button #edit, #addcourse fieldset form button #edit, #adduser fieldset form button #edit, #coursemod fieldset form button #edit, #addproy fieldset form button #edit, #proydel fieldset form button #edit{
     display: none;
 }
-#adduser fieldset form button, #usermod fieldset form button, #userdel fieldset form button, #user2proy fieldset form button , #userdelproy fieldset form button, #addcourse fieldset form button, #coursemod fieldset form button, #addproy fieldset form button, #proydel fieldset form button,#proyedit fieldset button{
+#adduser fieldset form button, #usermod fieldset form button, #userdel fieldset form button, #user2proy fieldset form button , #userdelproy fieldset form button, #addcourse fieldset form button, #coursemod fieldset form button, #addproy fieldset form button, #proydel fieldset form button,#proyedit fieldset button , #btnborrar{
     height: 30px;
     width: 20%;
     background-color: limegreen;
@@ -207,6 +207,11 @@ clear: both;
 }
 #fotosact table tr td{
     background-color: antiquewhite;
+}
+
+#fotodel p{
+    width: 100%!important;
+    margin: 0px!important;
 }
 /* Fin estilos menu CPANEL */
 /* Inicio estilos Graficos CPANEL */

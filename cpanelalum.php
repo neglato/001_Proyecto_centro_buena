@@ -86,6 +86,7 @@ $activo=3;
                     $proyecto=$row['nombre_pro'];
                     $proyect=$row['name_pro'];
                     $idp=$row['id_proyecto'];
+                    $_SESSION['idp']=$idp;
             ?>
             <li>
             <a href="proyecto.php?a=1&idp=<?=$idp?>" id="proyprof"><?php
@@ -139,6 +140,7 @@ $activo=3;
                     $proyecto=$row['nombre_pro'];
                     $proyect=$row['name_pro'];
                     $idp=$row['id_proyecto'];
+                    $_SESSION['idp']=$idp;
             ?>
             <li>
             <a href="cpanelalum.php?a=1&rm=2&rt=1&idp=<?=$idp?>" id="proyprof"><?php
@@ -191,6 +193,7 @@ $activo=3;
                      $name_pro=$rowProy['name_pro'];
                      $contenido=$rowProy['contenido'];
                      $content=$rowProy['content'];
+                        $_SESSION['idp']=$idp;
                     /*Ahora recuperamos el curso*/
                     $CurAct = consulta($conexion,"Select * from cursos where id_curso in (select id_curso from proyectos
                                                                                             where id_proyecto like $idp)");
@@ -267,7 +270,8 @@ $activo=3;
                 <?php 
         /*recuperamos el nombre del proyecto*/
                      $ProyAct = consulta($conexion, "select * from proyectos where id_proyecto like $idp");                                   $rowProy=mysqli_fetch_array($ProyAct);
-                     $nombre_pro=$rowProy['nombre_pro']; 
+                     $nombre_pro=$rowProy['nombre_pro'];
+                        $_SESSION['idp']=$idp;
         /*recuperamos las imagenes*/
                 $imgAct= consulta($conexion,"SELECT * from imgproy where id_proyecto like $idp");
                 $totalImg= mysqli_num_rows($imgAct);
@@ -392,6 +396,7 @@ $activo=3;
 
             <fieldset id="fotodel">
                 <legend>Eliminar fotos</legend>
+                <form method="post" enctype="multipart/form-data" action="eliminarfotos.php">
                 <?php  
                     $imgAct= consulta($conexion,"SELECT * from imgproy where id_proyecto like $idp");
                 $totalImg= mysqli_num_rows($imgAct);
@@ -403,11 +408,11 @@ $activo=3;
   <link href="_css/jquery.lwMultiSelect.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="_js/jquery.lwMultiSelect.js"></script>
   <style>
-  .container { margin:150px auto; max-width:460px;
-      width: 70%;}
+  .container { margin:10px auto; 
+      width: 100%;}
   </style>
         
-                   <p><select id="defaults" multiple="multiple">
+                   <p><select id="defaults" multiple="multiple" name="fotos[]">
                    <?php
                    while($img= mysqli_fetch_array($imgAct)){
                        $idImg=$img['id_img'];
@@ -436,6 +441,8 @@ jQuery('#defaults').lwMultiSelect();
 </script>
            <?php }
         ?>
+           <button type="submit" id=btnborrar><i class="fas fa-times cancel edicion2"></i></button>
+                </form>
             </fieldset>
         </section>
     <?php

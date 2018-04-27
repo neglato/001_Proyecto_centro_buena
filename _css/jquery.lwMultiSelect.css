@@ -12,9 +12,11 @@
 
 .lwms-selected{display:none;}
 
-.lwms-main .lwms-left{/*margin-right:10%;*/ margin-left: 5%;}
+.lwms-main .lwms-left{margin-left:5%; margin-right: 5%;}
 
-.lwms-main ul{margin: 0%; list-style-type: none;}
+lwms-main .lwms-right{ margin-right: 5%;}
+
+.lwms-main ul{/*margin-left: 5%;*/ list-style-type: none;}
 
 .lwms-main ul.lwms-list{ 
   width: 100%;
@@ -26,7 +28,7 @@
 
 .lwms-main .lwms-left li.lwms-selectli,
 .lwms-main .lwms-right li.lwms-selectli{
-  padding: 4px 10px;
+  padding: 4px;
   color: #555;
   font-size: 1em;
   line-height:16px;
