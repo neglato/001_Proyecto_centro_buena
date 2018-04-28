@@ -393,7 +393,9 @@ $activo=3;
                <button type="submit">Dale</button>
                 </form>
             </fieldset>
-
+            <?php /*fin de subir fotos
+            comienza borrar fotos*/
+                    ?>
             <fieldset id="fotodel">
                 <legend>Eliminar fotos</legend>
                 <form method="post" enctype="multipart/form-data" action="eliminarfotos.php">
@@ -402,7 +404,8 @@ $activo=3;
                 $totalImg= mysqli_num_rows($imgAct);
                 if($totalImg == 0){?>
                     <p>Aun no hay fotos</p>
-                <?php }else{?>
+                <?php }else{
+                    ?>
                 <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
   <link href="_css/jquery.lwMultiSelect.css" rel="stylesheet" type="text/css" />
@@ -413,6 +416,7 @@ $activo=3;
   </style>
         
                    <p><select id="defaults" multiple="multiple" name="fotos[]">
+                    <option value="na" selected></option>
                    <?php
                    while($img= mysqli_fetch_array($imgAct)){
                        $idImg=$img['id_img'];
@@ -442,11 +446,16 @@ jQuery('#defaults').lwMultiSelect();
            <?php }
         ?>
            <button type="submit" id=btnborrar><i class="fas fa-times cancel edicion2"></i></button>
+                              <p id="error"><?php
+                            if(isset($_SESSION['msgalfot'])){
+                                echo $_SESSION['msgalfot'];
+                                unset($_SESSION['msgalfot']);
+                            } ?></p>
                 </form>
             </fieldset>
         </section>
     <?php
-        /*FIn de subir imagenes
+        /*FIn de borrar imagenes
         fin de la pestaña no publicados
         fin cpanel alumno*/
     }
