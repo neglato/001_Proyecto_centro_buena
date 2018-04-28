@@ -185,7 +185,7 @@ $activo=3;
             <!-- Library -->
             <script src="/ruta-a-wysihtml5/dist/wysihtml5-0.3.0.min.js"></script>
             <fieldset id="actual">
-                <legend>Contenido actual</legend>
+                <legend><?=ACTCONT?></legend>
                 <?php 
                     /*recuperamos el nombre del proyecto*/
                      $ProyAct = consulta($conexion, "select * from proyectos where id_proyecto like $idp");                                     $rowProy=mysqli_fetch_array($ProyAct);
@@ -202,23 +202,23 @@ $activo=3;
                 ?>
                 <ul>
                     <li>
-                        <p class="idioma" onclick="mostrarCont(spanish,esp)">Español <i class="fas fa-caret-down arriba icono" id="esp" class="abajo"></i></p>
+                        <p class="idioma" onclick="mostrarCont(spanish,esp)"><?=ESP?> <i class="fas fa-caret-down arriba icono" id="esp" class="abajo"></i></p>
                         <div id="spanish" class="oculto">
                             <?php if (file_exists('_cursos/'.$curso.'/'.$nombre_pro.'/'.$contenido.'')){
                             include('_cursos/'.$curso.'/'.$nombre_pro.'/'.$contenido.'');
                 }else{?>
-                   <p>No contenido disponible</p>
+                   <p style="color:limegreen;font-size:1.3em;text-align:center;"><?=NOCONT?></p>
                     
                 <?php }?>
                         </div>
                     </li>
                     <li>
-                    <p class="idioma" onclick="mostrarCont(english,eng)">Ingles <i class="fas fa-caret-down arriba icono" id="eng" class="abajo"></i></p>
+                    <p class="idioma" onclick="mostrarCont(english,eng)"><?=ENG?> <i class="fas fa-caret-down arriba icono" id="eng" class="abajo"></i></p>
                         <div id="english" class="oculto" id="english">
                             <?php if (file_exists('_cursos/'.$curso.'/'.$nombre_pro.'/'.$content.'')){
                             include('_cursos/'.$curso.'/'.$nombre_pro.'/'.$content.'');
                 }else{?>
-                   <p>Not avaible content</p>
+                  <p style="color:limegreen;font-size:1.3em;text-align:center;"><?=NOCONT?></p>
                     
                 <?php }?>
                         </div>
@@ -226,12 +226,12 @@ $activo=3;
                 </ul>
             </fieldset>
             <fieldset>
-                <legend>Redactar artículo</legend>
+                <legend><?=REDART?></legend>
                 <form action="">
                    <select name="idioma" id="idioma">
-                       <option value="-1">Selecciona idioma</option>
-                       <option value="1es.php">Español</option>
-                       <option value="1en.php">Inglés</option>
+                       <option value="-1"><?=SELLENG?></option>
+                       <option value="1es.php"><?=ESP?></option>
+                       <option value="1en.php"><?=ENG?></option>
                    </select>
                     <script src="ckeditor_4.9.2_bd5767ce8fc7/ckeditor/ckeditor.js"></script>
                     <div id="textoenr">
@@ -266,7 +266,7 @@ $activo=3;
         </nav>
         <section id="adduser">
             <fieldset id="fotosact"> 
-                <legend>Fotos ya subidas</legend>
+                <legend><?=FOTACT?></legend>
                 <?php 
         /*recuperamos el nombre del proyecto*/
                      $ProyAct = consulta($conexion, "select * from proyectos where id_proyecto like $idp");                                   $rowProy=mysqli_fetch_array($ProyAct);
@@ -281,12 +281,12 @@ $activo=3;
                     $row=mysqli_fetch_array($CurAct);
                     $curso=$row['curso'];
                 if($totalImg == 0){?>
-                    <p>Aun no hay fotos</p>
+                    <p style="color:limegreen;font-size:1.3em;text-align:center;"><?=NOFOTS?></p>
                 <?php }else{?>
                 <table>
                     <tr>
-                    <th>Imagen</th>
-                    <th>Nombre</th>
+                    <th><?=IMAGEN?></th>
+                    <th><?=NAMEFOT?></th>
                     </tr>
                     <?php
                     while($img= mysqli_fetch_array($imgAct)){
@@ -304,7 +304,7 @@ $activo=3;
                 <?php }?>
             </fieldset>
             <fieldset id="fotosub">
-                <legend>Subir fotos</legend>
+                <legend><?=SUBFOTOS?></legend>
 <style type="text/css">
   .demo-droppable {
     background: #08c;
@@ -319,6 +319,8 @@ $activo=3;
     background: #00CC71;
   }
 </style>
+<?php
+        ?>
 <form method="post" id="formulario" enctype="multipart/form-data" action="subirfotos.php">
 <div class="demo-droppable">
   <h3><?=DROPTEXT?></h3>
@@ -390,20 +392,25 @@ $activo=3;
     });
   })(this);
 </script>
-               <button type="submit">Dale</button>
+               <button type="submit"><i class="fas fa-upload edicion"></i></button>
+                        <p id="error"><?php
+                            if(isset($_SESSION['msgsubfot'])){
+                                echo $_SESSION['msgsubfot'];
+                                unset($_SESSION['msgsubfot']);
+                            } ?></p>
                 </form>
             </fieldset>
             <?php /*fin de subir fotos
             comienza borrar fotos*/
                     ?>
             <fieldset id="fotodel">
-                <legend>Eliminar fotos</legend>
+                <legend><?=DELFOTOS?></legend>
                 <form method="post" enctype="multipart/form-data" action="eliminarfotos.php">
                 <?php  
                     $imgAct= consulta($conexion,"SELECT * from imgproy where id_proyecto like $idp");
                 $totalImg= mysqli_num_rows($imgAct);
                 if($totalImg == 0){?>
-                    <p>Aun no hay fotos</p>
+                    <p style="color:limegreen;font-size:1.3em;text-align:center;"><?=NOFOTS?></p>
                 <?php }else{
                     ?>
                 <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">

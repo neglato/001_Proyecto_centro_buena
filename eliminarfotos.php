@@ -25,7 +25,8 @@ if(count($_POST['fotos']) > 0){
     if(end($_POST['fotos'])=="na"){
         $_SESSION['msgalfot']="debes elegir alguna foto";
         $_POST['fotos']=="";
-        header("Location: cpanelalum.php?a=3&rm=2&rt=2&idp=$idp");    
+        header("Location: cpanelalum.php?a=3&rm=2&rt=2&idp=$idp");
+        exit();
     }else{
         /*sacamos el curso del proyecto y su nombre, para poder eliminar la foto de su directrio*/
             $proyecto = consulta($conexion, "Select * from proyectos where id_proyecto like $idp");

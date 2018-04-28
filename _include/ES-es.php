@@ -168,6 +168,16 @@ define('DELALL','Eliminar todos');
 define('DESHALL','Deshacer todo');
 define('DESH','Deshacer');
 define('NOFILE','Faltan ficheros del proyecto');
-
-
-
+//nuevo 28/04
+define('ACTCONT','Contenido actual');
+define('ESP','Español');
+define('ENG','Inglés');
+define('SELLENG','Seleccione idioma');
+define('NOCONT','No hay contenido disponible');
+define('REDART','Redactar artículo');
+define('FOTACT','Fotos actuales');
+define('NOFOTS','No hay fotos subidas');
+define('SUBFOTOS','Subir fotos');
+define('DELFOTOS','Eliminar fotos');
+define('IMAGEN','Imagen');
+define('NAMEFOT','Nombre');

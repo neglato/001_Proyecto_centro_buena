@@ -169,3 +169,16 @@ define('DELALL','Delete all');
 define('DESHALL','Undo everything');
 define('DESH','Undo');
 define('NOFILE','Missing project files');
+//nuevo 28/04
+define('ACTCONT','Current content');
+define('ESP','Spanish');
+define('ENG','English');
+define('SELLENG','Select a language');
+define('NOCONT','Not avaible content');
+define('REDART','Write article');
+define('FOTACT','Current Photos');
+define('NOFOTS','No photos uploaded');
+define('SUBFOTOS','Upload photos');
+define('DELFOTOS','Delete photos');
+define('IMAGEN','Image');
+define('NAMEFOT','Name');
