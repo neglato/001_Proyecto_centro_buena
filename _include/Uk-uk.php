@@ -185,3 +185,5 @@ define('NAMEFOT','Name');
 define('SELFOTO','You must select a photo');
 define('UPFOTO','Photo correctly uploaded');
 define('DELFOTO','Photo deleted correctly');
+//Nuevo desde 29/04
+define('ESCRIALGO','Enter text to search');

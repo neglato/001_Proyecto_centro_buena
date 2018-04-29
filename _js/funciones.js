@@ -40,3 +40,29 @@ function comprobar(email, pass){
     
     
 }
+/* Rellenar DATALIST Barra Buscar*/
+
+function BarraBuscar(nomb){
+    var xmlhttp;
+    
+    if(window.XMLHttpRequest){
+        xmlhttp= new XMLHttpRequest();
+    }else{
+        xmlhttp= new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    
+    xmlhttp.onreadystatechange=function(){
+        
+    if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+            
+       document.getElementById('busqueda').innerHTML= xmlhttp.responseText;
+
+    }
+    
+    }
+    
+    xmlhttp.open("POST","_include/busqueda.php", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send("search="+nomb);
+}
+

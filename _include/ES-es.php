@@ -184,3 +184,5 @@ define('NAMEFOT','Nombre');
 define('SELFOTO','Debes seleccionar una foto');
 define('UPFOTO','Foto subida correctamente');
 define('DELFOTO','Foto eliminada correctamente');
+//Nuevo desde 28/04 migue
+define('ESCRIALGO','Introduzca texto a buscar'); 
