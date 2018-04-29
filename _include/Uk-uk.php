@@ -182,3 +182,5 @@ define('SUBFOTOS','Upload photos');
 define('DELFOTOS','Delete photos');
 define('IMAGEN','Image');
 define('NAMEFOT','Name');
+//Nuevo desde 29/04
+define('ESCRIALGO','Enter text to search');
