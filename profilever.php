@@ -16,6 +16,7 @@ if(!isset($_GET['idu'])){
 if(isset($_SESSION['user'])){
     if($_SESSION['user'] == $_GET['idu']){
         header('Location: profile.php?a=2');
+        exit();
     }
 }
 /*$_SESSION['user']=1;*/
@@ -139,7 +140,8 @@ $activo=2;
                                                             ?></a></p>
                <?php } ?>
             </fieldset>
-            <?php } ?>
+            <?php } 
+            mysqli_close($conexion);?>
         </article>
     </fieldset>
     </section>

@@ -30,10 +30,11 @@ if(isset($_GET['idp'])){
     $totalFilas= mysqli_num_rows($select);
     $row=mysqli_fetch_array($select);
     $nombre_pro=$row['nombre_pro'];
-    $name_pro=$row['name_pro'];  
+    $name_pro=$row['name_pro'];
         }
 if($totalFilas == 0){
     header('Location: cursos.php?a=1');
+    mysqli_close($conexion);
     exit();
 }
     }else{
@@ -44,11 +45,13 @@ if($totalFilas == 0){
     $name_pro=$row['name_pro'];
         if($totalFilas == 0){
             header('Location: cursos.php?a=1');
+            mysqli_close($conexion);
             exit();
 }
     }
 }else{
     header('Location: index.php');
+    mysqli_close($conexion);
     exit();
 }
 /*$_SESSION['user']=1;*/
@@ -228,7 +231,8 @@ $activo=1;
                while ($row=mysqli_fetch_array($participantes)){
               ?>
               <a href="profilever.php?idu=<?=$row['id_user']?>&a=2"><p><?=$row['editor']?></p><p id="p2"><?=EDITOR?></p></a>
-              <?php } ?>
+              <?php } 
+              mysqli_close($conexion);?>
           </fieldset>
       </article>
   </section>

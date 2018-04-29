@@ -32,5 +32,6 @@ if($_POST['id_curso']!=""){
      $home="_cursos/$nomCurso";
     rmdir($home);
    header('Location: cpaneladmin.php?rm=2&rt=3&a=3');
+    mysqli_close($conexion);
     exit();
 }

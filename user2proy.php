@@ -15,6 +15,7 @@
 
     if (!isset($_SESSION['user'])){
         header('Location: index.php');
+        exit();
     }
 
         if(isset($_POST['usu2proy'])){

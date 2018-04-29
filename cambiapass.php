@@ -93,8 +93,12 @@ if(isset($_POST['newpass']) && isset($_POST['confpass'])){
                 $_SESSION['password']=$newpass;
                 if ($_SESSION['urlact'] == ""){
                     header('Location: index.php');
+                    mysqli_close($conexion);
+                    exit();
                 }else{
                     header('Location: '.$_SESSION['urlact'].'');
+                    exit();
+                    mysqli_close($conexion);
                 }
             }
         }

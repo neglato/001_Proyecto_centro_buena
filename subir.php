@@ -12,6 +12,7 @@ session_start();
         }
     if (!isset($_SESSION['user'])){
         header('Location: index.php');
+        exit();
     }
 $email=$_SESSION['email'];
 $ruta="_users/".$email."/";
@@ -32,4 +33,6 @@ if (is_uploaded_file($uploadfile_temporal)){
         $_SESSION['msgfoto']="Error"; 
     } 
 header('Location: profile.php?ed=1&a=2');
+mysqli_close($conexion);
+exit();
 ?>

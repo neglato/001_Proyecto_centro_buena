@@ -47,6 +47,8 @@ $activo=1;
         $totalCur=mysqli_num_rows($curso);
         if($totalCur == 0){
             header('Location: cursos.php?a=1');
+            mysqli_close($conexion);
+            exit();
         }else{
             $curso_n=$row['curso'];
         }
@@ -84,7 +86,9 @@ $activo=1;
             $i++;
         }
     }
-        ?>
+        
+                mysqli_close($conexion);
+                ?>
             </ul>
     </article>
             <?php

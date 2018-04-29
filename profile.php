@@ -148,6 +148,7 @@ $activo=2;
         </article>
     </fieldset>
     <?php
+        mysqli_close($conexion);
     }else{
         /*Edicion de perfil*/
         ?>
@@ -240,6 +241,7 @@ $activo=2;
         <div id="separar"></div>
     </fieldset>
     <?php
+                                        mysqli_close($conexion);
         }
     ?>
 </section>

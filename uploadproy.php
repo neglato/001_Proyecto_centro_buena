@@ -12,6 +12,7 @@ if($_SESSION['lang']==1){
 }  
 if(!isset($_SESSION['user'])){
     header('Location: index.php');
+    exit();
 }
 
 if(isset($_POST['tipo']) && $_POST['tipo'] == -1){
@@ -43,6 +44,7 @@ if(isset($_POST['tipo']) && $_POST['tipo'] == -1){
         header('Location: cpanelprofe.php?rm=2&rt=3&a=3');
         $_SESSION['msgprofe']=PROYSIPUB;
         unset($_SESSION['tipo']);
+        mysqli_close($conexion);
         exit();
         //si no existen los ficheros...
     }else{
@@ -50,6 +52,7 @@ if(isset($_POST['tipo']) && $_POST['tipo'] == -1){
         header('Location: cpanelprofe.php?rm=2&rt=3&a=3');
         $_SESSION['msgprofe']=NOFILE;
         unset($_SESSION['tipo']);
+        mysqli_close($conexion);
         exit();
     }
 }

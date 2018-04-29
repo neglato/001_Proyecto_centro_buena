@@ -4,6 +4,8 @@
     session_start();
 if(!isset($_SESSION['user'])){
     header('Location: index.php');
+    
+    exit();
 }
     if(isset($_SESSION['lang'])){
         if($_SESSION['lang']==1){
@@ -54,7 +56,9 @@ if(!isset($_FILES['files'])){
             
 
         $_SESSION['msgsubfot']=UPFOTO;
-        header("Location: cpanelalum.php?a=3&rm=2&rt=2&idp=$idp"); 
+        header("Location: cpanelalum.php?a=3&rm=2&rt=2&idp=$idp");
+                mysqli_close($conexion);
+                exit();
     }
         }
         

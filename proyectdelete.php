@@ -27,9 +27,11 @@ if($_POST['id_proy']!=-1){
                                                     WHERE id_proyecto like $pid");
     $_SESSION['msgproydel']=DESPUB;
     header('Location: cpaneladmin.php?rm=3&rt=3a=3');
+    mysqli_close($conexion);
     exit(); 
 }else{
     $_SESSION['msgproydel']=DEBCHO;
     header('Location: cpaneladmin.php?rm=3&rt=3a=3');
+    mysqli_close($conexion);
     exit(); 
 }

@@ -9,7 +9,8 @@ if(!isset($_SESSION['user'])){
     $USER = $_SESSION['user']; 
     $RESULTADO = consulta($conexion,"SELECT * FROM usuarios WHERE id_user = '".$USER."'");
 
-    $info = mysqli_fetch_array($RESULTADO); 
+    $info = mysqli_fetch_array($RESULTADO);
+mysqli_close($conexion);
 switch ($info['tipo']){
     case 0:
         header('Location: cpaneladmin.php?a=3');

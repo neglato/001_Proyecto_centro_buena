@@ -4,6 +4,8 @@
     session_start();
 if(!isset($_SESSION['user'])){
     header('Location: index.php');
+    mysqli_close($conexion);
+    exit();
 }
     if(isset($_SESSION['lang'])){
         if($_SESSION['lang']==1){
@@ -18,6 +20,7 @@ $idp=$_SESSION['idp'];
 /*primero comprobamos que exista $_POST['fotos']*/
 if(!isset($_POST['fotos'])){
    header('Location: index.php');
+    mysqli_close($conexion);
     exit();
 }
 if(count($_POST['fotos']) > 0){
@@ -26,6 +29,7 @@ if(count($_POST['fotos']) > 0){
         $_SESSION['msgalfot']=SELFOTO;
         $_POST['fotos']=="";
         header("Location: cpanelalum.php?a=3&rm=2&rt=2&idp=$idp");
+        mysqli_close($conexion);
         exit();
     }else{
         /*sacamos el curso del proyecto y su nombre, para poder eliminar la foto de su directrio*/

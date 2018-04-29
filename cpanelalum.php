@@ -301,7 +301,8 @@ $activo=3;
                     <?php }
                     ?>
                 </table>
-                <?php }?>
+                <?php }
+                ?>
             </fieldset>
             <fieldset id="fotosub">
                 <legend><?=SUBFOTOS?></legend>
@@ -462,6 +463,7 @@ jQuery('#defaults').lwMultiSelect();
             </fieldset>
         </section>
     <?php
+        mysqli_close($conexion);
         /*FIn de borrar imagenes
         fin de la pestaña no publicados
         fin cpanel alumno*/
