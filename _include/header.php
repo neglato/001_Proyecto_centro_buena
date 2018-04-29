@@ -115,12 +115,24 @@ if(isset($_SESSION['password']) && isset($_SESSION['email']) && $_SESSION['passw
                       
        </p>
        </div>
+        <!--       Inicio Barra de busqueda global con DATALIST-->
         <div id="busq">
-            <form action="#">
-                <input type="text" placeholder="<?=BUSQ?>" name="search">
+            <form action="_include/barraBusqueda.php" method="post">
+                <input type="text" list="busqueda" placeholder="<?=BUSQ?>" name="search" onkeyup="BarraBuscar(this.value)" value="<?php 
+                            if(isset($_SESSION['msje'])){
+                                echo $_SESSION['msje'];
+                                unset($_SESSION['msje']);
+                            }
+                            ?>">
+                <datalist id="busqueda">
+                    
+                </datalist>
                 <button type="submit"><i class="fa fa-search"></i></button>
-                </form>
+            </form>
         </div>
+        
+<!--       Fin Barra de busqueda global con DATALIST-->
+
           </div>
         <div id="sep2"></div>
         <div id="lys">
