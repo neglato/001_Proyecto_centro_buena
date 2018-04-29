@@ -182,4 +182,4 @@ define('DELFOTOS','Eliminar fotos');
 define('IMAGEN','Imagen');
 define('NAMEFOT','Nombre');
 //Nuevo desde 28/04 migue
-define('ESCRIALGO','Introduzca texto a buscar');
+define('ESCRIALGO','Introduzca texto a buscar'); 
