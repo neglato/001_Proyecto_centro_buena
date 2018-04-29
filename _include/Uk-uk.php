@@ -182,3 +182,6 @@ define('SUBFOTOS','Upload photos');
 define('DELFOTOS','Delete photos');
 define('IMAGEN','Image');
 define('NAMEFOT','Name');
+define('SELFOTO','You must select a photo');
+define('UPFOTO','Photo correctly uploaded');
+define('DELFOTO','Photo deleted correctly');

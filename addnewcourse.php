@@ -48,6 +48,7 @@ session_start();
             if($totalFilas > 0){             
                 $_SESSION['msgaddcourse']=EXISCOUR;
                 header('Location: cpaneladmin.php?rm=2&rt=1a=1');
+                mysqli_close($conexion);
                 exit(); 
             }else{
                 /*creamos el curso y su carpeta home*/

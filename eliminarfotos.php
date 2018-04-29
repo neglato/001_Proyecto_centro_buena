@@ -23,7 +23,7 @@ if(!isset($_POST['fotos'])){
 if(count($_POST['fotos']) > 0){
     /*si en final del array es la opcion por defecto, devolvemos a la pagina anterior y mostramos el mensage*/
     if(end($_POST['fotos'])=="na"){
-        $_SESSION['msgalfot']="debes elegir alguna foto";
+        $_SESSION['msgalfot']=SELFOTO;
         $_POST['fotos']=="";
         header("Location: cpanelalum.php?a=3&rm=2&rt=2&idp=$idp");
         exit();
@@ -53,8 +53,10 @@ if(count($_POST['fotos']) > 0){
             
 
         }
-        $_SESSION['msgalfot']="foto eliminada correctamente";
-        header("Location: cpanelalum.php?a=3&rm=2&rt=2&idp=$idp"); 
+        $_SESSION['msgalfot']=DELFOTO;
+        header("Location: cpanelalum.php?a=3&rm=2&rt=2&idp=$idp");
+        mysqli_close($conexion);
+        exit();
     }
 }
 

@@ -181,3 +181,6 @@ define('SUBFOTOS','Subir fotos');
 define('DELFOTOS','Eliminar fotos');
 define('IMAGEN','Imagen');
 define('NAMEFOT','Nombre');
+define('SELFOTO','Debes seleccionar una foto');
+define('UPFOTO','Foto subida correctamente');
+define('DELFOTO','Foto eliminada correctamente');

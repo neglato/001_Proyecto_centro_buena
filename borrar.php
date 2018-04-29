@@ -3,6 +3,7 @@
     session_start();
 if(!isset($_SESSION['user'])){
     header('Location: index.php');
+    exit();
 }
     if(isset($_SESSION['lang'])){
         if($_SESSION['lang']==1){
@@ -26,3 +27,5 @@ if(file_exists($ruta.$img) == true){
     $_SESSION['msgfoto']=FOTAFK;
 }
 header('Location: profile.php?ed=1&a=2');
+mysqli_close($conexion);
+exit();

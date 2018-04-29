@@ -38,6 +38,7 @@ session_start();
             if($totalFilas1 > 0 || $totalFilas2 > 0 ){             
                 $_SESSION['msgaddproy']=EXISPROY;
                 header('Location: cpaneladmin.php?rm=3&rt=1a=3');
+                mysqli_close($conexion);
                 exit(); 
             }else{
                 /*creamos el curso y su carpeta home*/

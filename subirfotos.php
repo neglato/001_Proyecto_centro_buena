@@ -22,7 +22,7 @@ if(!isset($_FILES['files'])){
     $total=count($_FILES["files"]["name"]);
     if($total > 0){
         if(end($_FILES["files"]["name"])==""){
-        $_SESSION['msgsubfot']="debes añadir una foto";
+        $_SESSION['msgsubfot']=SELFOTO;
         header("Location: cpanelalum.php?a=3&rm=2&rt=2&idp=$idp");
         exit();
         }else{
@@ -53,7 +53,7 @@ if(!isset($_FILES['files'])){
             
             
 
-        $_SESSION['msgsubfot']="foto subida correctamente";
+        $_SESSION['msgsubfot']=UPFOTO;
         header("Location: cpanelalum.php?a=3&rm=2&rt=2&idp=$idp"); 
     }
         }
