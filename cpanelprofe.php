@@ -493,7 +493,7 @@ $activo=3;
                                           WHERE id_proyecto in (SELECT id_proyecto 
                                                                 FROM usuproy
                                                                 WHERE id_user = $user)
-                                          "); 
+                                            and mostrar like 0"); 
             $totalFilas= mysqli_num_rows($RESULT);?>
             <fieldset id="proyedi">
                <legend><?=PROYEDIT?></legend>
@@ -541,7 +541,7 @@ $activo=3;
                <legend><?=CAMNOM?></legend>
                     <form action="" method="post" enctype="multipart/form-data" name="rename2">
                        <?php
-                        $RESULTADO = consulta($conexion, "select * from proyectos where id_proyecto=$idproy");
+                        $RESULTADO = consulta($conexion, "select * from proyectos where id_proyecto like $idproy and mostrar like 0");
                         $plan = mysqli_fetch_array($RESULTADO);
                        ?>
                         <p>Proyecto (ES)</p><input type="text"  name="newnombre" value="<?= $plan['nombre_pro']?>" required>
@@ -574,7 +574,7 @@ $activo=3;
         $nombuk=$_POST['newnombreuk'];
         //Recuperamos el id del proyecto y el nombre viejo para modificar la carpeta y el codigo del curso
         $idproy=$_SESSION['tipo'];
-        $CONS = consulta($conexion,"SELECT * FROM proyectos WHERE id_proyecto='" . $idproy . "'"); 
+        $CONS = consulta($conexion,"SELECT * FROM proyectos WHERE id_proyecto=$idproy and mostrar like 0"); 
         $dato=mysqli_fetch_array($CONS);
         $oldnomb=$dato['nombre_pro'];
         $idcurso=$dato['id_curso'];

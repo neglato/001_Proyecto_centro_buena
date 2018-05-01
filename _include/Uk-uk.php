@@ -187,3 +187,7 @@ define('UPFOTO','Photo correctly uploaded');
 define('DELFOTO','Photo deleted correctly');
 //Nuevo desde 29/04
 define('ESCRIALGO','Enter text to search');
+//nuevo 01/05 dani
+define('UPDATETEXT','Text updated correctly'); 
+define('CREATETEXT','Text added correctly'); 
+

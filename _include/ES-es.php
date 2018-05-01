@@ -186,3 +186,6 @@ define('UPFOTO','Foto subida correctamente');
 define('DELFOTO','Foto eliminada correctamente');
 //Nuevo desde 28/04 migue
 define('ESCRIALGO','Introduzca texto a buscar'); 
+//nuevo 01/05 dani
+define('UPDATETEXT','Texto actualizado correctamente'); 
+define('CREATETEXT','Texto añadido correctamente'); 

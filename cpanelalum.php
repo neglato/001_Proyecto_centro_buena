@@ -166,6 +166,7 @@ $activo=3;
         /*pestaña de redactar*/
     }else if (isset($_GET['rm']) && $_GET['rm']==2 && isset($_GET['rt']) && $_GET['rt']==1){ 
     $idp=$_GET['idp'];
+    $_SESSION['ajax']=$idp;
     ?>
                <nav id="nav1">
             <div class="icon-bar">
@@ -184,8 +185,6 @@ $activo=3;
             <script src="/ruta-a-wysihtml5/parser_rules/advanced.js"></script>
             <!-- Library -->
             <script src="/ruta-a-wysihtml5/dist/wysihtml5-0.3.0.min.js"></script>
-            <fieldset id="actual">
-                <legend><?=ACTCONT?></legend>
                 <?php 
                     /*recuperamos el nombre del proyecto*/
                      $ProyAct = consulta($conexion, "select * from proyectos where id_proyecto like $idp");                                     $rowProy=mysqli_fetch_array($ProyAct);
@@ -200,49 +199,27 @@ $activo=3;
                     $row=mysqli_fetch_array($CurAct);
                     $curso=$row['curso'];
                 ?>
-                <ul>
-                    <li>
-                        <p class="idioma" onclick="mostrarCont(spanish,esp)"><?=ESP?> <i class="fas fa-caret-down arriba icono" id="esp" class="abajo"></i></p>
-                        <div id="spanish" class="oculto">
-                            <?php if (file_exists('_cursos/'.$curso.'/'.$nombre_pro.'/'.$contenido.'')){
-                            include('_cursos/'.$curso.'/'.$nombre_pro.'/'.$contenido.'');
-                }else{?>
-                   <p style="color:limegreen;font-size:1.3em;text-align:center;"><?=NOCONT?></p>
-                    
-                <?php }?>
-                        </div>
-                    </li>
-                    <li>
-                    <p class="idioma" onclick="mostrarCont(english,eng)"><?=ENG?> <i class="fas fa-caret-down arriba icono" id="eng" class="abajo"></i></p>
-                        <div id="english" class="oculto" id="english">
-                            <?php if (file_exists('_cursos/'.$curso.'/'.$nombre_pro.'/'.$content.'')){
-                            include('_cursos/'.$curso.'/'.$nombre_pro.'/'.$content.'');
-                }else{?>
-                  <p style="color:limegreen;font-size:1.3em;text-align:center;"><?=NOCONT?></p>
-                    
-                <?php }?>
-                        </div>
-                    </li>
-                </ul>
-            </fieldset>
             <fieldset>
                 <legend><?=REDART?></legend>
-                <form action="">
-                   <select name="idioma" id="idioma">
+                <form method="post" enctype="multipart/form-data" action="subirtexto.php">
+                   <select name="idioma" id="idioma" onchange="textCont(this, editor1)">
                        <option value="-1"><?=SELLENG?></option>
                        <option value="1es.php"><?=ESP?></option>
                        <option value="1en.php"><?=ENG?></option>
                    </select>
                     <script src="ckeditor_4.9.2_bd5767ce8fc7/ckeditor/ckeditor.js"></script>
                     <div id="textoenr">
-                    <textarea name="editor1" id="editor1"></textarea>
+                        <textarea name="editor1" id="editor1"></textarea>
                     </div>
             <script>
-                // Replace the <textarea id="editor1"> with a CKEditor
-                // instance, using default configuration.
                 CKEDITOR.replace( 'editor1' );
             </script>
-               <button type="submit"><i class="fas fa-upload ico"></i></button>
+               <button type="submit"><i class="fas fa-upload edicion"></i></button>
+                                       <p id="error"><?php
+                            if(isset($_SESSION['msgtexto'])){
+                                echo $_SESSION['msgtexto'];
+                                unset($_SESSION['msgtexto']);
+                            } ?></p>
                 </form>
             </fieldset>
         </section>
@@ -252,7 +229,7 @@ $activo=3;
     }else if(isset($_GET['rm']) && $_GET['rm']==2 && isset($_GET['rt']) && $_GET['rt']==2){ 
     $idp=$_GET['idp'];
     ?>
-                   <nav id="nav1">
+            <nav id="nav1">
             <div class="icon-bar">
               <a href="cpanelalum.php?a=3&rm=1" id="enlace1"><span><?= YAPUB ?></span><i class="fas fa-file ico"></i><i class="far fa-check-circle ico"></i></a> 
               <a href="cpanelalum.php?a=3&rm=2" id="enlace2" class="active"><span><?= NOPUB ?></span><i class="fas fa-file ico"></i><i class="far fa-stop-circle ico"></i></a> 
@@ -346,7 +323,7 @@ $activo=3;
       input.setAttribute('type', 'file');
       input.setAttribute('multiple', true);
       input.setAttribute('name','files[]');
-      input.setAttribute('accept','image/*');
+      /*input.setAttribute('accept','image/*');*/
       input.style.display = 'none';
       input.addEventListener('change', function(e) {
         triggerCallback(e, callback);
@@ -386,7 +363,7 @@ $activo=3;
       output.innerHTML = '';
       for(var i=0; i<files.length; i++) {
         if(files[i].type.indexOf('image/') === 0) {
-          output.innerHTML += '<img width="130" src="' + URL.createObjectURL(files[i]) + '"/>';
+          output.innerHTML += '<img class="imgtemp" src="' + URL.createObjectURL(files[i]) + '"/>';
         }
         output.innerHTML += '<p class="textfoto">'+files[i].name+'</p>';
       }

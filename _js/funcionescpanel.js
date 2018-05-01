@@ -72,6 +72,7 @@ function mostrarCont(contenido, flecha){
 
 
 
+
 /* Script para comprobar si existe el email (AJAX)*/
 
 
@@ -227,9 +228,32 @@ $().ready(function()
         
 	});
 
+/*funcion ajax para colocar el texto en el editor mediante el select*/
+function textCont(select, contenedor){
+    var xmlhttp;
+    var idioma=select.value;
+    
+    if(window.XMLHttpRequest){
+        xmlhttp= new XMLHttpRequest();
+    }else{
+        xmlhttp= new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    
+    xmlhttp.onreadystatechange=function(){
+        
+    if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+            
+        CKEDITOR.instances['editor1'].setData(xmlhttp.responseText);
+        document.getElementById('contenedor').focus();
 
-
-
+    }
+    
+    }
+    
+    xmlhttp.open("POST","_include/rellenareditor.php", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send("i="+idioma);
+}
 
 
 

@@ -168,17 +168,21 @@ a#proyprof{
     color: darkred;
     
 }
-
+.imgtemp{
+    float: right;
+    margin-top: 20px;
+    width: 40%;
+    clear: both;
+}
 .textfoto{
-    word-break: break-all!important;
-    width: 55%!important;
-    margin-left: 3%!important;
+word-break: break-all!important;
+width: 55%!important;
+margin-left: 3%!important;
  color: limegreen;
  font-size: 1.3em;
  margin-top: 20px;
 display: inline-block;
 float: left;
-clear: both;
 }
 .arriba{
     transform: rotate(-180deg);
@@ -207,6 +211,7 @@ clear: both;
 }
 #fotosact table tr td{
     background-color: antiquewhite;
+    width: 50%;
 }
 
 #fotodel p{
