@@ -189,3 +189,4 @@ define('ESCRIALGO','Introduzca texto a buscar');
 //nuevo 01/05 dani
 define('UPDATETEXT','Texto actualizado correctamente'); 
 define('CREATETEXT','Texto añadido correctamente'); 
+define('PHOTODEL','Se eliminarán'); 

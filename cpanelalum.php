@@ -323,7 +323,7 @@ $activo=3;
       input.setAttribute('type', 'file');
       input.setAttribute('multiple', true);
       input.setAttribute('name','files[]');
-      /*input.setAttribute('accept','image/*');*/
+      input.setAttribute('accept','image/*');
       input.style.display = 'none';
       input.addEventListener('change', function(e) {
         triggerCallback(e, callback);
@@ -383,6 +383,9 @@ $activo=3;
                     ?>
             <fieldset id="fotodel">
                 <legend><?=DELFOTOS?></legend>
+                    <div id="textImg">
+                    <p class="textImg"><?=FOTACT?>:</p><p class="textImg"><?=PHOTODEL?>:</p>
+                    </div>
                 <form method="post" enctype="multipart/form-data" action="eliminarfotos.php">
                 <?php  
                     $imgAct= consulta($conexion,"SELECT * from imgproy where id_proyecto like $idp");
@@ -392,13 +395,13 @@ $activo=3;
                 <?php }else{
                     ?>
                 <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-  <link href="_css/jquery.lwMultiSelect.css" rel="stylesheet" type="text/css" />
-  <script type="text/javascript" src="_js/jquery.lwMultiSelect.js"></script>
-  <style>
-  .container { margin:10px auto; 
-      width: 100%;}
-  </style>
+                  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+                  <link href="_css/jquery.lwMultiSelect.css" rel="stylesheet" type="text/css" />
+                  <script type="text/javascript" src="_js/jquery.lwMultiSelect.js"></script>
+                  <style>
+                  .container { margin:10px auto; 
+                      width: 100%;}
+                  </style>
         
                    <p><select id="defaults" multiple="multiple" name="fotos[]">
                     <option value="na" selected></option>

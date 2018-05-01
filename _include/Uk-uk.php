@@ -189,5 +189,6 @@ define('DELFOTO','Photo deleted correctly');
 define('ESCRIALGO','Enter text to search');
 //nuevo 01/05 dani
 define('UPDATETEXT','Text updated correctly'); 
-define('CREATETEXT','Text added correctly'); 
+define('CREATETEXT','Text added correctly');
+define('PHOTODEL','To be deleted');
 

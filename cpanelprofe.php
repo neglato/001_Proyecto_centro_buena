@@ -544,8 +544,8 @@ $activo=3;
                         $RESULTADO = consulta($conexion, "select * from proyectos where id_proyecto like $idproy and mostrar like 0");
                         $plan = mysqli_fetch_array($RESULTADO);
                        ?>
-                        <p>Proyecto (ES)</p><input type="text"  name="newnombre" value="<?= $plan['nombre_pro']?>" required>
-                        <p>Project (UK)</p><input type="text"  name="newnombreuk" value="<?= $plan['name_pro']?>" required>
+                        <p><?=NOMES?></p><input type="text"  name="newnombre" value="<?= $plan['nombre_pro']?>" required>
+                        <p><?=NAMES?></p><input type="text"  name="newnombreuk" value="<?= $plan['name_pro']?>" required>
                         <button type="submit"><i class="fas fa-save edicion"></i></button>
                         <p id="error">
                            <?php
