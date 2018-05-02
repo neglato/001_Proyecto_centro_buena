@@ -383,10 +383,6 @@ $activo=3;
                     ?>
             <fieldset id="fotodel">
                 <legend><?=DELFOTOS?></legend>
-                    <div id="textImg">
-                    <p class="textImg"><?=FOTACT?>:</p><p class="textImg"><?=PHOTODEL?>:</p>
-                    </div>
-                <form method="post" enctype="multipart/form-data" action="eliminarfotos.php">
                 <?php  
                     $imgAct= consulta($conexion,"SELECT * from imgproy where id_proyecto like $idp");
                 $totalImg= mysqli_num_rows($imgAct);
@@ -394,6 +390,10 @@ $activo=3;
                     <p style="color:limegreen;font-size:1.3em;text-align:center;"><?=NOFOTS?></p>
                 <?php }else{
                     ?>
+                    <div id="textImg">
+                    <p class="textImg"><?=FOTACT?>:</p><p class="textImg"><?=PHOTODEL?>:</p>
+                    </div>
+                <form method="post" enctype="multipart/form-data" action="eliminarfotos.php">
                 <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
                   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
                   <link href="_css/jquery.lwMultiSelect.css" rel="stylesheet" type="text/css" />

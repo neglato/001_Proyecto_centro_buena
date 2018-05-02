@@ -36,8 +36,11 @@ session_start();
                     header('Location: cpanelprofe.php?rm=1&rt=1a=3');
                         }
                 exit(); 
-            }else if($totalFilas == 0){ 
-                $emailhash=md5($email);
+            }else if($totalFilas == 0){
+                $chorizo1="jjadt6tdysag6dtgasydtasygd67asgd6asgd6iashds8a78dow6oga86ogd86sfadgsa86gd68sagd85aosfd86fsad68fasd";
+                $chorizo2="saihdsasdaidgsgldglasldjasbdbasjdhulwaywuy7aydwy7_%$·$34667/djasdjhsadasgdasbjdna_,.,djsauhdysagda";
+                $contraseña=$chorizo1.$email.$chorizo2;
+                $emailhash=md5($contraseña);
                 $baja = consulta($conexion,"SELECT * from usuarios where email ='{$email}' and baja like 1");
                 $deBaja= mysqli_num_rows($baja);
                     if($deBaja > 0){
@@ -55,8 +58,11 @@ session_start();
                 $apellidos=$_POST['apellidos'];
                 $sexo=$_POST['sexo'];
                 $email=$_POST['email'];
-                $tipo=$_POST['tipo']; 
-                $emailhash=md5($email);
+                $tipo=$_POST['tipo'];
+                $chorizo1="jjadt6tdysag6dtgasydtasygd67asgd6asgd6iashds8a78dow6oga86ogd86sfadgsa86gd68sagd85aosfd86fsad68fasd";
+                $chorizo2="saihdsasdaidgsgldglasldjasbdbasjdhulwaywuy7aydwy7_%$·$34667/djasdjhsadasgdasbjdna_,.,djsauhdysagda";
+                $contraseña=$chorizo1.$email.$chorizo2;
+                $emailhash=md5($contraseña);
                     if($info['tipo']==0){
                         $resultado = consulta($conexion,"INSERT INTO usuarios (nombre, apellidos, sexo, email, password, tipo)  VALUES ( 
                                     '{$nombre}', 
