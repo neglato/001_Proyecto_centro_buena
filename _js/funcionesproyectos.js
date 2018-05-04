@@ -25,3 +25,8 @@ function showSlides(n) {
   dots[slideIndex-1].className += " active";
   captionText.innerHTML = dots[slideIndex-1].alt;
 }
+//contar
+function contador (campo, cuentacampo, limite) { 
+if (campo.value.length > limite) campo.value = campo.value.substring(0, limite); 
+else cuentacampo.value = limite - campo.value.length; 
+} 
