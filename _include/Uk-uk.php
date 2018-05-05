@@ -191,4 +191,13 @@ define('ESCRIALGO','Enter text to search');
 define('UPDATETEXT','Text updated correctly'); 
 define('CREATETEXT','Text added correctly');
 define('PHOTODEL','To be deleted');
+//nuevo 05/05 dani
+define('NONOMB','You must enter a name');
+define('NOCOMM','You must enter a comment');
+define('CACRES','characters remaining');
+define('EJTEXT','Write your comment here (maximum 255 characters)');
+define('MAKECOM','Post your comment');
+define('COMMENTS','Comments');
+define('SAY','say');
+define('INTNAME','Enter name');
 

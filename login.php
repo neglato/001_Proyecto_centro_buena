@@ -43,6 +43,7 @@
                 $_SESSION['user']= $fila['id_user'];
                 $_SESSION['sexo']= $fila['sexo'];
                 $_SESSION['nombre']= $fila['nombre'];
+                $_SESSION['apellidos']= $fila['apellidos'];
                 $_SESSION['email']= $fila['email'];
                 $_SESSION['tipo']=$fila['tipo'];
                 $_SESSION['password']=$fila['password'];

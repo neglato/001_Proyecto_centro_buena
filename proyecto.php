@@ -238,7 +238,7 @@ $activo=1;
       </article>
       <article id="yacom">
          <fieldset id="comentarios">
-         <legend>Comentarios</legend>
+         <legend><?=COMMENTS?></legend>
           <?php
         $comentarios=consulta($conexion,"Select * from comentarios where id_proyecto like $idp");
         $totalComentarios= mysqli_num_rows($comentarios);
@@ -248,7 +248,7 @@ $activo=1;
             $texto=$coment['comentario'];
             ?>
              <fieldset>
-              <h2><?=$user?> dijo:</h2>
+              <h2><?=$user?> <?=SAY?>:</h2>
               <p><?=$texto?></p>
              </fieldset>
           <?php }
@@ -256,16 +256,16 @@ $activo=1;
             ?>
           </fieldset>
            <fieldset id="comentar">
-           <legend>Escribe tu comentario</legend>
+           <legend><?=MAKECOM?></legend>
             <article>
             <form method="post" enctype="multipart/form-data" action="comentarios.php">
              <?php 
                     if(!isset($_SESSION['user'])){ ?>
-                    <p>Introduza nombre: <input type="text" placeholder="Nombre" name="user" id="nomuser"></p>
+                <h2><p><?=NAMEFOT?>: </p><input type="text" placeholder="<?=INTNAME?>" name="user" id="nomuser"></h2>
                     <?php }else{ ?>
-                        <h2><?=$_SESSION['nombre']?> dijo:</h2>
+                        <h2><?=$_SESSION['nombre']?> <?=$_SESSION['apellidos']?> <?=SAY?>:</h2>
                     <?php } ?>
-                <textarea name="mensaje" wrap=physical  onKeyDown="contador(this.form.mensaje,this.form.remLen,255);" onKeyUp="contador(this.form.mensaje,this.form.remLen,255);" id="comtext" placeholder="Aqui su comentario"></textarea> 
+                <textarea name="mensaje" wrap=physical  onKeyDown="contador(this.form.mensaje,this.form.remLen,255);" onKeyUp="contador(this.form.mensaje,this.form.remLen,255);" id="comtext" placeholder="<?=EJTEXT?>"></textarea> 
                        <p><input type="text" name="remLen" size="3" maxlength="255" value="255" readonly id="carac" >carácteres restantes</p>
                         <p id="error"><?php
                             if(isset($_SESSION['msgcomment'])){

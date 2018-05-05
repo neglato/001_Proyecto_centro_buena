@@ -189,4 +189,14 @@ define('ESCRIALGO','Introduzca texto a buscar');
 //nuevo 01/05 dani
 define('UPDATETEXT','Texto actualizado correctamente'); 
 define('CREATETEXT','Texto añadido correctamente'); 
-define('PHOTODEL','Se eliminarán'); 
+define('PHOTODEL','Se eliminarán');
+//nuevo 05/05 dani
+define('NONOMB','Debes introducir un nombre');
+define('NOCOMM','Debes introducir un comentario');
+define('CACRES','carácteres restantes');
+define('EJTEXT','Escriba aquí su comentario (máximo 255 carácteres)');
+define('MAKECOM','Publique su comentario');
+define('COMMENTS','Comentarios');
+define('SAY','dijo');
+define('INTNAME','Introduzca nombre');
+

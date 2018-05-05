@@ -27,9 +27,9 @@ section #yacom fieldset{
     border: none;
 }
 section #yacom fieldset h2{
-    font-size: 1.2em;
+    font-size: 1.1em;
     color: limegreen;
-    padding-left: 10px;
+    padding-left: 20px;
 }
 #comtext{
     width: 95%;
@@ -39,6 +39,8 @@ section #yacom fieldset h2{
 }
 #nomuser{
     font-size: 1.1em;
+    width: 65%;
+    margin-left: 2%;
 }
 .edicion{
     font-size: 1.5em;
@@ -51,16 +53,24 @@ section #yacom #comentar article form button{
     margin: 10px 5% 10px 75%;
     cursor: pointer;
 }
+#error{
+    width: 98%!important;
+    color: darkred!important;
+    text-align: center!important;
+    font-size: 1.4em;
+    margin: 5px auto 0!important;
+    display: block;
+}
 #carac{
     background-color: #1a5ad4;
     border: none;
     color: limegreen;
-    font-size: 1.1em;
+    font-size: 1em;
     text-align: center;
 }
 section #yacom fieldset p{
     color: limegreen;
-    font-size: 1.1em;
+    font-size: 1em;
 }
 section #participado, section #yacom{
     background-color:#1a5ad4;
@@ -77,6 +87,14 @@ section #participado #propar, section #yacom #comentarios, section #yacom #comen
     width: 98%;
     font-size: 1.2em;
     padding-bottom: 10px;
+}
+section #yacom #comentar h2 p{
+    width: 25%;
+    display: block;
+    float: left;
+    text-align: right;
+    margin-right: 3px;
+    text-align: left;
 }
 section #participado #propar legend, section  article #comentarios legend,section  article #comentar legend{
     text-align: center;

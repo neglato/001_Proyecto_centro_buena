@@ -13,21 +13,21 @@
         }
 $idp=$_SESSION['idp'];
 if($_POST['mensaje']==""){
-    $_SESSION['msgcomment']="debes introducir un comentario";
+    $_SESSION['msgcomment']=NOCOMM;
     header("Location: proyecto.php?idp=$idp&a=1");
     exit();
 }
 $comentario=$_POST['mensaje'];
 if(!isset($_SESSION['user'])){
     if($_POST['user']==""){
-    $_SESSION['msgcomment']="debes introducir un nombre";
+    $_SESSION['msgcomment']=NONOMB;
     header("Location: proyecto.php?idp=$idp&a=1");
     exit();
     }else{
         $user=$_POST['user'];
     }
 }else{
-    $user=$_SESSION['nombre'];
+    $user=$_SESSION['nombre']." ".$_SESSION['apellidos'];
 }
 //una ve comprobado que tenemos los datos necesarios hacemos el insert en la tabla
 $insert=consulta($conexion,"INSERT INTO comentarios (id_proyecto, usuario, comentario) 
