@@ -715,7 +715,11 @@ Comienza eliminar curso*/
                         }else{
                         $proye=$proy['nombre_pro'];
                         }
-                       echo "<option value=" . $proy['id_proyecto'] . ">" . $proye ." </option>";
+                        $proyec=$proy['id_proyecto'];
+                         $curso =consulta($conexion, "SELECT * FROM cursos where id_curso in (Select id_curso from proyectos where id_proyecto like $proyec)");
+                        $cur = mysqli_fetch_array($curso);
+                        $nomCur=$cur['curso'];
+                       echo "<option value=" . $proy['id_proyecto'] . ">" . $proye ." /".$nomCur."</option>";
                         
                     }
                          
@@ -785,7 +789,11 @@ Comienza eliminar curso*/
                         }else{
                         $proye=$proy['nombre_pro'];
                         }
-                       echo "<option value=" . $proy['id_proyecto'] . ">" . $proye ." </option>";
+                        $proyec=$proy['id_proyecto'];
+                        $curso =consulta($conexion, "SELECT * FROM cursos where id_curso in (Select id_curso from proyectos where id_proyecto like $proyec)");
+                        $cur = mysqli_fetch_array($curso);
+                        $nomCur=$cur['curso'];
+                       echo "<option value=" . $proy['id_proyecto'] . ">" . $proye ." /".$nomCur."</option>";
                         
 
                         

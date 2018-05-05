@@ -87,17 +87,21 @@ $activo=3;
                     $proyect=$row['name_pro'];
                     $idp=$row['id_proyecto'];
                     $_SESSION['idp']=$idp;
+                        $proyec=$idp;
+                        $curso =consulta($conexion, "SELECT * FROM cursos where id_curso in (Select id_curso from proyectos where id_proyecto like $proyec)");
+                        $cur = mysqli_fetch_array($curso);
+                        $nomCur=$cur['curso'];
             ?>
             <li>
             <a href="proyecto.php?a=1&idp=<?=$idp?>" id="proyprof"><?php
                             if(isset($_SESSION['lang'])){
                                 if($_SESSION['lang']==1){
-                                    echo $proyect; 
+                                    echo $proyect." /".$nomCur; 
                                 }else{
-                                   echo $proyecto;
+                                   echo $proyecto." /".$nomCur;
                                 }
                             }else{
-                                echo $proyecto;
+                                echo $proyecto." /".$nomCur;
                             }  
                         ?></a>
             </li>
@@ -141,17 +145,21 @@ $activo=3;
                     $proyect=$row['name_pro'];
                     $idp=$row['id_proyecto'];
                     $_SESSION['idp']=$idp;
+                    $proyec=$idp;
+                        $curso =consulta($conexion, "SELECT * FROM cursos where id_curso in (Select id_curso from proyectos where id_proyecto like $proyec)");
+                        $cur = mysqli_fetch_array($curso);
+                        $nomCur=$cur['curso'];
             ?>
             <li>
             <a href="cpanelalum.php?a=1&rm=2&rt=1&idp=<?=$idp?>" id="proyprof"><?php
                             if(isset($_SESSION['lang'])){
                                 if($_SESSION['lang']==1){
-                                    echo $proyect; 
+                                    echo $proyect." /".$nomCur; 
                                 }else{
-                                   echo $proyecto;
+                                   echo $proyecto." /".$nomCur;
                                 }
                             }else{
-                                echo $proyecto;
+                                echo $proyecto." /".$nomCur;
                             }  
                         ?></a>
             </li>
