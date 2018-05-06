@@ -199,4 +199,6 @@ define('MAKECOM','Publique su comentario');
 define('COMMENTS','Comentarios');
 define('SAY','dijo');
 define('INTNAME','Introduzca nombre');
+//nuevo 06/05
+define('AUNNOCOM','Aún no hay comentarios. ¡Sé el primero en comentar!');
 

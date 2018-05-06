@@ -252,6 +252,9 @@ $activo=1;
               <p><?=$texto?></p>
              </fieldset>
           <?php }
+        }else{?>
+        <p style="text-align:center;"><?=AUNNOCOM?></p>
+        <?php
         }
             ?>
           </fieldset>
