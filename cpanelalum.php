@@ -281,7 +281,7 @@ $activo=3;
                         <td>
                             <img src="_cursos/<?=$curso?>/<?=$nombre_pro?>/<?=$imagen?>" alt="" width="150">
                         </td>
-                        <td><?=$imagen?></td>
+                           <td><p><?=$imagen?></p></td>
                     </tr>
                     <?php }
                     ?>

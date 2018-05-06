@@ -15,10 +15,11 @@ session_start();
     }
     if(!isset($_POST['id_curso']) || !isset($_POST['id_coor']) || !isset($_POST['nombre']) || !isset($_POST['name'])){
             $_SESSION['msgaddproy']=ALLFIELDS;
+        echo $_POST['id_curso']."/".$_POST['id_coor']."/".$_POST['nombre']."/".$_POST['name'];
             header('Location: cpaneladmin.php?rm=3&rt=1a=3');
             exit();
     }
-    if($_POST['id_curso']=="" || $_POST['id_coor']==""|| $_POST['']=="" || $_POST['nombre'] =="" || $_POST['name']==""){
+    if($_POST['id_curso']=="" || $_POST['id_coor']=="" || $_POST['nombre'] =="" || $_POST['name']==""){
         $_SESSION['msgaddproy']=FOOBL;
         header('Location: cpaneladmin.php?rm=3&rt=1a=3');
         exit();
@@ -49,7 +50,7 @@ session_start();
             $nomCurso=consulta($conexion,"SELECT * from cursos where id_curso='{$curso}'");
             $nomCurso=mysqli_fetch_array($nomCurso);
             $nomCurso=$nomCurso['curso'];
-            $insert2 = consulta($conexion,"INSERT INTO usuproy (id_proyecto, id_user)  VALUES ('{$id_pro}','{$curso}')");
+            $insert2 = consulta($conexion,"INSERT INTO usuproy (id_proyecto, id_user)  VALUES ('{$id_pro}','{$coor}')");
             $home="_cursos/$nomCurso/$nombre";
             mkdir($home, 0777, true);
                 $_SESSION['msgaddproy']=ADDPROY;

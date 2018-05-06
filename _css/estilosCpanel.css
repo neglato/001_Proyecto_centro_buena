@@ -226,6 +226,9 @@ float: left;
     background-color: antiquewhite;
     width: 50%;
 }
+#fotosact table td p{
+    word-break: break-all!important;
+}
 
 #fotodel>form>p{
     width: 100%!important;

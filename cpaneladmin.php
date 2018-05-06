@@ -582,7 +582,7 @@ Comienza eliminar curso*/
                             }
                         ?>
                     </select>
-            <button type="submit" id="boton"><div id="edit">añadir curso</div><i class="fas fa-save edicion"></i></button>
+            <button type="submit" id="boton"><div id="edit"></div><i class="fas fa-save edicion"></i></button>
             <p id="error"><?php
                             if(isset($_SESSION['msgaddproy'])){
                                 echo $_SESSION['msgaddproy'];
@@ -704,7 +704,6 @@ Comienza eliminar curso*/
                     <option value="-1"><?=PROY?></option>
                 <?php
                     $PROYECT = consulta($conexion,"SELECT * FROM proyectos");
-                    $proy = mysqli_fetch_array($PROYECT);
                     while ($proy = mysqli_fetch_array($PROYECT)) {
                     if(isset($_SESSION['lang'])){
                         if($_SESSION['lang']==1){
