@@ -183,10 +183,10 @@
 
         //if option is preselected then append to selected and add lwms-selected to the available side        
         if ($tmpThis.is(':selected')) {
-          tmpSelectHtml += '<li class="lwms-selectli" data-value="' + tmpVal + '">' + tmpText + '</li>';
+          tmpSelectHtml += '<li class="lwms-selectli" data-value="' + tmpVal + '"><p class"textfoto2>' + tmpText + '</p></li>';
           selectClass = ' lwms-selected';
         }
-        tmpAvailHtml += '<li class="lwms-selectli' + selectClass + '" data-value="' + tmpVal + '">' + tmpText + '</li>';
+        tmpAvailHtml += '<li class="lwms-selectli' + selectClass + '" data-value="' + tmpVal + '"><p class"textfoto2>' + tmpText + '</p></li>';
       });
 
       this.$selectedList.html(tmpSelectHtml);

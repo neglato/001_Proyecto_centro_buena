@@ -33,7 +33,9 @@ lwms-main .lwms-right{ margin-right: 5%;}
   font-size: 1em;
   line-height:16px;
   border-bottom:1px solid #D4D4D4;
-   
+}
+li.lwms-selectli p{
+    word-break: break-all!important;
 }
 .lwms-right{
      margin-left: 5%;

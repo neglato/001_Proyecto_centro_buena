@@ -234,6 +234,9 @@ float: left;
     width: 100%!important;
     margin: 0px!important;
 }
+#delfotos option p{
+    word-break: break-all!important;
+}
 /* Fin estilos menu CPANEL */
 /* Inicio estilos Graficos CPANEL */
 

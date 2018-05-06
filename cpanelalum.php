@@ -411,13 +411,13 @@ $activo=3;
                       width: 100%;}
                   </style>
         
-                   <p><select id="defaults" multiple="multiple" name="fotos[]">
+                   <p><select id="defaults" multiple="multiple" name="fotos[]" id="delfotos">
                     <option value="na" selected></option>
                    <?php
                    while($img= mysqli_fetch_array($imgAct)){
                        $idImg=$img['id_img'];
                     $imagen=$img['imagen']; ?>
-                   <option value="<?=$idImg?>"><?=$imagen?></option>
+                       <option value="<?=$idImg?>"><p><?=$imagen?></p></option>
                    <?php }
                     ?>
                    </select>
