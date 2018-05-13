@@ -50,9 +50,9 @@ if(isset($_POST['tipo']) && $_POST['tipo'] == -1){
         mysqli_close($conexion);
         exit();
         }else{
-        /*$UPDATE = consulta($conexion,"UPDATE proyectos SET 
+        $UPDATE = consulta($conexion,"UPDATE proyectos SET 
                                         mostrar = 1 
-                                        WHERE id_proyecto ='" . $idproy . "'");*/
+                                        WHERE id_proyecto ='" . $idproy . "'");
 //mandar el correo:
 //Load composer's autoloader
 require_once('_include/PHPMailerAutoload.php'); 
@@ -77,7 +77,7 @@ $mail->Password = 'adminIdh1572'; //Su password
 //Agregar destinatario
 $mail->setFrom('idhappmaster@gmail.com', 'Admin');
 //Creamos las varianles que vamosa necesitar, que sera la direccion de correo de todos los participantes en el proyecto menos el coordinador
-$participa=consulta($conexion, "select email from usuarios where id_user in (select id_user from usuproy where id_proyecto like $idproy) and tipo like 2");
+$participa=consulta($conexion, "select email from usuarios where id_user in (select id_user from usuproy where id_proyecto like $idproy) and tipo = 2");
 //guardamos todos los emails en $mail->AddAddress
 while($par=mysqli_fetch_array($participa)){
     $dest=$par['email'];
@@ -93,9 +93,8 @@ $mail->isHTML(true); // Set email format to HTML
 //sacamos de la base de datos el resto de datos necesarios
 
 
-$mail->Subject = "Hola noe";
-$mail->Body    = 'noesitaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa que pasa????????? jajajajjaja ';
-$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+$mail->Subject = "Proyecto publicado";
+$mail->Body    = "El proyecto $nombpro, en que participa en la App de Planes y Proyectos del IES Delgado Henández ha sido publicado";
 
 if(!$mail->send()) {
   echo 'Error al enviar email';
@@ -108,6 +107,7 @@ if(!$mail->send()) {
             //fin mandar correo
         $_SESSION['msgprofe']=PROYSIPUB;
         unset($_SESSION['tipo']);
+            header('Location: cpanelprofe.php?rm=2&rt=3&a=3');
         mysqli_close($conexion);
         exit();  
         }
