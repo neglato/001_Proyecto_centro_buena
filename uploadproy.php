@@ -46,7 +46,7 @@ if(isset($_POST['tipo']) && $_POST['tipo'] == -1){
                                         WHERE id_proyecto ='" . $idproy . "'"); 
         header('Location: cpanelprofe.php?rm=2&rt=3&a=3');
         $_SESSION['msgprofe']=PROYSIPUB;
-        unset($_SESSION['tipo']);
+        /*unset($_SESSION['tipo']);*/
         mysqli_close($conexion);
         exit();
         }else{
@@ -82,7 +82,6 @@ $participa=consulta($conexion, "select email from usuarios where id_user in (sel
 while($par=mysqli_fetch_array($participa)){
     $dest=$par['email'];
     $mail->AddAddress("$dest");
-}
 /*$mail->AddAddress('');//A quien mandar email*/
 $mail->SMTPKeepAlive = true;  
 $mail->Mailer = "smtp"; 
@@ -102,11 +101,12 @@ if(!$mail->send()) {
 } else {
   echo 'Mail enviado correctamente';
 }
+}
         
 
             //fin mandar correo
         $_SESSION['msgprofe']=PROYSIPUB;
-        unset($_SESSION['tipo']);
+        /*unset($_SESSION['tipo']);*/
             header('Location: cpanelprofe.php?rm=2&rt=3&a=3');
         mysqli_close($conexion);
         exit();  
@@ -115,7 +115,7 @@ if(!$mail->send()) {
     }else{
         header('Location: cpanelprofe.php?rm=2&rt=3&a=3');
         $_SESSION['msgprofe']=NOFILE;
-        unset($_SESSION['tipo']);
+        /*unset($_SESSION['tipo']);*/
         mysqli_close($conexion);
         exit();
     }

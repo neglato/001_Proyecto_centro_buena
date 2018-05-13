@@ -382,7 +382,6 @@ $activo=3;
     });
   })(this);
 </script>
-              <input type="hidden" id="imgocu" name="imgocu">
                <button type="submit"><i class="fas fa-upload edicion"></i></button>
                         <p id="error"><?php
                             if(isset($_SESSION['msgsubfot'])){
