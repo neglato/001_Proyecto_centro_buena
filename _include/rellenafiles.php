@@ -1,3 +1,2 @@
-<?php if(isset($_POST['fotos'])){
-    $_SESSION['subirfotos']=$_POST['fotos'];
-}
+<?php 
+    $_SESSION['subirfotos']=1;

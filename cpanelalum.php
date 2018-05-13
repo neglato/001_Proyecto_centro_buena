@@ -319,7 +319,6 @@ $activo=3;
         return;
       }
       var files;
-    var myfiles;
       if(e.dataTransfer) {
         files = e.dataTransfer.files;
       } else if(e.target) {
@@ -332,6 +331,7 @@ $activo=3;
       input.setAttribute('type', 'file');
       input.setAttribute('multiple', true);
       input.setAttribute('name','files[]');
+      input.setAttribute('id','files');
       input.setAttribute('accept','image/*');
       input.style.display = 'none';
       input.addEventListener('change', function(e) {
@@ -369,8 +369,7 @@ $activo=3;
   (function(window) {
     makeDroppable(window.document.querySelector('.demo-droppable'), function(files) {
       console.log(files);
-      myfiles =Object.create(files);
-        $.ajax("_include/rellenafiles.php", { myfiles } );
+        document.getElementById('files').files=files;
       var output = document.querySelector('.output');
       output.innerHTML = '';
       for(var i=0; i<files.length; i++) {
@@ -378,12 +377,12 @@ $activo=3;
           output.innerHTML += '<img class="imgtemp" src="' + URL.createObjectURL(files[i]) + '"/>';
         }
         output.innerHTML += '<p class="textfoto">'+files[i].name+'</p>';
-          alert(myfiles);
       }
         
     });
   })(this);
 </script>
+              <input type="hidden" id="imgocu" name="imgocu">
                <button type="submit"><i class="fas fa-upload edicion"></i></button>
                         <p id="error"><?php
                             if(isset($_SESSION['msgsubfot'])){

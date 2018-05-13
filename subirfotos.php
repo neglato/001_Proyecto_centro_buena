@@ -1,4 +1,4 @@
-<?php
+<?php 
     include('_include/funciones.php');
     include('_include/conexion.php');
     session_start();
@@ -17,9 +17,6 @@ if(!isset($_SESSION['user'])){
         include('_include/ES-es.php');
         }
 $idp=$_SESSION['idp'];
-if(isset($_SESSION['subirfotos'])){
-    echo "hay fotos :D";
-}
 if(!isset($_FILES['files'])){
     header("Location: index.php");
     exit();
@@ -30,7 +27,6 @@ if(!isset($_FILES['files'])){
         $_SESSION['msgsubfot']=SELFOTO;
         header("Location: cpanelalum.php?a=3&rm=2&rt=2&idp=$idp");
         exit();
-            
         }else{
         /*si no lo es, recorremos el array y hacemos un delete en la base de datos y borramos la foto del servidor*/
         /*sacamos el curso del proyecto y su nombre, para poder eliminar la foto de su directrio*/
@@ -41,6 +37,7 @@ if(!isset($_FILES['files'])){
             $cursoN= consulta ($conexion, "select * from cursos where id_curso like $curso");
             $fila= mysqli_fetch_array($cursoN);
             $nomCurso= $fila['curso'];
+            print_r ($_FILES["files"]);
             /*si ya existe no hacemos nada*/
         $max = sizeof($_FILES["files"]["name"]);
         $i;
@@ -70,24 +67,4 @@ if(!isset($_FILES['files'])){
 
     }
 
-/*if (isset($_POST["myfiles"]))
-{
-   $reporte = null;
-   var_export($_POST['myfiles']);
-     for($x=0; $x<count($_POST["myfiles"]); $x++)
-    {
-    $file = $_POST["myfiles"];
-    $nombre = $file["name"][$x];
-    $tipo = $file["type"][$x];
-    $ruta_provisional = $file["tmp_name"][$x];
-    $size = $file["size"][$x];
-    /*$dimensiones = getimagesize($ruta_provisional);
-    $width = $dimensiones[0];
-    $height = $dimensiones[1];*/
-    /*$carpeta = "imagenes/";
-    
-print_r($nombre);
 
-
-     }
-}*/
