@@ -319,6 +319,7 @@ $activo=3;
         return;
       }
       var files;
+    var myfiles;
       if(e.dataTransfer) {
         files = e.dataTransfer.files;
       } else if(e.target) {
@@ -351,6 +352,7 @@ $activo=3;
       });
 
       ele.addEventListener('drop', function(e) {
+        input.value = null;
         e.preventDefault();
         e.stopPropagation();
         ele.classList.remove('dragover');
@@ -367,6 +369,8 @@ $activo=3;
   (function(window) {
     makeDroppable(window.document.querySelector('.demo-droppable'), function(files) {
       console.log(files);
+      myfiles =Object.create(files);
+        $.ajax("_include/rellenafiles.php", { myfiles } );
       var output = document.querySelector('.output');
       output.innerHTML = '';
       for(var i=0; i<files.length; i++) {
@@ -374,7 +378,9 @@ $activo=3;
           output.innerHTML += '<img class="imgtemp" src="' + URL.createObjectURL(files[i]) + '"/>';
         }
         output.innerHTML += '<p class="textfoto">'+files[i].name+'</p>';
+          alert(myfiles);
       }
+        
     });
   })(this);
 </script>
@@ -412,7 +418,6 @@ $activo=3;
                   </style>
         
                    <p><select id="defaults" multiple="multiple" name="fotos[]" id="delfotos">
-                    <option value="na" selected></option>
                    <?php
                    while($img= mysqli_fetch_array($imgAct)){
                        $idImg=$img['id_img'];
@@ -421,6 +426,9 @@ $activo=3;
                    <?php }
                     ?>
                    </select>
+                   <?php 
+                       $_SESSION['fotosdel']=1;
+                       ?>
   </p>
 <script>
 jQuery('#defaults').lwMultiSelect();
@@ -439,8 +447,6 @@ jQuery('#defaults').lwMultiSelect();
   })();
 
 </script>
-           <?php }
-        ?>
            <button type="submit" id=btnborrar><i class="fas fa-times cancel edicion2"></i></button>
                               <p id="error"><?php
                             if(isset($_SESSION['msgalfot'])){
@@ -448,6 +454,7 @@ jQuery('#defaults').lwMultiSelect();
                                 unset($_SESSION['msgalfot']);
                             } ?></p>
                 </form>
+                <?php } ?>
             </fieldset>
         </section>
     <?php

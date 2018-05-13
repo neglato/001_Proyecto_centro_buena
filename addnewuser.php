@@ -46,6 +46,48 @@ session_start();
                     if($deBaja > 0){
                         $update=consulta($conexion,"UPDATE usuarios SET password='{$emailhash}', baja='0' where email like '{$email}'");
                         $_SESSION['msgadd']=USRALT;
+                        //Enviamos un correo para avisar de la activacion de la cuenta
+                        //Load composer's autoloader
+                        require_once('_include/PHPMailerAutoload.php'); 
+                            
+                        $mail = new PHPMailer(true); 
+                        $mail->SMTPOptions = array(
+                                                'ssl' => array(
+                                                'verify_peer' => false,
+                                                'verify_peer_name' => false,
+                                                'allow_self_signed' => true
+                                                )
+                                            );
+                        $mail->SMTPDebug = 2; 
+                        $mail->IsSMTP();
+                        $mail->SMTPAuth = true;
+                        $mail->SMTPSecure = 'tls';
+                        $mail->Host = 'smtp.gmail.com';
+                        $mail->Port = 587;// TCP port to connect to
+                        $mail->CharSet = 'UTF-8';
+                        $mail->Username ='idhappmaster@gmail.com'; //Email para enviar
+                        $mail->Password = 'adminIdh1572'; //Su password
+                        //Agregar destinatario
+                        $mail->setFrom('idhappmaster@gmail.com', 'Admin');
+                        $mail->AddAddress("$email");//A quien mandar email
+                        $mail->SMTPKeepAlive = true;  
+                        $mail->Mailer = "smtp"; 
+
+
+                        //Content
+                        $mail->isHTML(true); // Set email format to HTML
+
+
+                        $mail->Subject = 'Cuenta dada de alta';
+                        $mail->Body    = 'Le informamos de que su cuenta ha sido dada de alta nuevamente.';
+
+                        if(!$mail->send()) {
+                                echo 'Error al enviar email';
+                                echo 'Mailer error: ' . $mail->ErrorInfo;
+                            } else {
+                                echo 'Mail enviado correctamente';
+                            }
+                        //Fin correo
                         if($info['tipo']==0){
                             header('Location: cpaneladmin.php?rm=1&rt=1a=3');
                             exit();
@@ -85,6 +127,47 @@ session_start();
                                     )
                                     ");
                     }
+                        //Enviamos un correo para informar que ha sido registrado 
+                        //Load composer's autoloader
+                        require_once('_include/PHPMailerAutoload.php'); 
+
+                        $mail = new PHPMailer(true); 
+                        $mail->SMTPOptions = array(
+                                                    'ssl' => array(
+                                                    'verify_peer' => false,
+                                                    'verify_peer_name' => false,
+                                                    'allow_self_signed' => true
+                                                    )
+                                                );
+                        $mail->SMTPDebug = 2; 
+                        $mail->IsSMTP();
+                        $mail->SMTPAuth = true;
+                        $mail->SMTPSecure = 'tls';
+                        $mail->Host = 'smtp.gmail.com';
+                        $mail->Port = 587;// TCP port to connect to
+                        $mail->CharSet = 'UTF-8';
+                        $mail->Username ='idhappmaster@gmail.com'; //Email para enviar
+                        $mail->Password = 'adminIdh1572'; //Su password
+                        //Agregar destinatario
+                        $mail->setFrom('idhappmaster@gmail.com', 'Admin');
+                        $mail->AddAddress("$email");//A quien mandar email
+                        $mail->SMTPKeepAlive = true;  
+                        $mail->Mailer = "smtp"; 
+
+
+                        //Content
+                        $mail->isHTML(true); // Set email format to HTML
+
+
+                        $mail->Subject = 'Ha sido registrado';
+                        $mail->Body    = 'Usted ha sido registrado en la aplicacion de planes y proyectos de IES Delgado Hernandez';
+
+                        if(!$mail->send()) {
+                            echo 'Error al enviar email';
+                            echo 'Mailer error: ' . $mail->ErrorInfo;
+                        } else {
+                            echo 'Mail enviado correctamente';
+                        }
                     $home="_users/$email";
                     if (!file_exists($home)) {
                         mkdir($home, 0777, true);
@@ -98,7 +181,6 @@ session_start();
                     
                     $_SESSION['msgadd']=ADDCUR;
                     mysqli_close($conexion);
-                    
                     exit();
                 }
             }

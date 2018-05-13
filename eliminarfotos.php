@@ -18,20 +18,22 @@ if(!isset($_SESSION['user'])){
         }
 $idp=$_SESSION['idp'];
 /*primero comprobamos que exista $_POST['fotos']*/
-if(!isset($_POST['fotos'])){
+if(!isset($_POST['fotos']) && !isset($_SESSION['fotosdel'])){
    header('Location: index.php');
     mysqli_close($conexion);
     exit();
 }
-if(count($_POST['fotos']) > 0){
-    /*si en final del array es la opcion por defecto, devolvemos a la pagina anterior y mostramos el mensage*/
-    if(end($_POST['fotos'])=="na"){
+if(isset($_POST['fotos'])){
+    unset($_SESSION['fotosdel']);
+}
+if(isset($_SESSION['fotosdel'])){
+    /*ssi existe lo mandamos a la propia pagina para que seleccione al menos una imagen*/
         $_SESSION['msgalfot']=SELFOTO;
-        $_POST['fotos']=="";
         header("Location: cpanelalum.php?a=3&rm=2&rt=2&idp=$idp");
         mysqli_close($conexion);
         exit();
-    }else{
+}
+if(count($_POST['fotos']) > 0){
         /*sacamos el curso del proyecto y su nombre, para poder eliminar la foto de su directrio*/
             $proyecto = consulta($conexion, "Select * from proyectos where id_proyecto like $idp");
             $row= mysqli_fetch_array($proyecto);
@@ -43,7 +45,7 @@ if(count($_POST['fotos']) > 0){
         /*si no lo es, recorremos el array y hacemos un delete en la base de datos y borramos la foto del servidor*/
         $max = sizeof($_POST['fotos']);
         $i;
-        for($i = 1; $i < $max;$i++){
+        for($i = 0; $i < $max;$i++){
             $foto=$_POST['fotos'][$i];
             /*recuperamos el nombre de la imagen*/
             $imgN= consulta($conexion,"select * from imgproy where id_img like $foto");
@@ -62,7 +64,6 @@ if(count($_POST['fotos']) > 0){
         mysqli_close($conexion);
         exit();
     }
-}
 
 
 

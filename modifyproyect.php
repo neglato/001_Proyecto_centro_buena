@@ -1,4 +1,5 @@
 <?php
+ob_start();
      session_start();
 
 if(isset($_SESSION['lang'])){
@@ -52,7 +53,11 @@ if(!isset($_POST['nombre']) || !isset($_POST['name']) || !isset($_POST['id_curso
                 if($totalNombre > 0 || $totalName > 0){
                 /*comprobamos si el proyecto que nos sale en la consulta es el propio proyecto que estamos editando*/
                 if($infoNombre['id_proyecto'] == $pid || $infoName['id_proyecto'] == $pid){
-                    /*si lo es hacemos el update de los datos*/
+                    //Comprobamos si ha cambiado el coordinador para enviar los correos pertinentes
+                    $CompCoor= consulta($conexion, "SELECT * FROM usuproy where id_proyecto like $pid and id_user in (SELECT id_user FROM usuarios where tipo =1) ");
+                    $oldCo=mysqli_fetch_array($CompCoor);
+                    $oldCoor= $oldCo['id_user'];
+                    //si es el propio proyecto le hacemos el update de los datos*/
                     $UPDATE = consulta($conexion,"UPDATE proyectos SET 
                                                     id_curso ='" . $idCurso . "',
                                                     nombre_pro ='" . $nombre . "',
@@ -64,6 +69,99 @@ if(!isset($_POST['nombre']) || !isset($_POST['name']) || !isset($_POST['id_curso
                                                     where id_proyecto like $pid and id_user in (SELECT id_user from usuarios
                                                                                               where tipo like 1)
                                                     ");
+                    //ahora comprobamos si ha cambiado de coordinador y mandamos el correo
+                    if($coor != $oldCoor){
+                        //rescatamos el email de ambos:
+                        $antCo=consulta ($conexion, "SELECT * from usuarios where id_user like $oldCoor");
+                        $filaAntCo=mysqli_fetch_array($antCo);
+                        $oldCoorNom=$filaAntCo['nombre'];
+                        $oldCoorEmail=$filaAntCo['email'];
+                        $actCo=consulta ($conexion, "SELECT * from usuarios where id_user like $coor");
+                        $filaNewCo=mysqli_fetch_array($actCo);
+                        $newCoorNom=$filaNewCo['nombre'];
+                        $newCoorEmail=$filaNewCo['email'];
+                        //mandamos el correo al antigui coordinador
+                //Load composer's autoloader
+                require_once('_include/PHPMailerAutoload.php'); 
+
+                $mail = new PHPMailer(true); 
+                $mail->SMTPOptions = array(
+                    'ssl' => array(
+                        'verify_peer' => false,
+                        'verify_peer_name' => false,
+                        'allow_self_signed' => true
+                    )
+                );
+                $mail->SMTPDebug = 2; 
+                $mail->IsSMTP();
+                $mail->SMTPAuth = true;
+                $mail->SMTPSecure = 'tls';
+                $mail->Host = 'smtp.gmail.com';
+                $mail->Port = 587;// TCP port to connect to
+                $mail->CharSet = 'UTF-8';
+                $mail->Username ='idhappmaster@gmail.com'; //Email para enviar
+                $mail->Password = 'adminIdh1572'; //Su password
+                //Agregar destinatario
+                $mail->setFrom('idhappmaster@gmail.com', 'Admin');
+                $mail->AddAddress("$oldCoorEmail");//A quien mandar email
+                $mail->SMTPKeepAlive = true;  
+                $mail->Mailer = "smtp"; 
+
+
+                    //Content
+                $mail->isHTML(true); // Set email format to HTML
+
+
+                $mail->Subject = 'Ha sido relevado';
+                $mail->Body    = "Hola $oldCoorNom, ha sido relevado de su labor como coordinador de proyecto $nombre en la app de planes y proyectos del IES Delgado Hernández";
+
+                if(!$mail->send()) {
+                  echo 'Error al enviar email';
+                  echo 'Mailer error: ' . $mail->ErrorInfo;
+                } else {
+                  echo 'Mail enviado correctamente';
+                }
+                    
+                //ahora lo enviamos al nuevo coordinador
+                $mail = new PHPMailer(true); 
+                $mail->SMTPOptions = array(
+                    'ssl' => array(
+                        'verify_peer' => false,
+                        'verify_peer_name' => false,
+                        'allow_self_signed' => true
+                    )
+                );
+                $mail->SMTPDebug = 2; 
+                $mail->IsSMTP();
+                $mail->SMTPAuth = true;
+                $mail->SMTPSecure = 'tls';
+                $mail->Host = 'smtp.gmail.com';
+                $mail->Port = 587;// TCP port to connect to
+                $mail->CharSet = 'UTF-8';
+                $mail->Username ='idhappmaster@gmail.com'; //Email para enviar
+                $mail->Password = 'adminIdh1572'; //Su password
+                //Agregar destinatario
+                $mail->setFrom('idhappmaster@gmail.com', 'Admin');
+                $mail->AddAddress("$newCoorEmail");//A quien mandar email
+                $mail->SMTPKeepAlive = true;  
+                $mail->Mailer = "smtp"; 
+
+
+                    //Content
+                $mail->isHTML(true); // Set email format to HTML
+
+
+                $mail->Subject = 'Le ha sido asignado un proyecto';
+                $mail->Body    = "Hola $newCoorNom, ha sido elegido como coordinador de proyecto $nombre en la app de planes y proyectos del IES Delgado Hernández";
+
+                if(!$mail->send()) {
+                  echo 'Error al enviar email';
+                  echo 'Mailer error: ' . $mail->ErrorInfo;
+                } else {
+                  echo 'Mail enviado correctamente';
+                }
+                //Fin de enviar correo
+                    }
                     /*Comprobamos que el nombre introducido sea distinto que el nombre actual*/
                     if($infoCur['nombre_pro'] != $nombre){
                         /*renombramos la carpeta del proyecto*/
@@ -88,6 +186,10 @@ if(!isset($_POST['nombre']) || !isset($_POST['name']) || !isset($_POST['id_curso
                     $infoNewCurso=mysqli_fetch_array($newCurso);
                     $cursoNew= $infoNewCurso['curso'];
                     $infoCurso=mysqli_fetch_array($cursoAct);
+                //Comprobamos si ha cambiado el coordinador para enviar los correos pertinentes
+                    $CompCoor= consulta($conexion, "SELECT * FROM usuproy where id_proyecto like $pid and id_user in (SELECT id_user FROM usuarios where tipo =1) ");
+                    $oldCo=mysqli_fetch_array($CompCoor);
+                    $oldCoor= $oldCo['id_user'];
                     /*hacemos el update*/
                     $UPDATE = consulta($conexion,"UPDATE proyectos SET 
                                                     id_curso ='" . $idCurso . "',
@@ -106,7 +208,117 @@ if(!isset($_POST['nombre']) || !isset($_POST['name']) || !isset($_POST['id_curso
                         $homeact="_cursos/".$cursoActual."/".$nomAct."";
                         $homenew="_cursos/".$cursoNew."/".$nombre."";
                         rename($homeact,$homenew);
+                                        //ahora comprobamos si ha cambiado de coordinador y mandamos el correo
+                    if($coor != $oldCoor){
+                        //rescatamos el email de ambos:
+                        $antCo=consulta ($conexion, "SELECT * from usuarios where id_user like $oldCoor");
+                        $filaAntCo=mysqli_fetch_array($antCo);
+                        $oldCoorNom=$filaAntCo['nombre'];
+                        $oldCoorEmail=$filaAntCo['email'];
+                        $actCo=consulta ($conexion, "SELECT * from usuarios where id_user like $coor");
+                        $filaNewCo=mysqli_fetch_array($actCo);
+                        $newCoorNom=$filaNewCo['nombre'];
+                        $newCoorEmail=$filaNewCo['email'];
+                        //mandamos el correo al antigui coordinador
+                //Load composer's autoloader
+                require_once('_include/PHPMailerAutoload.php'); 
+
+                $mail = new PHPMailer(true); 
+                $mail->SMTPOptions = array(
+                    'ssl' => array(
+                        'verify_peer' => false,
+                        'verify_peer_name' => false,
+                        'allow_self_signed' => true
+                    )
+                );
+                $mail->SMTPDebug = 2; 
+                $mail->IsSMTP();
+                $mail->SMTPAuth = true;
+                $mail->SMTPSecure = 'tls';
+                $mail->Host = 'smtp.gmail.com';
+                $mail->Port = 587;// TCP port to connect to
+                $mail->CharSet = 'UTF-8';
+                $mail->Username ='idhappmaster@gmail.com'; //Email para enviar
+                $mail->Password = 'adminIdh1572'; //Su password
+                //Agregar destinatario
+                $mail->setFrom('idhappmaster@gmail.com', 'Admin');
+                $mail->AddAddress("$oldCoorEmail");//A quien mandar email
+                $mail->SMTPKeepAlive = true;  
+                $mail->Mailer = "smtp"; 
+
+
+                    //Content
+                $mail->isHTML(true); // Set email format to HTML
+
+
+                $mail->Subject = 'Ha sido relevado';
+                $mail->Body    = "Hola $oldCoorNom, ha sido relevado de su labor como coordinador de proyecto $nombre en la app de planes y proyectos del IES Delgado Hernández";
+
+                if(!$mail->send()) {
+                  echo 'Error al enviar email';
+                  echo 'Mailer error: ' . $mail->ErrorInfo;
+                } else {
+                  echo 'Mail enviado correctamente';
+                }
+                    
+                //ahora lo enviamos al nuevo coordinador
+                $mail = new PHPMailer(true); 
+                $mail->SMTPOptions = array(
+                    'ssl' => array(
+                        'verify_peer' => false,
+                        'verify_peer_name' => false,
+                        'allow_self_signed' => true
+                    )
+                );
+                $mail->SMTPDebug = 2; 
+                $mail->IsSMTP();
+                $mail->SMTPAuth = true;
+                $mail->SMTPSecure = 'tls';
+                $mail->Host = 'smtp.gmail.com';
+                $mail->Port = 587;// TCP port to connect to
+                $mail->CharSet = 'UTF-8';
+                $mail->Username ='idhappmaster@gmail.com'; //Email para enviar
+                $mail->Password = 'adminIdh1572'; //Su password
+                //Agregar destinatario
+                $mail->setFrom('idhappmaster@gmail.com', 'Admin');
+                $mail->AddAddress("$newCoorEmail");//A quien mandar email
+                $mail->SMTPKeepAlive = true;  
+                $mail->Mailer = "smtp"; 
+
+
+                    //Content
+                $mail->isHTML(true); // Set email format to HTML
+
+
+                $mail->Subject = 'Le ha sido asignado un proyecto';
+                $mail->Body    = "Hola $newCoorNom, ha sido elegido como coordinador de proyecto $nombre en la app de planes y proyectos del IES Delgado Hernández";
+
+                if(!$mail->send()) {
+                  echo 'Error al enviar email';
+                  echo 'Mailer error: ' . $mail->ErrorInfo;
+                } else {
+                  echo 'Mail enviado correctamente';
+                }
+                //Fin de enviar correo
                     }
+                    /*Comprobamos que el nombre introducido sea distinto que el nombre actual*/
+                    if($infoCur['nombre_pro'] != $nombre){
+                        /*renombramos la carpeta del proyecto*/
+                        $homeact="_cursos/".$cursoActual."/".$nomAct."";
+                        $homenew="_cursos/".$cursoActual."/".$nombre."";
+                        rename($homeact,$homenew);
+                    }
+                    $_SESSION['msgmodproy2']=MODPROYCURR;
+                    header('Location: cpaneladmin.php?rm=3&rt=2&a=3');
+                    unset($_SESSION['pid']);
+                    exit;
+                    }else{
+                    /*si no es el propio proyecto*/
+                     $_SESSION['msgmodproy']=NONOM;
+                      header('Location: cpaneladmin.php?rm=3&rt=2&a=3&pid='.$pid.'');
+                    exit();
+                }
+                    
                         $_SESSION['msgmodproy2']=MODPROYCURR;
                         header('Location: cpaneladmin.php?rm=3&rt=2&a=3');
                         exit();
@@ -114,3 +326,4 @@ if(!isset($_POST['nombre']) || !isset($_POST['name']) || !isset($_POST['id_curso
             header('Location: cpaneladmin.php?rm=3&rt=2&a=3');
             exit();  
         }
+ob_end_flush();
