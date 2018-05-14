@@ -60,6 +60,50 @@ if(count($_POST['fotos']) > 0){
 
         }
         $_SESSION['msgalfot']=DELFOTO;
+                //mandar el correo:
+        //Load composer's autoloader
+        require_once('_include/PHPMailerAutoload.php'); 
+        //Creamos las varianles que vamosa necesitar, los datos del coordinador
+        $participa=consulta($conexion, "select email, nombre from usuarios where id_user in (select id_user from usuproy where id_proyecto like $idp) and tipo = 1");
+        $par=mysqli_fetch_array($participa);
+        $mail = new PHPMailer(true); 
+        $mail->SMTPOptions = array(
+                    'ssl' => array(
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                    'allow_self_signed' => true
+                )
+            );
+        $mail->SMTPDebug = 2; 
+        $mail->IsSMTP();
+        $mail->SMTPAuth = true;
+        $mail->SMTPSecure = 'tls';
+        $mail->Host = 'smtp.gmail.com';
+        $mail->Port = 587;// TCP port to connect to
+        $mail->CharSet = 'UTF-8';
+        $mail->Username ='idhappmaster@gmail.com'; //Email para enviar
+        $mail->Password = 'adminIdh1572'; //Su password
+        //Agregar destinatario
+        $mail->setFrom('idhappmaster@gmail.com', 'Admin');
+        //guardamos todos los emails en $mail->AddAddress
+        $dest=$par['email'];
+        $mail->AddAddress("$dest");
+        $mail->SMTPKeepAlive = true;  
+        $mail->Mailer = "smtp";
+        //Content
+        $mail->isHTML(true); // Set email format to HTML
+        //sacamos de la base de datos el resto de datos necesarios
+        $nomInt=$par['nombre'];
+        $mail->Subject = "Fotos eliminadas";
+        $mail->Body    = "Hola $nomInt. El proyecto $nombpro, en que participa en la App de Planes y Proyectos del IES Delgado Henández ha perdido fotos";
+
+        if(!$mail->send()) {
+              echo 'Error al enviar email';
+              echo 'Mailer error: ' . $mail->ErrorInfo;
+        } else {
+              echo 'Mail enviado correctamente';
+        }
+        //fin mandar correo
         header("Location: cpanelalum.php?a=3&rm=2&rt=2&idp=$idp");
         mysqli_close($conexion);
         exit();

@@ -1,7 +1,7 @@
 <!--    Script para eliminar un usuaro de un proyecto-->
     
     <?php
-
+ob_start();
     session_start();
     if(isset($_SESSION['lang'])){
         if($_SESSION['lang']==1){
@@ -86,7 +86,7 @@
                         exit(); 
             }
         }          
-        
+        ob_end_flush();
     ?>
    
   

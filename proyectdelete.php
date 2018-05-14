@@ -22,18 +22,18 @@ if($_POST['id_proy']!=-1){
     include('_include/conexion.php');
     include('_include/funciones.php');
     $pid=$_POST['id_proy'];
-    //Buscamos los integrantes de este proyecto para enviarle un correo
-    $int= consulta($conexion, "SELECT * FROM usuarios where id_user in (SELECT id_user FROM usuproy where id_proyecto like $pid)");
-    //rescatamos el nombre del proyecto
-    $proye=consulta($conexion,"SELECT * FROM proyectos where id_proyecto like $pid");
-    $filaPro=mysqli_fetch_array($proye);
-    $nombre=$filaPro['nombre_pro'];
     /*hacemos el update del campo mostrar poniendolo a 0*/
     $UPDATE = consulta($conexion,"UPDATE proyectos SET 
                                                     mostrar ='0'
                                                     WHERE id_proyecto like $pid");
     //enviamos el correo
-                    require_once('_include/PHPMailerAutoload.php'); 
+require_once('_include/PHPMailerAutoload.php'); 
+        //Buscamos los integrantes de este proyecto para enviarle un correo
+    $int= consulta($conexion, "SELECT * FROM usuarios where id_user in (SELECT id_user FROM usuproy where id_proyecto like $pid)");
+    //rescatamos el nombre del proyecto
+    $proye=consulta($conexion,"SELECT * FROM proyectos where id_proyecto like $pid");
+    $filaPro=mysqli_fetch_array($proye);
+    $nombre=$filaPro['nombre_pro'];
 while($filaInt=mysqli_fetch_array($int)){
         $intNom=$filaInt['nombre'];
         $intEmail=$filaInt['email'];

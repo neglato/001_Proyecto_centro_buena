@@ -1,4 +1,5 @@
 <?php
+ob_start();
      session_start();
 
 if(isset($_SESSION['lang'])){
@@ -53,63 +54,64 @@ if(isset($_POST['tipo']) && $_POST['tipo'] == -1){
         $UPDATE = consulta($conexion,"UPDATE proyectos SET 
                                         mostrar = 1 
                                         WHERE id_proyecto ='" . $idproy . "'");
-//mandar el correo:
-//Load composer's autoloader
-require_once('_include/PHPMailerAutoload.php'); 
+        //mandar el correo:
+        //Load composer's autoloader
+        require_once('_include/PHPMailerAutoload.php'); 
+        //Creamos las varianles que vamosa necesitar, que sera la direccion de correo de todos los participantes en el proyecto menos el coordinador
+        $participa=consulta($conexion, "select email, nombre from usuarios where id_user in (select id_user from usuproy where id_proyecto like $idproy) and tipo = 2");
+        while($par=mysqli_fetch_array($participa)){
+            $mail = new PHPMailer(true); 
+            $mail->SMTPOptions = array(
+                'ssl' => array(
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                    'allow_self_signed' => true
+                )
+            );
+            $mail->SMTPDebug = 2; 
+            $mail->IsSMTP();
+            $mail->SMTPAuth = true;
+            $mail->SMTPSecure = 'tls';
+            $mail->Host = 'smtp.gmail.com';
+            $mail->Port = 587;// TCP port to connect to
+            $mail->CharSet = 'UTF-8';
+            $mail->Username ='idhappmaster@gmail.com'; //Email para enviar
+            $mail->Password = 'adminIdh1572'; //Su password
+            //Agregar destinatario
+            $mail->setFrom('idhappmaster@gmail.com', 'Admin');
 
-$mail = new PHPMailer(true); 
-$mail->SMTPOptions = array(
-    'ssl' => array(
-        'verify_peer' => false,
-        'verify_peer_name' => false,
-        'allow_self_signed' => true
-    )
-);
-$mail->SMTPDebug = 2; 
-$mail->IsSMTP();
-$mail->SMTPAuth = true;
-$mail->SMTPSecure = 'tls';
-$mail->Host = 'smtp.gmail.com';
-$mail->Port = 587;// TCP port to connect to
-$mail->CharSet = 'UTF-8';
-$mail->Username ='idhappmaster@gmail.com'; //Email para enviar
-$mail->Password = 'adminIdh1572'; //Su password
-//Agregar destinatario
-$mail->setFrom('idhappmaster@gmail.com', 'Admin');
-//Creamos las varianles que vamosa necesitar, que sera la direccion de correo de todos los participantes en el proyecto menos el coordinador
-$participa=consulta($conexion, "select email from usuarios where id_user in (select id_user from usuproy where id_proyecto like $idproy) and tipo = 2");
-//guardamos todos los emails en $mail->AddAddress
-while($par=mysqli_fetch_array($participa)){
-    $dest=$par['email'];
-    $mail->AddAddress("$dest");
-/*$mail->AddAddress('');//A quien mandar email*/
-$mail->SMTPKeepAlive = true;  
-$mail->Mailer = "smtp"; 
+            //guardamos todos los emails en $mail->AddAddress
 
+                $dest=$par['email'];
+                $mail->AddAddress("$dest");
 
-    //Content
-$mail->isHTML(true); // Set email format to HTML
-//sacamos de la base de datos el resto de datos necesarios
+            /*$mail->AddAddress('');//A quien mandar email*/
+            $mail->SMTPKeepAlive = true;  
+            $mail->Mailer = "smtp"; 
 
 
-$mail->Subject = "Proyecto publicado";
-$mail->Body    = "El proyecto $nombpro, en que participa en la App de Planes y Proyectos del IES Delgado Henández ha sido publicado";
+                //Content
+            $mail->isHTML(true); // Set email format to HTML
+            //sacamos de la base de datos el resto de datos necesarios
 
-if(!$mail->send()) {
-  echo 'Error al enviar email';
-  echo 'Mailer error: ' . $mail->ErrorInfo;
-} else {
-  echo 'Mail enviado correctamente';
-}
-}
-        
+            $nomInt=$par['nombre'];
+            $mail->Subject = "Proyecto publicado";
+            $mail->Body    = "Hola $nomInt. El proyecto $nombpro, en que participa en la App de Planes y Proyectos del IES Delgado Henández ha sido publicado";
 
-            //fin mandar correo
+            if(!$mail->send()) {
+              echo 'Error al enviar email';
+              echo 'Mailer error: ' . $mail->ErrorInfo;
+            } else {
+              echo 'Mail enviado correctamente';
+            }
+        }
+        //fin mandar correo
         $_SESSION['msgprofe']=PROYSIPUB;
         /*unset($_SESSION['tipo']);*/
             header('Location: cpanelprofe.php?rm=2&rt=3&a=3');
         mysqli_close($conexion);
         exit();  
+            
         }
         //si no existen los ficheros...
     }else{
@@ -120,3 +122,4 @@ if(!$mail->send()) {
         exit();
     }
 }
+ob_end_flush();

@@ -1,7 +1,7 @@
 <!--    Script para añadir un usuaro a un proyecto-->
     
     <?php
-
+ob_start();
     session_start();
     if(isset($_SESSION['lang'])){
         if($_SESSION['lang']==1){
@@ -87,5 +87,4 @@
             }
         }
         
-    ?>
-   
+   ob_end_flush();
