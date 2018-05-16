@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <?php
 ob_start();
-include('_include/variables.php');
+?>
+<?php
 session_start(); 
 if(isset($_SESSION['lang'])){
 if($_SESSION['lang']==1){
@@ -15,6 +16,7 @@ if($_SESSION['lang']==1){
 if(!isset($_SESSION['user'])){
     header('Location: index.php');
 }
+include('_include/variables.php');
 $activo=3;
 ?>
 <html lang="es">
@@ -158,14 +160,10 @@ $activo=3;
                                                                                     WHERE id_user = $user)
                                                             AND mostrar like 0");  
                             while ($fila = mysqli_fetch_array($RESULT)) {
-                        $proyec=$fila['id_proyecto'];
-                        $curso =consulta($conexion, "SELECT * FROM cursos where id_curso in (Select id_curso from proyectos where id_proyecto like $proyec)");
-                        $cur = mysqli_fetch_array($curso);
-                        $nomCur=$cur['curso'];
                                 if($_SESSION['lang']==0){
-                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] . " /".$nomCur. "</option>";
+                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] . "</option>";
                                 }elseif($_SESSION['lang']==1){
-                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['name_pro'] . " /".$nomCur. "</option>";
+                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['name_pro'] . "</option>";
                                 }
                             }
                         ?>
@@ -246,14 +244,10 @@ $activo=3;
                                                                                     WHERE id_user = $user)
                                                             AND mostrar like 0");  
                             while ($fila = mysqli_fetch_array($RESULT)) {
-                        $proyec=$fila['id_proyecto'];
-                        $curso =consulta($conexion, "SELECT * FROM cursos where id_curso in (Select id_curso from proyectos where id_proyecto like $proyec)");
-                        $cur = mysqli_fetch_array($curso);
-                        $nomCur=$cur['curso'];
                                 if($_SESSION['lang']==0){
-                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] . " /".$nomCur."</option>";
+                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] . "</option>";
                                 }elseif($_SESSION['lang']==1){
-                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['name_pro'] . " /".$nomCur."</option>";
+                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['name_pro'] . "</option>";
                                 }
                             }
                         ?>
@@ -353,21 +347,17 @@ $activo=3;
                     $proyecto=$row['nombre_pro'];
                     $proyect=$row['name_pro'];
                     $idp=$row['id_proyecto'];
-                    $proyec=$idp;
-                        $curso =consulta($conexion, "SELECT * FROM cursos where id_curso in (Select id_curso from proyectos where id_proyecto like $proyec)");
-                        $cur = mysqli_fetch_array($curso);
-                        $nomCur=$cur['curso'];
             ?>
             <li>
             <a href="proyecto.php?a=1&idp=<?=$idp?>" id="proyprof"><?php
                             if(isset($_SESSION['lang'])){
                                 if($_SESSION['lang']==1){
-                                    echo $proyect." /".$nomCur; 
+                                    echo $proyect; 
                                 }else{
-                                   echo $proyecto." /".$nomCur;
+                                   echo $proyecto;
                                 }
                             }else{
-                                echo $proyecto." /".$nomCur;
+                                echo $proyecto;
                             }  
                         ?></a>
             </li>
@@ -440,21 +430,17 @@ $activo=3;
                     $proyecto=$row['nombre_pro'];
                     $proyect=$row['name_pro'];
                     $idp=$row['id_proyecto'];
-                    $proyec=$idp;
-                        $curso =consulta($conexion, "SELECT * FROM cursos where id_curso in (Select id_curso from proyectos where id_proyecto like $proyec)");
-                        $cur = mysqli_fetch_array($curso);
-                        $nomCur=$cur['curso'];
             ?>
             <li>
             <a href="proyecto.php?a=1&idp=<?=$idp?>" id="proyprof"><?php
                             if(isset($_SESSION['lang'])){
                                 if($_SESSION['lang']==1){
-                                    echo $proyect." /".$nomCur; 
+                                    echo $proyect; 
                                 }else{
-                                   echo $proyecto." /".$nomCur;
+                                   echo $proyecto;
                                 }
                             }else{
-                                echo $proyecto." /".$nomCur;
+                                echo $proyecto;
                             }  
                         ?></a>
             </li>
@@ -470,8 +456,8 @@ $activo=3;
         </section>
     
         <?php
-        /*Fin visualizar proyectos  no publicados                                                                                         
-        comienza editar o subir publicados*/
+        /*Fin visualizar proyectos publicados                                                                                         
+        comienza visualizar proyectos NO publicados*/
         }else if(isset($_GET['rm']) and $_GET['rm']==2 and isset($_GET['rt']) and $_GET['rt']==3) { ?>
     
         <nav id="nav1">
@@ -499,7 +485,6 @@ $activo=3;
 <!--           Aqui saldran los proyectos para editar-->
        
        <?php
-
 //Aqui sale el select para seleccionar un proyecto
         if(!isset($_POST['tipo'])){
             $user=$_SESSION['user'];
@@ -518,14 +503,10 @@ $activo=3;
                        <option value="-1"><?=SELPROY?></option>
                         <?php
                             while ($fila = mysqli_fetch_array($RESULT)) {
-                        $proyec=$fila['id_proyecto'];
-                        $curso =consulta($conexion, "SELECT * FROM cursos where id_curso in (Select id_curso from proyectos where id_proyecto like $proyec)");
-                        $cur = mysqli_fetch_array($curso);
-                        $nomCur=$cur['curso'];
                                 if($_SESSION['lang']==0){
-                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] ." /".$nomCur. "</option>";
+                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] . "</option>";
                                 }elseif($_SESSION['lang']==1){
-                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['name_pro'] . " /".$nomCur. "</option>";
+                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['name_pro'] . "</option>";
                                 }
                             }
                         ?>
