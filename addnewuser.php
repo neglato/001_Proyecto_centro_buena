@@ -1,5 +1,6 @@
 <?php
 session_start();
+include('_include/variables.php');
     if(isset($_SESSION['lang'])){
         if($_SESSION['lang']==1){
             include('_include/UK-uk.php'); 
@@ -37,8 +38,6 @@ session_start();
                         }
                 exit(); 
             }else if($totalFilas == 0){
-                $chorizo1="jjadt6tdysag6dtgasydtasygd67asgd6asgd6iashds8a78dow6oga86ogd86sfadgsa86gd68sagd85aosfd86fsad68fasd";
-                $chorizo2="saihdsasdaidgsgldglasldjasbdbasjdhulwaywuy7aydwy7_%$·$34667/djasdjhsadasgdasbjdna_,.,djsauhdysagda";
                 $contraseña=$chorizo1.$email.$chorizo2;
                 $emailhash=md5($contraseña);
                 $baja = consulta($conexion,"SELECT * from usuarios where email ='{$email}' and baja like 1");
@@ -46,6 +45,7 @@ session_start();
                     if($deBaja > 0){
                         $update=consulta($conexion,"UPDATE usuarios SET password='{$emailhash}', baja='0' where email like '{$email}'");
                         $_SESSION['msgadd']=USRALT;
+                        $nomUSer=$deBaja['nombre'];
                         //Enviamos un correo para avisar de la activacion de la cuenta
                         //Load composer's autoloader
                         require_once('_include/PHPMailerAutoload.php'); 
@@ -65,10 +65,10 @@ session_start();
                         $mail->Host = 'smtp.gmail.com';
                         $mail->Port = 587;// TCP port to connect to
                         $mail->CharSet = 'UTF-8';
-                        $mail->Username ='idhappmaster@gmail.com'; //Email para enviar
-                        $mail->Password = 'adminIdh1572'; //Su password
+                        $mail->Username ="$cuenta"; //Email para enviar
+                        $mail->Password = "$passEmail"; //Su password
                         //Agregar destinatario
-                        $mail->setFrom('idhappmaster@gmail.com', 'Admin');
+                        $mail->setFrom("$cuenta", 'Admin');
                         $mail->AddAddress("$email");//A quien mandar email
                         $mail->SMTPKeepAlive = true;  
                         $mail->Mailer = "smtp"; 
@@ -79,7 +79,8 @@ session_start();
 
 
                         $mail->Subject = 'Cuenta dada de alta';
-                        $mail->Body    = 'Le informamos de que su cuenta ha sido dada de alta nuevamente.';
+                        $mail->Body    = "<h1>¡Hola $nomUSer!</h1>
+                                        <p>Le informamos de que su cuenta ha sido dada de alta nuevamente en la APP de Planes y proyectos del IES Delgado Hernández.</p>";
 
                         if(!$mail->send()) {
                                 echo 'Error al enviar email';
@@ -101,8 +102,6 @@ session_start();
                 $sexo=$_POST['sexo'];
                 $email=$_POST['email'];
                 $tipo=$_POST['tipo'];
-                $chorizo1="jjadt6tdysag6dtgasydtasygd67asgd6asgd6iashds8a78dow6oga86ogd86sfadgsa86gd68sagd85aosfd86fsad68fasd";
-                $chorizo2="saihdsasdaidgsgldglasldjasbdbasjdhulwaywuy7aydwy7_%$·$34667/djasdjhsadasgdasbjdna_,.,djsauhdysagda";
                 $contraseña=$chorizo1.$email.$chorizo2;
                 $emailhash=md5($contraseña);
                     if($info['tipo']==0){
@@ -146,10 +145,10 @@ session_start();
                         $mail->Host = 'smtp.gmail.com';
                         $mail->Port = 587;// TCP port to connect to
                         $mail->CharSet = 'UTF-8';
-                        $mail->Username ='idhappmaster@gmail.com'; //Email para enviar
-                        $mail->Password = 'adminIdh1572'; //Su password
+                        $mail->Username ="$cuenta"; //Email para enviar
+                        $mail->Password = "$passEmail"; //Su password
                         //Agregar destinatario
-                        $mail->setFrom('idhappmaster@gmail.com', 'Admin');
+                        $mail->setFrom("$cuenta", 'Admin');
                         $mail->AddAddress("$email");//A quien mandar email
                         $mail->SMTPKeepAlive = true;  
                         $mail->Mailer = "smtp"; 
@@ -160,7 +159,8 @@ session_start();
 
 
                         $mail->Subject = 'Ha sido registrado';
-                        $mail->Body    = 'Usted ha sido registrado en la aplicacion de planes y proyectos de IES Delgado Hernandez';
+                        $mail->Body    = "<h1>Hola $nombre</h1>
+                                        <p>Usted ha sido registrado en la APP de Planes y Proyectos de IES Delgado Hernandez</p>";
 
                         if(!$mail->send()) {
                             echo 'Error al enviar email';

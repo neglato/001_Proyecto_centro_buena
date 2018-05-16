@@ -1,5 +1,6 @@
 <?php
 ob_start();
+include('_include/variables.php');
 session_start();
     if(isset($_SESSION['lang'])){
         if($_SESSION['lang']==1){
@@ -53,10 +54,10 @@ while($filaInt=mysqli_fetch_array($int)){
                 $mail->Host = 'smtp.gmail.com';
                 $mail->Port = 587;// TCP port to connect to
                 $mail->CharSet = 'UTF-8';
-                $mail->Username ='idhappmaster@gmail.com'; //Email para enviar
-                $mail->Password = 'adminIdh1572'; //Su password
+                $mail->Username ="$cuenta"; //Email para enviar
+                $mail->Password = "$passEmail"; //Su password
                 //Agregar destinatario
-                $mail->setFrom('idhappmaster@gmail.com', 'Admin');
+                $mail->setFrom("$cuenta", 'Admin');
                 $mail->AddAddress("$intEmail");//A quien mandar email
                 $mail->SMTPKeepAlive = true;  
                 $mail->Mailer = "smtp"; 

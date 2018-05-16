@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <?php
 session_start();
+include('_include/variables.php');
 include('_include/conexion.php');
 include('_include/funciones.php');
 if(!isset($_SESSION['user'])){
      header('Location: index.php');
 }
     $USER = $_SESSION['user']; 
-    $RESULTADO = consulta($conexion,"SELECT * FROM usuarios WHERE id_user = '".$USER."'");
+    $RESULTADO = consulta($conexion,"SELECT * FROM usuarios WHERE id_user like $USER");
 
     $info = mysqli_fetch_array($RESULTADO);
 mysqli_close($conexion);

@@ -1,7 +1,6 @@
 <?php
     include('_include/funciones.php');
     include('_include/conexion.php');
-    include('_include/variables.php');
 /*   codigo de inactividad  */
 
 //Comprobamos si existe la sesión 'tiempo'.

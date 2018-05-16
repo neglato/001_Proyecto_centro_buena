@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
-session_start(); 
+session_start();
+include('_include/variables.php');
 if(isset($_SESSION['lang'])){
 if($_SESSION['lang']==1){
     include('_include/UK-uk.php'); 
@@ -19,8 +20,6 @@ if(isset($_SESSION['user'])){
         exit();
     }
 }
-/*$_SESSION['user']=1;*/
-/*session_destroy();*/
 $activo=2;
 ?>
 <html lang="es">

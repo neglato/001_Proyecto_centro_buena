@@ -2,6 +2,7 @@
     
     <?php
 ob_start();
+include('_include/variables.php');
     session_start();
     if(isset($_SESSION['lang'])){
         if($_SESSION['lang']==1){
@@ -56,10 +57,10 @@ ob_start();
                     $mail->Host = 'smtp.gmail.com';
                     $mail->Port = 587;// TCP port to connect to
                     $mail->CharSet = 'UTF-8';
-                    $mail->Username ='idhappmaster@gmail.com'; //Email para enviar
-                    $mail->Password = 'adminIdh1572'; //Su password
+                    $mail->Username ="$cuenta"; //Email para enviar
+                    $mail->Password = "$passEmail"; //Su password
                     //Agregar destinatario
-                    $mail->setFrom('idhappmaster@gmail.com', 'Admin');
+                    $mail->setFrom("$cuenta", 'Admin');
                     $mail->AddAddress("$emailUser");//A quien mandar email
                     $mail->SMTPKeepAlive = true;  
                     $mail->Mailer = "smtp"; 
@@ -70,7 +71,8 @@ ob_start();
 
 
                     $mail->Subject = 'Ha sido relevado';
-                    $mail->Body    = "Hola $nomUser, ha sido relevado de su puesto como editor del proyecto $nomPro.";
+                    $mail->Body    = "<h1>¡Hola $nomUser!</h1> 
+                                    <p>Ha sido relevado de su puesto como editor del proyecto $nomPro en la APP de planes y proyectos del IES Delgado Hernández.</p>";
 
                     if(!$mail->send()) {
                       echo 'Error al enviar email';

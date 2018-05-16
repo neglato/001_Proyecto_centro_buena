@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+include('_include/variables.php');
 session_start(); 
 if(isset($_SESSION['lang'])){
 if($_SESSION['lang']==1){
@@ -37,21 +38,14 @@ $activo=0;
     <figcaption>Galería de Imagenes</figcaption>
     <div class="w3-content w3-section">
       <?php 
-    //realizamos la consulta y la almacenamos en $result.
-       $img_ies=consulta($conexion,"SELECT * FROM imagenes_ies");
-         //calculamos el total de filas que se extraen de la consulta
-       $totalFilas= mysqli_num_rows($img_ies);
-         //comenzamos un bucle while para crear las imagenes.
-       $i=0;
-         //se inicia mientras $i sea menor que $totalfilas.
-       while($i<$totalFilas){
-           //guardamos en la variable $row el contenido de la fila por la que vamos en el bucle, para poder llamar despues al campo que nos interesa
-           $row=mysqli_fetch_array($img_ies);
+    //realizamos la consulta y la almacenamos en $img_ies.
+       $img_ies=consulta($conexion,"SELECT * FROM imagenes_ies order by id_img");
+         //se inicia mientras haya registros que recorrer en el array.*/
+       while($row=mysqli_fetch_array($img_ies)){
        ?>
       <img class="mySlides" src="<?= IES_IMG.$row['nombre_img']?>" style="width:100%">
        <?php 
-        //incrementamos $i en 1.
-       $i++;
+       
        } ?>
     </div>
        </article>

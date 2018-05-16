@@ -1,6 +1,6 @@
 <?php
-        
     include('_include/funciones.php');
+    include('_include/variables.php');
     session_start();
     if(isset($_SESSION['lang'])){
         if($_SESSION['lang']==1){
@@ -24,8 +24,7 @@
             
             $e=$_POST['email'];
             $p= $_POST['passw'];
-            $chorizo1="jjadt6tdysag6dtgasydtasygd67asgd6asgd6iashds8a78dow6oga86ogd86sfadgsa86gd68sagd85aosfd86fsad68fasd";
-            $chorizo2="saihdsasdaidgsgldglasldjasbdbasjdhulwaywuy7aydwy7_%$·$34667/djasdjhsadasgdasbjdna_,.,djsauhdysagda";
+
             $contraseña=$chorizo1.$p.$chorizo2;
             $p=md5($contraseña);
             $email=$chorizo1.$_POST['email'].$chorizo2;

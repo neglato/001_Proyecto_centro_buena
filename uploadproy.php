@@ -1,7 +1,7 @@
 <?php
 ob_start();
      session_start();
-
+    include('_include/variables.php');
 if(isset($_SESSION['lang'])){
 if($_SESSION['lang']==1){
     include('_include/UK-uk.php'); 
@@ -75,10 +75,10 @@ if(isset($_POST['tipo']) && $_POST['tipo'] == -1){
             $mail->Host = 'smtp.gmail.com';
             $mail->Port = 587;// TCP port to connect to
             $mail->CharSet = 'UTF-8';
-            $mail->Username ='idhappmaster@gmail.com'; //Email para enviar
-            $mail->Password = 'adminIdh1572'; //Su password
+            $mail->Username ="$cuenta"; //Email para enviar
+            $mail->Password = "$passEmail"; //Su password
             //Agregar destinatario
-            $mail->setFrom('idhappmaster@gmail.com', 'Admin');
+            $mail->setFrom("$cuenta", 'Admin');
 
             //guardamos todos los emails en $mail->AddAddress
 
@@ -96,7 +96,8 @@ if(isset($_POST['tipo']) && $_POST['tipo'] == -1){
 
             $nomInt=$par['nombre'];
             $mail->Subject = "Proyecto publicado";
-            $mail->Body    = "Hola $nomInt. El proyecto $nombpro, en que participa en la App de Planes y Proyectos del IES Delgado Henández ha sido publicado";
+            $mail->Body    = "<h1>¡Hola $nomInt!. 
+                            <p>El proyecto $nombpro, en el que participa en la App de Planes y Proyectos del IES Delgado Henández ha sido publicado</p>";
 
             if(!$mail->send()) {
               echo 'Error al enviar email';
@@ -107,7 +108,6 @@ if(isset($_POST['tipo']) && $_POST['tipo'] == -1){
         }
         //fin mandar correo
         $_SESSION['msgprofe']=PROYSIPUB;
-        /*unset($_SESSION['tipo']);*/
             header('Location: cpanelprofe.php?rm=2&rt=3&a=3');
         mysqli_close($conexion);
         exit();  
@@ -117,7 +117,6 @@ if(isset($_POST['tipo']) && $_POST['tipo'] == -1){
     }else{
         header('Location: cpanelprofe.php?rm=2&rt=3&a=3');
         $_SESSION['msgprofe']=NOFILE;
-        /*unset($_SESSION['tipo']);*/
         mysqli_close($conexion);
         exit();
     }

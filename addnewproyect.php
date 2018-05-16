@@ -1,5 +1,6 @@
 <?php
 session_start();
+include('_include/variables.php');
     if(isset($_SESSION['lang'])){
         if($_SESSION['lang']==1){
             include('_include/UK-uk.php'); 
@@ -77,10 +78,10 @@ session_start();
                 $mail->Host = 'smtp.gmail.com';
                 $mail->Port = 587;// TCP port to connect to
                 $mail->CharSet = 'UTF-8';
-                $mail->Username ='idhappmaster@gmail.com'; //Email para enviar
-                $mail->Password = 'adminIdh1572'; //Su password
+                $mail->Username ="$cuenta"; //Email para enviar
+                $mail->Password = "$passEmail"; //Su password
                 //Agregar destinatario
-                $mail->setFrom('idhappmaster@gmail.com', 'Admin');
+                $mail->setFrom("$cuenta", 'Admin');
                 $mail->AddAddress("$emailCoor");//A quien mandar email
                 $mail->SMTPKeepAlive = true;  
                 $mail->Mailer = "smtp"; 
@@ -91,7 +92,8 @@ session_start();
 
 
                 $mail->Subject = 'Le ha sido asignado un proyecto';
-                $mail->Body    = "Hola $nomCoor, ha sido seleccionado como coordinador de proyecto $nombre en la app de planes y proyectos del IES Delgado Hernández";
+                $mail->Body    = "<h1>¡Hola $nomCoor!
+                                    <p>Ha sido seleccionado como coordinador de proyecto $nombre en la app de planes y proyectos del IES Delgado Hernández</p>";
 
                 if(!$mail->send()) {
                   echo 'Error al enviar email';

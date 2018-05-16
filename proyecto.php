@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+include('_include/variables.php');
 include('_include/conexion.php');
 function consulta2($conex, $select){
         $resultado= mysqli_query($conex, $select);
@@ -54,8 +55,6 @@ if($totalFilas == 0){
     mysqli_close($conexion);
     exit();
 }
-/*$_SESSION['user']=1;*/
-/*session_destroy();*/
 $_GET['a']=1;
 $activo=1;
 ?>

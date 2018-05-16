@@ -1,6 +1,7 @@
 <?php 
     include('_include/funciones.php');
     include('_include/conexion.php');
+    include('_include/variables.php');
     session_start();
 if(!isset($_SESSION['user'])){
     header('Location: index.php');
@@ -81,10 +82,10 @@ if(count($_POST['fotos']) > 0){
         $mail->Host = 'smtp.gmail.com';
         $mail->Port = 587;// TCP port to connect to
         $mail->CharSet = 'UTF-8';
-        $mail->Username ='idhappmaster@gmail.com'; //Email para enviar
-        $mail->Password = 'adminIdh1572'; //Su password
+        $mail->Username ="$cuenta"; //Email para enviar
+        $mail->Password = "$passEmail"; //Su password
         //Agregar destinatario
-        $mail->setFrom('idhappmaster@gmail.com', 'Admin');
+        $mail->setFrom("$cuenta", 'Admin');
         //guardamos todos los emails en $mail->AddAddress
         $dest=$par['email'];
         $mail->AddAddress("$dest");
@@ -95,7 +96,8 @@ if(count($_POST['fotos']) > 0){
         //sacamos de la base de datos el resto de datos necesarios
         $nomInt=$par['nombre'];
         $mail->Subject = "Fotos eliminadas";
-        $mail->Body    = "Hola $nomInt. El proyecto $nombpro, en que participa en la App de Planes y Proyectos del IES Delgado Henández ha perdido fotos";
+        $mail->Body    = "<h1>¡Hola $nomInt!</h1>
+                            <p>Algunas fotos del proyecto $nombpro, en que participa en la App de Planes y Proyectos del IES Delgado Henández, han sido eliminadas</p>";
 
         if(!$mail->send()) {
               echo 'Error al enviar email';

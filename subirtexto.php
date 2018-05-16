@@ -1,6 +1,7 @@
 <?php 
     include('_include/funciones.php');
     include('_include/conexion.php');
+    include('_include/variables.php');
     session_start();
 if(!isset($_SESSION['user'])){
     header('Location: index.php');
@@ -81,10 +82,10 @@ if($_POST['idioma']== "1es.php" || $_POST['idioma']== "1en.php"){
         $mail->Host = 'smtp.gmail.com';
         $mail->Port = 587;// TCP port to connect to
         $mail->CharSet = 'UTF-8';
-        $mail->Username ='idhappmaster@gmail.com'; //Email para enviar
-        $mail->Password = 'adminIdh1572'; //Su password
+        $mail->Username ="$cuenta"; //Email para enviar
+        $mail->Password = "$passEmail"; //Su password
         //Agregar destinatario
-        $mail->setFrom('idhappmaster@gmail.com', 'Admin');
+        $mail->setFrom("$cuenta", 'Admin');
         //guardamos todos los emails en $mail->AddAddress
         $dest=$par['email'];
         $mail->AddAddress("$dest");
@@ -95,7 +96,8 @@ if($_POST['idioma']== "1es.php" || $_POST['idioma']== "1en.php"){
         $mail->isHTML(true); // Set email format to HTML
         //sacamos de la base de datos el resto de datos necesarios
         $mail->Subject = "Añadido nuevo articulo";
-        $mail->Body    = "Hola $nomInt. El proyecto $nombpro, en que participa en la App de Planes y Proyectos del IES Delgado Henández ha recibido una actualizacion en su artciulo";
+        $mail->Body    = "<h1>¡Hola $nomInt!</h1> 
+                        <p>El proyecto $nombpro, en que participa en la App de Planes y Proyectos del IES Delgado Henández ha recibido una actualizacion en su artciulo</p>";
 
         if(!$mail->send()) {
               echo 'Error al enviar email';

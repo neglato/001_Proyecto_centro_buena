@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start(); 
+include('_include/variables.php');
 if(!isset($_SESSION['user'])){
     header('Location: index.php');
 }
@@ -75,6 +76,7 @@ if(isset($_POST['newpass']) && isset($_POST['confpass'])){
     
     include('_include/funciones.php');
     include('_include/conexion.php');
+    include('_include/variables.php');
         $newpass=$_POST['newpass'];
         $confpass=$_POST['confpass'];
         $id=$_SESSION['user'];
@@ -88,8 +90,6 @@ if(isset($_POST['newpass']) && isset($_POST['confpass'])){
                 header('Location: cambiapass.php');
                 exit();
             }else{
-                $chorizo1="jjadt6tdysag6dtgasydtasygd67asgd6asgd6iashds8a78dow6oga86ogd86sfadgsa86gd68sagd85aosfd86fsad68fasd";
-                $chorizo2="saihdsasdaidgsgldglasldjasbdbasjdhulwaywuy7aydwy7_%$·$34667/djasdjhsadasgdasbjdna_,.,djsauhdysagda";
                 $contraseña=$chorizo1.$newpass.$chorizo2;
                 $newpass=md5($contraseña);
                 $update=consulta($conexion,"UPDATE usuarios SET password='{$newpass}' where id_user like '{$id}'");
@@ -107,7 +107,8 @@ if(isset($_POST['newpass']) && isset($_POST['confpass'])){
         }
 
 }else{ 
-    ?>
+          ?>
+          </header>
     <section>
        <article id="text">
            <p><?=TPASS?></p>

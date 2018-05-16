@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <?php
 ob_start();
-?>
-<?php
+include('_include/variables.php');
 session_start(); 
 if(isset($_SESSION['lang'])){
 if($_SESSION['lang']==1){

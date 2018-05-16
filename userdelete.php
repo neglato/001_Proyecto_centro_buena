@@ -1,7 +1,7 @@
 <?php
 ob_start();
      session_start();
-
+    include('_include/variables.php');
 if(isset($_SESSION['lang'])){
 if($_SESSION['lang']==1){
     include('_include/UK-uk.php'); 
@@ -24,9 +24,10 @@ if($_POST['id_user']!=""){
     include('_include/conexion.php');
     include('_include/funciones.php');
     //Buscamos el email del usuario, para poder notificarle la baja
-    $emailuser=consulta($conexion,"select email from usuarios where id_user like $idu");
+    $emailuser=consulta($conexion,"select email, nombre from usuarios where id_user like $idu");
     $fila=mysqli_fetch_array($emailuser);
     $email=$fila['email'];
+    $nomUsu=$fila['nombre']
     $delete= consulta($conexion,"UPDATE usuarios SET
                                 baja = 1 
                                 where id_user='".$idu."'");
@@ -50,10 +51,10 @@ $mail->SMTPSecure = 'tls';
 $mail->Host = 'smtp.gmail.com';
 $mail->Port = 587;// TCP port to connect to
 $mail->CharSet = 'UTF-8';
-$mail->Username ='idhappmaster@gmail.com'; //Email para enviar
-$mail->Password = 'adminIdh1572'; //Su password
+$mail->Username ="$cuenta"; //Email para enviar
+$mail->Password = "$passEmail"; //Su password
 //Agregar destinatario
-$mail->setFrom('idhappmaster@gmail.com', 'Admin');
+$mail->setFrom("$cuenta", 'Admin');
 $mail->AddAddress("$email");//A quien mandar email
 $mail->SMTPKeepAlive = true;  
 $mail->Mailer = "smtp"; 
@@ -64,7 +65,8 @@ $mail->isHTML(true); // Set email format to HTML
 
 
 $mail->Subject = 'Has sido dado de baja';
-$mail->Body    = 'Has sido dado de baja de la aplicacion de planes y proyectos del IES Delgado Hernández';
+$mail->Body    = "<h1>¡Hola $nomUsu!</h1>
+<p>Ha sido dado de baja de la APP de Planes y Proyectos del IES Delgado Hernández</p>";
 
 if(!$mail->send()) {
   echo 'Error al enviar email';

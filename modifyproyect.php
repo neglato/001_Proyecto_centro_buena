@@ -1,7 +1,7 @@
 <?php
 ob_start();
      session_start();
-
+include('_include/variables.php');
 if(isset($_SESSION['lang'])){
 if($_SESSION['lang']==1){
     include('_include/UK-uk.php'); 
@@ -99,10 +99,10 @@ if(!isset($_POST['nombre']) || !isset($_POST['name']) || !isset($_POST['id_curso
                 $mail->Host = 'smtp.gmail.com';
                 $mail->Port = 587;// TCP port to connect to
                 $mail->CharSet = 'UTF-8';
-                $mail->Username ='idhappmaster@gmail.com'; //Email para enviar
-                $mail->Password = 'adminIdh1572'; //Su password
+                $mail->Username ="$cuenta"; //Email para enviar
+                $mail->Password ="$passEmail"; //Su password
                 //Agregar destinatario
-                $mail->setFrom('idhappmaster@gmail.com', 'Admin');
+                $mail->setFrom("$cuenta", 'Admin');
                 $mail->AddAddress("$oldCoorEmail");//A quien mandar email
                 $mail->SMTPKeepAlive = true;  
                 $mail->Mailer = "smtp"; 
@@ -113,7 +113,8 @@ if(!isset($_POST['nombre']) || !isset($_POST['name']) || !isset($_POST['id_curso
 
 
                 $mail->Subject = 'Ha sido relevado';
-                $mail->Body    = "Hola $oldCoorNom, ha sido relevado de su labor como coordinador de proyecto $nombre en la app de planes y proyectos del IES Delgado Hernández";
+                $mail->Body    = "<h1>¡Hola $oldCoorNom!</h1>
+                                    <p>Ha sido relevado de su labor como coordinador de proyecto $nombre en la app de planes y proyectos del IES Delgado Hernández</p>";
 
                 if(!$mail->send()) {
                   echo 'Error al enviar email';
@@ -138,10 +139,10 @@ if(!isset($_POST['nombre']) || !isset($_POST['name']) || !isset($_POST['id_curso
                 $mail->Host = 'smtp.gmail.com';
                 $mail->Port = 587;// TCP port to connect to
                 $mail->CharSet = 'UTF-8';
-                $mail->Username ='idhappmaster@gmail.com'; //Email para enviar
-                $mail->Password = 'adminIdh1572'; //Su password
+                $mail->Username ="$cuenta"; //Email para enviar
+                $mail->Password ="$passEmail"; //Su password
                 //Agregar destinatario
-                $mail->setFrom('idhappmaster@gmail.com', 'Admin');
+                $mail->setFrom("$cuenta", 'Admin');
                 $mail->AddAddress("$newCoorEmail");//A quien mandar email
                 $mail->SMTPKeepAlive = true;  
                 $mail->Mailer = "smtp"; 
@@ -152,7 +153,8 @@ if(!isset($_POST['nombre']) || !isset($_POST['name']) || !isset($_POST['id_curso
 
 
                 $mail->Subject = 'Le ha sido asignado un proyecto';
-                $mail->Body    = "Hola $newCoorNom, ha sido elegido como coordinador de proyecto $nombre en la app de planes y proyectos del IES Delgado Hernández";
+                $mail->Body    = "<h1>¡Hola $newCoorNom!</h1>
+                                <p>Ha sido elegido como coordinador de proyecto $nombre en la app de planes y proyectos del IES Delgado Hernández</p>";
 
                 if(!$mail->send()) {
                   echo 'Error al enviar email';
@@ -238,10 +240,10 @@ if(!isset($_POST['nombre']) || !isset($_POST['name']) || !isset($_POST['id_curso
                 $mail->Host = 'smtp.gmail.com';
                 $mail->Port = 587;// TCP port to connect to
                 $mail->CharSet = 'UTF-8';
-                $mail->Username ='idhappmaster@gmail.com'; //Email para enviar
-                $mail->Password = 'adminIdh1572'; //Su password
+                $mail->Username ="$cuenta"; //Email para enviar
+                $mail->Password = "$passEmail"; //Su password
                 //Agregar destinatario
-                $mail->setFrom('idhappmaster@gmail.com', 'Admin');
+                $mail->setFrom("$cuenta", 'Admin');
                 $mail->AddAddress("$oldCoorEmail");//A quien mandar email
                 $mail->SMTPKeepAlive = true;  
                 $mail->Mailer = "smtp"; 
@@ -252,7 +254,8 @@ if(!isset($_POST['nombre']) || !isset($_POST['name']) || !isset($_POST['id_curso
 
 
                 $mail->Subject = 'Ha sido relevado';
-                $mail->Body    = "Hola $oldCoorNom, ha sido relevado de su labor como coordinador de proyecto $nombre en la app de planes y proyectos del IES Delgado Hernández";
+                $mail->Body    = "<h1>¡Hola $oldCoorNom!</h1>
+                                    <p>Ha sido relevado de su labor como coordinador de proyecto $nombre en la app de planes y proyectos del IES Delgado Hernández</p>";
 
                 if(!$mail->send()) {
                   echo 'Error al enviar email';
@@ -277,10 +280,10 @@ if(!isset($_POST['nombre']) || !isset($_POST['name']) || !isset($_POST['id_curso
                 $mail->Host = 'smtp.gmail.com';
                 $mail->Port = 587;// TCP port to connect to
                 $mail->CharSet = 'UTF-8';
-                $mail->Username ='idhappmaster@gmail.com'; //Email para enviar
-                $mail->Password = 'adminIdh1572'; //Su password
+                $mail->Username ="$cuenta"; //Email para enviar
+                $mail->Password ="$passEmail"; //Su password
                 //Agregar destinatario
-                $mail->setFrom('idhappmaster@gmail.com', 'Admin');
+                $mail->setFrom("$cuenta", 'Admin');
                 $mail->AddAddress("$newCoorEmail");//A quien mandar email
                 $mail->SMTPKeepAlive = true;  
                 $mail->Mailer = "smtp"; 
@@ -291,7 +294,8 @@ if(!isset($_POST['nombre']) || !isset($_POST['name']) || !isset($_POST['id_curso
 
 
                 $mail->Subject = 'Le ha sido asignado un proyecto';
-                $mail->Body    = "Hola $newCoorNom, ha sido elegido como coordinador de proyecto $nombre en la app de planes y proyectos del IES Delgado Hernández";
+                $mail->Body    = "<h1>¡Hola $newCoorNom!</h1>
+                                <p>Ha sido elegido como coordinador de proyecto $nombre en la app de planes y proyectos del IES Delgado Hernández</p>";
 
                 if(!$mail->send()) {
                   echo 'Error al enviar email';

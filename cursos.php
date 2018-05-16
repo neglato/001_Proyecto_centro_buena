@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+include('_include/variables.php');
 session_start(); 
 if(isset($_SESSION['lang'])){
 if($_SESSION['lang']==1){
@@ -10,8 +11,6 @@ if($_SESSION['lang']==1){
     }else{
       include('_include/ES-es.php');
 }  
-/*$_SESSION['user']=1;*/
-/*session_destroy();*/
 $activo=1;
 ?>
 <html lang="es">
