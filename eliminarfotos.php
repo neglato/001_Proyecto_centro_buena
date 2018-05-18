@@ -65,6 +65,8 @@ if(count($_POST['fotos']) > 0){
         require_once('_include/PHPMailerAutoload.php'); 
         //Creamos las varianles que vamosa necesitar, los datos del coordinador
         $participa=consulta($conexion, "select email, nombre from usuarios where id_user in (select id_user from usuproy where id_proyecto like $idp) and tipo = 1");
+        $proyecto= consulta($conexion, "SELECT * FROM proyectos where id_proyecto like $idp");
+        $proy=mysqli_fetch_array($proyecto);
         $par=mysqli_fetch_array($participa);
         $mail = new PHPMailer(true); 
         $mail->SMTPOptions = array(
@@ -87,6 +89,7 @@ if(count($_POST['fotos']) > 0){
         $mail->setFrom("$cuenta", 'Admin');
         //guardamos todos los emails en $mail->AddAddress
         $dest=$par['email'];
+    $nombpro=$proy['nombre_pro'];
         $mail->AddAddress("$dest");
         $mail->SMTPKeepAlive = true;  
         $mail->Mailer = "smtp";
