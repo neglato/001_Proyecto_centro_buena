@@ -1,7 +1,7 @@
 <?php 
+    include('_include/variables.php');
     include('_include/funciones.php');
     include('_include/conexion.php');
-    include('_include/variables.php');
     session_start();
 if(!isset($_SESSION['user'])){
     header('Location: index.php');
@@ -60,8 +60,7 @@ if(count($_POST['fotos']) > 0){
             
 
         }
-        $_SESSION['msgalfot']=DELFOTO;
-                //mandar el correo:
+        //mandar el correo:
         //Load composer's autoloader
         require_once('_include/PHPMailerAutoload.php'); 
         //Creamos las varianles que vamosa necesitar, los datos del coordinador
@@ -106,6 +105,7 @@ if(count($_POST['fotos']) > 0){
               echo 'Mail enviado correctamente';
         }
         //fin mandar correo
+    $_SESSION['msgalfot']=DELFOTO;
         header("Location: cpanelalum.php?a=3&rm=2&rt=2&idp=$idp");
         mysqli_close($conexion);
         exit();

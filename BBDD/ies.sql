@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-05-2018 a las 19:36:24
+-- Tiempo de generación: 18-05-2018 a las 17:14:34
 -- Versión del servidor: 10.1.26-MariaDB
 -- Versión de PHP: 7.1.9
 
@@ -160,7 +160,8 @@ INSERT INTO `proyectos` (`id_proyecto`, `id_curso`, `fecha_pub`, `nombre_pro`, `
 (5, 1, '2018-03-18', 'Creación de este Proyecto', 'Creation of this Project', '1es.php', '1en.php', 1),
 (19, 3, '2015-01-01', 'Hola', 'Hellow', '1es.php', '1en.php', 0),
 (20, 3, '2018-05-13', 'Prueba', 'Test', '1es.php', '1en.php', 0),
-(24, 1, '2018-05-13', 'Correo', 'Email', '1es.php', '1en.php', 0);
+(24, 1, '2018-05-13', 'Correo', 'Email', '1es.php', '1en.php', 0),
+(25, 3, '0000-00-00', 'Variable prueba', 'Variable test', '1es.php', '1en.php', 0);
 
 -- --------------------------------------------------------
 
@@ -185,25 +186,25 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_user`, `nombre`, `apellidos`, `sexo`, `foto`, `email`, `password`, `baja`, `tipo`) VALUES
-(1, 'Dani', 'Domínguez', 0, 'img.jpg', 'ddl@hotmail.com', '8f25e31b9a4fd625c6387d44c22f209f', 0, 0),
-(2, 'Miguel Angel', 'Romero Pinto', 0, 'img.jpg', 'marp@hotmail.es', '8f25e31b9a4fd625c6387d44c22f209f', 0, 0),
-(3, 'Pepe', 'Moscoso García', 0, 'img.jpg', 'pepe@moscoso.es', '8f25e31b9a4fd625c6387d44c22f209f', 0, 1),
-(4, 'Pablo', 'Suricato', 0, 'img.jpg', 'pablo@suri.es', '8f25e31b9a4fd625c6387d44c22f209f', 0, 2),
-(5, 'María', 'Vazquez', 1, 'img.jpg', 'maria@hotmail.com', '8f25e31b9a4fd625c6387d44c22f209f', 0, 1),
-(6, 'Juan', 'Ramirez', 0, 'img.jpg', 'juan@juan.com', '8f25e31b9a4fd625c6387d44c22f209f', 0, 2),
-(7, 'Da', 'Flores', 0, 'img.jpg', 'da@flores.es', '8f25e31b9a4fd625c6387d44c22f209f', 0, 2),
-(8, 'Isa', 'Noseque', 1, 'img.jpg', 'isa@gmail.es', '8f25e31b9a4fd625c6387d44c22f209f', 0, 1),
-(9, 'Julio', 'Lopez', 0, 'img.jpg', 'julio@gmail.es', '8f25e31b9a4fd625c6387d44c22f209f', 0, 2),
-(10, 'Manuel', 'Lucero', 0, 'img.jpg', 'manue@lucero.es', '8f25e31b9a4fd625c6387d44c22f209f', 0, 1),
-(11, 'Alberto', 'Rodriguez', 0, 'img.jpg', 'alberto@gmail.es', '8f25e31b9a4fd625c6387d44c22f209f', 0, 2),
-(12, 'abm', 'abm', 0, 'img.jpg', 'abm@abm.com', '8f25e31b9a4fd625c6387d44c22f209f', 1, 0),
-(13, 'Dani', 'Hhvg', 0, 'img.jpg', 'a@a.es', '8f25e31b9a4fd625c6387d44c22f209f', 0, 2),
-(14, 'Dani', 'Fhhcf', 0, 'img.jpg', 'b@b.es', '8f25e31b9a4fd625c6387d44c22f209f', 1, 2),
-(18, 'Ygfrh', 'Jvfhhv', 0, 'img.jpg', 'c@c.es', '8f25e31b9a4fd625c6387d44c22f209f', 0, 1),
-(19, 'Admin', 'Admin', 0, 'img.jpg', 'idhappmaster@gmail.com', '8f25e31b9a4fd625c6387d44c22f209f', 0, 0),
-(24, 'Miguel angel', 'Romero', 0, 'img.jpg', 'miguelangelromeropinto@gmail.com', '8f25e31b9a4fd625c6387d44c22f209f', 0, 2),
-(25, 'Daniprueba2', 'Ddddl', 0, 'img.jpg', 'neglato@gmail.com', '8f25e31b9a4fd625c6387d44c22f209f', 0, 1),
-(26, 'Danielprueba', 'Prueba', 0, 'img.jpg', 'dani--ef-@hotmail.com', '4f1837472e7a636ffd35d1c998a3b5c5', 0, 2);
+(1, 'Dani', 'Domínguez', 0, 'img.jpg', 'ddl@hotmail.com', '64f5088480973464637fefd371de4c4f', 0, 0),
+(2, 'Miguel Angel', 'Romero Pinto', 0, 'img.jpg', 'marp@hotmail.es', '64f5088480973464637fefd371de4c4f', 0, 0),
+(3, 'Pepe', 'Moscoso García', 0, 'img.jpg', 'pepe@moscoso.es', '64f5088480973464637fefd371de4c4f', 0, 1),
+(4, 'Pablo', 'Suricato', 0, 'img.jpg', 'pablo@suri.es', '64f5088480973464637fefd371de4c4f', 0, 2),
+(5, 'María', 'Vazquez', 1, 'img.jpg', 'maria@hotmail.com', '64f5088480973464637fefd371de4c4f', 0, 1),
+(6, 'Juan', 'Ramirez', 0, 'img.jpg', 'juan@juan.com', '64f5088480973464637fefd371de4c4f', 0, 2),
+(7, 'Da', 'Flores', 0, 'img.jpg', 'da@flores.es', '64f5088480973464637fefd371de4c4f', 0, 2),
+(8, 'Isa', 'Noseque', 1, 'img.jpg', 'isa@gmail.es', '64f5088480973464637fefd371de4c4f', 0, 1),
+(9, 'Julio', 'Lopez', 0, 'img.jpg', 'julio@gmail.es', '64f5088480973464637fefd371de4c4f', 0, 2),
+(10, 'Manuel', 'Lucero', 0, 'img.jpg', 'manue@lucero.es', '64f5088480973464637fefd371de4c4f', 0, 1),
+(11, 'Alberto', 'Rodriguez', 0, 'img.jpg', 'alberto@gmail.es', '64f5088480973464637fefd371de4c4f', 0, 2),
+(12, 'abm', 'abm', 0, 'img.jpg', 'abm@abm.com', '64f5088480973464637fefd371de4c4f', 1, 0),
+(13, 'Dani', 'Hhvg', 0, 'img.jpg', 'a@a.es', '64f5088480973464637fefd371de4c4f', 0, 2),
+(14, 'Dani', 'Fhhcf', 0, 'img.jpg', 'b@b.es', '64f5088480973464637fefd371de4c4f', 1, 2),
+(18, 'Ygfrh', 'Jvfhhv', 0, 'img.jpg', 'c@c.es', '64f5088480973464637fefd371de4c4f', 0, 1),
+(19, 'Admin', 'Admin', 0, 'img.jpg', 'idhappmaster@gmail.com', '64f5088480973464637fefd371de4c4f', 0, 0),
+(24, 'Miguel angel', 'Romero', 0, 'img.jpg', 'miguelangelromeropinto@gmail.com', '64f5088480973464637fefd371de4c4f', 0, 2),
+(25, 'Daniprueba2', 'Ddddl', 0, 'img.jpg', 'neglato@gmail.com', '64f5088480973464637fefd371de4c4f', 0, 1),
+(29, 'Dani', 'Variables', 0, 'img.jpg', 'dani--ef-@hotmail.com', '64f5088480973464637fefd371de4c4f', 0, 2);
 
 -- --------------------------------------------------------
 
@@ -241,7 +242,9 @@ INSERT INTO `usuproy` (`id_proyecto`, `id_user`) VALUES
 (19, 25),
 (20, 3),
 (20, 24),
-(24, 25);
+(24, 25),
+(25, 25),
+(25, 29);
 
 --
 -- Índices para tablas volcadas
@@ -314,25 +317,25 @@ ALTER TABLE `cursos`
 -- AUTO_INCREMENT de la tabla `imagenes_ies`
 --
 ALTER TABLE `imagenes_ies`
-  MODIFY `id_img` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_img` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `imgproy`
 --
 ALTER TABLE `imgproy`
-  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT de la tabla `proyectos`
 --
 ALTER TABLE `proyectos`
-  MODIFY `id_proyecto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_proyecto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- Restricciones para tablas volcadas

@@ -159,7 +159,7 @@ include('_include/variables.php');
 
 
                         $mail->Subject = 'Ha sido registrado';
-                        $mail->Body    = "<h1>Hola $nombre</h1>
+                        $mail->Body    = "<h1>¡Hola $nombre!</h1>
                                         <p>Usted ha sido registrado en la APP de Planes y Proyectos de IES Delgado Hernandez</p>";
 
                         if(!$mail->send()) {

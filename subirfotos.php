@@ -1,8 +1,9 @@
 <?php 
+ob_start();
+    session_start();
+ include('_include/variables.php');
     include('_include/funciones.php');
     include('_include/conexion.php');
-    include('_include/variables.php');
-    session_start();
 if(!isset($_SESSION['user'])){
     header('Location: index.php');
     
@@ -18,8 +19,10 @@ if(!isset($_SESSION['user'])){
         include('_include/ES-es.php');
         }
 $idp=$_SESSION['idp'];
-if(!isset($_FILES['files'])){
-    header("Location: index.php");
+if(!isset($_FILES["files"])){
+   echo print_r($_FILES);
+    echo "******************************************************************************";
+    /*header("Location: index.php");*/
     exit();
 }else{
     $total=count($_FILES["files"]["name"]);
@@ -56,11 +59,14 @@ if(!isset($_FILES['files'])){
             move_uploaded_file($tmp, $img);
             }
         }
-                        //mandar el correo:
+        unset($_SESSION['msgalfot']);
+        //mandar el correo:
         //Load composer's autoloader
         require_once('_include/PHPMailerAutoload.php'); 
         //Creamos las varianles que vamosa necesitar, los datos del coordinador
-        $participa=consulta($conexion, "select email from usuarios where id_user in (select id_user from usuproy where id_proyecto like $idp) and tipo = 1");
+        $participa=consulta($conexion, "select email, nombre from usuarios where id_user in (select id_user from usuproy where id_proyecto like $idp) and tipo = 1");
+        $proyecto= consulta($conexion, "SELECT * FROM proyectos where id_proyecto like $idp");
+        $proy=mysqli_fetch_array($proyecto);
         $par=mysqli_fetch_array($participa);
         $mail = new PHPMailer(true); 
         $mail->SMTPOptions = array(
@@ -87,11 +93,12 @@ if(!isset($_FILES['files'])){
         $mail->SMTPKeepAlive = true;  
         $mail->Mailer = "smtp";
         //Content
-            $nomCoor=$par['nombre'];
+        $nomCoor=$par['nombre'];
+            $nombpro=$proy['nombre_pro'];
         $mail->isHTML(true); // Set email format to HTML
         //sacamos de la base de datos el resto de datos necesarios
         $mail->Subject = "Añadido nuevas imagenes";
-        $mail->Body    = "<h1>¡Hola $nomCoor!
+        $mail->Body    = "<h1>¡Hola $nomCoor!</h1>
                         <p>El proyecto $nombpro, en que participa en la App de Planes y Proyectos del IES Delgado Henández ha recibido nuevas imagenes</p>";
 
         if(!$mail->send()) {
@@ -110,5 +117,5 @@ if(!isset($_FILES['files'])){
         
 
     }
-
+ob_end_flush();
 

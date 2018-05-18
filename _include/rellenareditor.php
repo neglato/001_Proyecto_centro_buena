@@ -1,5 +1,6 @@
 <?php
 session_start();
+include('variables.php');
     require_once('conexion.php');
     include('funciones.php');
 if(isset($_SESSION['lang'])){
