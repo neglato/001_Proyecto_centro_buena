@@ -205,4 +205,6 @@ define('AUNNOCOM','No comments yet. Be the first to comment!');
 //nuevo 19/05
 define('NOPUBROY','There are no projects pending publication');
 define('OTHERS','Others');
-
+define('ELIMINAR_COMENTARIO','Remove comments');
+define('NO_COMENTARIO','There is no comment');
+define('DELYES','Comment deleted correctly');

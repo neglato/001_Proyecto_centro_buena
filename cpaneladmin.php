@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+ob_start();
 session_start(); 
 include('_include/variables.php');
 if(isset($_SESSION['lang'])){
@@ -694,12 +695,12 @@ Comienza eliminar curso*/
             }
             if(isset($_POST['id_proy']) || isset($pid)){
                 if(isset($pid)){
-                    $RESULT2 = consulta($conexion,"SELECT * FROM proyectos WHERE id_proyecto ='" . $pid . "'"); 
+                    $RESULT2 = consulta($conexion,"SELECT * FROM proyectos WHERE id_proyecto ='" . $pid . "' and mostrar like 0"); 
                     $info=mysqli_fetch_array($RESULT2);
                     $_SESSION['pid']=$pid;
                     unset($pid);
                 }elseif ($_POST['id_proy'] != -1){
-                    $RESULT2 = consulta($conexion,"SELECT * FROM proyectos WHERE id_proyecto ='" . $_POST['id_proy'] . "'"); 
+                    $RESULT2 = consulta($conexion,"SELECT * FROM proyectos WHERE id_proyecto ='" . $_POST['id_proy'] . "' and mostrar like 0"); 
                     $info=mysqli_fetch_array($RESULT2);
                     $_SESSION['pid']=$_POST['id_proy'];
                 }
@@ -767,7 +768,7 @@ Comienza eliminar curso*/
                     <select name="id_proy" id="iusu">
                     <option value="-1"><?=PROY?></option>
                 <?php
-                    $PROYECT = consulta($conexion,"SELECT * FROM proyectos");
+                    $PROYECT = consulta($conexion,"SELECT * FROM proyectos where mostrar like 0");
                     while ($proy = mysqli_fetch_array($PROYECT)) {
                     if(isset($_SESSION['lang'])){
                         if($_SESSION['lang']==1){
@@ -1156,13 +1157,149 @@ Comienza eliminar curso*/
               <a href="?rm=4&rt=2&a=3" class="active" id="subenla11" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
             </div>
         </nav>
-           ccoments
+            <section id="usermod">
+         <?php 
+            if(isset($_POST['id_proyAd']) || isset($_GET['idp'])){
+            if(isset($_GET['idp'])){
+                $idp=$_GET['idp'];
+                }else if(isset($_POST['id_proyAd'])){
+                if($_POST['id_proyAd']== -1){
+                    $_SESSION['msgcom']=DEBCHO;
+                    header('Location: ?rm=4&rt=2&a=3');
+                    exit();
+                }
+                $idp=$_POST['id_proyAd'];
+            }
+                /*sacamos todos los comentarios del proyecto selccionado*/
+                $comments=consulta($conexion,"SELECT * FROM comentarios where id_proyecto like $idp");
+                /*sacamos su nombre y name*/
+                $proy=consulta($conexion,"SELECT * FROM proyectos where id_proyecto like $idp");
+                $proyecto=mysqli_fetch_array($proy);
+                $nombrePro=$proyecto['nombre_pro'];
+                $namePro=$proyecto['name_pro'];
+                $totalcomentarios=mysqli_num_rows($comments);
+                if($totalcomentarios == 0){?>
+                   <article id="comentarios">
+                   <fieldset>
+                   <legend>    <?php if(isset($_SESSION['lang'])){
+                                    if($_SESSION['lang']==1){
+                                        echo $namePro; 
+                                    }else{
+                                        echo $nombrePro;
+                                        }
+                                }else{
+                                    echo $nombrePro;
+                                    }?>
+                   </legend>
+                    <fieldset id="coments">
+                        <p id="error">
+                           <?php
+                                $_SESSION['msgprofe']=NO_COMENTARIO;
+                                    echo $_SESSION['msgprofe'];
+                                    unset($_SESSION['msgprofe']);
+                             ?>
+                </p>
+                    </fieldset>
+                       </fieldset>
+                </article>
+                <?php }else{?>
+                <article id="comentarios">
+                <fieldset>
+                <p id="error">
+                           <?php
+                                if(isset($_SESSION['msgdeletecom'])){
+                                    echo $_SESSION['msgdeletecom'];
+                                    unset($_SESSION['msgdeletecom']);
+                                }
+                             ?>
+                </p>
+                <legend>    
+                <?php if(isset($_SESSION['lang'])){
+                            if($_SESSION['lang']==1){
+                                echo $namePro; 
+                            }else{
+                                echo $nombrePro;
+                                }
+                        }else{
+                            echo $nombrePro;
+                            }?>
+               </legend>
+                <?php 
+                /*pintamos un fieldset por cada cmentarios con un formulario y un button para eliminar*/
+                while($comentario=mysqli_fetch_array($comments)){
+                            $id_com=$comentario['id_comentario'];
+                            $user=$comentario['usuario'];
+                            $texto=$comentario['comentario'];
+                    ?>
+                            <fieldset id="coments">
+                                <form method="post" enctype="multipart/form-data" action="eliminarcomentarios.php">
+                                  <table>
+                                  <tr>
+                                  <td>
+                                   <div>
+                                       <h2><?=$user?> <?=SAY?>:</h2>
+                                        <p><?=$texto?></p>
+                                   </div>
+                                    <input type="hidden" value="<?=$id_com?>" name="comentario">
+                                    <input type="hidden" value="<?=$idp?>" name="proyecto">
+                                      </td>
+                                      <td class="botontabla">
+                                          <button type="submit" class="combutton"><i class="fas fa-times edicion3"></i></button>
+                                      </td>
+                                    </tr>
+                                    </table>
+                                </form>
+                            </fieldset>
+                
+                <?php }
+             ?>
+                    </fieldset>
+                </article>
+          <?php 
+                }
+            }else{ ?>
+                <fieldset>
+                <legend><?=ELIMINAR_COMENTARIO?></legend>
+                    <form action="" method="post" enctype="multipart/form-data">
+                    <p id="selectuser"><?=SELPROY?>: </p>
+                    <select name="id_proyAd" id="idproyAd">
+                    <option value="-1"><?=PROY?></option>
+                                            <?php
+                    
+                    $RESULT = consulta($conexion,"SELECT * FROM proyectos where mostrar like 1"); 
+                    
+                    while ($fila = mysqli_fetch_array($RESULT)) { ?>
+                       <option value="<?=$fila['id_proyecto']?>"><?php if(isset($_SESSION['lang'])){
+                                                                            if($_SESSION['lang']==1){
+                                                                                echo $fila['name_pro']; 
+                                                                                    }else{
+                                                                                    echo $fila['nombre_pro'];
+                                                                                    }
+                                                                                }else{
+                                                                                echo $fila['nombre_pro'];
+                                                                                }?></option>
+                       <?php
+                    }    
+                ?>
+                </select>
+                        <button type="submit" id="selectbu"><i class="fas fa-edit edicion"></i></button>
+                        <p id="error"><?php
+                            if(isset($_SESSION['msgcom'])){
+                                echo $_SESSION['msgcom'];
+                                unset($_SESSION['msgcom']);
+                            } ?></p>
+                </form>
+            </fieldset>
+    </section>
            <?php
-            /*Fin comentarios
+        }
+    /*Fin comentarios
     Fin del cpanel admin*/
     }
     include('_include/footer.php');
+    ob_end_flush();
     ?>
+    
     <script src="_js/funciones.js"></script>
     <script src="_js/funcionescpanel.js"></script>
 </body>

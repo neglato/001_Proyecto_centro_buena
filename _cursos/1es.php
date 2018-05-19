@@ -1,1 +1,0 @@
-<p>Variable prueba</p>

@@ -1,7 +1,7 @@
 <?php 
-    include('_include/funciones.php');
-include('_include/conexion.php');
 include('_include/variables.php');
+include('_include/funciones.php');
+include('_include/conexion.php');
 session_start();
     if(isset($_SESSION['lang'])){
         if($_SESSION['lang']==1){
@@ -24,9 +24,15 @@ if($_POST['oldpass'] == "" or $_POST['newpass'] == "" or $_POST['confpass'] == "
     
 }else{
     $id=$_SESSION['user'];
-    $oldpass=md5($_POST['oldpass']);
-    $newpass=md5($_POST['newpass']);
-    $confpass=md5($_POST['confpass']);
+    $oldpass=$_POST['oldpass'];
+    $oldpass=$chorizo1.$oldpass.$chorizo2;
+    $oldpass=md5($oldpass)/*"64f5088480973464637fefd371de4c4f"*/;
+    $newpass=$_POST['newpass'];
+    $newpass=$chorizo1.$newpass.$chorizo2;
+    $newpass=md5($newpass);
+    $confpass=$_POST['confpass'];
+    $confpass=$chorizo1.$confpass.$chorizo2;
+    $confpass=md5($confpass);
     $pass=consulta($conexion,"SELECT * FROM usuarios where id_user like $id");
     $row=mysqli_fetch_array($pass);
     $password= $row['password'];
@@ -35,7 +41,7 @@ if($_POST['oldpass'] == "" or $_POST['newpass'] == "" or $_POST['confpass'] == "
         header('Location: profile.php?ed=1&a=2');
         exit();
     }else{
-        if($newpass == md5($_SESSION['email'])){
+        if($newpass == md5($chorizo1.$_SESSION['email'].$chorizo2)){
         $_SESSION['msgpass']=PASSISMAIL;
         header('Location: profile.php?ed=1&a=2');
         exit();

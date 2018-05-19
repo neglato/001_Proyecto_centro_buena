@@ -96,7 +96,7 @@ if(isset($_POST['tipo']) && $_POST['tipo'] == -1){
 
             $nomInt=$par['nombre'];
             $mail->Subject = "Proyecto publicado";
-            $mail->Body    = "<h1>¡Hola $nomInt!. 
+            $mail->Body    = "<h1>¡Hola $nomInt!</h1>
                             <p>El proyecto $nombpro, en el que participa en la App de Planes y Proyectos del IES Delgado Henández ha sido publicado</p>";
 
             if(!$mail->send()) {

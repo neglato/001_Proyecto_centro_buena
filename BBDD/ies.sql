@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-05-2018 a las 17:14:34
+-- Tiempo de generación: 19-05-2018 a las 20:13:22
 -- Versión del servidor: 10.1.26-MariaDB
 -- Versión de PHP: 7.1.9
 
@@ -46,7 +46,6 @@ INSERT INTO `comentarios` (`id_comentario`, `id_proyecto`, `usuario`, `comentari
 (5, 3, 'Anonimo', 'Yo estube por ayi y antonio oliva \r\nlos apalizo a todos'),
 (6, 4, 'Pablo', 'Yo estube ayi, aunque fue en \r\nbolivia, pille un avion y me plante \r\nallí, para que al final me ganase el \r\nque sale en la foto'),
 (7, 5, 'Moon', 'Jajajajajaja toda la tarde de todos \r\nlos días liados!!'),
-(9, 3, 'Dani Domínguez', 'Hola'),
 (10, 3, 'Domingo', 'mu bonito');
 
 -- --------------------------------------------------------
@@ -96,7 +95,8 @@ INSERT INTO `imagenes_ies` (`id_img`, `nombre_img`) VALUES
 (10, 'aula-arte3.jpg'),
 (11, 'aula-arte2.jpg'),
 (12, 'aula-2asir.jpg'),
-(13, 'gimnasio1.jpg');
+(13, 'gimnasio1.jpg'),
+(18, 'gimnasio2.jpg');
 
 -- --------------------------------------------------------
 
@@ -125,12 +125,16 @@ INSERT INTO `imgproy` (`id_img`, `id_proyecto`, `imagen`) VALUES
 (8, 5, 'creacion4.jpg'),
 (9, 5, 'creacion5.jpg'),
 (10, 5, 'creacion6.jpg'),
-(14, 4, 'poe1.jpg'),
 (15, 4, 'sia2.jpg'),
 (27, 2, 'eco1.jpg'),
 (28, 2, 'ecoescuela2.jpg'),
 (29, 2, 'waaa005.jpg'),
-(33, 24, 'Screenshot_1.jpg');
+(33, 24, 'Screenshot_1.jpg'),
+(42, 28, 'Screenshot_20180519-173137.png'),
+(43, 28, 'Screenshot_20180519-172148.png'),
+(44, 28, 'Screenshot_20180519-172055.png'),
+(45, 28, 'Screenshot_20180519-172047.png'),
+(46, 28, 'Screenshot_20180519-124419.png');
 
 -- --------------------------------------------------------
 
@@ -161,7 +165,7 @@ INSERT INTO `proyectos` (`id_proyecto`, `id_curso`, `fecha_pub`, `nombre_pro`, `
 (19, 3, '2015-01-01', 'Hola', 'Hellow', '1es.php', '1en.php', 0),
 (20, 3, '2018-05-13', 'Prueba', 'Test', '1es.php', '1en.php', 0),
 (24, 1, '2018-05-13', 'Correo', 'Email', '1es.php', '1en.php', 0),
-(25, 3, '0000-00-00', 'Variable prueba', 'Variable test', '1es.php', '1en.php', 0);
+(28, 1, '2018-05-19', 'Variable pruebas', 'Variable test', '1es.php', '1en.php', 0);
 
 -- --------------------------------------------------------
 
@@ -186,7 +190,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_user`, `nombre`, `apellidos`, `sexo`, `foto`, `email`, `password`, `baja`, `tipo`) VALUES
-(1, 'Dani', 'Domínguez', 0, 'img.jpg', 'ddl@hotmail.com', '64f5088480973464637fefd371de4c4f', 0, 0),
+(1, 'Dani', 'Admin', 0, 'img.jpg', 'ddl@hotmail.com', '64f5088480973464637fefd371de4c4f', 0, 0),
 (2, 'Miguel Angel', 'Romero Pinto', 0, 'img.jpg', 'marp@hotmail.es', '64f5088480973464637fefd371de4c4f', 0, 0),
 (3, 'Pepe', 'Moscoso García', 0, 'img.jpg', 'pepe@moscoso.es', '64f5088480973464637fefd371de4c4f', 0, 1),
 (4, 'Pablo', 'Suricato', 0, 'img.jpg', 'pablo@suri.es', '64f5088480973464637fefd371de4c4f', 0, 2),
@@ -203,8 +207,8 @@ INSERT INTO `usuarios` (`id_user`, `nombre`, `apellidos`, `sexo`, `foto`, `email
 (18, 'Ygfrh', 'Jvfhhv', 0, 'img.jpg', 'c@c.es', '64f5088480973464637fefd371de4c4f', 0, 1),
 (19, 'Admin', 'Admin', 0, 'img.jpg', 'idhappmaster@gmail.com', '64f5088480973464637fefd371de4c4f', 0, 0),
 (24, 'Miguel angel', 'Romero', 0, 'img.jpg', 'miguelangelromeropinto@gmail.com', '64f5088480973464637fefd371de4c4f', 0, 2),
-(25, 'Daniprueba2', 'Ddddl', 0, 'img.jpg', 'neglato@gmail.com', '64f5088480973464637fefd371de4c4f', 0, 1),
-(29, 'Dani', 'Variables', 0, 'img.jpg', 'dani--ef-@hotmail.com', '64f5088480973464637fefd371de4c4f', 0, 2);
+(31, 'Dani', 'coordina', 0, 'img.jpg', 'dani--ef-@hotmail.com', '64f5088480973464637fefd371de4c4f', 0, 1),
+(33, 'Dani', 'edita', 0, 'img.jpg', 'neglato@gmail.com', '66ee6a97611f9ad80f70b09b82d2207e', 0, 2);
 
 -- --------------------------------------------------------
 
@@ -239,12 +243,10 @@ INSERT INTO `usuproy` (`id_proyecto`, `id_user`) VALUES
 (5, 10),
 (19, 3),
 (19, 24),
-(19, 25),
 (20, 3),
 (20, 24),
-(24, 25),
-(25, 25),
-(25, 29);
+(28, 31),
+(28, 33);
 
 --
 -- Índices para tablas volcadas
@@ -305,7 +307,7 @@ ALTER TABLE `usuproy`
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `cursos`
@@ -317,25 +319,25 @@ ALTER TABLE `cursos`
 -- AUTO_INCREMENT de la tabla `imagenes_ies`
 --
 ALTER TABLE `imagenes_ies`
-  MODIFY `id_img` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_img` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `imgproy`
 --
 ALTER TABLE `imgproy`
-  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT de la tabla `proyectos`
 --
 ALTER TABLE `proyectos`
-  MODIFY `id_proyecto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_proyecto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- Restricciones para tablas volcadas
