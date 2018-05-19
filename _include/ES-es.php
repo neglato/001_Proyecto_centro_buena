@@ -201,4 +201,6 @@ define('SAY','dijo');
 define('INTNAME','Introduzca nombre');
 //nuevo 06/05
 define('AUNNOCOM','Aún no hay comentarios. ¡Sé el primero en comentar!');
+//nuevo 19/05
+define('NOPUBROY','No existen proyectos pendientes de publicación');
 

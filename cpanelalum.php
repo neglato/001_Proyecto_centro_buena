@@ -81,6 +81,16 @@ $activo=3;
                <legend><?=PROYOK?></legend>
             <ul>
                <?php
+                if($totalFilas == 0){ ?>
+                    <p id="error">
+                           <?php
+                                $_SESSION['msgprofe']=PROYP;
+                                    echo $_SESSION['msgprofe'];
+                                    unset($_SESSION['msgprofe']);
+                             ?>
+                </p>
+                <?php
+                }
                 $i=0;
                 while($i<$totalFilas){
                     $row=mysqli_fetch_array($RESULT); 
@@ -134,13 +144,22 @@ $activo=3;
                                                                 FROM usuproy
                                                                 WHERE id_user = $user)
                                           AND mostrar = 0"); 
-            $totalFilas= mysqli_num_rows($RESULT);?>
+            $totalFilas2= mysqli_num_rows($RESULT);?>
             <fieldset id="proypub">
                <legend><?=PROYSTOP?></legend>
             <ul>
                <?php
+                if($totalFilas2==0){ ?>
+                <p id="error">
+                           <?php
+                                $_SESSION['msgprofe']=NOPUBROY;
+                                    echo $_SESSION['msgprofe'];
+                                    unset($_SESSION['msgprofe']);
+                             ?>
+                </p>
+            <?php }
                 $i=0;
-                while($i<$totalFilas){
+                while($i<$totalFilas2){
                     $row=mysqli_fetch_array($RESULT); 
                     $proyecto=$row['nombre_pro'];
                     $proyect=$row['name_pro'];

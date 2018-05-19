@@ -113,18 +113,12 @@ $activo=2;
                                                 from proyectos
                                                 where id_proyecto in (select id_proyecto
                                                 from usuproy
-                                                where id_user=$usuario)");
+                                                where id_user=$usuario) and mostrar like 1");
             $total=mysqli_num_rows($proyecto);
                 if($total > 0){?>
             <fieldset id="propar">
                <legend><?=PARTI?></legend>
                 <?php
-                $usuario=$_SESSION['user'];
-                $proyecto=consulta($conexion,"select *
-                                                from proyectos
-                                                where mostrar like 1 and id_proyecto in (select id_proyecto
-                                                from usuproy
-                                                where id_user=$usuario)");
         while ($row=mysqli_fetch_array($proyecto)){
               $pid=$row['id_proyecto'];
               $name=$row['name_pro'];

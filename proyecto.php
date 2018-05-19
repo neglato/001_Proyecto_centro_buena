@@ -27,7 +27,7 @@ if(isset($_GET['idp'])){
     $nombre_pro=$row['nombre_pro'];
     $name_pro=$row['name_pro'];
         }else{
-    $select=consulta2($conexion,"SELECT * FROM proyectos where id_proyecto like $idp");
+    $select=consulta2($conexion,"SELECT * FROM proyectos where id_proyecto like $idp and mostrar like 1");
     $totalFilas= mysqli_num_rows($select);
     $row=mysqli_fetch_array($select);
     $nombre_pro=$row['nombre_pro'];
@@ -112,6 +112,7 @@ $activo=1;
       }else{
           $contenido=$row['contenido'];
           $content=$row['content'];
+          $mostrar=$row['mostrar'];
           $id_curso=$row['id_curso'];
           $curso=consulta($conexion,"SELECT curso FROM cursos where id_curso like $id_curso");
           $totalFilasCurso= mysqli_num_rows($curso);
@@ -235,6 +236,9 @@ $activo=1;
               ?>
           </fieldset>
       </article>
+      <?php 
+      if($mostrar == 1){
+      ?>
       <article id="yacom">
          <fieldset id="comentarios">
          <legend><?=COMMENTS?></legend>
@@ -279,6 +283,7 @@ $activo=1;
              </article>
           </fieldset>
       </article>
+      <?php } ?>
   </section>
   <script src="_js/funcionesproyectos.js"></script>
    <?php 
