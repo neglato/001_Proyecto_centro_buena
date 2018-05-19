@@ -1,6 +1,6 @@
 <?php 
-    include('_include/funciones.php');
     include('_include/variables.php');
+    include('_include/funciones.php');
     session_start();
 if(!isset($_SESSION['user'])){
     header('Location: index.php');

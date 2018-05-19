@@ -68,7 +68,8 @@ while($filaInt=mysqli_fetch_array($int)){
 
 
                 $mail->Subject = 'El proyecto puede editarse de nuevo';
-                $mail->Body    = "Hola $intNom, le informamos que el proyecto $nombre, en el que participa, en la app de planes y proyectos del IES Delgado Hernández ha sido despublicado, por lo que puede volver a ser editado";
+                $mail->Body    = "<h1>¡Hola $intNom!</h1>
+                <p>El proyecto $nombre, en el que participa, en la app de planes y proyectos del IES Delgado Hernández ha sido despublicado, por lo que puede volver a ser editado</p>";
 
                 if(!$mail->send()) {
                   echo 'Error al enviar email';

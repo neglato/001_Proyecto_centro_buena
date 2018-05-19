@@ -20,9 +20,7 @@ if(!isset($_SESSION['user'])){
         }
 $idp=$_SESSION['idp'];
 if(!isset($_FILES["files"])){
-   echo print_r($_FILES);
-    echo "******************************************************************************";
-    /*header("Location: index.php");*/
+    header("Location: index.php");
     exit();
 }else{
     $total=count($_FILES["files"]["name"]);

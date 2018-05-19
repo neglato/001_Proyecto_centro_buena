@@ -92,7 +92,7 @@ include('_include/variables.php');
 
 
                 $mail->Subject = 'Le ha sido asignado un proyecto';
-                $mail->Body    = "<h1>¡Hola $nomCoor!
+                $mail->Body    = "<h1>¡Hola $nomCoor!</h1>
                                     <p>Ha sido seleccionado como coordinador de proyecto $nombre en la app de planes y proyectos del IES Delgado Hernández</p>";
 
                 if(!$mail->send()) {
