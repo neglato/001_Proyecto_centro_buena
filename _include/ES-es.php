@@ -203,4 +203,5 @@ define('INTNAME','Introduzca nombre');
 define('AUNNOCOM','Aún no hay comentarios. ¡Sé el primero en comentar!');
 //nuevo 19/05
 define('NOPUBROY','No existen proyectos pendientes de publicación');
+define('OTHERS','Otros');
 

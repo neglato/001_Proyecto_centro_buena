@@ -16,6 +16,25 @@ function desplegar(elem,menu){
    
     
 }
+//desplegar admin
+function desplegarAdmin(elem,menu){
+    if(document.getElementById(menu).classList.contains('oculto')){
+        for(i=2;i<=5;i++){
+        document.getElementById('nav'+i+'').classList.add('oculto');
+        }
+        document.getElementById(menu).classList.remove('oculto'); 
+    }else{
+        document.getElementById(menu).classList.add('oculto'); 
+    }
+    
+    
+        for(i=1;i<=4;i++){
+        document.getElementById('enla'+i+'').classList.remove('active');
+        }
+        elem.classList.add('active'); 
+   
+    
+}
 
 function desplegar2(elem){
     for(i=1;i<=9;i++){

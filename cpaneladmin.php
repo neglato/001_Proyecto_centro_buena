@@ -58,10 +58,11 @@ $activo=3;
     
     if(!isset($_GET['rm'])){?>
                  <nav id="nav1">
-              <div class="icon-bar">
-              <a href="#" id="enla1" onclick="desplegar(this,'nav2')"><span><?= USUARIOS ?></span><i class="fas fa-user ico"></i></a> 
-              <a href="#" id="enla2" onclick="desplegar(this,'nav3')"><span><?= CURSOS ?></span><i class="fas fa-calendar-alt ico"></i></a> 
-              <a href="#" id="enla3" onclick="desplegar(this,'nav4')"><span><?= PROYECT ?></span><i class="fas fa-file ico"></i></a> 
+              <div class="icon-bar2">
+              <a href="#" id="enla1" onclick="desplegarAdmin(this,'nav2')"><span><?= USUARIOS ?> </span><i class="fas fa-user ico"></i></a> 
+              <a href="#" id="enla2" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?> </span><i class="fas fa-calendar-alt ico"></i></a> 
+              <a href="#" id="enla3" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?> </span><i class="fas fa-file ico"></i></a>
+              <a href="#" id="enla4" onclick="desplegarAdmin(this,'nav5')"><span><?= OTHERS ?> </span><i class="fas fa-cogs ico"></i></a> 
             </div>
           </nav>
         <nav id="nav2" class="oculto">
@@ -73,7 +74,7 @@ $activo=3;
         </nav>
         <nav id="nav3" class="oculto">
           <div class="icon-bar">
-              <a href="?rm=2&rt=1&a=3a=3" id="subenla4" onclick="desplegar2(this)"><i class="fas fa-calendar-plus ico"></i></a> 
+              <a href="?rm=2&rt=1&a=3" id="subenla4" onclick="desplegar2(this)"><i class="fas fa-calendar-plus ico"></i></a> 
               <a href="?rm=2&rt=2&a=3" id="subenla5" onclick="desplegar2(this)"><i class="fas fa-calendar-check ico"></i></a> 
               <a href="?rm=2&rt=3&a=3" id="subenla6" onclick="desplegar2(this)"><i class="fas fa-calendar-times ico"></i></a>  
             </div>
@@ -85,17 +86,24 @@ $activo=3;
               <a href="?rm=3&rt=3&a=3" id="subenla9" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
             </div>
         </nav>
+        <nav id="nav5" class="oculto">
+          <div class="icon-bar3">
+              <a href="?rm=4&rt=1&a=3" id="subenla10" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
+              <a href="?rm=4&rt=2&a=3" id="subenla11" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
+            </div>
+        </nav>
         <?php
        include('_include/cpanelindex.php');
     }
         elseif(isset($_GET['rm']) && $_GET['rm']==1 && isset($_GET['rt']) && $_GET['rt']==1) {
             unset($_SESSION['uid']);
         ?>
-           <nav id="nav1">
-              <div class="icon-bar">
-              <a href="#" class="active" id="enla1" onclick="desplegar(this,'nav2')"><span><?= USUARIOS ?></span><i class="fas fa-user ico"></i></a> 
-              <a href="#" id="enla2" onclick="desplegar(this,'nav3')"><span><?= CURSOS ?></span><i class="fas fa-calendar-alt ico"></i></a> 
-              <a href="#" id="enla3" onclick="desplegar(this,'nav4')"><span><?= PROYECT ?></span><i class="fas fa-file ico"></i></a> 
+        <nav id="nav1">
+              <div class="icon-bar2">
+              <a href="#" id="enla1" class="active" onclick="desplegarAdmin(this,'nav2')"><span><?= USUARIOS ?> </span><i class="fas fa-user ico"></i></a> 
+              <a href="#" id="enla2" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?> </span><i class="fas fa-calendar-alt ico"></i></a> 
+              <a href="#" id="enla3" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?> </span><i class="fas fa-file ico"></i></a>
+              <a href="#" id="enla4" onclick="desplegarAdmin(this,'nav5')"><span><?= OTHERS ?> </span><i class="fas fa-cogs ico"></i></a> 
             </div>
           </nav>
         <nav id="nav2">
@@ -117,6 +125,12 @@ $activo=3;
               <a href="?rm=3&rt=1&a=3" id="subenla7" onclick="desplegar2(this)"><i class="fas fa-file-alt ico"></i></a> 
               <a href="?rm=3&rt=2&a=3" id="subenla8" onclick="desplegar2(this)"><i class="fas fa-file-code ico"></i></a> 
               <a href="?rm=3&rt=3&a=3" id="subenla9" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
+            </div>
+        </nav>
+        <nav id="nav5" class="oculto">
+          <div class="icon-bar3">
+              <a href="?rm=4&rt=1&a=3" id="subenla10" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
+              <a href="?rm=4&rt=2&a=3" id="subenla11" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
             </div>
         </nav>
         <section id="adduser">
@@ -148,11 +162,12 @@ $activo=3;
  /*Fin añadir usuario                                                                                             
  comienza editar usuario*/
     }else if(isset($_GET['rm']) and $_GET['rm']==1 and isset($_GET['rt']) and $_GET['rt']==2) { ?>
-                   <nav id="nav1">
-              <div class="icon-bar">
-              <a href="#" class="active" id="enla1" onclick="desplegar(this,'nav2')"><span><?= USUARIOS ?></span><i class="fas fa-user ico"></i></a> 
-              <a href="#" id="enla2" onclick="desplegar(this,'nav3')"><span><?= CURSOS ?></span><i class="fas fa-calendar-alt ico"></i></a> 
-              <a href="#" id="enla3" onclick="desplegar(this,'nav4')"><span><?= PROYECT ?></span><i class="fas fa-file ico"></i></a> 
+        <nav id="nav1">
+              <div class="icon-bar2">
+              <a href="#" id="enla1" class="active" onclick="desplegarAdmin(this,'nav2')"><span><?= USUARIOS ?> </span><i class="fas fa-user ico"></i></a> 
+              <a href="#" id="enla2" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?> </span><i class="fas fa-calendar-alt ico"></i></a> 
+              <a href="#" id="enla3" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?> </span><i class="fas fa-file ico"></i></a>
+              <a href="#" id="enla4" onclick="desplegarAdmin(this,'nav5')"><span><?= OTHERS ?> </span><i class="fas fa-cogs ico"></i></a> 
             </div>
           </nav>
         <nav id="nav2">
@@ -174,6 +189,12 @@ $activo=3;
               <a href="?rm=3&rt=1&a=3" id="subenla7" onclick="desplegar2(this)"><i class="fas fa-file-alt ico"></i></a> 
               <a href="?rm=3&rt=2&a=3" id="subenla8" onclick="desplegar2(this)"><i class="fas fa-file-code ico"></i></a> 
               <a href="?rm=3&rt=3&a=3" id="subenla9" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
+            </div>
+        </nav>
+        <nav id="nav5" class="oculto">
+          <div class="icon-bar3">
+              <a href="?rm=4&rt=1&a=3" id="subenla10" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
+              <a href="?rm=4&rt=2&a=3" id="subenla11" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
             </div>
         </nav>
         <section id="usermod">
@@ -266,14 +287,15 @@ $activo=3;
             </fieldset>
         
             <?php }
-/*Fin modifiar usuario
+/*Fin editar usuario
 Comienza eliminar usuario*/
         }elseif(isset($_GET['rm']) and $_GET['rm']==1 and isset($_GET['rt']) and $_GET['rt']==3){?>
-            <nav id="nav1">
-              <div class="icon-bar">
-              <a href="#" class="active" id="enla1" onclick="desplegar(this,'nav2')"><span><?= USUARIOS ?></span><i class="fas fa-user ico"></i></a> 
-              <a href="#" id="enla2" onclick="desplegar(this,'nav3')"><span><?= CURSOS ?></span><i class="fas fa-calendar-alt ico"></i></a> 
-              <a href="#" id="enla3" onclick="desplegar(this,'nav4')"><span><?= PROYECT ?></span><i class="fas fa-file ico"></i></a> 
+        <nav id="nav1">
+              <div class="icon-bar2">
+              <a href="#" id="enla1" class="active" onclick="desplegarAdmin(this,'nav2')"><span><?= USUARIOS ?> </span><i class="fas fa-user ico"></i></a> 
+              <a href="#" id="enla2" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?> </span><i class="fas fa-calendar-alt ico"></i></a> 
+              <a href="#" id="enla3" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?> </span><i class="fas fa-file ico"></i></a>
+              <a href="#" id="enla4" onclick="desplegarAdmin(this,'nav5')"><span><?= OTHERS ?> </span><i class="fas fa-cogs ico"></i></a> 
             </div>
           </nav>
         <nav id="nav2">
@@ -295,6 +317,12 @@ Comienza eliminar usuario*/
               <a href="?rm=3&rt=1&a=3" id="subenla7" onclick="desplegar2(this)"><i class="fas fa-file-alt ico"></i></a> 
               <a href="?rm=3&rt=2&a=3" id="subenla8" onclick="desplegar2(this)"><i class="fas fa-file-code ico"></i></a> 
               <a href="?rm=3&rt=3&a=3" id="subenla9" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
+            </div>
+        </nav>
+        <nav id="nav5" class="oculto">
+          <div class="icon-bar3">
+              <a href="?rm=4&rt=1&a=3" id="subenla10" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
+              <a href="?rm=4&rt=2&a=3" id="subenla11" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
             </div>
         </nav>
         <section id="userdel">
@@ -329,10 +357,11 @@ Comienza eliminar usuario*/
                 Comienzo de añadir curso*/
                 }elseif(isset($_GET['rm']) and $_GET['rm']==2 and isset($_GET['rt']) and $_GET['rt']==1){?>
         <nav id="nav1">
-              <div class="icon-bar">
-              <a href="#"  id="enla1" onclick="desplegar(this,'nav2')"><span><?= USUARIOS ?></span><i class="fas fa-user ico"></i></a> 
-              <a href="#" class="active" id="enla2" onclick="desplegar(this,'nav3')"><span><?= CURSOS ?></span><i class="fas fa-calendar-alt ico"></i></a> 
-              <a href="#" id="enla3" onclick="desplegar(this,'nav4')"><span><?= PROYECT ?></span><i class="fas fa-file ico"></i></a> 
+              <div class="icon-bar2">
+              <a href="#" id="enla1" onclick="desplegarAdmin(this,'nav2')"><span><?= USUARIOS ?> </span><i class="fas fa-user ico"></i></a> 
+              <a href="#" id="enla2" class="active" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?> </span><i class="fas fa-calendar-alt ico"></i></a> 
+              <a href="#" id="enla3" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?> </span><i class="fas fa-file ico"></i></a>
+              <a href="#" id="enla4" onclick="desplegarAdmin(this,'nav5')"><span><?= OTHERS ?> </span><i class="fas fa-cogs ico"></i></a> 
             </div>
           </nav>
         <nav id="nav2" class="oculto">
@@ -356,6 +385,12 @@ Comienza eliminar usuario*/
               <a href="?rm=3&rt=3&a=3" id="subenla9" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
             </div>
         </nav>
+        <nav id="nav5" class="oculto">
+          <div class="icon-bar3">
+              <a href="?rm=4&rt=1&a=3" id="subenla10" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
+              <a href="?rm=4&rt=2&a=3" id="subenla11" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
+            </div>
+        </nav>
         <section id="addcourse">
         <fieldset>
             <legend><?=AÑADIR_CURSO?></legend>
@@ -374,10 +409,11 @@ Comienza eliminar usuario*/
         comienza moficiar curso*/
     }else if(isset($_GET['rm']) and $_GET['rm']==2 and isset($_GET['rt']) and $_GET['rt']==2) { ?>
         <nav id="nav1">
-              <div class="icon-bar">
-              <a href="#"  id="enla1" onclick="desplegar(this,'nav2')"><span><?= USUARIOS ?></span><i class="fas fa-user ico"></i></a> 
-              <a href="#" id="enla2" class="active" onclick="desplegar(this,'nav3')"><span><?= CURSOS ?></span><i class="fas fa-calendar-alt ico"></i></a> 
-              <a href="#" id="enla3" onclick="desplegar(this,'nav4')"><span><?= PROYECT ?></span><i class="fas fa-file ico"></i></a> 
+              <div class="icon-bar2">
+              <a href="#" id="enla1" onclick="desplegarAdmin(this,'nav2')"><span><?= USUARIOS ?> </span><i class="fas fa-user ico"></i></a> 
+              <a href="#" id="enla2" class="active" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?> </span><i class="fas fa-calendar-alt ico"></i></a> 
+              <a href="#" id="enla3" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?> </span><i class="fas fa-file ico"></i></a>
+              <a href="#" id="enla4" onclick="desplegarAdmin(this,'nav5')"><span><?= OTHERS ?> </span><i class="fas fa-cogs ico"></i></a> 
             </div>
           </nav>
         <nav id="nav2"class="oculto">
@@ -399,6 +435,12 @@ Comienza eliminar usuario*/
               <a href="?rm=3&rt=1&a=3" id="subenla7" onclick="desplegar2(this)"><i class="fas fa-file-alt ico"></i></a> 
               <a href="?rm=3&rt=2&a=3" id="subenla8" onclick="desplegar2(this)"><i class="fas fa-file-code ico"></i></a> 
               <a href="?rm=3&rt=3&a=3" id="subenla9" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
+            </div>
+        </nav>
+        <nav id="nav5" class="oculto">
+          <div class="icon-bar3">
+              <a href="?rm=4&rt=1&a=3" id="subenla10" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
+              <a href="?rm=4&rt=2&a=3" id="subenla11" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
             </div>
         </nav>
         <section id="coursemod">
@@ -465,11 +507,12 @@ Comienza eliminar usuario*/
 /*Fin modificar curso
 Comienza eliminar curso*/
         }elseif(isset($_GET['rm']) and $_GET['rm']==2 and isset($_GET['rt']) and $_GET['rt']==3){?>
-            <nav id="nav1">
-              <div class="icon-bar">
-              <a href="#"  id="enla1" onclick="desplegar(this,'nav2')"><span><?= USUARIOS ?></span><i class="fas fa-user ico"></i></a> 
-              <a href="#" class="active" id="enla2" onclick="desplegar(this,'nav3')"><span><?= CURSOS ?></span><i class="fas fa-calendar-alt ico"></i></a> 
-              <a href="#" id="enla3" onclick="desplegar(this,'nav4')"><span><?= PROYECT ?></span><i class="fas fa-file ico"></i></a> 
+        <nav id="nav1">
+              <div class="icon-bar2">
+              <a href="#" id="enla1" onclick="desplegarAdmin(this,'nav2')"><span><?= USUARIOS ?> </span><i class="fas fa-user ico"></i></a> 
+              <a href="#" id="enla2" class="active" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?> </span><i class="fas fa-calendar-alt ico"></i></a> 
+              <a href="#" id="enla3" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?> </span><i class="fas fa-file ico"></i></a>
+              <a href="#" id="enla4" onclick="desplegarAdmin(this,'nav5')"><span><?= OTHERS ?> </span><i class="fas fa-cogs ico"></i></a> 
             </div>
           </nav>
         <nav id="nav2" class="oculto">
@@ -491,6 +534,12 @@ Comienza eliminar curso*/
               <a href="?rm=3&rt=1&a=3" id="subenla7" onclick="desplegar2(this)"><i class="fas fa-file-alt ico"></i></a> 
               <a href="?rm=3&rt=2&a=3" id="subenla8" onclick="desplegar2(this)"><i class="fas fa-file-code ico"></i></a> 
               <a href="?rm=3&rt=3&a=3" id="subenla9" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
+            </div>
+        </nav>
+        <nav id="nav5" class="oculto">
+          <div class="icon-bar3">
+              <a href="?rm=4&rt=1&a=3" id="subenla10" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
+              <a href="?rm=4&rt=2&a=3" id="subenla11" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
             </div>
         </nav>
         <section id="userdel">
@@ -525,11 +574,12 @@ Comienza eliminar curso*/
       Comienza la pestaña proyectos
       Crear nuevo proyecto*/
         }elseif(isset($_GET['rm']) and $_GET['rm']==3 and isset($_GET['rt']) and $_GET['rt']==1){?>
-            <nav id="nav1">
-              <div class="icon-bar">
-              <a href="#"  id="enla1" onclick="desplegar(this,'nav2')"><span><?= USUARIOS ?></span><i class="fas fa-user ico"></i></a> 
-              <a href="#"  id="enla2" onclick="desplegar(this,'nav3')"><span><?= CURSOS ?></span><i class="fas fa-calendar-alt ico"></i></a> 
-              <a href="#" id="enla3" class="active" onclick="desplegar(this,'nav4')"><span><?= PROYECT ?></span><i class="fas fa-file ico"></i></a> 
+        <nav id="nav1">
+              <div class="icon-bar2">
+              <a href="#" id="enla1" onclick="desplegarAdmin(this,'nav2')"><span><?= USUARIOS ?> </span><i class="fas fa-user ico"></i></a> 
+              <a href="#" id="enla2" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?> </span><i class="fas fa-calendar-alt ico"></i></a> 
+              <a href="#" id="enla3" class="active" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?> </span><i class="fas fa-file ico"></i></a>
+              <a href="#" id="enla4" onclick="desplegarAdmin(this,'nav5')"><span><?= OTHERS ?> </span><i class="fas fa-cogs ico"></i></a> 
             </div>
           </nav>
         <nav id="nav2" class="oculto">
@@ -551,6 +601,12 @@ Comienza eliminar curso*/
               <a href="?rm=3&rt=1&a=3" class="active" id="subenla7" onclick="desplegar2(this)"><i class="fas fa-file-alt ico"></i></a> 
               <a href="?rm=3&rt=2&a=3" id="subenla8" onclick="desplegar2(this)"><i class="fas fa-file-code ico"></i></a> 
               <a href="?rm=3&rt=3&a=3" id="subenla9" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
+            </div>
+        </nav>
+        <nav id="nav5" class="oculto">
+          <div class="icon-bar3">
+              <a href="?rm=4&rt=1&a=3" id="subenla10" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
+              <a href="?rm=4&rt=2&a=3" id="subenla11" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
             </div>
         </nav>
     <section id="addproy">
@@ -596,11 +652,12 @@ Comienza eliminar curso*/
         /*Fin añadir proyecto
         Comienzo modificar proyecto*/
             }elseif(isset($_GET['rm']) and $_GET['rm']==3 and isset($_GET['rt']) and $_GET['rt']==2){?>
-            <nav id="nav1">
-              <div class="icon-bar">
-              <a href="#"  id="enla1" onclick="desplegar(this,'nav2')"><span><?= USUARIOS ?></span><i class="fas fa-user ico"></i></a> 
-              <a href="#"  id="enla2" onclick="desplegar(this,'nav3')"><span><?= CURSOS ?></span><i class="fas fa-calendar-alt ico"></i></a> 
-              <a href="#" id="enla3" class="active" onclick="desplegar(this,'nav4')"><span><?= PROYECT ?></span><i class="fas fa-file ico"></i></a> 
+        <nav id="nav1">
+              <div class="icon-bar2">
+              <a href="#" id="enla1" onclick="desplegarAdmin(this,'nav2')"><span><?= USUARIOS ?> </span><i class="fas fa-user ico"></i></a> 
+              <a href="#" id="enla2" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?> </span><i class="fas fa-calendar-alt ico"></i></a> 
+              <a href="#" id="enla3" class="active" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?> </span><i class="fas fa-file ico"></i></a>
+              <a href="#" id="enla4" onclick="desplegarAdmin(this,'nav5')"><span><?= OTHERS ?> </span><i class="fas fa-cogs ico"></i></a> 
             </div>
           </nav>
         <nav id="nav2" class="oculto">
@@ -622,6 +679,12 @@ Comienza eliminar curso*/
               <a href="?rm=3&rt=1&a=3"  id="subenla7" onclick="desplegar2(this)"><i class="fas fa-file-alt ico"></i></a> 
               <a href="?rm=3&rt=2&a=3"  class="active" id="subenla8" onclick="desplegar2(this)"><i class="fas fa-file-code ico"></i></a> 
               <a href="?rm=3&rt=3&a=3" id="subenla9" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
+            </div>
+        </nav>
+        <nav id="nav5" class="oculto">
+          <div class="icon-bar3">
+              <a href="?rm=4&rt=1&a=3" id="subenla10" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
+              <a href="?rm=4&rt=2&a=3" id="subenla11" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
             </div>
         </nav>
         <section id="coursemod">
@@ -740,11 +803,12 @@ Comienza eliminar curso*/
                 /*fin de modificar proyecto
                 comienzo de quitar publicacion proyecto*/
             }elseif(isset($_GET['rm']) and $_GET['rm']==3 and isset($_GET['rt']) and $_GET['rt']==3){?>
-            <nav id="nav1">
-              <div class="icon-bar">
-              <a href="#"  id="enla1" onclick="desplegar(this,'nav2')"><span><?= USUARIOS ?></span><i class="fas fa-user ico"></i></a> 
-              <a href="#"  id="enla2" onclick="desplegar(this,'nav3')"><span><?= CURSOS ?></span><i class="fas fa-calendar-alt ico"></i></a> 
-              <a href="#" id="enla3" class="active" onclick="desplegar(this,'nav4')"><span><?= PROYECT ?></span><i class="fas fa-file ico"></i></a> 
+        <nav id="nav1">
+              <div class="icon-bar2">
+              <a href="#" id="enla1" onclick="desplegarAdmin(this,'nav2')"><span><?= USUARIOS ?> </span><i class="fas fa-user ico"></i></a> 
+              <a href="#" id="enla2" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?> </span><i class="fas fa-calendar-alt ico"></i></a> 
+              <a href="#" id="enla3" class="active" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?> </span><i class="fas fa-file ico"></i></a>
+              <a href="#" id="enla4" onclick="desplegarAdmin(this,'nav5')"><span><?= OTHERS ?> </span><i class="fas fa-cogs ico"></i></a> 
             </div>
           </nav>
         <nav id="nav2" class="oculto">
@@ -766,6 +830,12 @@ Comienza eliminar curso*/
               <a href="?rm=3&rt=1&a=3"  id="subenla7" onclick="desplegar2(this)"><i class="fas fa-file-alt ico"></i></a> 
               <a href="?rm=3&rt=2&a=3"   id="subenla8" onclick="desplegar2(this)"><i class="fas fa-file-code ico"></i></a> 
               <a href="?rm=3&rt=3&a=3" class="active" id="subenla9" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
+            </div>
+        </nav>
+        <nav id="nav5" class="oculto">
+          <div class="icon-bar3">
+              <a href="?rm=4&rt=1&a=3" id="subenla10" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
+              <a href="?rm=4&rt=2&a=3" id="subenla11" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
             </div>
         </nav>
             <section id="proydel">
@@ -811,7 +881,285 @@ Comienza eliminar curso*/
     </section>
     <?php
     /*FIn de quitar publicacion
-    fin del cpanel admin*/
+    Fin pestaña proyectos
+    comienza pestaña otros
+    Comienza fotos del index*/
+    }elseif(isset($_GET['rm']) and $_GET['rm']==4 and isset($_GET['rt']) and $_GET['rt']==1){?>
+        <nav id="nav1">
+              <div class="icon-bar2">
+              <a href="#" id="enla1" onclick="desplegarAdmin(this,'nav2')"><span><?= USUARIOS ?> </span><i class="fas fa-user ico"></i></a> 
+              <a href="#" id="enla2" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?> </span><i class="fas fa-calendar-alt ico"></i></a> 
+              <a href="#" id="enla3" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?> </span><i class="fas fa-file ico"></i></a>
+              <a href="#" id="enla4" class="active" onclick="desplegarAdmin(this,'nav5')"><span><?= OTHERS ?> </span><i class="fas fa-cogs ico"></i></a> 
+            </div>
+          </nav>
+        <nav id="nav2" class="oculto">
+            <div class="icon-bar">
+              <a href="?rm=1&rt=1&a=3" id="subenla1" onclick="desplegar2(this)"><i class="fas fa-user-plus ico"></i></a> 
+              <a href="?rm=1&rt=2&a=3"  id="subenla2" onclick="desplegar2(this)"><i class="fas fa-user-md ico"></i></a> 
+              <a href="?rm=1&rt=3&a=3"  id="subenla3" onclick="desplegar2(this)"><i class="fas fa-user-times ico"></i></a> 
+            </div>
+        </nav>
+        <nav id="nav3" class="oculto">
+          <div class="icon-bar">
+              <a href="?rm=2&rt=1&a=3" id="subenla4" onclick="desplegar2(this)"><i class="fas fa-calendar-plus ico"></i></a> 
+              <a href="?rm=2&rt=2&a=3" id="subenla5" onclick="desplegar2(this)"><i class="fas fa-calendar-check ico"></i></a> 
+              <a href="?rm=2&rt=3&a=3"  id="subenla6" onclick="desplegar2(this)"><i class="fas fa-calendar-times ico"></i></a>  
+            </div>
+        </nav>
+        <nav id="nav4" class="oculto">
+          <div class="icon-bar">
+              <a href="?rm=3&rt=1&a=3"  id="subenla7" onclick="desplegar2(this)"><i class="fas fa-file-alt ico"></i></a> 
+              <a href="?rm=3&rt=2&a=3"   id="subenla8" onclick="desplegar2(this)"><i class="fas fa-file-code ico"></i></a> 
+              <a href="?rm=3&rt=3&a=3" id="subenla9" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
+            </div>
+        </nav>
+        <nav id="nav5">
+          <div class="icon-bar3">
+              <a href="?rm=4&rt=1&a=3" class="active" id="subenla10" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
+              <a href="?rm=4&rt=2&a=3" id="subenla11" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
+            </div>
+        </nav>   
+                <section id="adduser">
+            <fieldset id="fotosact"> 
+                <legend><?=FOTACT?></legend>
+                <?php 
+        /*recuperamos las fotos del index*/
+                $fotosIndex=consulta($conexion,"SELECT * FROM imagenes_ies order by id_img");
+                $totalImg=mysqli_num_rows($fotosIndex);
+                if($totalImg == 0){?>
+                    <p style="color:limegreen;font-size:1.3em;text-align:center;"><?=NOFOTS?></p>
+                <?php }else{?>
+                <table>
+                    <tr>
+                    <th><?=IMAGEN?></th>
+                    <th><?=NAMEFOT?></th>
+                    </tr>
+                    <?php
+                    while($img= mysqli_fetch_array($fotosIndex)){
+                    $imagen=$img['nombre_img'];
+                    ?>
+                       <tr>
+                        <td>
+                            <img src="<?=IES_IMG?><?=$imagen?>" alt="" width="150">
+                        </td>
+                           <td><p><?=$imagen?></p></td>
+                    </tr>
+                    <?php }
+                    ?>
+                </table>
+                <?php }
+                ?>
+            </fieldset>
+            <fieldset id="fotosub">
+                <legend><?=SUBFOTOS?></legend>
+<style type="text/css">
+  .demo-droppable {
+    background: #08c;
+    color: limegreen;
+    padding: 100px 0;
+    text-align: center;
+    border: 2px solid limegreen;
+      margin: 10px auto;
+      width: 95%;
+  }
+  .demo-droppable.dragover {
+    background: #00CC71;
+  }
+</style>
+<?php
+        ?>
+<form method="post" id="formulario" enctype="multipart/form-data" action="subirfotosindex.php">
+<div class="demo-droppable">
+  <h3><?=DROPTEXT?></h3>
+</div>
+<div class="output"></div>
+<script type="text/javascript">
+  (function(window) {
+    function triggerCallback(e, callback) {
+      if(!callback || typeof callback !== 'function') {
+        return;
+      }
+      var files;
+      if(e.dataTransfer) {
+        files = e.dataTransfer.files;
+      } else if(e.target) {
+        files = e.target.files;
+      }
+      callback.call(null, files);
+    }
+    function makeDroppable(ele, callback) {
+      var input = document.createElement('input');
+      input.setAttribute('type', 'file');
+      input.setAttribute('multiple', true);
+      input.setAttribute('name','files[]');
+      input.setAttribute('id','files');
+      input.setAttribute('accept','image/*');
+      input.style.display = 'none';
+      input.addEventListener('change', function(e) {
+        triggerCallback(e, callback);
+      });
+      ele.appendChild(input);
+      
+      ele.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        ele.classList.add('dragover');
+      });
+
+      ele.addEventListener('dragleave', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        ele.classList.remove('dragover');
+      });
+
+      ele.addEventListener('drop', function(e) {
+        input.value = null;
+        e.preventDefault();
+        e.stopPropagation();
+        ele.classList.remove('dragover');
+        triggerCallback(e, callback);
+      });
+      
+      ele.addEventListener('click', function() {
+        input.value = null;
+        input.click();
+      });
+    }
+    window.makeDroppable = makeDroppable;
+  })(this);
+  (function(window) {
+    makeDroppable(window.document.querySelector('.demo-droppable'), function(files) {
+      console.log(files);
+        document.getElementById('files').files=files;
+      var output = document.querySelector('.output');
+      output.innerHTML = '';
+      for(var i=0; i<files.length; i++) {
+        if(files[i].type.indexOf('image/') === 0) {
+          output.innerHTML += '<img class="imgtemp" src="' + URL.createObjectURL(files[i]) + '"/>';
+        }
+        output.innerHTML += '<p class="textfoto">'+files[i].name+'</p>';
+      }
+        
+    });
+  })(this);
+</script>
+               <button type="submit"><i class="fas fa-upload edicion"></i></button>
+                        <p id="error"><?php
+                            if(isset($_SESSION['msgsubfot'])){
+                                echo $_SESSION['msgsubfot'];
+                                unset($_SESSION['msgsubfot']);
+                            } ?></p>
+                </form>
+            </fieldset>
+                        <?php /*fin de subir fotos
+            comienza borrar fotos*/
+                    ?>
+            <fieldset id="fotodel">
+                <legend><?=DELFOTOS?></legend>
+                <?php  
+                    $imgAct= consulta($conexion,"SELECT * from imagenes_ies order by id_img");
+                $totalImg= mysqli_num_rows($imgAct);
+                if($totalImg == 0){?>
+                    <p style="color:limegreen;font-size:1.3em;text-align:center;"><?=NOFOTS?></p>
+                <?php }else{
+                    ?>
+                    <div id="textImg">
+                    <p class="textImg"><?=FOTACT?>:</p><p class="textImg"><?=PHOTODEL?>:</p>
+                    </div>
+                <form method="post" enctype="multipart/form-data" action="eliminarfotosindex.php">
+                <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+                  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+                  <link href="_css/jquery.lwMultiSelect.css" rel="stylesheet" type="text/css" />
+                  <script type="text/javascript" src="_js/jquery.lwMultiSelect.js"></script>
+                  <style>
+                  .container { margin:10px auto; 
+                      width: 100%;}
+                  </style>
+        
+                   <p><select id="defaults" multiple="multiple" name="fotos[]" id="delfotos">
+                   <?php
+                   while($img= mysqli_fetch_array($imgAct)){
+                       $idImg=$img['id_img'];
+                    $imagen=$img['nombre_img']; ?>
+                       <option value="<?=$idImg?>"><p><?=$imagen?></p></option>
+                   <?php }
+                    ?>
+                   </select>
+                   <?php 
+                       $_SESSION['fotosdel']=1;
+                       ?>
+                      </p>
+                    <script>
+                    jQuery('#defaults').lwMultiSelect();
+                    </script>
+                    <script type="text/javascript">
+
+                      var _gaq = _gaq || [];
+                      _gaq.push(['_setAccount', 'UA-36251023-1']);
+                      _gaq.push(['_setDomainName', 'jqueryscript.net']);
+                      _gaq.push(['_trackPageview']);
+
+                      (function() {
+                        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                      })();
+
+                    </script>
+                               <button type="submit" id=btnborrar><i class="fas fa-times cancel edicion2"></i></button>
+                                                  <p id="error"><?php
+                                                if(isset($_SESSION['msgalfot'])){
+                                                    echo $_SESSION['msgalfot'];
+                                                    unset($_SESSION['msgalfot']);
+                                                } ?></p>
+                                    </form>
+                                    <?php } ?>
+                                </fieldset>
+                            </section>
+        <?php   
+            /*fin de fotos del index
+            Comienza comentarios*/
+    }elseif(isset($_GET['rm']) and $_GET['rm']==4 and isset($_GET['rt']) and $_GET['rt']==2){?>
+        <nav id="nav1">
+              <div class="icon-bar2">
+              <a href="#" id="enla1" onclick="desplegarAdmin(this,'nav2')"><span><?= USUARIOS ?> </span><i class="fas fa-user ico"></i></a> 
+              <a href="#" id="enla2" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?> </span><i class="fas fa-calendar-alt ico"></i></a> 
+              <a href="#" id="enla3" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?> </span><i class="fas fa-file ico"></i></a>
+              <a href="#" id="enla4" class="active" onclick="desplegarAdmin(this,'nav5')"><span><?= OTHERS ?> </span><i class="fas fa-cogs ico"></i></a> 
+            </div>
+          </nav>
+        <nav id="nav2" class="oculto">
+            <div class="icon-bar">
+              <a href="?rm=1&rt=1&a=3" id="subenla1" onclick="desplegar2(this)"><i class="fas fa-user-plus ico"></i></a> 
+              <a href="?rm=1&rt=2&a=3"  id="subenla2" onclick="desplegar2(this)"><i class="fas fa-user-md ico"></i></a> 
+              <a href="?rm=1&rt=3&a=3"  id="subenla3" onclick="desplegar2(this)"><i class="fas fa-user-times ico"></i></a> 
+            </div>
+        </nav>
+        <nav id="nav3" class="oculto">
+          <div class="icon-bar">
+              <a href="?rm=2&rt=1&a=3" id="subenla4" onclick="desplegar2(this)"><i class="fas fa-calendar-plus ico"></i></a> 
+              <a href="?rm=2&rt=2&a=3" id="subenla5" onclick="desplegar2(this)"><i class="fas fa-calendar-check ico"></i></a> 
+              <a href="?rm=2&rt=3&a=3"  id="subenla6" onclick="desplegar2(this)"><i class="fas fa-calendar-times ico"></i></a>  
+            </div>
+        </nav>
+        <nav id="nav4" class="oculto">
+          <div class="icon-bar">
+              <a href="?rm=3&rt=1&a=3"  id="subenla7" onclick="desplegar2(this)"><i class="fas fa-file-alt ico"></i></a> 
+              <a href="?rm=3&rt=2&a=3"   id="subenla8" onclick="desplegar2(this)"><i class="fas fa-file-code ico"></i></a> 
+              <a href="?rm=3&rt=3&a=3" id="subenla9" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
+            </div>
+        </nav>
+        <nav id="nav5">
+          <div class="icon-bar3">
+              <a href="?rm=4&rt=1&a=3" id="subenla10" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
+              <a href="?rm=4&rt=2&a=3" class="active" id="subenla11" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
+            </div>
+        </nav>
+           ccoments
+           <?php
+            /*Fin comentarios
+    Fin del cpanel admin*/
     }
     include('_include/footer.php');
     ?>
