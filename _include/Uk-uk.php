@@ -208,3 +208,7 @@ define('OTHERS','Others');
 define('ELIMINAR_COMENTARIO','Remove comments');
 define('NO_COMENTARIO','There is no comment');
 define('DELYES','Comment deleted correctly');
+//nuevo 20/05
+define('TOLVPASS','It will be sent an email with a link from which you can reset your password');
+define('FAILMAIL','The entered email is not registered');
+define('TCPASS','Enter a new password, remember that it can not match your email');

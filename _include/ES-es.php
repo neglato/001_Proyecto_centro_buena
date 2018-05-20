@@ -207,3 +207,7 @@ define('OTHERS','Otros');
 define('ELIMINAR_COMENTARIO','Eliminar comentarios');
 define('NO_COMENTARIO','No existe ningún comentario');
 define('DELYES','Comentario eliminado correctamente');
+//nuevo 20/05
+define('TOLVPASS','Se le enviará un email con un enlace desde el cual podra reestablecer su contraseña');
+define('FAILMAIL','El email introducido no está registrado');
+define('TCPASS','Introduzca una nueva contraseña, recuerde que no puede coincidir con su email');

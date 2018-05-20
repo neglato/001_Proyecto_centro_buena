@@ -212,10 +212,7 @@ if(isset($_SESSION['password']) && isset($_SESSION['email']) && $_SESSION['passw
                   <button type="submit" id="submit"><?=LOGBUTTON?></button>
                   <button type="button" onclick="oculLog(document.getElementById('opaco'))"><?=LOGCAN?></button>
             </div>
-            <div id="check">
-                    <input type="checkbox" checked="checked"><?=LOGREM?>
-                    </div>
-           <p><?=LOGFOR?> <a href="#"><?=LOGPASS?>?</a></p>
+           <p><?=LOGFOR?> <a href="<?=$olvidaPass?>"><?=LOGPASS?>?</a></p>
             <p id="msg"><?php 
                             if(isset($_SESSION['msg'])){
                                 echo $_SESSION['msg'];

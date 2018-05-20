@@ -13,3 +13,6 @@ $nomBBDD="ies";
 //cuenta correo
 $cuenta="idhappmaster@gmail.com";
 $passEmail="adminIdh1572";
+//otros
+$olvidaPass="olvidopass.php";
+$enlacePass="http://192.168.1.23/001_Proyecto_centro_buena/cambiapass.php?proy=";
