@@ -76,6 +76,9 @@ section fieldset article #fotoperfil #movil form input[type='file']{
     position: relative;
     left: 2.5%;
 }
+#pc{
+    display: none;
+}
 section fieldset article #fotoperfil #pc{
     display: none;
 }
