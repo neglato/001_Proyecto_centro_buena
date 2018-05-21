@@ -56,6 +56,7 @@ $activo=2;
         $email=$row['email'];
     }
     ?>
+<div id="separar2"></div>
 <section>
     <fieldset id="perfil">
         <figure>

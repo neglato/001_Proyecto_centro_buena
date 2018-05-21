@@ -51,6 +51,7 @@ $activo=2;
         $email=$_SESSION['email'];
     }
     ?>
+    <div id="separar2"></div>
 <section>
    <?php 
     if (!isset($_GET['ed'])){
@@ -145,6 +146,7 @@ $activo=2;
     }else{
         /*Edicion de perfil*/
         ?>
+        <article>
         <fieldset id="perfil">
         <figure>
             <figcaption><?=FOTPER?></figcaption>
@@ -161,7 +163,26 @@ $activo=2;
                       }
                       ?>" alt="">
         </figure>
-        <article>
+        <fieldset id="fotoperfilpc">
+           <legend><?=FOTPER?></legend>
+           <div id="pc">
+                    <form action="subir.php" method="post" enctype="multipart/form-data">
+                        <button id="buttonfot"><i class="fas fa-folder-open editar"></i></button> 
+                        <input type="file" name="fichero">
+                        <button type="submit" name="submit" id="buttonsbr"><i class="fas fa-upload editar"></i></button>
+                        <button id="buttoncan" onclick="borrarFoto('<?=$rutaimg?>')" type="button"><i class="fas fa-trash-alt cancel"></i></button>
+                        <button id="buttonre" onclick="deshacer('<?=$rutaimg?>')" type="button"><i class="fas fa-reply cancel"></i></button>
+                    </form> 
+                     
+                     <p id="error"><?php
+                                        if(isset($_SESSION['msgfoto'])){
+                                            echo $_SESSION['msgfoto'];
+                                            unset($_SESSION['msgfoto']);
+                                        }
+                                    ?></p> 
+               </div>
+            </fieldset>
+        <article class=editandoperfil>
            <fieldset id="fotoperfil">
            <legend><?=FOTPER?></legend>
            <div id="movil">
@@ -179,16 +200,6 @@ $activo=2;
                                             unset($_SESSION['msgfoto']);
                                         }
                                     ?></p> 
-               </div>
-               <div id="pc">
-                    <form action="subir.php" method="post" enctype="multipart/form-data">
-                       <div id="elefotopc">
-                           <i class="fas fa-folder-open editar"></i>
-                           <input name="fichero" type="file" id="subir">
-                        </div>
-                        <input name="submit" type="submit"><i class="fas fa-upload"></i>
-                        <button><div id="edit"><?=DEL?></div><i class="fas fa-trash-alt cancel"></i></button>  
-                    </form>  
                </div>
             </fieldset>
             <fieldset id="datosperfil">
@@ -233,6 +244,7 @@ $activo=2;
         </article>
         <div id="separar"></div>
     </fieldset>
+    </article>
     <?php
                                         mysqli_close($conexion);
         }
