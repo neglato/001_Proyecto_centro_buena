@@ -120,6 +120,12 @@ section fieldset article #fotoperfil #pc{
     clear: both;
     text-align: center;
 }
+section fieldset legend{
+    font-size: 1.3em;
+    color: limegreen;
+    text-align: left;
+    margin-left: 10%;
+}
 section #perfil  article #fotoperfil,section #perfil  article #datosperfil{
     margin-bottom: 10px;
 }
@@ -312,7 +318,7 @@ section #perfil #separar{
         display: block;
 }
     section #perfil #pass p{
-        margin:0 20% 0 30%;
+    margin:0 40% 0 10%;
     width: 50%;
     display: block;
         text-align: left;
