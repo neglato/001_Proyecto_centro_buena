@@ -48,7 +48,7 @@ define('DATPER','User Data');
 define('FOTSUB','Photo updated correctly');
 define('FOTBOR','Photo deleted correctly');
 define('FOTAFK','There is no photo to erase');
-define('RESCOR','Image restored correctly');
+define('RESCOR','Image restored');
 define('NOFOT','There is no image to restore');
 define('OLDPASS','Current password: ');
 define('NEWPASS','New password: ');
