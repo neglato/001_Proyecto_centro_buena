@@ -157,6 +157,7 @@ header #pc{
     left: 7.5%;
     top: 7.5%;
     width: 85%;
+    max-width: 500px;
     /*decimos que animacion va a usar*/
     animation-name: animacion;
     -webkit-animation-name:animacion;
@@ -352,9 +353,9 @@ header #pc{
     }
     #opaco #login{
     display: block;
-    width: 40%;
+    width: 60%;
     position: fixed; 
-    left: 30%;
+    left: 20%;
     top: 7.5%;
     
     }
@@ -391,13 +392,22 @@ header #pc{
 }
 
 
-/*cuando pase de la resolucion 1370, se centra todo y deja 2 franjas a los lados*/
+
 @media (min-width: 1065px) {
         header #pc ul li  p{
         color: limegreen;
         font-size: 1.2em!important;
         }
+    #opaco #login{
+    display: block;
+    width: 40%;
+    position: fixed; 
+    left: 30%;
+    top: 7.5%;
+    
     }
+    }
+    /*cuando pase de la resolucion 1370, se centra todo y deja 2 franjas a los lados*/
 @media (min-width: 1370px) {
     body{
         width: 80%;
