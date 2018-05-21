@@ -235,7 +235,7 @@ header #pc{
     font-size: 1.2em;
 }
 /*Diseño de escritorio*/
-@media (min-width: 900px) {
+@media (min-width: 980px) {
     header figure {
         width: 10%;
         margin: 1% 1% 1% 5%;
@@ -345,7 +345,7 @@ header #pc{
     }
     header #pc ul li  p{
         color: limegreen;
-        font-size: 1.2em;
+        font-size: 1.1em!important;
     }
     .activoico{
         color:#1a5ad4!important;
@@ -392,6 +392,12 @@ header #pc{
 
 
 /*cuando pase de la resolucion 1370, se centra todo y deja 2 franjas a los lados*/
+@media (min-width: 1065px) {
+        header #pc ul li  p{
+        color: limegreen;
+        font-size: 1.2em!important;
+        }
+    }
 @media (min-width: 1370px) {
     body{
         width: 80%;
