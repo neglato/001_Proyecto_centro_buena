@@ -212,3 +212,4 @@ define('DELYES','Comment deleted correctly');
 define('TOLVPASS','It will be sent an email with a link from which you can reset your password');
 define('FAILMAIL','The entered email is not registered');
 define('TCPASS','Enter a new password, remember that it can not match your email');
+define('SINCOIN','without coincidences');
