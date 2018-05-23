@@ -20,8 +20,6 @@ if(isset($_POST['id_proy'])){
                 header('Location: cpaneladmin.php?rm=3&rt=2&a=3');
             }
 }
-/*$_SESSION['user']=1;*/
-/*session_destroy();*/
 $activo=3;
 ?>
 <html lang="es">
@@ -257,7 +255,6 @@ $activo=3;
                             } ?></p>
             </form>
         </fieldset>
-    </section>
             <?php 
             }else{ ?>
                 <fieldset>
@@ -288,6 +285,9 @@ $activo=3;
             </fieldset>
         
             <?php }
+                    ?>
+                    </section>
+                    <?php
 /*Fin editar usuario
 Comienza eliminar usuario*/
         }elseif(isset($_GET['rm']) and $_GET['rm']==1 and isset($_GET['rt']) and $_GET['rt']==3){?>
@@ -472,10 +472,8 @@ Comienza eliminar usuario*/
                             } ?></p>
             </form>
         </fieldset>
-    </section>
             <?php 
             }else{ ?>
-               <section id="coursemod">
                 <fieldset>
                 <legend><?=MODIFICAR_CURSO?></legend>
                     <form action="" method="post" enctype="multipart/form-data">
@@ -502,8 +500,9 @@ Comienza eliminar usuario*/
                             } ?></p>
                 </form>
             </fieldset>
-    </section>
-            <?php }
+            <?php }?>
+                </section>
+                <?php
                 
 /*Fin modificar curso
 Comienza eliminar curso*/
@@ -616,7 +615,7 @@ Comienza eliminar curso*/
             <form action="addnewproyect.php" method="post" enctype="multipart/form-data">
             <p><?=NOMES?>:</p><input type="text"  name="nombre" required>
             <p><?=NAMES?>:</p><input type="text"  name="name" required>
-                <p id="selectcurso"><?=CUR?> </p>
+                <p><?=CUR?> </p>
                     <select name="id_curso" id="icur">
                     <option value="-1"><?=SELCUR?></option>
                                             <?php
@@ -629,7 +628,7 @@ Comienza eliminar curso*/
                     }  
                 ?>
                 </select>
-                    <p id="selectuser"><?=COOR?>: </p>
+                    <p><?=COOR?>: </p>
                     <select name="id_coor" id="icoor">
                         <option value="-1"><?=COOR?></option>
                     
@@ -757,10 +756,8 @@ Comienza eliminar curso*/
                             } ?></p>
             </form>
         </fieldset>
-    </section>
             <?php 
             }else{ ?>
-               <section id="coursemod">
                 <fieldset>
                 <legend><?=MODIFICAR_PROYECTO?></legend>
                     <form action="" method="post" enctype="multipart/form-data">
@@ -798,9 +795,11 @@ Comienza eliminar curso*/
                             } ?></p>
                 </form>
             </fieldset>
-    </section>
+    
             <?php
-                 }
+                 }?>
+                 </section>
+                 <?php
                 /*fin de modificar proyecto
                 comienzo de quitar publicacion proyecto*/
             }elseif(isset($_GET['rm']) and $_GET['rm']==3 and isset($_GET['rt']) and $_GET['rt']==3){?>
@@ -921,7 +920,7 @@ Comienza eliminar curso*/
               <a href="?rm=4&rt=2&a=3" id="subenla11" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
             </div>
         </nav>   
-                <section id="adduser">
+                <section id="fotosindex">
             <fieldset id="fotosact"> 
                 <legend><?=FOTACT?></legend>
                 <?php 
@@ -942,7 +941,7 @@ Comienza eliminar curso*/
                     ?>
                        <tr>
                         <td>
-                            <img src="<?=IES_IMG?><?=$imagen?>" alt="" width="150">
+                            <img class="imagen" src="<?=IES_IMG?><?=$imagen?>" alt="">
                         </td>
                            <td><p><?=$imagen?></p></td>
                     </tr>

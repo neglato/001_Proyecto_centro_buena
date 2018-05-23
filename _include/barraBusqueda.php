@@ -1,6 +1,6 @@
 <?php
      session_start();
-
+include('variables.php');
 if(isset($_SESSION['lang'])){
 if($_SESSION['lang']==1){
     include('UK-uk.php'); 
