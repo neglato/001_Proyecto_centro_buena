@@ -726,7 +726,7 @@ Comienza eliminar curso*/
                     }  
                 ?>
                 </select>
-                    <p id="selectuser"><?=COOR?>: </p>
+                    <p ><?=COOR?>: </p>
                     <select name="id_coor" id="icoor">
                         <option value="-1"><?=COOR?></option>
                     
@@ -1156,7 +1156,7 @@ Comienza eliminar curso*/
               <a href="?rm=4&rt=2&a=3" class="active" id="subenla11" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
             </div>
         </nav>
-            <section id="usermod">
+            <section id="commentarioscpanel">
          <?php 
             if(isset($_POST['id_proyAd']) || isset($_GET['idp'])){
             if(isset($_GET['idp'])){
@@ -1190,7 +1190,6 @@ Comienza eliminar curso*/
                                     echo $nombrePro;
                                     }?>
                    </legend>
-                    <fieldset id="coments">
                         <p id="error">
                            <?php
                                 $_SESSION['msgprofe']=NO_COMENTARIO;
@@ -1198,7 +1197,6 @@ Comienza eliminar curso*/
                                     unset($_SESSION['msgprofe']);
                              ?>
                 </p>
-                    </fieldset>
                        </fieldset>
                 </article>
                 <?php }else{?>
@@ -1230,23 +1228,17 @@ Comienza eliminar curso*/
                             $user=$comentario['usuario'];
                             $texto=$comentario['comentario'];
                     ?>
-                            <fieldset id="coments">
+                            <fieldset class="coments">
                                 <form method="post" enctype="multipart/form-data" action="eliminarcomentarios.php">
-                                  <table>
-                                  <tr>
-                                  <td>
-                                   <div>
+                                   <div class="textocom">
                                        <h2><?=$user?> <?=SAY?>:</h2>
                                         <p><?=$texto?></p>
                                    </div>
+                                   <div class="buttoncom">
                                     <input type="hidden" value="<?=$id_com?>" name="comentario">
                                     <input type="hidden" value="<?=$idp?>" name="proyecto">
-                                      </td>
-                                      <td class="botontabla">
                                           <button type="submit" class="combutton"><i class="fas fa-times edicion3"></i></button>
-                                      </td>
-                                    </tr>
-                                    </table>
+                                    </div>
                                 </form>
                             </fieldset>
                 
@@ -1289,9 +1281,10 @@ Comienza eliminar curso*/
                             } ?></p>
                 </form>
             </fieldset>
-    </section>
            <?php
-        }
+        }?>
+        </section>
+        <?php
     /*Fin comentarios
     Fin del cpanel admin*/
     }

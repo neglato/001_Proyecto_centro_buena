@@ -57,7 +57,7 @@ nav#nav1{
 #comentarios fieldset table tr td{
     color: limegreen;
 }
-#coments{
+.coments{
     border: none!important;
 }
 .botontabla{
@@ -67,6 +67,7 @@ nav#nav1{
     width: 50%!important;
     margin:auto 0 auto 42.5%!important;
     display: block;
+    background-color: limegreen;
 }
 .edicion3{
     font-size: 1.7em;
@@ -116,25 +117,25 @@ nav.oculto{
 .icon-bar a i.ico, .icon-bar2 a i.ico, .icon-bar3 a i.ico{
     font-size: 1.9em;
 }
-#adduser, #usermod, #userdel, #user2proy, #userdelproy, #addcourse, #coursemod, #addproy,#proydel,#proypublic,#proyNOpublic,#proyedit, #fotosindex{
+#adduser, #usermod, #userdel, #user2proy, #userdelproy, #addcourse, #coursemod, #addproy,#proydel,#proypublic,#proyNOpublic,#proyedit, #fotosindex, #commentarioscpanel{
     margin: 0px;
     width: 100%;
     background-color:#1a5ad4; 
     padding-bottom: 10px;
     
 }
-#adduser fieldset, #usermod fieldset, #userdel fieldset, #user2proy fieldset, #userdelproy fieldset, #addcourse fieldset, #coursemod fieldset, #addproy fieldset, #proydel fieldset, #proypublic fieldset,#proyNOpublic fieldset,#proyedit fieldset, #fotosindex fieldset{
+#adduser fieldset, #usermod fieldset, #userdel fieldset, #user2proy fieldset, #userdelproy fieldset, #addcourse fieldset, #coursemod fieldset, #addproy fieldset, #proydel fieldset, #proypublic fieldset,#proyNOpublic fieldset,#proyedit fieldset, #fotosindex fieldset, #commentarioscpanel fieldset{
     width: 98%;
     margin: 0px auto;
     border: 2px solid limegreen;
     margin-bottom: 10px;
 }
-#adduser fieldset legend, #fotosindex fieldset legend, #usermod fieldset legend, #userdel fieldset legend, #user2proy fieldset legend, #userdelproy fieldset legend, #addcourse fieldset legend, #coursemod fieldset legend, #addproy fieldset legend, #proydel fieldset legend, #proypublic fieldset legend,#proyNOpublic fieldset legend,#proyedit fieldset legend,#actual legend {
+#adduser fieldset legend, #fotosindex fieldset legend, #usermod fieldset legend, #userdel fieldset legend, #user2proy fieldset legend, #userdelproy fieldset legend, #addcourse fieldset legend, #coursemod fieldset legend, #addproy fieldset legend, #proydel fieldset legend, #proypublic fieldset legend,#proyNOpublic fieldset legend,#proyedit fieldset legend,#actual legend, #commentarioscpanel fieldset legend {
     font-size: 1.3em;
     color: limegreen;
     text-align: center;
 }
-#adduser>fieldset >form>p, #usermod fieldset>form>p, #userdel>fieldset>form>p, #user2proy>fieldset>form>p, #userdelproy>fieldset>form>p,#addcourse>fieldset>form>p, #coursemod>fieldset>form>p, #addproy>fieldset>form>p, #proydel>fieldset>form>p,#proyedit>fieldset>form>p{
+#adduser>fieldset >form>p, #usermod fieldset>form>p, #userdel>fieldset>form>p, #user2proy>fieldset>form>p, #userdelproy>fieldset>form>p,#addcourse>fieldset>form>p, #coursemod>fieldset>form>p, #addproy>fieldset>form>p, #proydel>fieldset>form>p,#proyedit>fieldset>form>p, #commentarioscpanel fieldset>form>p{
     color: limegreen;
     font-size: 1.3em;
     margin-top: 5px;
@@ -145,7 +146,7 @@ nav.oculto{
     clear: both;
 }
 
-#usermod fieldset #selectuser, #userdel fieldset #selectuser, #coursemod fieldset #selectcourse, #proydel fieldset #selectuser {
+#usermod fieldset #selectuser, #userdel fieldset #selectuser, #coursemod fieldset #selectcourse, #proydel fieldset #selectuser, #commentarioscpanel fieldset #selectuser {
     width: 80%;
     text-align: center;
 }
@@ -154,7 +155,7 @@ nav.oculto{
     margin-top: 5px; 
     font-size: 1.4em;
 }
-#usermod fieldset #iusu,#userdel fieldset #iusu, #coursemod fieldset #iusu, #proydel fieldset #iusu, #usermod fieldset #idproyAd{
+#usermod fieldset #iusu,#userdel fieldset #iusu, #coursemod fieldset #iusu, #proydel fieldset #iusu, #usermod fieldset #idproyAd, #commentarioscpanel fieldset #idproyAd{
     width: 60%;
     float: left;
     margin:5px 0 10px 5%;
@@ -187,7 +188,7 @@ a#proyprof{
 #adduser fieldset form button #edit, #fotosindex fieldset form button #edit, #usermod fieldset form button #edit, #userdel fieldset form button #edit, #addcourse fieldset form button #edit, #adduser fieldset form button #edit, #coursemod fieldset form button #edit, #addproy fieldset form button #edit, #proydel fieldset form button #edit{
     display: none;
 }
-#adduser fieldset form button, #usermod fieldset form button, #fotosindex fieldset form button, #userdel fieldset form button, #user2proy fieldset form button , #userdelproy fieldset form button, #addcourse fieldset form button, #coursemod fieldset form button, #addproy fieldset form button, #proydel fieldset form button,#proyedit fieldset button , #btnborrar{
+#adduser fieldset form button, #usermod fieldset form button, #fotosindex fieldset form button, #userdel fieldset form button, #user2proy fieldset form button , #userdelproy fieldset form button, #addcourse fieldset form button, #coursemod fieldset form button, #addproy fieldset form button, #proydel fieldset form button,#proyedit fieldset button , #btnborrar, #commentarioscpanel fieldset form button{
     height: 30px;
     width: 20%;
     background-color: limegreen;
@@ -258,6 +259,23 @@ float: left;
      margin-bottom: 10px;
      font-size: 1.2em;
      color: limegreen;
+}
+.coments .textocom{
+    width: 70%;
+    float: left;
+    clear: both;
+    text-align: center;
+}
+.coments .textocom p{
+    font-size: 1.3em;
+    color: limegreen;
+}
+.coments .textocom h2{
+    color: limegreen;
+}
+.coments .buttoncom{
+    width: 30%;
+    float: left;
 }
 /*Parte de redactar e imagenes alumnos*/
 .oculto{
@@ -489,7 +507,7 @@ input:checked + .slider:before {
     th {
     width: 220px;
     }
-    #adduser, #usermod, #userdel, #addcourse, #coursemod, #addproy, #proydel {
+    #adduser, #usermod, #userdel, #addcourse, #coursemod, #addproy, #proydel, #commentarioscpanel {
         width: 60%;
         margin: 0 auto;
         border-bottom: 5px solid antiquewhite;
@@ -507,12 +525,13 @@ input:checked + .slider:before {
     }
     #fotosindex{
         width: 90%;
-        margin: 0 auto;
-        clear: both;
+        margin: 0 5%;
+        float: left;
+        border-bottom: 5px solid antiquewhite;
     }
     #fotosindex #fotosact{
         width: 49%;
-        float: left;
+        float:left;
         margin-left: 0.5%;
     }
     #fotosindex #fotosub, #fotosindex #fotodel{
@@ -520,18 +539,37 @@ input:checked + .slider:before {
         float: right;
         margin-right: 0.5%;
     }
-    #fotosindex body{
-        
+    .coments p{
+        width: 100%;
+        display: block;
+    }
+    .coments{
+        width: 100%;
+        display: block;
     }
     #fotosindex tbody{
         width: 100%;
         margin-left: 1%;
+        border-bottom: 0px;
     }
     #fotosindex  tbody th,#fotosindex tbody td, #fotosindex tbody tr {
-    width: 50%;
+    border-bottom: none!important;
+        
+    }
+    #fotosindex tbody td p{
+        font-size: 1.5em!important;
+    }
+    .coments{
+        width: 98%;
+        margin: 0 auto;
+        display: block;
     }
     .imagen{
         width: 250px!important;
+    }
+    #comentarios{
+        width: 100%;
+        display: block;
     }
     /*Inicio estilos para los botones del select multiple*/
     
