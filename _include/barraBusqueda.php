@@ -21,11 +21,26 @@ if(isset($_POST['search'])){
         include('conexion.php');
         include('funciones.php');
         $buscar = $_POST['search'];
+        
         $busqueda = consulta($conexion, "SELECT CONCAT(nombre,' ',apellidos) as fullnombre, id_user, email 
                                         FROM usuarios 
                                         WHERE baja like 0
                                         AND CONCAT(nombre,' ',apellidos) like '%$buscar%'
                                         "); 
+        $busqueda2 = consulta($conexion, "SELECT * 
+                                          FROM proyectos 
+                                          WHERE (nombre_pro like '%$buscar%'
+                                          OR name_pro like '%$buscar%')
+                                          AND mostrar like 1");    
+        $busqueda3 = consulta($conexion, "SELECT * 
+                                          FROM cursos                                 
+                                          WHERE curso like '%$buscar%'");
+        
+        $totalfilas = mysqli_num_rows($busqueda);
+        $totalfilas2 = mysqli_num_rows($busqueda2);
+        $totalfilas3 = mysqli_num_rows($busqueda3);
+        
+        
         while($fila=mysqli_fetch_array($busqueda)){
             $nombre=$fila['fullnombre'];
             $iduser="idu=".$fila['id_user']."";
@@ -33,14 +48,12 @@ if(isset($_POST['search'])){
             if($buscar==$nombre){
                 header('Location: ../profilever.php?'.$iduser.'&a=2');
                 exit();
+            }else{
+                header('Location:' . getenv('HTTP_REFERER'));
             }
         }
         
-        $busqueda2 = consulta($conexion, "SELECT * 
-                                          FROM proyectos 
-                                          WHERE (nombre_pro like '%$buscar%'
-                                          OR name_pro like '%$buscar%')
-                                          AND mostrar like 1");                                 
+                                     
         while($fila2= mysqli_fetch_array($busqueda2)){                                
             $idproy="idp=".$fila2['id_proyecto']."";
             $nombES=$fila2['nombre_pro'];
@@ -51,9 +64,7 @@ if(isset($_POST['search'])){
             }
         }                                
         
-        $busqueda3 = consulta($conexion, "SELECT * 
-                                          FROM cursos                                 
-                                          WHERE curso like '%$buscar%'");
+        
         while($fila3= mysqli_fetch_array($busqueda3)){                                
             $idcurso="idc=".$fila3['id_curso']."";
             $curso=$fila3['curso'];
@@ -62,6 +73,10 @@ if(isset($_POST['search'])){
                 exit();
             }
         }
-        
+        if($totalfilas==0 || $totalfilas2==0 || $totalfilas3==0){
+            header('Location:' . getenv('HTTP_REFERER'));
+            $_SESSION['msje']=SINCOIN;
+        }
     }
+    
 }

@@ -211,3 +211,4 @@ define('DELYES','Comentario eliminado correctamente');
 define('TOLVPASS','Se le enviará un email con un enlace desde el cual podra reestablecer su contraseña');
 define('FAILMAIL','El email introducido no está registrado');
 define('TCPASS','Introduzca una nueva contraseña, recuerde que no puede coincidir con su email');
+define('SINCOIN','Sin coincidencias');
