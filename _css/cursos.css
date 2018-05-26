@@ -44,7 +44,12 @@ section article ul li a{
     display: none;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 980px) {
+    section{
+        width: 70%;
+        margin: 0 auto;
+        border-bottom: 4px solid antiquewhite;
+    }
     section #cursoA{
         width: 50%;
         float:left;
