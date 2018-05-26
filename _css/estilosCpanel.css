@@ -15,7 +15,10 @@ nav#nav1{
     width: 95%;
     margin: 10px auto;
 }
-#adduser #idioma{
+#pc{
+    display: none;
+}
+#fotosindex #idioma{
     width: 80%;
     margin: 5px 10%;
 }
@@ -135,7 +138,7 @@ nav.oculto{
     color: limegreen;
     text-align: center;
 }
-#adduser>fieldset >form>p, #usermod fieldset>form>p, #userdel>fieldset>form>p, #user2proy>fieldset>form>p, #userdelproy>fieldset>form>p,#addcourse>fieldset>form>p, #coursemod>fieldset>form>p, #addproy>fieldset>form>p, #proydel>fieldset>form>p,#proyedit>fieldset>form>p, #commentarioscpanel fieldset>form>p{
+#adduser>fieldset >form>p, #usermod fieldset>form>p, #userdel>fieldset>form>p, #user2proy>fieldset>#pc>form>p, #user2proy>fieldset>#movil>form>p #userdelproy>fieldset>form>p,#addcourse>fieldset>form>p, #coursemod>fieldset>form>p, #addproy>fieldset>form>p, #proydel>fieldset>form>p,#proyedit>fieldset>form>p, #commentarioscpanel fieldset>form>p{
     color: limegreen;
     font-size: 1.3em;
     margin-top: 5px;
@@ -146,9 +149,18 @@ nav.oculto{
     clear: both;
 }
 
-#usermod fieldset #selectuser, #userdel fieldset #selectuser, #coursemod fieldset #selectcourse, #proydel fieldset #selectuser, #commentarioscpanel fieldset #selectuser {
+#usermod fieldset #selectuser, #userdel fieldset #selectuser, #coursemod fieldset #selectcourse, #proydel fieldset #selectuser, #commentarioscpanel fieldset #selectuser,#user2proy fieldset #imvproy {
     width: 80%;
     text-align: center;
+}
+#user2proy fieldset #imvproy{
+    margin: 0 10%;
+}
+#mvselectproy{
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+    color: limegreen;
 }
 #adduser fieldset input,#adduser fieldset select,#usermod fieldset select,#usermod fieldset input, #userdel fieldset select, #user2proy fieldset select, #userdelproy fieldset select, #addcourse fieldset input, #coursemod fieldset form input, #proyadd fieldset form input, #addproy fieldset input,#proyedit fieldset select,#proyedit fieldset input, #coursemod fieldset form select, #addproy fieldset form select{
     width: 55%;
@@ -197,8 +209,9 @@ a#proyprof{
 }
 
 #user2proy fieldset form button , #userdelproy fieldset form button{
-    margin: 10px 5% 10px 75%!important;
+    margin: 10px 5% 10px 70%!important;
 }
+
 
 #selectbu, #btnprofe{
     margin: 5px 0 10px 5%!important;
@@ -479,7 +492,12 @@ input:checked + .slider:before {
         margin-left:20%;
         margin-right: 10%;
     }
-    
+    #movil{
+        display: none;
+    }
+    #pc{
+        display: block;
+    }
     #myProgress {
           width: 50%;
     }
@@ -507,7 +525,7 @@ input:checked + .slider:before {
     th {
     width: 220px;
     }
-    #adduser, #usermod, #userdel, #addcourse, #coursemod, #addproy, #proydel, #commentarioscpanel {
+    #adduser, #usermod, #userdel, #addcourse, #coursemod, #addproy, #proydel, #commentarioscpanel, #proypublic {
         width: 60%;
         margin: 0 auto;
         border-bottom: 5px solid antiquewhite;
@@ -571,6 +589,16 @@ input:checked + .slider:before {
         width: 100%;
         display: block;
     }
+    #user2proy{
+        width: 70%;
+        margin: 0px auto;
+        border-bottom: 5px solid antiquewhite;
+    }
+    #user2proy #selectproy,  #user2proy #selectuser{
+        padding-left: 10%;
+        margin-left: 0px!important;
+        font-size: 1.5em!important;
+    }
     /*Inicio estilos para los botones del select multiple*/
     
     #suma,#sumaAll,#resta,#restaAll{
@@ -578,11 +606,11 @@ input:checked + .slider:before {
     }
         
     #suma{
-        margin: 10px 0.5% 0px 54.2%;
+        margin: 10px 0.5% 0px 49.2%;
     }
 
     #resta{
-        margin: 10px 0.5% 10px 54.2%;
+        margin: 10px 0.5% 10px 49.2%;
     }
 
     /*Fin estilos para los botones del select multiple*/

@@ -146,6 +146,73 @@ $activo=3;
     <section id="user2proy">
         <fieldset>
             <legend><?=USU2PROY?></legend>
+              <div id="movil">
+                    <p id="mvselectproy"><?=PROYECT?>: </p>
+                    <select name="id_proyecto" id="imvproy" onchange="obtenNoParticipantes2(this.value);">
+                        <option value="-1"><?=SELPROY?></option>
+                    
+                        <?php
+                            $user=$_SESSION['user'];
+                            $RESULT = consulta($conexion,"SELECT * 
+                                                            FROM proyectos 
+                                                            WHERE id_proyecto in (SELECT id_proyecto 
+                                                                                    FROM usuproy
+                                                                                    WHERE id_user = $user)
+                                                            AND mostrar like 0");  
+                            while ($fila = mysqli_fetch_array($RESULT)) {
+                                if($_SESSION['lang']==0){
+                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] . "</option>";
+                                }elseif($_SESSION['lang']==1){
+                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['name_pro'] . "</option>";
+                                }
+                            }
+                        ?>
+                    </select>
+                    <div id="textImg">
+                    <p class="textImg"><?=FOTACT?>:</p><p class="textImg"><?=PHOTODEL?>:</p>
+                    </div>
+                <form method="post" enctype="multipart/form-data" action="user2proy.php">
+                <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+                  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+                  <link href="_css/jquery.lwMultiSelect.css" rel="stylesheet" type="text/css"/>
+                  <script type="text/javascript" src="_js/jquery.lwMultiSelect.js"></script>
+                  <style>
+                  .container { margin:10px auto; 
+                      width: 100%;}
+                  </style>
+        
+                   <p><select id="iusuariomv" multiple="multiple" name="id_user[]">
+                   </select>
+                   <?php 
+                       $_SESSION['fotosdel']=1;
+                       ?>
+                      </p>
+                    <script>
+                    jQuery('#iusuariomv').lwMultiSelect();
+                    </script>
+                    <script type="text/javascript">
+
+                      var _gaq = _gaq || [];
+                      _gaq.push(['_setAccount', 'UA-36251023-1']);
+                      _gaq.push(['_setDomainName', 'jqueryscript.net']);
+                      _gaq.push(['_trackPageview']);
+
+                      (function() {
+                        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                      })();
+
+                    </script>
+                               <button type="submit" id=btnborrar><i class="fas fa-times cancel edicion2"></i></button>
+                                                  <p id="error"><?php
+                                                if(isset($_SESSION['msgalfot'])){
+                                                    echo $_SESSION['msgalfot'];
+                                                    unset($_SESSION['msgalfot']);
+                                                } ?></p>
+                                    </form>
+              </div>
+               <div id="pc">
                 <form action="user2proy.php" method="post" enctype="multipart/form-data">
                     <p id="selectproy"><?=PROYECT?>: </p>
                     <select name="id_proyecto" id="iproy" onchange="obtenNoParticipantes(this.value);">
@@ -168,8 +235,6 @@ $activo=3;
                             }
                         ?>
                     </select>
-                    
-
                     <p id="selectuser"><?=USUDISP?></p>
                     <select name="id_user[]" id="iusuario" multiple size="3">
                        
@@ -199,6 +264,7 @@ $activo=3;
                             } ?>
                         </p>
                 </form>
+                </div>
         </fieldset>
     </section>
 
@@ -227,7 +293,7 @@ $activo=3;
             </div>
         </nav>
 
-    <section id="userdelproy">
+    <section id="user2proy">
         <fieldset>
             <legend><?=USUDELPROY?></legend>
                 <form action="userdelproy.php" method="post" enctype="multipart/form-data">

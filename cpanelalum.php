@@ -208,7 +208,7 @@ $activo=3;
               <a href="cpanelalum.php?a=3&rm=2&rt=2&idp=<?=$idp?>" id="subenlace2"><span><?= PHOTO ?></span><i class="fas fa-images ico"></i></a> 
             </div>
         </nav>
-        <section id="adduser">
+        <section id="fotosindex">
            <!-- wysihtml5 parser rules -->
             <script src="/ruta-a-wysihtml5/parser_rules/advanced.js"></script>
             <!-- Library -->
@@ -269,7 +269,7 @@ $activo=3;
               <a href="cpanelalum.php?a=3&rm=2&rt=2&idp=<?=$idp?>" id="subenlace2" class="active"><span><?= PHOTO ?></span><i class="fas fa-images ico"></i></a>  
             </div>
         </nav>
-        <section id="adduser">
+        <section id="fotosindex">
             <fieldset id="fotosact"> 
                 <legend><?=FOTACT?></legend>
                 <?php 
