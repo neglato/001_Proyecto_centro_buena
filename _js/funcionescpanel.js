@@ -201,67 +201,6 @@ function obtenParticipantes(idProy){
     xmlhttp.send("i="+idProy);
 }
 
-
-//Funcion para recuperar los alumnos que no participan en un proyecto concreto AJAX movil A
-
-function obtenNoParticipantes2(idProyec){
-    var xmlhttp;
-    
-    if(window.XMLHttpRequest){
-        xmlhttp= new XMLHttpRequest();
-    }else{
-        xmlhttp= new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    
-    xmlhttp.onreadystatechange=function(){
-        
-    if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
-            
-        document.getElementsByClassName('lwms-list lwms-available')[0].innerHTML = xmlhttp.responseText;
-        document.getElementsByClassName('lwms-list lwms-available')[0].focus();
-
-    }
-    
-    }
-    
-    xmlhttp.open("POST","_include/noParticipantes2.php", true);
-    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send("q="+idProyec);
-    obtenNoParticipantes3();
-}
-function ponerselect(opt){
-    document.getElementById('opt').getElementsByTagName('option').optSelected='selected';
-}
-//Funcion para recuperar los alumnos que no participan en un proyecto concreto AJAX movil B
-
-function obtenNoParticipantes3(idProyec){
-    var xmlhttp;
-    
-    if(window.XMLHttpRequest){
-        xmlhttp= new XMLHttpRequest();
-    }else{
-        xmlhttp= new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    
-    xmlhttp.onreadystatechange=function(){
-        
-    if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
-            
-        document.getElementsById('iusuariomv').innerHTML = xmlhttp.responseText;
-        document.getElementsByClassName('iusuariomv').focus();
-
-    }
-    
-    }
-    
-    xmlhttp.open("POST","_include/noParticipantes2.php", true);
-    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send("q="+idProyec);
-}
-
-function ponerselect(opt){
-    document.getElementById('opt').getElementsByTagName('option').optSelected='selected';
-}
 //Funcion para recuperar los alumnos que no participan en un proyecto concreto AJAX pc
 
 function obtenNoParticipantes(idProyec){

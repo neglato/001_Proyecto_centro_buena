@@ -16,7 +16,7 @@ nav#nav1{
     margin: 10px auto;
 }
 #pc{
-    display: none;
+    display: block;
 }
 #fotosindex #idioma{
     width: 80%;
@@ -525,7 +525,7 @@ input:checked + .slider:before {
     th {
     width: 220px;
     }
-    #adduser, #usermod, #userdel, #addcourse, #coursemod, #addproy, #proydel, #commentarioscpanel, #proypublic {
+    #adduser, #usermod, #userdel, #addcourse, #coursemod, #addproy, #proydel, #commentarioscpanel, #proypublic, #proyNOpublic, #proyedit {
         width: 60%;
         margin: 0 auto;
         border-bottom: 5px solid antiquewhite;
@@ -551,6 +551,16 @@ input:checked + .slider:before {
         width: 49%;
         float:left;
         margin-left: 0.5%;
+    }
+    #proyedi p{
+        margin-left: 0px!important;
+        padding-left: 10%;
+    }
+    #proyedi #buttonedicion{
+        margin: 10px 10% 10px 70%!important;
+    }
+    #proyedi #btnprofe1{
+        margin-left:49.5%!important;
     }
     #fotosindex #fotosub, #fotosindex #fotodel{
         width: 49%;
