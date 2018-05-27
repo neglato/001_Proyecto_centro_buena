@@ -73,7 +73,9 @@ include('_include/variables.php');
 
                     $mail->Subject = 'Ha sido asignado como editor';
                     $mail->Body    = "<h1>¡Hola $nomUser!</h1> 
-                                    <p>Ha sido asignado como editor del proyecto $nomPro, en la APP de Planes y Proyectos del IES DELGADO HERNANDEZ.</p>";
+                                    <p>Ha sido asignado como editor del proyecto $nomPro, en la APP de Planes y Proyectos del IES DELGADO HERNANDEZ.</p>
+                                    <p>Puede Acceder a la App desde el siguiente enlace:</p>
+                                        <p>$enlaceEmail</p>";
 
                     if(!$mail->send()) {
                       echo 'Error al enviar email';

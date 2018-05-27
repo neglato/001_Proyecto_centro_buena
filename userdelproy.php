@@ -72,7 +72,9 @@ include('_include/variables.php');
 
                     $mail->Subject = 'Ha sido relevado';
                     $mail->Body    = "<h1>¡Hola $nomUser!</h1> 
-                                    <p>Ha sido relevado de su puesto como editor del proyecto $nomPro en la APP de planes y proyectos del IES Delgado Hernández.</p>";
+                                    <p>Ha sido relevado de su puesto como editor del proyecto $nomPro en la APP de planes y proyectos del IES Delgado Hernández.</p>
+                                    <p>Puede Acceder a la App desde el siguiente enlace:</p>
+                                        <p>$enlaceEmail</p>";
 
                     if(!$mail->send()) {
                       echo 'Error al enviar email';

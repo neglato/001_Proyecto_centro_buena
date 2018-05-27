@@ -15,4 +15,5 @@ $cuenta="idhappmaster@gmail.com";
 $passEmail="adminIdh1572";
 //otros
 $olvidaPass="olvidopass.php";
-$enlacePass="http://192.168.1.23/001_Proyecto_centro_buena/cambiapass.php?proy=";
+$enlacePass="http://192.168.1.24/001_Proyecto_centro_buena/cambiapass.php?proy=";
+$enlaceEmail="<a href=http://192.168.1.24/001_Proyecto_centro_buena/index.php>Planes y Proyectos del IES Delgado Hernández</a>";

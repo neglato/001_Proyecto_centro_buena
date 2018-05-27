@@ -104,13 +104,7 @@ if(isset($_SESSION['password']) && isset($_SESSION['email']) && $_SESSION['passw
                     break;
             
                 case 2: 
-                    $perfil=explode("?",$urlact);
-                    $perfil=$perfil[0];
-                    if($perfil=="profilever.php"){
-                    echo '<a href="index.php?a=0" class="migas">' . INICIO . '</a> <span class="migas">' . NOPERFIL . '</span>';
-                    }else{
                     echo '<a href="index.php?a=0" class="migas">' . INICIO . '</a> <span class="migas">' . PERFIL . '</span>';
-                    }
                     break;
                 case 3: 
                     $cpanel=explode("?",$urlact);
@@ -150,6 +144,9 @@ if(isset($_SESSION['password']) && isset($_SESSION['email']) && $_SESSION['passw
                     }
                        /*echo '<a href="index.php?a=0" class="migas">' . INICIO . '</a> <span class="migas">' . PANEL . '</span>';*/
                         break;
+                case 4:
+                    echo '<a href="index.php?a=0" class="migas">' . INICIO . '</a> <span class="migas">' . NOPERFIL . '</span>';
+                    break;
                 default: echo '<a href="index.php?a=0" class="migas">' . INICIO . '</a>';
                     break;
             }    

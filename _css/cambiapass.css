@@ -78,3 +78,61 @@ section article fieldset form input{
     margin-top: -4px;
     height: 30px;
 }
+@media (min-width: 980px) {
+    header{
+        float: left;
+        width: 100%;
+    }
+    #lys {
+        width: 8%!important;
+        height: 40px;
+        text-align: right;
+        float: left;
+        margin-top: 20px;
+        background-color: limegreen!important;
+    }
+    #lys #lang{
+      width: 100%;
+    }
+    #lys #lang ul{
+        width: 90%;
+        float: right;
+        margin-right: 10%;
+        padding-top: 0;
+    }
+    #saludo{
+        display: none!important;
+    }
+    #sep2{
+        width: 92%;
+        margin-top: 20px;
+        clear: both;
+        height: 40px!important;
+        background-color: limegreen!important;
+        float: left;
+    }
+    section{
+        width: 70%;
+        margin: 0 auto;
+        border-bottom: 5px solid antiquewhite;
+        border-top: 5px solid antiquewhite;
+        clear: both;
+    }
+    section #text{
+        border-top: none;
+    }
+    section #text p{
+        text-align: center;
+    }
+    section #pass p{
+        margin: 20px 0 0 7%;
+    }
+    section #pass input{
+       margin-left: 0; 
+    }
+    section #pass button{
+        margin: 10px 0 10px 77%;
+        width: 15%;
+        font-size: 1.2em;
+    }
+}

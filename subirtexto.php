@@ -97,7 +97,9 @@ if($_POST['idioma']== "1es.php" || $_POST['idioma']== "1en.php"){
         //sacamos de la base de datos el resto de datos necesarios
         $mail->Subject = "Añadido nuevo articulo";
         $mail->Body    = "<h1>¡Hola $nomInt!</h1> 
-                        <p>El proyecto $nombpro, que coordina en la App de Planes y Proyectos del IES Delgado Henández ha recibido una actualizacion en su artciulo</p>";
+                        <p>El proyecto $nombpro, que coordina en la App de Planes y Proyectos del IES Delgado Henández ha recibido una actualizacion en su artciulo</p>
+                        <p>Puede Acceder a la App desde el siguiente enlace:</p>
+                                        <p>$enlaceEmail</p>";
 
         if(!$mail->send()) {
               echo 'Error al enviar email';

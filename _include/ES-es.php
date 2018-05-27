@@ -218,3 +218,5 @@ define('PUBPROYS','Proyectos publicados');
 define('NOPUBPROYS','Proyectos no publicados');
 define('OTHERCONF','Otros');
 define('NOPERFIL','Perfil');
+define('TITPASS','Cambiar contraseña');
+define('TITOLPS','Olvidó contraseña');

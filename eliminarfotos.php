@@ -99,7 +99,9 @@ if(count($_POST['fotos']) > 0){
         $nomInt=$par['nombre'];
         $mail->Subject = "Fotos eliminadas";
         $mail->Body    = "<h1>¡Hola $nomInt!</h1>
-                            <p>Algunas fotos del proyecto $nombpro, en que participa en la App de Planes y Proyectos del IES Delgado Henández, han sido eliminadas</p>";
+                            <p>Algunas fotos del proyecto $nombpro, en que participa en la App de Planes y Proyectos del IES Delgado Henández, han sido eliminadas</p>
+                            <p>Puede Acceder a la App desde el siguiente enlace:</p>
+                                        <p>$enlaceEmail</p>";
 
         if(!$mail->send()) {
               echo 'Error al enviar email';

@@ -213,3 +213,11 @@ define('TOLVPASS','It will be sent an email with a link from which you can reset
 define('FAILMAIL','The entered email is not registered');
 define('TCPASS','Enter a new password, remember that it can not match your email');
 define('SINCOIN','without coincidences');
+//nuevo 27/05
+define('EDITPROY','Edit project');
+define('PUBPROYS','Published projects');
+define('NOPUBPROYS','Unpublished projects');
+define('OTHERCONF','Others');
+define('NOPERFIL','Profile');
+define('TITPASS','Change password');
+define('TITOLPS','Forgot password');

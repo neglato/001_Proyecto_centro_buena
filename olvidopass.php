@@ -99,13 +99,11 @@ if(!$mail->send()) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?=INICIO?><?=TIT1?></title>
+    <title><?=TITOLPS?><?=TIT1?></title>
     <link rel="stylesheet" href="_css/estilosheader.css">
     <link rel="stylesheet" href="_css/cambiapass.css">
     <link rel="stylesheet" href="_css/footer.css">
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-    
-<a href=""></a>
     
 </head>
 
@@ -157,7 +155,7 @@ if(!$mail->send()) {
                 <fieldset id="pass">
                 <legend><?=LOGEMAIL?></legend>
                 <form action="?op=1" method="post" enctype="multipart/form-data">
-                <p><?=PHLEMAIL?></p><input name="email" type="email">
+                <p><?=PHLEMAIL?>: </p><input name="email" type="email">
                 <p class="errorpass"><?php
                         if(isset($_SESSION['msgemail'])){
                             echo $_SESSION['msgemail'];

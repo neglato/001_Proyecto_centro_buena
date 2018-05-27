@@ -114,7 +114,9 @@ if(!isset($_POST['nombre']) || !isset($_POST['name']) || !isset($_POST['id_curso
 
                 $mail->Subject = 'Ha sido relevado';
                 $mail->Body    = "<h1>¡Hola $oldCoorNom!</h1>
-                                    <p>Ha sido relevado de su labor como coordinador de proyecto $nombre en la app de planes y proyectos del IES Delgado Hernández</p>";
+                                    <p>Ha sido relevado de su labor como coordinador de proyecto $nombre en la app de planes y proyectos del IES Delgado Hernández</p>
+                                    <p>Puede Acceder a la App desde el siguiente enlace:</p>
+                                        <p>$enlaceEmail</p>";
 
                 if(!$mail->send()) {
                   echo 'Error al enviar email';
@@ -154,7 +156,9 @@ if(!isset($_POST['nombre']) || !isset($_POST['name']) || !isset($_POST['id_curso
 
                 $mail->Subject = 'Le ha sido asignado un proyecto';
                 $mail->Body    = "<h1>¡Hola $newCoorNom!</h1>
-                                <p>Ha sido elegido como coordinador de proyecto $nombre en la app de planes y proyectos del IES Delgado Hernández</p>";
+                                <p>Ha sido elegido como coordinador de proyecto $nombre en la app de planes y proyectos del IES Delgado Hernández</p>
+                                <p>Puede Acceder a la App desde el siguiente enlace:</p>
+                                        <p>$enlaceEmail</p>";
 
                 if(!$mail->send()) {
                   echo 'Error al enviar email';
@@ -255,7 +259,9 @@ if(!isset($_POST['nombre']) || !isset($_POST['name']) || !isset($_POST['id_curso
 
                 $mail->Subject = 'Ha sido relevado';
                 $mail->Body    = "<h1>¡Hola $oldCoorNom!</h1>
-                                    <p>Ha sido relevado de su labor como coordinador de proyecto $nombre en la app de planes y proyectos del IES Delgado Hernández</p>";
+                                    <p>Ha sido relevado de su labor como coordinador de proyecto $nombre en la app de planes y proyectos del IES Delgado Hernández</p>
+                                    <p>Puede Acceder a la App desde el siguiente enlace:</p>
+                                        <p>$enlaceEmail</p>";
 
                 if(!$mail->send()) {
                   echo 'Error al enviar email';
@@ -295,7 +301,9 @@ if(!isset($_POST['nombre']) || !isset($_POST['name']) || !isset($_POST['id_curso
 
                 $mail->Subject = 'Le ha sido asignado un proyecto';
                 $mail->Body    = "<h1>¡Hola $newCoorNom!</h1>
-                                <p>Ha sido elegido como coordinador de proyecto $nombre en la app de planes y proyectos del IES Delgado Hernández</p>";
+                                <p>Ha sido elegido como coordinador de proyecto $nombre en la app de planes y proyectos del IES Delgado Hernández</p>
+                                <p>Puede Acceder a la App desde el siguiente enlace:</p>
+                                        <p>$enlaceEmail</p>";
 
                 if(!$mail->send()) {
                   echo 'Error al enviar email';

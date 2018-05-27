@@ -97,7 +97,9 @@ if(!isset($_FILES["files"])){
         //sacamos de la base de datos el resto de datos necesarios
         $mail->Subject = "Añadido nuevas imagenes";
         $mail->Body    = "<h1>¡Hola $nomCoor!</h1>
-                        <p>El proyecto $nombpro, en que participa en la App de Planes y Proyectos del IES Delgado Henández ha recibido nuevas imagenes</p>";
+                        <p>El proyecto $nombpro, en que participa en la App de Planes y Proyectos del IES Delgado Henández ha recibido nuevas imagenes</p>
+                        <p>Puede Acceder a la App desde el siguiente enlace:</p>
+                                        <p>$enlaceEmail</p>";
 
         if(!$mail->send()) {
               echo 'Error al enviar email';

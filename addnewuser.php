@@ -80,7 +80,9 @@ include('_include/variables.php');
 
                         $mail->Subject = 'Cuenta dada de alta';
                         $mail->Body    = "<h1>¡Hola $nomUSer!</h1>
-                                        <p>Le informamos de que su cuenta ha sido dada de alta nuevamente en la APP de Planes y proyectos del IES Delgado Hernández.</p>";
+                                        <p>Le informamos de que su cuenta ha sido dada de alta nuevamente en la APP de Planes y proyectos del IES Delgado Hernández.</p>
+                                        <p>Puede Acceder a la App desde el siguiente enlace:</p>
+                                        <p>$enlaceEmail</p>";
 
                         if(!$mail->send()) {
                                 echo 'Error al enviar email';
@@ -160,7 +162,9 @@ include('_include/variables.php');
 
                         $mail->Subject = 'Ha sido registrado';
                         $mail->Body    = "<h1>¡Hola $nombre!</h1>
-                                        <p>Usted ha sido registrado en la APP de Planes y Proyectos de IES Delgado Hernandez</p>";
+                                        <p>Usted ha sido registrado en la APP de Planes y Proyectos de IES Delgado Hernandez</p>
+                                         <p>Puede Acceder a la App desde el siguiente enlace:</p>
+                                        <p>$enlaceEmail</p>";
 
                         if(!$mail->send()) {
                             echo 'Error al enviar email';

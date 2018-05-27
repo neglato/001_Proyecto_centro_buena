@@ -66,7 +66,9 @@ $mail->isHTML(true); // Set email format to HTML
 
 $mail->Subject = 'Has sido dado de baja';
 $mail->Body    = "<h1>¡Hola $nomUsu!</h1>
-<p>Ha sido dado de baja de la APP de Planes y Proyectos del IES Delgado Hernández</p>";
+<p>Ha sido dado de baja de la APP de Planes y Proyectos del IES Delgado Hernández</p>
+<p>Puede Acceder a la App desde el siguiente enlace:</p>
+                                        <p>$enlaceEmail</p>";
 
 if(!$mail->send()) {
   echo 'Error al enviar email';

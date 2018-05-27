@@ -21,7 +21,7 @@ $activo=3;
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?=INICIO?><?=TIT1?></title>
+    <title><?=TITPASS?><?=TIT1?></title>
     <link rel="stylesheet" href="_css/estilosheader.css">
     <link rel="stylesheet" href="_css/cambiapass.css">
     <link rel="stylesheet" href="_css/footer.css">
@@ -153,7 +153,9 @@ $mail->isHTML(true); // Set email format to HTML
 
 $mail->Subject = 'Contraseña modificada';
 $mail->Body    = "<h1>¡Hola $nomUser!</h1>
-                    <p>Su contraseña ha sido modificada correctamente.</p>";
+                    <p>Su contraseña ha sido modificada correctamente.</p>
+                    <p>Puede Acceder a la App desde el siguiente enlace:</p>
+                                        <p>$enlaceEmail</p>";
 
 if(!$mail->send()) {
   echo 'Error al enviar email';
