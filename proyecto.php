@@ -231,7 +231,7 @@ $activo=1;
                                                         where id_proyecto=$idp)");
                while ($row=mysqli_fetch_array($participantes)){
               ?>
-              <a href="profilever.php?idu=<?=$row['id_user']?>&a=2"><p><?=$row['editor']?></p><p id="p2"><?=EDITOR?></p></a>
+              <a href="profilever.php?idu=<?=$row['id_user']?>&a=4"><p><?=$row['editor']?></p><p id="p2"><?=EDITOR?></p></a>
               <?php } 
               ?>
           </fieldset>

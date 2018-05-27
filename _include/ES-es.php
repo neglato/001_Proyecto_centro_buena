@@ -212,3 +212,9 @@ define('TOLVPASS','Se le enviará un email con un enlace desde el cual podra ree
 define('FAILMAIL','El email introducido no está registrado');
 define('TCPASS','Introduzca una nueva contraseña, recuerde que no puede coincidir con su email');
 define('SINCOIN','Sin coincidencias');
+//nuevo 27/05
+define('EDITPROY','Editar proyecto');
+define('PUBPROYS','Proyectos publicados');
+define('NOPUBPROYS','Proyectos no publicados');
+define('OTHERCONF','Otros');
+define('NOPERFIL','Perfil');

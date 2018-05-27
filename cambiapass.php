@@ -104,7 +104,7 @@ if(isset($_POST['newpass']) && isset($_POST['confpass'])){
                 $nomUser=$_SESSION['nombre'];
                 $email=$_SESSION['email'];
             }
-            if($newpass == $email){
+            if( $newpass == $email ){
                 $_SESSION['msgpass']=PASSISMAIL;
                 if(isset($_GET['proy'])){
                     $proy=$_GET['proy'];
@@ -168,13 +168,11 @@ if(!$mail->send()) {
                     exit();
                 }
                 if ($_SESSION['urlact'] == ""){
-                    echo $email."b";
-//                    /*header('Location: index.php');*/
+                 header('Location: index.php');
                     mysqli_close($conexion);
                     exit();
                 }else{
-                    echo $email."c";
-//                    /*header('Location: '.$_SESSION['urlact'].'');*/
+                   header('Location: '.$_SESSION['urlact'].'');
                     exit();
                     mysqli_close($conexion);
                 }

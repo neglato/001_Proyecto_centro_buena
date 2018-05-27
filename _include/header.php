@@ -45,7 +45,8 @@ if(isset($_SESSION['tiempo']) ) {
             case 0:
             case 1:
             case 2:
-            case 3:$_SESSION['activo']= $_GET['a'];
+            case 3:
+            case 4:$_SESSION['activo']= $_GET['a'];
                 break;
             default: $_SESSION['activo']= 0;
                 break;
@@ -95,18 +96,61 @@ if(isset($_SESSION['password']) && isset($_SESSION['email']) && $_SESSION['passw
                 case 0: echo '<span class="migas">' . INICIO . '</span>';
                     break;
                 case 1:
-                    if(isset($_GET['idp'])){
-                        echo '<a href="index.php" class="migas">' . INICIO . '</a> <a href="cursos.php?a=1" class="migas">' .CURSOS. '</a>  <span class="migas">' . POY . '</span>';
+                    if(isset($_GET['idp']) && !isset($_GET['rm'])){
+                        echo '<a href="index.php?a=0" class="migas">' . INICIO . '</a> <a href="cursos.php?a=1" class="migas">' .CURSOS. '</a>  <span class="migas">' . POY . '</span>';
                     }else{
-                    echo '<a href="index.php" class="migas">' . INICIO . '</a> <span class="migas">' . CURSOS . '</span>'; 
+                    echo '<a href="index.php?a=0" class="migas">' . INICIO . '</a> <span class="migas">' . CURSOS . '</span>'; 
                     }
                     break;
-                case 2: echo '<a href="index.php" class="migas">' . INICIO . '</a> <span class="migas">' . PERFIL . '</span>';
+            
+                case 2: 
+                    $perfil=explode("?",$urlact);
+                    $perfil=$perfil[0];
+                    if($perfil=="profilever.php"){
+                    echo '<a href="index.php?a=0" class="migas">' . INICIO . '</a> <span class="migas">' . NOPERFIL . '</span>';
+                    }else{
+                    echo '<a href="index.php?a=0" class="migas">' . INICIO . '</a> <span class="migas">' . PERFIL . '</span>';
+                    }
                     break;
                 case 3: 
-                    echo '<a href="index.php" class="migas">' . INICIO . '</a> <span class="migas">' . PANEL . '</span>'; 
-                    break;
-                default: echo '<a href="index.php" class="migas">' . INICIO . '</a>';
+                    $cpanel=explode("?",$urlact);
+                    $cpanel=$cpanel[0];
+                    /*si es el cpanel admin*/
+                    if($cpanel== "cpaneladmin.php"){
+                        if(!isset($_GET['rm'])){
+                            echo '<a href="index.php?a=0" class="migas">' . INICIO . '</a> <span class="migas">' . PANEL . '</span>';
+                        }
+                        else if($_GET['rm']== 1){
+                            echo '<a href="index.php?a=0" class="migas">' . INICIO . '</a> <a href="cpanel.php?a=3" class="migas">' . PANEL . '</a> <span class="migas">' . USUARIOS . '</span>';
+                        }else if($_GET['rm']== 2){
+                            echo '<a href="index.php?a=0" class="migas">' . INICIO . '</a> <a href="cpanel.php?a=3" class="migas">' . PANEL . '</a> <span class="migas">' . CURSOS . '</span>';
+                        }else if($_GET['rm']== 3){
+                            echo '<a href="index.php?a=0" class="migas">' . INICIO . '</a> <a href="cpanel.php?a=3" class="migas">' . PANEL . '</a> <span class="migas">' . PROYECT . '</span>';
+                        }else if($_GET['rm']== 4){
+                            echo '<a href="index.php?a=0" class="migas">' . INICIO . '</a> <a href="cpanel.php?a=3" class="migas">' . PANEL . '</a> <span class="migas">' . OTHERCONF . '</span>';
+                        }
+                    }else if($cpanel== "cpanelprofe.php"){
+                        if(!isset($_GET['rm'])){
+                            echo '<a href="index.php?a=0" class="migas">' . INICIO . '</a> <span class="migas">' . PANEL . '</span>';
+                        }else if($_GET['rm']== 1){
+                            echo '<a href="index.php?a=0" class="migas">' . INICIO . '</a> <a href="cpanel.php?a=3" class="migas">' . PANEL . '</a> <span class="migas">' . USUARIOS . '</span>';
+                        }else if($_GET['rm']== 2){
+                            echo '<a href="index.php?a=0" class="migas">' . INICIO . '</a> <a href="cpanel.php?a=3" class="migas">' . PANEL . '</a> <span class="migas">' . PROYECT . '</span>';
+                        }
+                    }else if($cpanel== "cpanelalum.php"){
+                        if(!isset($_GET['rm'])){
+                            echo '<a href="index.php?a=0" class="migas">' . INICIO . '</a> <span class="migas">' . PANEL . '</span>';
+                        }else if($_GET['rm']== 1){
+                            echo '<a href="index.php?a=0" class="migas">' . INICIO . '</a> <a href="cpanel.php?a=3" class="migas">' . PANEL . '</a> <span class="migas">' . PUBPROYS . '</span>';
+                        }else if($_GET['rm']== 2 && !isset($_GET['rt'])){
+                            echo '<a href="index.php?a=0" class="migas">' . INICIO . '</a> <a href="cpanel.php?a=3" class="migas">' . PANEL . '</a> <span class="migas">' . NOPUBPROYS . '</span>';
+                        }else if($_GET['rm']== 2 && isset($_GET['rt'])){
+                            echo '<a href="index.php?a=0" class="migas">' . INICIO . '</a> <a href="cpanel.php?a=3" class="migas">' . PANEL . '</a> <span class="migas">' . EDITPROY . '</span>';
+                        }
+                    }
+                       /*echo '<a href="index.php?a=0" class="migas">' . INICIO . '</a> <span class="migas">' . PANEL . '</span>';*/
+                        break;
+                default: echo '<a href="index.php?a=0" class="migas">' . INICIO . '</a>';
                     break;
             }    
     

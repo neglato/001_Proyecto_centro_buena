@@ -199,8 +199,9 @@ section #perfil #separar{
     }
     section{
         background-color: #1a5ad4;
-        width: 80%;
+        width: 75%;
         margin: 0px auto;
+        border-bottom: 4px solid antiquewhite;
     }
     section #perfil figure{
         float: left;

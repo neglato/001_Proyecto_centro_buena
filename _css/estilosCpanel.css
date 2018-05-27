@@ -21,6 +21,7 @@ nav#nav1{
 #fotosindex #idioma{
     width: 80%;
     margin: 5px 10%;
+    font-size: 1.3em;
 }
  .imagen{
     width: 150px!important;
@@ -552,6 +553,11 @@ input:checked + .slider:before {
         float:left;
         margin-left: 0.5%;
     }
+    #fotosindex #idioma{
+    width: 30%;
+    font-size: 1.3em;
+    margin: 5px 35%;
+}
     #proyedi p{
         margin-left: 0px!important;
         padding-left: 10%;

@@ -171,7 +171,7 @@ $activo=3;
                         $nomCur=$cur['curso'];
             ?>
             <li>
-            <a href="cpanelalum.php?a=1&rm=2&rt=1&idp=<?=$idp?>" id="proyprof"><?php
+            <a href="cpanelalum.php?a=3&rm=2&rt=1&idp=<?=$idp?>" id="proyprof"><?php
                             if(isset($_SESSION['lang'])){
                                 if($_SESSION['lang']==1){
                                     echo $proyect." /".$nomCur; 

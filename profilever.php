@@ -20,13 +20,12 @@ if(isset($_SESSION['user'])){
         exit();
     }
 }
-$activo=2;
 ?>
 <html lang="es">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?=PERFIL?><?=TIT1?></title>
+    <title><?=NOPERFIL?><?=TIT1?></title>
     <link rel="stylesheet" href="_css/estilosheader.css">
     <link rel="stylesheet" href="_css/profile.css">
     <link rel="stylesheet" href="_css/footer.css">
