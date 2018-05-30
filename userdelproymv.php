@@ -1,9 +1,14 @@
-<!--    Script para eliminar un usuaro de un proyecto-->
-    
-    <?php
+<?php 
 ob_start();
-include('_include/variables.php');
+    include('_include/variables.php');
+    include('_include/funciones.php');
+    include('_include/conexion.php');
     session_start();
+if(!isset($_SESSION['user'])){
+    header('Location: index.php');
+    mysqli_close($conexion);
+    exit();
+}
     if(isset($_SESSION['lang'])){
         if($_SESSION['lang']==1){
             include('_include/UK-uk.php'); 
@@ -13,25 +18,28 @@ include('_include/variables.php');
     }else{
         include('_include/ES-es.php');
         }
-
-    if (!isset($_SESSION['user'])){
-        header('Location: index.php');
+/*primero comprobamos que exista */
+if(!isset($_POST['id_user']) && !isset($_SESSION['userdelproy'])){
+   header('Location: index.php');
+    exit();
+}
+if(isset($_POST['id_user'])){
+    unset($_SESSION['userdelproy']);
+}
+if(isset($_SESSION['userdelproy'])){
+    /*ssi existe lo mandamos a la propia pagina para que seleccione al menos una imagen*/
+        $_SESSION['msguserdelproy']=DEBUSU;
+        $proy=$_SESSION['iduserdelproy'];
+        header("Location: cpanelprofe.php?rm=1&rt=3&a=3&udp=$proy");
+        mysqli_close($conexion);
         exit();
-    }
-
-        if(isset($_POST['userdelproy'])){
-            if($_POST['id_proyecto']==-1 || !isset($_POST['id_user2'])){
-                header('Location: cpanelprofe.php?rm=1&rt=3&a=3');
-                $_SESSION['msgusrdelproy']=USUYPROY;
-                exit();
-            }else{
-                include('_include/conexion.php');
-                include('_include/funciones.php');
-                $proy=$_POST['id_proyecto'];
-                $use=$_POST['id_user2'];
+}
+$proy=$_SESSION['iduserdelproy'];
+if(count($_POST['id_user']) > 0){
+                $use=$_POST['id_user'];
                 foreach($use as $i){
-                        $consul2 = consulta($conexion,"DELETE FROM usuproy WHERE id_proyecto='{$proy}' AND id_user='{$i}'");
-                    //correo
+                        $delete = consulta($conexion,"DELETE FROM usuproy WHERE id_proyecto like $proy and id_user like $i");
+                                        //correo
                     $email=consulta($conexion,"SELECT * FROM usuarios where id_user like $i");
                     $usFila=mysqli_fetch_array($email);
                     $nomUser=$usFila['nombre'];
@@ -82,16 +90,11 @@ include('_include/variables.php');
                     } else {
                       echo 'Mail enviado correctamente';
                     }
-                    //fin correo
                 }
-                    $_SESSION['msgusrdelproy']=USUDELPROYOK;
-                        header('Location: cpanelprofe.php?rm=1&rt=3&a=3');
-                        mysqli_close($conexion);
-                        exit(); 
-            }
-        }          
-        ob_end_flush();
-    ?>
-   
-  
- 
+        //fin mandar correo
+    $_SESSION['msguserdelproy']=USUDELPROYOK;
+        header("Location: cpanelprofe.php?rm=1&rt=3&a=3&udp=$proy");
+        mysqli_close($conexion);
+        exit();
+    }
+ob_end_flush();

@@ -7,6 +7,9 @@ nav{
 nav#nav1{
     margin-top: 2px;
 }
+#pc{
+    display: none;
+}
 #navAlum a{
     width: 50%;
 }
@@ -14,9 +17,6 @@ nav#nav1{
 #adduser #textoenr{
     width: 95%;
     margin: 10px auto;
-}
-#pc{
-    display: block;
 }
 #fotosindex #idioma{
     width: 80%;
@@ -128,7 +128,7 @@ nav.oculto{
     padding-bottom: 10px;
     
 }
-#adduser fieldset, #usermod fieldset, #userdel fieldset, #user2proy fieldset, #userdelproy fieldset, #addcourse fieldset, #coursemod fieldset, #addproy fieldset, #proydel fieldset, #proypublic fieldset,#proyNOpublic fieldset,#proyedit fieldset, #fotosindex fieldset, #commentarioscpanel fieldset{
+#adduser fieldset, #usermod fieldset, #userdel fieldset, #user2proy fieldset, #userdelproy fieldset, #addcourse fieldset, #coursemod fieldset, #addproy fieldset, #proydel fieldset, #proypublic fieldset,#proyNOpublic fieldset,#proyedit fieldset, #fotosindex fieldset, #commentarioscpanel fieldset {
     width: 98%;
     margin: 0px auto;
     border: 2px solid limegreen;
@@ -149,7 +149,19 @@ nav.oculto{
     float: left;
     clear: both;
 }
-
+#selecproy{
+    color: limegreen;
+    font-size: 1.3em;
+    text-align: center;
+}
+#selecproyecto{
+    margin-left: 10%;
+    float: left;
+}
+#selectbumv{
+    margin: 5px 0 20px 5%!important;
+    height: 35px!important;
+}
 #usermod fieldset #selectuser, #userdel fieldset #selectuser, #coursemod fieldset #selectcourse, #proydel fieldset #selectuser, #commentarioscpanel fieldset #selectuser,#user2proy fieldset #imvproy {
     width: 80%;
     text-align: center;
@@ -208,11 +220,6 @@ a#proyprof{
     margin: 10px 5% 10px 75%;
     cursor: pointer;
 }
-
-#user2proy fieldset form button , #userdelproy fieldset form button{
-    margin: 10px 5% 10px 70%!important;
-}
-
 
 #selectbu, #btnprofe{
     margin: 5px 0 10px 5%!important;
@@ -489,6 +496,12 @@ input:checked + .slider:before {
         display: inline-block;
         float: left;
     }
+    #movil{
+        display: none;
+    }
+    #user2proy fieldset form button , #userdelproy fieldset form button{
+    margin: 10px 5% 10px 70%!important;
+    }
     div#piechart_3d{
         margin-left:20%;
         margin-right: 10%;
@@ -569,6 +582,7 @@ input:checked + .slider:before {
         margin-left:49.5%!important;
     }
     #fotosindex #fotosub, #fotosindex #fotodel{
+        clear: right;
         width: 49%;
         float: right;
         margin-right: 0.5%;

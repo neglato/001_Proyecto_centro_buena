@@ -220,3 +220,11 @@ define('OTHERCONF','Otros');
 define('NOPERFIL','Perfil');
 define('TITPASS','Cambiar contraseña');
 define('TITOLPS','Olvidó contraseña');
+//nuevo 28/05
+define('USRDISP','Disponibles');
+//nuevo 29/05
+define('DEBUSU','Debes seleccionar al menos un alumno');
+define('USINS','Alumno inscrito correctamente');
+define('USRACT','Actuales');
+define('NOUSRDISP','No hay alumnos disponibles');
+define('NOUSRINS','No hay alumnos inscritos');

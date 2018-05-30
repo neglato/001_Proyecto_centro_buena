@@ -22,7 +22,7 @@ include('_include/variables.php');
         if(isset($_POST['usu2proy'])){
             if($_POST['id_proyecto']==-1 || !isset($_POST['id_user2'])){
                 header('Location: cpanelprofe.php?rm=1&rt=2&a=3');
-                $_SESSION['msgprofe']=USUYPROY;
+                $_SESSION['msgprofeproy']=USUYPROY;
                 exit();
             }else{
                 include('_include/conexion.php');
@@ -84,8 +84,8 @@ include('_include/variables.php');
                       echo 'Mail enviado correctamente';
                     }
                 }
+                $_SESSION['msgprofeproy']=USU2PROYOK;
                         header('Location: cpanelprofe.php?rm=1&rt=2&a=3');
-                        $_SESSION['msgprofe']=USU2PROYOK;
                         mysqli_close($conexion);
                         exit(); 
             }

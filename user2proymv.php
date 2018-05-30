@@ -1,9 +1,14 @@
-<!--    Script para eliminar un usuaro de un proyecto-->
-    
-    <?php
+<?php 
 ob_start();
-include('_include/variables.php');
+    include('_include/variables.php');
+    include('_include/funciones.php');
+    include('_include/conexion.php');
     session_start();
+if(!isset($_SESSION['user'])){
+    header('Location: index.php');
+    mysqli_close($conexion);
+    exit();
+}
     if(isset($_SESSION['lang'])){
         if($_SESSION['lang']==1){
             include('_include/UK-uk.php'); 
@@ -13,25 +18,29 @@ include('_include/variables.php');
     }else{
         include('_include/ES-es.php');
         }
-
-    if (!isset($_SESSION['user'])){
-        header('Location: index.php');
+/*primero comprobamos que exista */
+if(!isset($_POST['id_user']) && !isset($_SESSION['user2proy'])){
+   header('Location: index.php');
+    exit();
+}
+if(isset($_POST['id_user'])){
+    unset($_SESSION['user2proy']);
+}
+if(isset($_SESSION['user2proy'])){
+    /*ssi existe lo mandamos a la propia pagina para que seleccione al menos una imagen*/
+        $_SESSION['msguser2proy']=DEBUSU;
+        $proy=$_SESSION['iduser2proy'];
+        header("Location: cpanelprofe.php?rm=1&rt=2&a=3&u2p=$proy");
+        mysqli_close($conexion);
         exit();
-    }
-
-        if(isset($_POST['userdelproy'])){
-            if($_POST['id_proyecto']==-1 || !isset($_POST['id_user2'])){
-                header('Location: cpanelprofe.php?rm=1&rt=3&a=3');
-                $_SESSION['msgusrdelproy']=USUYPROY;
-                exit();
-            }else{
-                include('_include/conexion.php');
-                include('_include/funciones.php');
-                $proy=$_POST['id_proyecto'];
-                $use=$_POST['id_user2'];
+}
+$proy=$_SESSION['iduser2proy'];
+if(count($_POST['id_user']) > 0){
+                $use=$_POST['id_user'];
                 foreach($use as $i){
-                        $consul2 = consulta($conexion,"DELETE FROM usuproy WHERE id_proyecto='{$proy}' AND id_user='{$i}'");
-                    //correo
+                        $consul = consulta($conexion,"INSERT INTO usuproy (id_proyecto, id_user)  VALUES 
+                                                        ('" . $proy . "','" . $i . "')");
+                                        //correo
                     $email=consulta($conexion,"SELECT * FROM usuarios where id_user like $i");
                     $usFila=mysqli_fetch_array($email);
                     $nomUser=$usFila['nombre'];
@@ -70,9 +79,9 @@ include('_include/variables.php');
                     $mail->isHTML(true); // Set email format to HTML
 
 
-                    $mail->Subject = 'Ha sido relevado';
+                    $mail->Subject = 'Ha sido asignado como editor';
                     $mail->Body    = "<h1>¡Hola $nomUser!</h1> 
-                                    <p>Ha sido relevado de su puesto como editor del proyecto $nomPro en la APP de planes y proyectos del IES Delgado Hernández.</p>
+                                    <p>Ha sido asignado como editor del proyecto $nomPro, en la APP de Planes y Proyectos del IES DELGADO HERNANDEZ.</p>
                                     <p>Puede Acceder a la App desde el siguiente enlace:</p>
                                         <p>$enlaceEmail</p>";
 
@@ -82,16 +91,11 @@ include('_include/variables.php');
                     } else {
                       echo 'Mail enviado correctamente';
                     }
-                    //fin correo
                 }
-                    $_SESSION['msgusrdelproy']=USUDELPROYOK;
-                        header('Location: cpanelprofe.php?rm=1&rt=3&a=3');
-                        mysqli_close($conexion);
-                        exit(); 
-            }
-        }          
-        ob_end_flush();
-    ?>
-   
-  
- 
+        //fin mandar correo
+    $_SESSION['msguser2proy']=USINS;
+        header("Location: cpanelprofe.php?rm=1&rt=2&a=3&u2p=$proy");
+        mysqli_close($conexion);
+        exit();
+    }
+ob_end_flush();

@@ -146,6 +146,125 @@ $activo=3;
     <section id="user2proy">
         <fieldset>
             <legend><?=USU2PROY?></legend>
+              <div id="movil">
+                  <?php
+                    if(!isset($_POST['id_proyecto']) && !isset($_GET['u2p'])){
+                    ?>
+                   <form action="" method="post" enctype="multipart/form-data">
+                    <p id="selecproy"><?=SELPROY?>: </p>
+                    <select name="id_proyecto" id="selecproyecto">
+                        <option value="-1"><?=PROY?></option>
+                        <?php
+                            $user=$_SESSION['user'];
+                            $RESULT = consulta($conexion,"SELECT * 
+                                                            FROM proyectos 
+                                                            WHERE id_proyecto in (SELECT id_proyecto 
+                                                                                    FROM usuproy
+                                                                                    WHERE id_user = $user)
+                                                            AND mostrar like 0");  
+                            while ($fila = mysqli_fetch_array($RESULT)) {
+                                if($_SESSION['lang']==0){
+                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] . "</option>";
+                                }elseif($_SESSION['lang']==1){
+                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['name_pro'] . "</option>";
+                                }
+                            }
+                        ?>
+                    </select>
+                        <button type="submit" id="selectbumv"><i class="fas fa-edit edicion"></i></button>
+                        <p id="error"><?php
+                            if(isset($_SESSION['msgusr2proy'])){
+                                echo $_SESSION['msgusr2proy'];
+                                unset($_SESSION['msgusr2proy']);
+                            } ?></p>
+                </form>
+                   <?php
+                    }else{
+                        //comprobamos que el valor del formulario no sea -1
+                        if(isset($_POST['id_proyecto'])){
+                        if($_POST['id_proyecto']== -1){
+                            $_SESSION['msgprofe']=DEBCHO;
+                            header('Location: cpanelprofe.php?rm=1&rt=2&a=3');
+                            exit();
+                        }else{
+                            $proye=$_POST['id_proyecto'];
+                            $_SESSION['iduser2proy']=$proye;
+                            }
+                        }
+                        if(isset($_GET['u2p'])){
+                                $proye=$_GET['u2p'];
+                            }
+                            $noPar= consulta($conexion,"SELECT * 
+                                            FROM usuarios 
+                                            WHERE id_user not in (SELECT id_user
+                                                                  FROM usuproy
+                                                                  WHERE id_proyecto = $proye)
+                                            AND tipo = 2
+                                            AND baja like 0");
+                    $totalnoPar= mysqli_num_rows($noPar);
+                        if($totalnoPar==0){?>
+                        <p id="error"><?=NOUSRDISP?></p>
+                        <?php
+                            unset($_SESSION['msguser2proy']);
+                        }else{
+                    ?>
+                    <div id="textImg">
+                    <p class="textImg"><?=USRDISP?>:</p><p class="textImg"><?=USUPAAÑADIR?></p>
+                    </div>
+                <form method="post" enctype="multipart/form-data" action="user2proymv.php">
+                <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+                  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+                  <link href="_css/jquery.lwMultiSelect.css" rel="stylesheet" type="text/css" />
+                  <script type="text/javascript" src="_js/jquery.lwMultiSelect.js"></script>
+                  <style>
+                  .container { margin:10px auto; 
+                      width: 100%;}
+                  </style>
+        
+                   <p><select id="defaults" multiple="multiple" name="id_user[]">
+                   <?php
+                   while($noPaar= mysqli_fetch_array($noPar)){
+                    $idPar=$noPaar['id_user'];
+                    $nombre=$noPaar['nombre'];
+                    $apellidos=$noPaar['apellidos'];
+                       ?>
+                       <option value="<?=$idPar?>"><p><?=$nombre?> <?=$apellidos?></p></option>
+                   <?php }
+                            $_SESSION['user2proy']=1;
+                    ?>
+                   </select>
+                   <?php 
+                       ?>
+                      </p>
+                    <script>
+                    jQuery('#defaults').lwMultiSelect();
+                    </script>
+                    <script type="text/javascript">
+
+                      var _gaq = _gaq || [];
+                      _gaq.push(['_setAccount', 'UA-36251023-1']);
+                      _gaq.push(['_setDomainName', 'jqueryscript.net']);
+                      _gaq.push(['_trackPageview']);
+
+                      (function() {
+                        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                      })();
+
+                    </script>
+                               <button type="submit" id=btnborrar><i class="fas fa-save edicion"></i></button>
+                                                  <p id="error"><?php
+                                                if(isset($_SESSION['msguser2proy'])){
+                                                    echo $_SESSION['msguser2proy'];
+                                                    unset($_SESSION['msguser2proy']);
+                                                } ?></p>
+                                    </form>
+                                    <?php 
+                        }
+                                                                                                  }
+                    ?>
+              </div>
                <div id="pc">
                 <form action="user2proy.php" method="post" enctype="multipart/form-data">
                     <p id="selectproy"><?=PROYECT?>: </p>
@@ -192,9 +311,9 @@ $activo=3;
                     <button type="submit" name="usu2proy" id="btnprofe" class="submit"><i class="fas fa-save edicion"></i></button>
                         <p id="error">
                            <?php
-                                if(isset($_SESSION['msgprofe'])){
-                                    echo $_SESSION['msgprofe'];
-                                    unset($_SESSION['msgprofe']);
+                                if(isset($_SESSION['msgprofeproy'])){
+                                    echo $_SESSION['msgprofeproy'];
+                                    unset($_SESSION['msgprofeproy']);
                             } ?>
                         </p>
                 </form>
@@ -230,6 +349,124 @@ $activo=3;
     <section id="user2proy">
         <fieldset>
             <legend><?=USUDELPROY?></legend>
+                    <div id="movil">
+                  <?php
+                    if(!isset($_POST['id_proyecto']) && !isset($_GET['udp'])){
+                    ?>
+                   <form action="" method="post" enctype="multipart/form-data">
+                    <p id="selecproy"><?=SELPROY?>: </p>
+                    <select name="id_proyecto" id="selecproyecto">
+                        <option value="-1"><?=PROY?></option>
+                        <?php
+                            $user=$_SESSION['user'];
+                            $RESULT = consulta($conexion,"SELECT * 
+                                                            FROM proyectos 
+                                                            WHERE id_proyecto in (SELECT id_proyecto 
+                                                                                    FROM usuproy
+                                                                                    WHERE id_user = $user)
+                                                            AND mostrar like 0");  
+                            while ($fila = mysqli_fetch_array($RESULT)) {
+                                if($_SESSION['lang']==0){
+                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] . "</option>";
+                                }elseif($_SESSION['lang']==1){
+                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['name_pro'] . "</option>";
+                                }
+                            }
+                        ?>
+                    </select>
+                        <button type="submit" id="selectbumv"><i class="fas fa-edit edicion"></i></button>
+                        <p id="error"><?php
+                            if(isset($_SESSION['msgprofe'])){
+                                echo $_SESSION['msgprofe'];
+                                unset($_SESSION['msgprofe']);
+                            } ?></p>
+                </form>
+                   <?php
+                    }else{
+                        //comprobamos que el valor del formulario no sea -1
+                        if(isset($_POST['id_proyecto'])){
+                        if($_POST['id_proyecto']== -1){
+                            $_SESSION['msgprofe']=DEBCHO;
+                            header('Location: cpanelprofe.php?rm=1&rt=3&a=3');
+                            exit();
+                        }else{
+                            $proye=$_POST['id_proyecto'];
+                            $_SESSION['iduserdelproy']=$proye;
+                            }
+                        }
+                        if(isset($_GET['udp'])){
+                                $proye=$_GET['udp'];
+                            }
+                            $noPar= consulta($conexion,"SELECT * 
+                                            FROM usuarios 
+                                            WHERE id_user in  (SELECT id_user
+                                                                  FROM usuproy
+                                                                  WHERE id_proyecto = $proye)
+                                            AND tipo = 2
+                                            AND baja like 0");
+                    $totalnoPar= mysqli_num_rows($noPar);
+                        if($totalnoPar==0){?>
+                            <p id="error"><?=NOUSRINS?></p>
+                            <?php
+                            unset($_SESSION['msguserdelproy']);
+                        }else{
+                    ?>
+                    <div id="textImg">
+                    <p class="textImg"><?=USRACT?>:</p><p class="textImg"><?=PARTDROP?></p>
+                    </div>
+                <form method="post" enctype="multipart/form-data" action="userdelproymv.php">
+                <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+                  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+                  <link href="_css/jquery.lwMultiSelect.css" rel="stylesheet" type="text/css" />
+                  <script type="text/javascript" src="_js/jquery.lwMultiSelect.js"></script>
+                  <style>
+                  .container { margin:10px auto; 
+                      width: 100%;}
+                  </style>
+                   <p><select id="defaults" multiple="multiple" name="id_user[]">
+                   <?php
+                   while($noPaar= mysqli_fetch_array($noPar)){
+                    $idPar=$noPaar['id_user'];
+                    $nombre=$noPaar['nombre'];
+                    $apellidos=$noPaar['apellidos'];
+                       ?>
+                       <option value="<?=$idPar?>"><p><?=$nombre?> <?=$apellidos?></p></option>
+                   <?php }
+                            $_SESSION['userdelproy']=1;
+                    ?>
+                   </select>
+                   <?php 
+                       ?>
+                      </p>
+                    <script>
+                    jQuery('#defaults').lwMultiSelect();
+                    </script>
+                    <script type="text/javascript">
+
+                      var _gaq = _gaq || [];
+                      _gaq.push(['_setAccount', 'UA-36251023-1']);
+                      _gaq.push(['_setDomainName', 'jqueryscript.net']);
+                      _gaq.push(['_trackPageview']);
+
+                      (function() {
+                        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                      })();
+
+                    </script>
+                               <button type="submit" id=btnborrar><i class="fas fa-times edicion2"></i></button>
+                                                  <p id="error"><?php
+                                                if(isset($_SESSION['msguserdelproy'])){
+                                                    echo $_SESSION['msguserdelproy'];
+                                                    unset($_SESSION['msguserdelproy']);
+                                                } ?></p>
+                                    </form>
+                                    <?php 
+                        }
+                    }
+                    ?>
+              </div>
                <div id="pc">
                 <form action="userdelproy.php" method="post" enctype="multipart/form-data">
                     <p id="selectproy"><?=PROYECT?>: </p>
@@ -277,9 +514,9 @@ $activo=3;
                     <button type="submit" name="userdelproy" id="btnprofe" class="submit"><i class="fas fa-times edicion2"></i></button>
                         <p id="error">
                            <?php
-                                if(isset($_SESSION['msgprofe'])){
-                                    echo $_SESSION['msgprofe'];
-                                    unset($_SESSION['msgprofe']);
+                                if(isset($_SESSION['msgusrdelproy'])){
+                                    echo $_SESSION['msgusrdelproy'];
+                                    unset($_SESSION['msgusrdelproy']);
                             } ?>
                         </p>
                 </form>
