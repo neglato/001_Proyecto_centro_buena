@@ -221,3 +221,11 @@ define('OTHERCONF','Others');
 define('NOPERFIL','Profile');
 define('TITPASS','Change password');
 define('TITOLPS','Forgot password');
+//nuevo 28/05
+define('USRDISP','Available');
+//nuevo 29/05
+define('DEBUSU','You must select at least one student');
+define('USINS','Student enrolled correctly');
+define('USRACT','Current');
+define('NOUSRDISP','No students available');
+define('NOUSRINS','No students enrolled');
