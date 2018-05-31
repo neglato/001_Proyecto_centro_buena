@@ -70,7 +70,7 @@ define('MODIFICAR_CURSO','Modify course');
 define('BAJA_CURSO','Remove course');
 define('AÑADIR_PROYECTO','Add proyect');
 define('MODIFICAR_PROYECTO','Modify proyect');
-define('BAJA_PROYECTO','Remove proyect');
+define('BAJA_PROYECTO','Remove publication of a proyect');
 define('ALUMN','Student');
 define('PRIVI','Privilege: ');
 define('ELIGEPRIVI','Degree of privilege');
@@ -229,3 +229,6 @@ define('USINS','Student enrolled correctly');
 define('USRACT','Current');
 define('NOUSRDISP','No students available');
 define('NOUSRINS','No students enrolled');
+//nuevo 31/05
+define('INDPHO','Photos of the home page');
+define('ADMINCOM','Remove comments from a project');

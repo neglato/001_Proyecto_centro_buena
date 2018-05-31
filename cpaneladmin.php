@@ -15,6 +15,9 @@ if($_SESSION['lang']==1){
 if(!isset($_SESSION['user'])){
     header('Location: index.php');
 }
+if($_SESSION['tipo']!=0){
+    header('Location: cpanel.php');
+}
 if(isset($_POST['id_proy'])){
         if($_POST['id_proy'] == -1){
                 header('Location: cpaneladmin.php?rm=3&rt=2&a=3');
@@ -58,37 +61,37 @@ $activo=3;
     if(!isset($_GET['rm'])){?>
                  <nav id="nav1">
               <div class="icon-bar2">
-              <a href="#" id="enla1" onclick="desplegarAdmin(this,'nav2')"><span><?= USUARIOS ?> </span><i class="fas fa-user ico"></i></a> 
-              <a href="#" id="enla2" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?> </span><i class="fas fa-calendar-alt ico"></i></a> 
-              <a href="#" id="enla3" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?> </span><i class="fas fa-file ico"></i></a>
-              <a href="#" id="enla4" onclick="desplegarAdmin(this,'nav5')"><span><?= OTHERS ?> </span><i class="fas fa-cogs ico"></i></a> 
+              <a href="#" id="enla1" onclick="desplegarAdmin(this,'nav2')"><span class="titulo"><?= USUARIOS ?></span><i class="fas fa-user ico"></i></a> 
+              <a href="#" id="enla2" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?></span><i class="fas fa-calendar-alt ico"></i></a> 
+              <a href="#" id="enla3" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?></span><i class="fas fa-file ico"></i></a>
+              <a href="#" id="enla4" onclick="desplegarAdmin(this,'nav5')"><span><?= OTHERS ?></span><i class="fas fa-cogs ico"></i></a> 
             </div>
           </nav>
         <nav id="nav2" class="oculto">
             <div class="icon-bar">
-              <a href="?rm=1&rt=1&a=3" id="subenla1" onclick="desplegar2(this)"><i class="fas fa-user-plus ico"></i></a> 
-              <a href="?rm=1&rt=2&a=3" id="subenla2" onclick="desplegar2(this)"><i class="fas fa-user-md ico"></i></a> 
-              <a href="?rm=1&rt=3&a=3" id="subenla3" onclick="desplegar2(this)"><i class="fas fa-user-times ico"></i></a> 
+              <a href="?rm=1&rt=1&a=3" id="subenla1" title="<?=AÑADIR_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-plus ico"></i></a> 
+              <a href="?rm=1&rt=2&a=3" id="subenla2" title="<?=MODIFICAR_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-md ico"></i></a> 
+              <a href="?rm=1&rt=3&a=3" id="subenla3" title="<?=BAJA_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-times ico"></i></a> 
             </div>
         </nav>
         <nav id="nav3" class="oculto">
           <div class="icon-bar">
-              <a href="?rm=2&rt=1&a=3" id="subenla4" onclick="desplegar2(this)"><i class="fas fa-calendar-plus ico"></i></a> 
-              <a href="?rm=2&rt=2&a=3" id="subenla5" onclick="desplegar2(this)"><i class="fas fa-calendar-check ico"></i></a> 
-              <a href="?rm=2&rt=3&a=3" id="subenla6" onclick="desplegar2(this)"><i class="fas fa-calendar-times ico"></i></a>  
+              <a href="?rm=2&rt=1&a=3" id="subenla4" title="<?=AÑADIR_CURSO?>" onclick="desplegar2(this)"><i class="fas fa-calendar-plus ico"></i></a> 
+              <a href="?rm=2&rt=2&a=3" id="subenla5" title="<?=MODIFICAR_CURSO?>" onclick="desplegar2(this)"><i class="fas fa-calendar-check ico"></i></a> 
+              <a href="?rm=2&rt=3&a=3" id="subenla6" title="<?=BAJA_CURSO?>" onclick="desplegar2(this)"><i class="fas fa-calendar-times ico"></i></a>  
             </div>
         </nav>
         <nav id="nav4" class="oculto">
           <div class="icon-bar">
-              <a href="?rm=3&rt=1&a=3" id="subenla7" onclick="desplegar2(this)"><i class="fas fa-file-alt ico"></i></a> 
-              <a href="?rm=3&rt=2&a=3" id="subenla8" onclick="desplegar2(this)"><i class="fas fa-file-code ico"></i></a> 
-              <a href="?rm=3&rt=3&a=3" id="subenla9" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
+              <a href="?rm=3&rt=1&a=3" id="subenla7" title="<?=AÑADIR_PROYECTO?>" onclick="desplegar2(this)"><i class="fas fa-file-alt ico"></i></a> 
+              <a href="?rm=3&rt=2&a=3" id="subenla8" title="<?=MODIFICAR_PROYECTO?>" onclick="desplegar2(this)"><i class="fas fa-file-code ico"></i></a> 
+              <a href="?rm=3&rt=3&a=3" id="subenla9" title="<?=BAJA_PROYECTO?>" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
             </div>
         </nav>
         <nav id="nav5" class="oculto">
           <div class="icon-bar3">
-              <a href="?rm=4&rt=1&a=3" id="subenla10" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
-              <a href="?rm=4&rt=2&a=3" id="subenla11" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
+              <a href="?rm=4&rt=1&a=3" id="subenla10" title="<?=INDPHO?>" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
+              <a href="?rm=4&rt=2&a=3" id="subenla11" title="<?=ADMINCOM?>" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
             </div>
         </nav>
         <?php
@@ -100,36 +103,36 @@ $activo=3;
         <nav id="nav1">
               <div class="icon-bar2">
               <a href="#" id="enla1" class="active" onclick="desplegarAdmin(this,'nav2')"><span><?= USUARIOS ?> </span><i class="fas fa-user ico"></i></a> 
-              <a href="#" id="enla2" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?> </span><i class="fas fa-calendar-alt ico"></i></a> 
-              <a href="#" id="enla3" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?> </span><i class="fas fa-file ico"></i></a>
-              <a href="#" id="enla4" onclick="desplegarAdmin(this,'nav5')"><span><?= OTHERS ?> </span><i class="fas fa-cogs ico"></i></a> 
+              <a href="#" id="enla2" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?></span><i class="fas fa-calendar-alt ico"></i></a> 
+              <a href="#" id="enla3" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?></span><i class="fas fa-file ico"></i></a>
+              <a href="#" id="enla4" onclick="desplegarAdmin(this,'nav5')"><span><?= OTHERS ?></span><i class="fas fa-cogs ico"></i></a> 
             </div>
           </nav>
         <nav id="nav2">
             <div class="icon-bar">
-              <a href="?rm=1&rt=1&a=3" class="active" id="subenla1" onclick="desplegar2(this)"><i class="fas fa-user-plus ico"></i></a> 
-              <a href="?rm=1&rt=2&a=3" id="subenla2" onclick="desplegar2(this)"><i class="fas fa-user-md ico"></i></a> 
-              <a href="?rm=1&rt=3&a=3" id="subenla3" onclick="desplegar2(this)"><i class="fas fa-user-times ico"></i></a> 
+              <a href="?rm=1&rt=1&a=3" class="active" id="subenla1" title="<?=AÑADIR_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-plus ico"></i></a> 
+              <a href="?rm=1&rt=2&a=3" id="subenla2" title="<?=MODIFICAR_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-md ico"></i></a> 
+              <a href="?rm=1&rt=3&a=3" id="subenla3" title="<?=BAJA_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-times ico"></i></a> 
             </div>
         </nav>
         <nav id="nav3" class="oculto">
           <div class="icon-bar">
-              <a href="?rm=2&rt=1&a=3" id="subenla4" onclick="desplegar2(this)"><i class="fas fa-calendar-plus ico"></i></a> 
-              <a href="?rm=2&rt=2&a=3" id="subenla5" onclick="desplegar2(this)"><i class="fas fa-calendar-check ico"></i></a> 
-              <a href="?rm=2&rt=3&a=3" id="subenla6" onclick="desplegar2(this)"><i class="fas fa-calendar-times ico"></i></a>  
+              <a href="?rm=2&rt=1&a=3" id="subenla4" title="<?=AÑADIR_CURSO?>" onclick="desplegar2(this)"><i class="fas fa-calendar-plus ico"></i></a> 
+              <a href="?rm=2&rt=2&a=3" id="subenla5" title="<?=MODIFICAR_CURSO?>" onclick="desplegar2(this)"><i class="fas fa-calendar-check ico"></i></a> 
+              <a href="?rm=2&rt=3&a=3" id="subenla6" title="<?=BAJA_CURSO?>" onclick="desplegar2(this)"><i class="fas fa-calendar-times ico"></i></a>  
             </div>
         </nav>
         <nav id="nav4" class="oculto">
           <div class="icon-bar">
-              <a href="?rm=3&rt=1&a=3" id="subenla7" onclick="desplegar2(this)"><i class="fas fa-file-alt ico"></i></a> 
-              <a href="?rm=3&rt=2&a=3" id="subenla8" onclick="desplegar2(this)"><i class="fas fa-file-code ico"></i></a> 
-              <a href="?rm=3&rt=3&a=3" id="subenla9" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
+              <a href="?rm=3&rt=1&a=3" id="subenla7" title="<?=AÑADIR_PROYECTO?>" onclick="desplegar2(this)"><i class="fas fa-file-alt ico"></i></a> 
+              <a href="?rm=3&rt=2&a=3" id="subenla8" title="<?=MODIFICAR_PROYECTO?>" onclick="desplegar2(this)"><i class="fas fa-file-code ico"></i></a> 
+              <a href="?rm=3&rt=3&a=3" id="subenla9" title="<?=BAJA_PROYECTO?>" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
             </div>
         </nav>
         <nav id="nav5" class="oculto">
           <div class="icon-bar3">
-              <a href="?rm=4&rt=1&a=3" id="subenla10" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
-              <a href="?rm=4&rt=2&a=3" id="subenla11" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
+              <a href="?rm=4&rt=1&a=3" id="subenla10" title="<?=INDPHO?>" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
+              <a href="?rm=4&rt=2&a=3" id="subenla11" title="<?=ADMINCOM?>" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
             </div>
         </nav>
         <section id="adduser">
@@ -163,37 +166,37 @@ $activo=3;
     }else if(isset($_GET['rm']) and $_GET['rm']==1 and isset($_GET['rt']) and $_GET['rt']==2) { ?>
         <nav id="nav1">
               <div class="icon-bar2">
-              <a href="#" id="enla1" class="active" onclick="desplegarAdmin(this,'nav2')"><span><?= USUARIOS ?> </span><i class="fas fa-user ico"></i></a> 
-              <a href="#" id="enla2" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?> </span><i class="fas fa-calendar-alt ico"></i></a> 
-              <a href="#" id="enla3" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?> </span><i class="fas fa-file ico"></i></a>
-              <a href="#" id="enla4" onclick="desplegarAdmin(this,'nav5')"><span><?= OTHERS ?> </span><i class="fas fa-cogs ico"></i></a> 
+              <a href="#" id="enla1" class="active" onclick="desplegarAdmin(this,'nav2')"><span><?= USUARIOS ?></span><i class="fas fa-user ico"></i></a> 
+              <a href="#" id="enla2" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?></span><i class="fas fa-calendar-alt ico"></i></a> 
+              <a href="#" id="enla3" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?></span><i class="fas fa-file ico"></i></a>
+              <a href="#" id="enla4" onclick="desplegarAdmin(this,'nav5')"><span><?= OTHERS ?></span><i class="fas fa-cogs ico"></i></a> 
             </div>
           </nav>
         <nav id="nav2">
             <div class="icon-bar">
-              <a href="?rm=1&rt=1&a=3" id="subenla1" onclick="desplegar2(this)"><i class="fas fa-user-plus ico"></i></a> 
-              <a href="?rm=1&rt=2&a=3" class="active" id="subenla2" onclick="desplegar2(this)"><i class="fas fa-user-md ico"></i></a> 
-              <a href="?rm=1&rt=3&a=3" id="subenla3" onclick="desplegar2(this)"><i class="fas fa-user-times ico"></i></a> 
+              <a href="?rm=1&rt=1&a=3" id="subenla1" title="<?=AÑADIR_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-plus ico"></i></a> 
+              <a href="?rm=1&rt=2&a=3" class="active" id="subenla2" title="<?=MODIFICAR_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-md ico"></i></a> 
+              <a href="?rm=1&rt=3&a=3" id="subenla3" title="<?=BAJA_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-times ico"></i></a> 
             </div>
         </nav>
         <nav id="nav3" class="oculto">
           <div class="icon-bar">
-              <a href="?rm=2&rt=1&a=3" id="subenla4" onclick="desplegar2(this)"><i class="fas fa-calendar-plus ico"></i></a> 
-              <a href="?rm=2&rt=2&a=3" id="subenla5" onclick="desplegar2(this)"><i class="fas fa-calendar-check ico"></i></a> 
-              <a href="?rm=2&rt=3&a=3" id="subenla6" onclick="desplegar2(this)"><i class="fas fa-calendar-times ico"></i></a>  
+              <a href="?rm=2&rt=1&a=3" id="subenla4" title="<?=AÑADIR_CURSO?>" onclick="desplegar2(this)"><i class="fas fa-calendar-plus ico"></i></a> 
+              <a href="?rm=2&rt=2&a=3" id="subenla5" title="<?=MODIFICAR_CURSO?>" onclick="desplegar2(this)"><i class="fas fa-calendar-check ico"></i></a> 
+              <a href="?rm=2&rt=3&a=3" id="subenla6" title="<?=BAJA_CURSO?>" onclick="desplegar2(this)"><i class="fas fa-calendar-times ico"></i></a>  
             </div>
         </nav>
         <nav id="nav4" class="oculto">
           <div class="icon-bar">
-              <a href="?rm=3&rt=1&a=3" id="subenla7" onclick="desplegar2(this)"><i class="fas fa-file-alt ico"></i></a> 
-              <a href="?rm=3&rt=2&a=3" id="subenla8" onclick="desplegar2(this)"><i class="fas fa-file-code ico"></i></a> 
-              <a href="?rm=3&rt=3&a=3" id="subenla9" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
+              <a href="?rm=3&rt=1&a=3" id="subenla7" title="<?=AÑADIR_PROYECTO?>" onclick="desplegar2(this)"><i class="fas fa-file-alt ico"></i></a> 
+              <a href="?rm=3&rt=2&a=3" id="subenla8" title="<?=MODIFICAR_PROYECTO?>" onclick="desplegar2(this)"><i class="fas fa-file-code ico"></i></a> 
+              <a href="?rm=3&rt=3&a=3" id="subenla9" title="<?=BAJA_PROYECTO?>" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
             </div>
         </nav>
         <nav id="nav5" class="oculto">
           <div class="icon-bar3">
-              <a href="?rm=4&rt=1&a=3" id="subenla10" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
-              <a href="?rm=4&rt=2&a=3" id="subenla11" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
+              <a href="?rm=4&rt=1&a=3" id="subenla10" title="<?=INDPHO?>" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
+              <a href="?rm=4&rt=2&a=3" id="subenla11" title="<?=ADMINCOM?>" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
             </div>
         </nav>
         <section id="usermod">
@@ -293,37 +296,37 @@ Comienza eliminar usuario*/
         }elseif(isset($_GET['rm']) and $_GET['rm']==1 and isset($_GET['rt']) and $_GET['rt']==3){?>
         <nav id="nav1">
               <div class="icon-bar2">
-              <a href="#" id="enla1" class="active" onclick="desplegarAdmin(this,'nav2')"><span><?= USUARIOS ?> </span><i class="fas fa-user ico"></i></a> 
-              <a href="#" id="enla2" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?> </span><i class="fas fa-calendar-alt ico"></i></a> 
-              <a href="#" id="enla3" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?> </span><i class="fas fa-file ico"></i></a>
-              <a href="#" id="enla4" onclick="desplegarAdmin(this,'nav5')"><span><?= OTHERS ?> </span><i class="fas fa-cogs ico"></i></a> 
+              <a href="#" id="enla1" class="active" onclick="desplegarAdmin(this,'nav2')"><span><?= USUARIOS ?></span><i class="fas fa-user ico"></i></a> 
+              <a href="#" id="enla2" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?></span><i class="fas fa-calendar-alt ico"></i></a> 
+              <a href="#" id="enla3" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?></span><i class="fas fa-file ico"></i></a>
+              <a href="#" id="enla4" onclick="desplegarAdmin(this,'nav5')"><span><?= OTHERS ?></span><i class="fas fa-cogs ico"></i></a> 
             </div>
           </nav>
         <nav id="nav2">
             <div class="icon-bar">
-              <a href="?rm=1&rt=1&a=3" id="subenla1" onclick="desplegar2(this)"><i class="fas fa-user-plus ico"></i></a> 
-              <a href="?rm=1&rt=2&a=3"  id="subenla2" onclick="desplegar2(this)"><i class="fas fa-user-md ico"></i></a> 
-              <a href="?rm=1&rt=3&a=3" class="active" id="subenla3" onclick="desplegar2(this)"><i class="fas fa-user-times ico"></i></a> 
+              <a href="?rm=1&rt=1&a=3" id="subenla1" title="<?=AÑADIR_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-plus ico"></i></a> 
+              <a href="?rm=1&rt=2&a=3"  id="subenla2" title="<?=MODIFICAR_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-md ico"></i></a> 
+              <a href="?rm=1&rt=3&a=3" class="active" id="subenla3" title="<?=BAJA_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-times ico"></i></a> 
             </div>
         </nav>
         <nav id="nav3" class="oculto">
           <div class="icon-bar">
-              <a href="?rm=2&rt=1&a=3" id="subenla4" onclick="desplegar2(this)"><i class="fas fa-calendar-plus ico"></i></a> 
-              <a href="?rm=2&rt=2&a=3" id="subenla5" onclick="desplegar2(this)"><i class="fas fa-calendar-check ico"></i></a> 
-              <a href="?rm=2&rt=3&a=3" id="subenla6" onclick="desplegar2(this)"><i class="fas fa-calendar-times ico"></i></a>  
+              <a href="?rm=2&rt=1&a=3" id="subenla4" title="<?=AÑADIR_CURSO?>" onclick="desplegar2(this)"><i class="fas fa-calendar-plus ico"></i></a> 
+              <a href="?rm=2&rt=2&a=3" id="subenla5" title="<?=MODIFICAR_CURSO?>" onclick="desplegar2(this)"><i class="fas fa-calendar-check ico"></i></a> 
+              <a href="?rm=2&rt=3&a=3" id="subenla6" title="<?=BAJA_CURSO?>" onclick="desplegar2(this)"><i class="fas fa-calendar-times ico"></i></a>  
             </div>
         </nav>
         <nav id="nav4" class="oculto">
           <div class="icon-bar">
-              <a href="?rm=3&rt=1&a=3" id="subenla7" onclick="desplegar2(this)"><i class="fas fa-file-alt ico"></i></a> 
-              <a href="?rm=3&rt=2&a=3" id="subenla8" onclick="desplegar2(this)"><i class="fas fa-file-code ico"></i></a> 
-              <a href="?rm=3&rt=3&a=3" id="subenla9" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
+              <a href="?rm=3&rt=1&a=3" id="subenla7" title="<?=AÑADIR_PROYECTO?>" onclick="desplegar2(this)"><i class="fas fa-file-alt ico"></i></a> 
+              <a href="?rm=3&rt=2&a=3" id="subenla8" title="<?=MODIFICAR_PROYECTO?>" onclick="desplegar2(this)"><i class="fas fa-file-code ico"></i></a> 
+              <a href="?rm=3&rt=3&a=3" id="subenla9" title="<?=BAJA_PROYECTO?>" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
             </div>
         </nav>
         <nav id="nav5" class="oculto">
           <div class="icon-bar3">
-              <a href="?rm=4&rt=1&a=3" id="subenla10" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
-              <a href="?rm=4&rt=2&a=3" id="subenla11" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
+              <a href="?rm=4&rt=1&a=3" id="subenla10" title="<?=INDPHO?>" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
+              <a href="?rm=4&rt=2&a=3" id="subenla11" title="<?=ADMINCOM?>" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
             </div>
         </nav>
         <section id="userdel">
@@ -359,37 +362,37 @@ Comienza eliminar usuario*/
                 }elseif(isset($_GET['rm']) and $_GET['rm']==2 and isset($_GET['rt']) and $_GET['rt']==1){?>
         <nav id="nav1">
               <div class="icon-bar2">
-              <a href="#" id="enla1" onclick="desplegarAdmin(this,'nav2')"><span><?= USUARIOS ?> </span><i class="fas fa-user ico"></i></a> 
-              <a href="#" id="enla2" class="active" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?> </span><i class="fas fa-calendar-alt ico"></i></a> 
-              <a href="#" id="enla3" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?> </span><i class="fas fa-file ico"></i></a>
-              <a href="#" id="enla4" onclick="desplegarAdmin(this,'nav5')"><span><?= OTHERS ?> </span><i class="fas fa-cogs ico"></i></a> 
+              <a href="#" id="enla1" onclick="desplegarAdmin(this,'nav2')"><span><?= USUARIOS ?></span><i class="fas fa-user ico"></i></a> 
+              <a href="#" id="enla2" class="active" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?></span><i class="fas fa-calendar-alt ico"></i></a> 
+              <a href="#" id="enla3" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?></span><i class="fas fa-file ico"></i></a>
+              <a href="#" id="enla4" onclick="desplegarAdmin(this,'nav5')"><span><?= OTHERS ?></span><i class="fas fa-cogs ico"></i></a> 
             </div>
           </nav>
         <nav id="nav2" class="oculto">
             <div class="icon-bar">
-              <a href="?rm=1&rt=1&a=3" id="subenla1" onclick="desplegar2(this)"><i class="fas fa-user-plus ico"></i></a> 
-              <a href="?rm=1&rt=2&a=3"  id="subenla2" onclick="desplegar2(this)"><i class="fas fa-user-md ico"></i></a> 
-              <a href="?rm=1&rt=3&a=3" id="subenla3" onclick="desplegar2(this)"><i class="fas fa-user-times ico"></i></a> 
+              <a href="?rm=1&rt=1&a=3" id="subenla1" title="<?=AÑADIR_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-plus ico"></i></a> 
+              <a href="?rm=1&rt=2&a=3"  id="subenla2" title="<?=MODIFICAR_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-md ico"></i></a> 
+              <a href="?rm=1&rt=3&a=3" id="subenla3" title="<?=BAJA_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-times ico"></i></a> 
             </div>
         </nav>
         <nav id="nav3">
           <div class="icon-bar">
-              <a href="?rm=2&rt=1&a=3" class="active" id="subenla4" onclick="desplegar2(this)"><i class="fas fa-calendar-plus ico"></i></a> 
-              <a href="?rm=2&rt=2&a=3" id="subenla5" onclick="desplegar2(this)"><i class="fas fa-calendar-check ico"></i></a> 
-              <a href="?rm=2&rt=3&a=3" id="subenla6" onclick="desplegar2(this)"><i class="fas fa-calendar-times ico"></i></a>  
+              <a href="?rm=2&rt=1&a=3" class="active" title="<?=AÑADIR_CURSO?>" id="subenla4" onclick="desplegar2(this)"><i class="fas fa-calendar-plus ico"></i></a> 
+              <a href="?rm=2&rt=2&a=3" id="subenla5" title="<?=MODIFICAR_CURSO?>" onclick="desplegar2(this)"><i class="fas fa-calendar-check ico"></i></a> 
+              <a href="?rm=2&rt=3&a=3" id="subenla6" title="<?=BAJA_CURSO?>" onclick="desplegar2(this)"><i class="fas fa-calendar-times ico"></i></a>  
             </div>
         </nav>
         <nav id="nav4" class="oculto">
           <div class="icon-bar">
-              <a href="?rm=3&rt=1&a=3" id="subenla7" onclick="desplegar2(this)"><i class="fas fa-file-alt ico"></i></a> 
-              <a href="?rm=3&rt=2&a=3" id="subenla8" onclick="desplegar2(this)"><i class="fas fa-file-code ico"></i></a> 
-              <a href="?rm=3&rt=3&a=3" id="subenla9" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
+              <a href="?rm=3&rt=1&a=3" id="subenla7" title="<?=AÑADIR_PROYECTO?>" onclick="desplegar2(this)"><i class="fas fa-file-alt ico"></i></a> 
+              <a href="?rm=3&rt=2&a=3" id="subenla8" title="<?=MODIFICAR_PROYECTO?>" onclick="desplegar2(this)"><i class="fas fa-file-code ico"></i></a> 
+              <a href="?rm=3&rt=3&a=3" id="subenla9" title="<?=BAJA_PROYECTO?>" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
             </div>
         </nav>
         <nav id="nav5" class="oculto">
           <div class="icon-bar3">
-              <a href="?rm=4&rt=1&a=3" id="subenla10" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
-              <a href="?rm=4&rt=2&a=3" id="subenla11" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
+              <a href="?rm=4&rt=1&a=3" id="subenla10" title="<?=INDPHO?>" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
+              <a href="?rm=4&rt=2&a=3" id="subenla11" title="<?=ADMINCOM?>" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
             </div>
         </nav>
         <section id="addcourse">
@@ -411,37 +414,37 @@ Comienza eliminar usuario*/
     }else if(isset($_GET['rm']) and $_GET['rm']==2 and isset($_GET['rt']) and $_GET['rt']==2) { ?>
         <nav id="nav1">
               <div class="icon-bar2">
-              <a href="#" id="enla1" onclick="desplegarAdmin(this,'nav2')"><span><?= USUARIOS ?> </span><i class="fas fa-user ico"></i></a> 
-              <a href="#" id="enla2" class="active" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?> </span><i class="fas fa-calendar-alt ico"></i></a> 
-              <a href="#" id="enla3" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?> </span><i class="fas fa-file ico"></i></a>
-              <a href="#" id="enla4" onclick="desplegarAdmin(this,'nav5')"><span><?= OTHERS ?> </span><i class="fas fa-cogs ico"></i></a> 
+              <a href="#" id="enla1" onclick="desplegarAdmin(this,'nav2')"><span><?= USUARIOS ?></span><i class="fas fa-user ico"></i></a> 
+              <a href="#" id="enla2" class="active" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?></span><i class="fas fa-calendar-alt ico"></i></a> 
+              <a href="#" id="enla3" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?></span><i class="fas fa-file ico"></i></a>
+              <a href="#" id="enla4" onclick="desplegarAdmin(this,'nav5')"><span><?= OTHERS ?></span><i class="fas fa-cogs ico"></i></a> 
             </div>
           </nav>
         <nav id="nav2"class="oculto">
             <div class="icon-bar">
-              <a href="?rm=1&rt=1&a=3" id="subenla1" onclick="desplegar2(this)"><i class="fas fa-user-plus ico"></i></a> 
-              <a href="?rm=1&rt=2&a=3"  id="subenla2" onclick="desplegar2(this)"><i class="fas fa-user-md ico"></i></a>
-              <a href="?rm=1&rt=3&a=3" id="subenla3" onclick="desplegar2(this)"><i class="fas fa-user-times ico"></i></a>  
+              <a href="?rm=1&rt=1&a=3" id="subenla1" title="<?=AÑADIR_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-plus ico"></i></a> 
+              <a href="?rm=1&rt=2&a=3"  id="subenla2" title="<?=MODIFICAR_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-md ico"></i></a>
+              <a href="?rm=1&rt=3&a=3" id="subenla3" title="<?=BAJA_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-times ico"></i></a>  
             </div>
         </nav>
         <nav id="nav3">
           <div class="icon-bar">
-              <a href="?rm=2&rt=1&a=3" id="subenla4" onclick="desplegar2(this)"><i class="fas fa-calendar-plus ico"></i></a> 
-              <a href="?rm=2&rt=2&a=3" class="active" id="subenla5" onclick="desplegar2(this)"><i class="fas fa-calendar-check ico"></i></a> 
-              <a href="?rm=2&rt=3&a=3" id="subenla6" onclick="desplegar2(this)"><i class="fas fa-calendar-times ico"></i></a>  
+              <a href="?rm=2&rt=1&a=3" id="subenla4" title="<?=AÑADIR_CURSO?>" onclick="desplegar2(this)"><i class="fas fa-calendar-plus ico"></i></a> 
+              <a href="?rm=2&rt=2&a=3" class="active" title="<?=MODIFICAR_CURSO?>" id="subenla5" onclick="desplegar2(this)"><i class="fas fa-calendar-check ico"></i></a> 
+              <a href="?rm=2&rt=3&a=3" id="subenla6" title="<?=BAJA_CURSO?>" onclick="desplegar2(this)"><i class="fas fa-calendar-times ico"></i></a>  
             </div>
         </nav>
         <nav id="nav4" class="oculto">
           <div class="icon-bar">
-              <a href="?rm=3&rt=1&a=3" id="subenla7" onclick="desplegar2(this)"><i class="fas fa-file-alt ico"></i></a> 
-              <a href="?rm=3&rt=2&a=3" id="subenla8" onclick="desplegar2(this)"><i class="fas fa-file-code ico"></i></a> 
-              <a href="?rm=3&rt=3&a=3" id="subenla9" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
+              <a href="?rm=3&rt=1&a=3" id="subenla7" title="<?=AÑADIR_PROYECTO?>" onclick="desplegar2(this)"><i class="fas fa-file-alt ico"></i></a> 
+              <a href="?rm=3&rt=2&a=3" id="subenla8" title="<?=MODIFICAR_PROYECTO?>" onclick="desplegar2(this)"><i class="fas fa-file-code ico"></i></a> 
+              <a href="?rm=3&rt=3&a=3" id="subenla9" title="<?=BAJA_PROYECTO?>" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
             </div>
         </nav>
         <nav id="nav5" class="oculto">
           <div class="icon-bar3">
-              <a href="?rm=4&rt=1&a=3" id="subenla10" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
-              <a href="?rm=4&rt=2&a=3" id="subenla11" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
+              <a href="?rm=4&rt=1&a=3" id="subenla10" title="<?=INDPHO?>" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
+              <a href="?rm=4&rt=2&a=3" id="subenla11" title="<?=ADMINCOM?>" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
             </div>
         </nav>
         <section id="coursemod">
@@ -509,37 +512,37 @@ Comienza eliminar curso*/
         }elseif(isset($_GET['rm']) and $_GET['rm']==2 and isset($_GET['rt']) and $_GET['rt']==3){?>
         <nav id="nav1">
               <div class="icon-bar2">
-              <a href="#" id="enla1" onclick="desplegarAdmin(this,'nav2')"><span><?= USUARIOS ?> </span><i class="fas fa-user ico"></i></a> 
-              <a href="#" id="enla2" class="active" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?> </span><i class="fas fa-calendar-alt ico"></i></a> 
-              <a href="#" id="enla3" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?> </span><i class="fas fa-file ico"></i></a>
-              <a href="#" id="enla4" onclick="desplegarAdmin(this,'nav5')"><span><?= OTHERS ?> </span><i class="fas fa-cogs ico"></i></a> 
+              <a href="#" id="enla1" onclick="desplegarAdmin(this,'nav2')"><span><?= USUARIOS ?></span><i class="fas fa-user ico"></i></a> 
+              <a href="#" id="enla2" class="active" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?></span><i class="fas fa-calendar-alt ico"></i></a> 
+              <a href="#" id="enla3" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?></span><i class="fas fa-file ico"></i></a>
+              <a href="#" id="enla4" onclick="desplegarAdmin(this,'nav5')"><span><?= OTHERS ?></span><i class="fas fa-cogs ico"></i></a> 
             </div>
           </nav>
         <nav id="nav2" class="oculto">
             <div class="icon-bar">
-              <a href="?rm=1&rt=1&a=3" id="subenla1" onclick="desplegar2(this)"><i class="fas fa-user-plus ico"></i></a> 
-              <a href="?rm=1&rt=2&a=3"  id="subenla2" onclick="desplegar2(this)"><i class="fas fa-user-md ico"></i></a> 
-              <a href="?rm=1&rt=3&a=3"  id="subenla3" onclick="desplegar2(this)"><i class="fas fa-user-times ico"></i></a> 
+              <a href="?rm=1&rt=1&a=3" id="subenla1" title="<?=AÑADIR_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-plus ico"></i></a> 
+              <a href="?rm=1&rt=2&a=3"  id="subenla2" title="<?=MODIFICAR_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-md ico"></i></a> 
+              <a href="?rm=1&rt=3&a=3"  id="subenla3" title="<?=BAJA_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-times ico"></i></a> 
             </div>
         </nav>
         <nav id="nav3">
           <div class="icon-bar">
-              <a href="?rm=2&rt=1&a=3" id="subenla4" onclick="desplegar2(this)"><i class="fas fa-calendar-plus ico"></i></a> 
-              <a href="?rm=2&rt=2&a=3" id="subenla5" onclick="desplegar2(this)"><i class="fas fa-calendar-check ico"></i></a> 
-              <a href="?rm=2&rt=3&a=3" class="active" id="subenla6" onclick="desplegar2(this)"><i class="fas fa-calendar-times ico"></i></a>  
+              <a href="?rm=2&rt=1&a=3" id="subenla4" title="<?=AÑADIR_CURSO?>" onclick="desplegar2(this)"><i class="fas fa-calendar-plus ico"></i></a> 
+              <a href="?rm=2&rt=2&a=3" id="subenla5" title="<?=MODIFICAR_CURSO?>" onclick="desplegar2(this)"><i class="fas fa-calendar-check ico"></i></a> 
+              <a href="?rm=2&rt=3&a=3" class="active" title="<?=BAJA_CURSO?>" id="subenla6" onclick="desplegar2(this)"><i class="fas fa-calendar-times ico"></i></a>  
             </div>
         </nav>
         <nav id="nav4" class="oculto">
           <div class="icon-bar">
-              <a href="?rm=3&rt=1&a=3" id="subenla7" onclick="desplegar2(this)"><i class="fas fa-file-alt ico"></i></a> 
-              <a href="?rm=3&rt=2&a=3" id="subenla8" onclick="desplegar2(this)"><i class="fas fa-file-code ico"></i></a> 
-              <a href="?rm=3&rt=3&a=3" id="subenla9" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
+              <a href="?rm=3&rt=1&a=3" id="subenla7" title="<?=AÑADIR_PROYECTO?>" onclick="desplegar2(this)"><i class="fas fa-file-alt ico"></i></a> 
+              <a href="?rm=3&rt=2&a=3" id="subenla8" title="<?=MODIFICAR_PROYECTO?>" onclick="desplegar2(this)"><i class="fas fa-file-code ico"></i></a> 
+          <a href="?rm=3&rt=3&a=3" id="subenla9" title="<?=BAJA_PROYECTO?>" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
             </div>
         </nav>
         <nav id="nav5" class="oculto">
           <div class="icon-bar3">
-              <a href="?rm=4&rt=1&a=3" id="subenla10" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
-              <a href="?rm=4&rt=2&a=3" id="subenla11" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
+              <a href="?rm=4&rt=1&a=3" id="subenla10" title="<?=INDPHO?>" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
+              <a href="?rm=4&rt=2&a=3" id="subenla11" title="<?=ADMINCOM?>" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
             </div>
         </nav>
         <section id="userdel">
@@ -576,37 +579,37 @@ Comienza eliminar curso*/
         }elseif(isset($_GET['rm']) and $_GET['rm']==3 and isset($_GET['rt']) and $_GET['rt']==1){?>
         <nav id="nav1">
               <div class="icon-bar2">
-              <a href="#" id="enla1" onclick="desplegarAdmin(this,'nav2')"><span><?= USUARIOS ?> </span><i class="fas fa-user ico"></i></a> 
-              <a href="#" id="enla2" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?> </span><i class="fas fa-calendar-alt ico"></i></a> 
-              <a href="#" id="enla3" class="active" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?> </span><i class="fas fa-file ico"></i></a>
+              <a href="#" id="enla1" onclick="desplegarAdmin(this,'nav2')"><span><?= USUARIOS ?></span><i class="fas fa-user ico"></i></a> 
+              <a href="#" id="enla2" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?></span><i class="fas fa-calendar-alt ico"></i></a> 
+              <a href="#" id="enla3" class="active" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?></span><i class="fas fa-file ico"></i></a>
               <a href="#" id="enla4" onclick="desplegarAdmin(this,'nav5')"><span><?= OTHERS ?> </span><i class="fas fa-cogs ico"></i></a> 
             </div>
           </nav>
         <nav id="nav2" class="oculto">
             <div class="icon-bar">
-              <a href="?rm=1&rt=1&a=3" id="subenla1" onclick="desplegar2(this)"><i class="fas fa-user-plus ico"></i></a> 
-              <a href="?rm=1&rt=2&a=3"  id="subenla2" onclick="desplegar2(this)"><i class="fas fa-user-md ico"></i></a> 
-              <a href="?rm=1&rt=3&a=3"  id="subenla3" onclick="desplegar2(this)"><i class="fas fa-user-times ico"></i></a> 
+              <a href="?rm=1&rt=1&a=3" id="subenla1" title="<?=AÑADIR_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-plus ico"></i></a> 
+              <a href="?rm=1&rt=2&a=3"  id="subenla2" title="<?=MODIFICAR_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-md ico"></i></a> 
+              <a href="?rm=1&rt=3&a=3"  id="subenla3" title="<?=BAJA_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-times ico"></i></a> 
             </div>
         </nav>
         <nav id="nav3" class="oculto">
           <div class="icon-bar">
-              <a href="?rm=2&rt=1&a=3" id="subenla4" onclick="desplegar2(this)"><i class="fas fa-calendar-plus ico"></i></a> 
-              <a href="?rm=2&rt=2&a=3" id="subenla5" onclick="desplegar2(this)"><i class="fas fa-calendar-check ico"></i></a> 
-              <a href="?rm=2&rt=3&a=3"  id="subenla6" onclick="desplegar2(this)"><i class="fas fa-calendar-times ico"></i></a>  
+              <a href="?rm=2&rt=1&a=3" id="subenla4" title="<?=AÑADIR_CURSO?>" onclick="desplegar2(this)"><i class="fas fa-calendar-plus ico"></i></a> 
+              <a href="?rm=2&rt=2&a=3" id="subenla5" title="<?=MODIFICAR_CURSO?>" onclick="desplegar2(this)"><i class="fas fa-calendar-check ico"></i></a> 
+              <a href="?rm=2&rt=3&a=3"  id="subenla6" title="<?=BAJA_CURSO?>" onclick="desplegar2(this)"><i class="fas fa-calendar-times ico"></i></a>  
             </div>
         </nav>
         <nav id="nav4">
           <div class="icon-bar">
-              <a href="?rm=3&rt=1&a=3" class="active" id="subenla7" onclick="desplegar2(this)"><i class="fas fa-file-alt ico"></i></a> 
-              <a href="?rm=3&rt=2&a=3" id="subenla8" onclick="desplegar2(this)"><i class="fas fa-file-code ico"></i></a> 
-              <a href="?rm=3&rt=3&a=3" id="subenla9" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
+              <a href="?rm=3&rt=1&a=3" class="active" title="<?=AÑADIR_PROYECTO?>" id="subenla7" onclick="desplegar2(this)"><i class="fas fa-file-alt ico"></i></a> 
+              <a href="?rm=3&rt=2&a=3" id="subenla8" title="<?=MODIFICAR_PROYECTO?>" onclick="desplegar2(this)"><i class="fas fa-file-code ico"></i></a> 
+              <a href="?rm=3&rt=3&a=3" id="subenla9" title="<?=BAJA_PROYECTO?>" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
             </div>
         </nav>
         <nav id="nav5" class="oculto">
           <div class="icon-bar3">
-              <a href="?rm=4&rt=1&a=3" id="subenla10" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
-              <a href="?rm=4&rt=2&a=3" id="subenla11" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
+              <a href="?rm=4&rt=1&a=3" id="subenla10" title="<?=INDPHO?>" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
+              <a href="?rm=4&rt=2&a=3" id="subenla11" title="<?=ADMINCOM?>" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
             </div>
         </nav>
     <section id="addproy">
@@ -654,37 +657,37 @@ Comienza eliminar curso*/
             }elseif(isset($_GET['rm']) and $_GET['rm']==3 and isset($_GET['rt']) and $_GET['rt']==2){?>
         <nav id="nav1">
               <div class="icon-bar2">
-              <a href="#" id="enla1" onclick="desplegarAdmin(this,'nav2')"><span><?= USUARIOS ?> </span><i class="fas fa-user ico"></i></a> 
-              <a href="#" id="enla2" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?> </span><i class="fas fa-calendar-alt ico"></i></a> 
-              <a href="#" id="enla3" class="active" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?> </span><i class="fas fa-file ico"></i></a>
-              <a href="#" id="enla4" onclick="desplegarAdmin(this,'nav5')"><span><?= OTHERS ?> </span><i class="fas fa-cogs ico"></i></a> 
+              <a href="#" id="enla1" onclick="desplegarAdmin(this,'nav2')"><span><?= USUARIOS ?></span><i class="fas fa-user ico"></i></a> 
+              <a href="#" id="enla2" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?></span><i class="fas fa-calendar-alt ico"></i></a> 
+              <a href="#" id="enla3" class="active" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?></span><i class="fas fa-file ico"></i></a>
+              <a href="#" id="enla4" onclick="desplegarAdmin(this,'nav5')"><span><?= OTHERS ?></span><i class="fas fa-cogs ico"></i></a> 
             </div>
           </nav>
         <nav id="nav2" class="oculto">
             <div class="icon-bar">
-              <a href="?rm=1&rt=1&a=3" id="subenla1" onclick="desplegar2(this)"><i class="fas fa-user-plus ico"></i></a> 
-              <a href="?rm=1&rt=2&a=3"  id="subenla2" onclick="desplegar2(this)"><i class="fas fa-user-md ico"></i></a> 
-              <a href="?rm=1&rt=3&a=3"  id="subenla3" onclick="desplegar2(this)"><i class="fas fa-user-times ico"></i></a> 
+              <a href="?rm=1&rt=1&a=3" id="subenla1" title="<?=AÑADIR_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-plus ico"></i></a> 
+              <a href="?rm=1&rt=2&a=3"  id="subenla2" title="<?=MODIFICAR_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-md ico"></i></a> 
+              <a href="?rm=1&rt=3&a=3"  id="subenla3" title="<?=BAJA_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-times ico"></i></a> 
             </div>
         </nav>
         <nav id="nav3" class="oculto">
           <div class="icon-bar">
-              <a href="?rm=2&rt=1&a=3" id="subenla4" onclick="desplegar2(this)"><i class="fas fa-calendar-plus ico"></i></a> 
-              <a href="?rm=2&rt=2&a=3" id="subenla5" onclick="desplegar2(this)"><i class="fas fa-calendar-check ico"></i></a> 
-              <a href="?rm=2&rt=3&a=3"  id="subenla6" onclick="desplegar2(this)"><i class="fas fa-calendar-times ico"></i></a>  
+              <a href="?rm=2&rt=1&a=3" id="subenla4" title="<?=AÑADIR_CURSO?>" onclick="desplegar2(this)"><i class="fas fa-calendar-plus ico"></i></a> 
+              <a href="?rm=2&rt=2&a=3" id="subenla5" title="<?=MODIFICAR_CURSO?>" onclick="desplegar2(this)"><i class="fas fa-calendar-check ico"></i></a> 
+              <a href="?rm=2&rt=3&a=3"  id="subenla6" title="<?=BAJA_CURSO?>" onclick="desplegar2(this)"><i class="fas fa-calendar-times ico"></i></a>  
             </div>
         </nav>
         <nav id="nav4">
           <div class="icon-bar">
-              <a href="?rm=3&rt=1&a=3"  id="subenla7" onclick="desplegar2(this)"><i class="fas fa-file-alt ico"></i></a> 
-              <a href="?rm=3&rt=2&a=3"  class="active" id="subenla8" onclick="desplegar2(this)"><i class="fas fa-file-code ico"></i></a> 
-              <a href="?rm=3&rt=3&a=3" id="subenla9" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
+              <a href="?rm=3&rt=1&a=3"  id="subenla7" title="<?=AÑADIR_PROYECTO?>" onclick="desplegar2(this)"><i class="fas fa-file-alt ico"></i></a> 
+              <a href="?rm=3&rt=2&a=3"  class="active" id="subenla8" title="<?=MODIFICAR_PROYECTO?>" onclick="desplegar2(this)"><i class="fas fa-file-code ico"></i></a> 
+              <a href="?rm=3&rt=3&a=3" id="subenla9" title="<?=BAJA_PROYECTO?>" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
             </div>
         </nav>
         <nav id="nav5" class="oculto">
           <div class="icon-bar3">
-              <a href="?rm=4&rt=1&a=3" id="subenla10" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
-              <a href="?rm=4&rt=2&a=3" id="subenla11" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
+              <a href="?rm=4&rt=1&a=3" id="subenla10" title="<?=INDPHO?>" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
+              <a href="?rm=4&rt=2&a=3" id="subenla11" title="<?=ADMINCOM?>" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
             </div>
         </nav>
         <section id="coursemod">
@@ -805,37 +808,37 @@ Comienza eliminar curso*/
             }elseif(isset($_GET['rm']) and $_GET['rm']==3 and isset($_GET['rt']) and $_GET['rt']==3){?>
         <nav id="nav1">
               <div class="icon-bar2">
-              <a href="#" id="enla1" onclick="desplegarAdmin(this,'nav2')"><span><?= USUARIOS ?> </span><i class="fas fa-user ico"></i></a> 
-              <a href="#" id="enla2" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?> </span><i class="fas fa-calendar-alt ico"></i></a> 
-              <a href="#" id="enla3" class="active" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?> </span><i class="fas fa-file ico"></i></a>
-              <a href="#" id="enla4" onclick="desplegarAdmin(this,'nav5')"><span><?= OTHERS ?> </span><i class="fas fa-cogs ico"></i></a> 
+              <a href="#" id="enla1" onclick="desplegarAdmin(this,'nav2')"><span><?= USUARIOS ?></span><i class="fas fa-user ico"></i></a> 
+              <a href="#" id="enla2" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?></span><i class="fas fa-calendar-alt ico"></i></a> 
+              <a href="#" id="enla3" class="active" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?></span><i class="fas fa-file ico"></i></a>
+              <a href="#" id="enla4" onclick="desplegarAdmin(this,'nav5')"><span><?= OTHERS ?></span><i class="fas fa-cogs ico"></i></a> 
             </div>
           </nav>
         <nav id="nav2" class="oculto">
             <div class="icon-bar">
-              <a href="?rm=1&rt=1&a=3" id="subenla1" onclick="desplegar2(this)"><i class="fas fa-user-plus ico"></i></a> 
-              <a href="?rm=1&rt=2&a=3"  id="subenla2" onclick="desplegar2(this)"><i class="fas fa-user-md ico"></i></a> 
-              <a href="?rm=1&rt=3&a=3"  id="subenla3" onclick="desplegar2(this)"><i class="fas fa-user-times ico"></i></a> 
+              <a href="?rm=1&rt=1&a=3" id="subenla1" title="<?=AÑADIR_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-plus ico"></i></a> 
+              <a href="?rm=1&rt=2&a=3"  id="subenla2" title="<?=MODIFICAR_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-md ico"></i></a> 
+              <a href="?rm=1&rt=3&a=3"  id="subenla3" title="<?=BAJA_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-times ico"></i></a> 
             </div>
         </nav>
         <nav id="nav3" class="oculto">
           <div class="icon-bar">
-              <a href="?rm=2&rt=1&a=3" id="subenla4" onclick="desplegar2(this)"><i class="fas fa-calendar-plus ico"></i></a> 
-              <a href="?rm=2&rt=2&a=3" id="subenla5" onclick="desplegar2(this)"><i class="fas fa-calendar-check ico"></i></a> 
-              <a href="?rm=2&rt=3&a=3"  id="subenla6" onclick="desplegar2(this)"><i class="fas fa-calendar-times ico"></i></a>  
+              <a href="?rm=2&rt=1&a=3" id="subenla4" title="<?=AÑADIR_CURSO?>" onclick="desplegar2(this)"><i class="fas fa-calendar-plus ico"></i></a> 
+              <a href="?rm=2&rt=2&a=3" id="subenla5" title="<?=MODIFICAR_CURSO?>" onclick="desplegar2(this)"><i class="fas fa-calendar-check ico"></i></a> 
+              <a href="?rm=2&rt=3&a=3"  id="subenla6" title="<?=BAJA_CURSO?>" onclick="desplegar2(this)"><i class="fas fa-calendar-times ico"></i></a>  
             </div>
         </nav>
         <nav id="nav4">
           <div class="icon-bar">
-              <a href="?rm=3&rt=1&a=3"  id="subenla7" onclick="desplegar2(this)"><i class="fas fa-file-alt ico"></i></a> 
-              <a href="?rm=3&rt=2&a=3"   id="subenla8" onclick="desplegar2(this)"><i class="fas fa-file-code ico"></i></a> 
-              <a href="?rm=3&rt=3&a=3" class="active" id="subenla9" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
+              <a href="?rm=3&rt=1&a=3"  id="subenla7" title="<?=AÑADIR_PROYECTO?>" onclick="desplegar2(this)"><i class="fas fa-file-alt ico"></i></a> 
+              <a href="?rm=3&rt=2&a=3"   id="subenla8" title="<?=MODIFICAR_PROYECTO?>" onclick="desplegar2(this)"><i class="fas fa-file-code ico"></i></a> 
+              <a href="?rm=3&rt=3&a=3" class="active" id="subenla9" title="<?=BAJA_PROYECTO?>" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
             </div>
         </nav>
         <nav id="nav5" class="oculto">
           <div class="icon-bar3">
-              <a href="?rm=4&rt=1&a=3" id="subenla10" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
-              <a href="?rm=4&rt=2&a=3" id="subenla11" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
+              <a href="?rm=4&rt=1&a=3" id="subenla10" title="<?=INDPHO?>" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
+              <a href="?rm=4&rt=2&a=3" id="subenla11" title="<?=ADMINCOM?>" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
             </div>
         </nav>
             <section id="proydel">
@@ -887,37 +890,37 @@ Comienza eliminar curso*/
     }elseif(isset($_GET['rm']) and $_GET['rm']==4 and isset($_GET['rt']) and $_GET['rt']==1){?>
         <nav id="nav1">
               <div class="icon-bar2">
-              <a href="#" id="enla1" onclick="desplegarAdmin(this,'nav2')"><span><?= USUARIOS ?> </span><i class="fas fa-user ico"></i></a> 
-              <a href="#" id="enla2" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?> </span><i class="fas fa-calendar-alt ico"></i></a> 
-              <a href="#" id="enla3" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?> </span><i class="fas fa-file ico"></i></a>
-              <a href="#" id="enla4" class="active" onclick="desplegarAdmin(this,'nav5')"><span><?= OTHERS ?> </span><i class="fas fa-cogs ico"></i></a> 
+              <a href="#" id="enla1" onclick="desplegarAdmin(this,'nav2')"><span><?= USUARIOS ?></span><i class="fas fa-user ico"></i></a> 
+              <a href="#" id="enla2" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?></span><i class="fas fa-calendar-alt ico"></i></a> 
+              <a href="#" id="enla3" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?></span><i class="fas fa-file ico"></i></a>
+              <a href="#" id="enla4" class="active" onclick="desplegarAdmin(this,'nav5')"><span><?= OTHERS ?></span><i class="fas fa-cogs ico"></i></a> 
             </div>
           </nav>
         <nav id="nav2" class="oculto">
             <div class="icon-bar">
-              <a href="?rm=1&rt=1&a=3" id="subenla1" onclick="desplegar2(this)"><i class="fas fa-user-plus ico"></i></a> 
-              <a href="?rm=1&rt=2&a=3"  id="subenla2" onclick="desplegar2(this)"><i class="fas fa-user-md ico"></i></a> 
-              <a href="?rm=1&rt=3&a=3"  id="subenla3" onclick="desplegar2(this)"><i class="fas fa-user-times ico"></i></a> 
+              <a href="?rm=1&rt=1&a=3" id="subenla1" title="<?=AÑADIR_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-plus ico"></i></a> 
+              <a href="?rm=1&rt=2&a=3"  id="subenla2" title="<?=MODIFICAR_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-md ico"></i></a> 
+              <a href="?rm=1&rt=3&a=3"  id="subenla3" title="<?=BAJA_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-times ico"></i></a> 
             </div>
         </nav>
         <nav id="nav3" class="oculto">
           <div class="icon-bar">
-              <a href="?rm=2&rt=1&a=3" id="subenla4" onclick="desplegar2(this)"><i class="fas fa-calendar-plus ico"></i></a> 
-              <a href="?rm=2&rt=2&a=3" id="subenla5" onclick="desplegar2(this)"><i class="fas fa-calendar-check ico"></i></a> 
-              <a href="?rm=2&rt=3&a=3"  id="subenla6" onclick="desplegar2(this)"><i class="fas fa-calendar-times ico"></i></a>  
+              <a href="?rm=2&rt=1&a=3" title="<?=AÑADIR_CURSO?>" id="subenla4" onclick="desplegar2(this)"><i class="fas fa-calendar-plus ico"></i></a> 
+              <a href="?rm=2&rt=2&a=3" id="subenla5" title="<?=MODIFICAR_CURSO?>" onclick="desplegar2(this)"><i class="fas fa-calendar-check ico"></i></a> 
+              <a href="?rm=2&rt=3&a=3"  id="subenla6" title="<?=BAJA_CURSO?>" onclick="desplegar2(this)"><i class="fas fa-calendar-times ico"></i></a>  
             </div>
         </nav>
         <nav id="nav4" class="oculto">
           <div class="icon-bar">
-              <a href="?rm=3&rt=1&a=3"  id="subenla7" onclick="desplegar2(this)"><i class="fas fa-file-alt ico"></i></a> 
-              <a href="?rm=3&rt=2&a=3"   id="subenla8" onclick="desplegar2(this)"><i class="fas fa-file-code ico"></i></a> 
-              <a href="?rm=3&rt=3&a=3" id="subenla9" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
+              <a href="?rm=3&rt=1&a=3"  id="subenla7" title="<?=AÑADIR_PROYECTO?>" onclick="desplegar2(this)"><i class="fas fa-file-alt ico"></i></a> 
+              <a href="?rm=3&rt=2&a=3"   id="subenla8" title="<?=MODIFICAR_PROYECTO?>" onclick="desplegar2(this)"><i class="fas fa-file-code ico"></i></a> 
+              <a href="?rm=3&rt=3&a=3" id="subenla9" title="<?=BAJA_PROYECTO?>" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
             </div>
         </nav>
         <nav id="nav5">
           <div class="icon-bar3">
-              <a href="?rm=4&rt=1&a=3" class="active" id="subenla10" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
-              <a href="?rm=4&rt=2&a=3" id="subenla11" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
+              <a href="?rm=4&rt=1&a=3" class="active" id="subenla10" title="<?=INDPHO?>" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
+              <a href="?rm=4&rt=2&a=3" id="subenla11" title="<?=ADMINCOM?>" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
             </div>
         </nav>   
                 <section id="fotosindex">
@@ -1123,37 +1126,37 @@ Comienza eliminar curso*/
     }elseif(isset($_GET['rm']) and $_GET['rm']==4 and isset($_GET['rt']) and $_GET['rt']==2){?>
         <nav id="nav1">
               <div class="icon-bar2">
-              <a href="#" id="enla1" onclick="desplegarAdmin(this,'nav2')"><span><?= USUARIOS ?> </span><i class="fas fa-user ico"></i></a> 
-              <a href="#" id="enla2" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?> </span><i class="fas fa-calendar-alt ico"></i></a> 
-              <a href="#" id="enla3" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?> </span><i class="fas fa-file ico"></i></a>
-              <a href="#" id="enla4" class="active" onclick="desplegarAdmin(this,'nav5')"><span><?= OTHERS ?> </span><i class="fas fa-cogs ico"></i></a> 
+              <a href="#" id="enla1" onclick="desplegarAdmin(this,'nav2')"><span><?= USUARIOS ?></span><i class="fas fa-user ico"></i></a> 
+              <a href="#" id="enla2" onclick="desplegarAdmin(this,'nav3')"><span><?= CURSOS ?></span><i class="fas fa-calendar-alt ico"></i></a> 
+              <a href="#" id="enla3" onclick="desplegarAdmin(this,'nav4')"><span><?= PROYECT ?></span><i class="fas fa-file ico"></i></a>
+              <a href="#" id="enla4" class="active" onclick="desplegarAdmin(this,'nav5')"><span><?= OTHERS ?></span><i class="fas fa-cogs ico"></i></a> 
             </div>
           </nav>
         <nav id="nav2" class="oculto">
             <div class="icon-bar">
-              <a href="?rm=1&rt=1&a=3" id="subenla1" onclick="desplegar2(this)"><i class="fas fa-user-plus ico"></i></a> 
-              <a href="?rm=1&rt=2&a=3"  id="subenla2" onclick="desplegar2(this)"><i class="fas fa-user-md ico"></i></a> 
-              <a href="?rm=1&rt=3&a=3"  id="subenla3" onclick="desplegar2(this)"><i class="fas fa-user-times ico"></i></a> 
+              <a href="?rm=1&rt=1&a=3" id="subenla1" title="<?=AÑADIR_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-plus ico"></i></a> 
+              <a href="?rm=1&rt=2&a=3"  id="subenla2" title="<?=MODIFICAR_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-md ico"></i></a> 
+              <a href="?rm=1&rt=3&a=3"  id="subenla3" title="<?=BAJA_USUARIO?>" onclick="desplegar2(this)"><i class="fas fa-user-times ico"></i></a> 
             </div>
         </nav>
         <nav id="nav3" class="oculto">
           <div class="icon-bar">
-              <a href="?rm=2&rt=1&a=3" id="subenla4" onclick="desplegar2(this)"><i class="fas fa-calendar-plus ico"></i></a> 
-              <a href="?rm=2&rt=2&a=3" id="subenla5" onclick="desplegar2(this)"><i class="fas fa-calendar-check ico"></i></a> 
-              <a href="?rm=2&rt=3&a=3"  id="subenla6" onclick="desplegar2(this)"><i class="fas fa-calendar-times ico"></i></a>  
+              <a href="?rm=2&rt=1&a=3" id="subenla4" title="<?=AÑADIR_CURSO?>" onclick="desplegar2(this)"><i class="fas fa-calendar-plus ico"></i></a> 
+              <a href="?rm=2&rt=2&a=3" id="subenla5" title="<?=MODIFICAR_CURSO?>" onclick="desplegar2(this)"><i class="fas fa-calendar-check ico"></i></a> 
+              <a href="?rm=2&rt=3&a=3"  id="subenla6" title="<?=BAJA_CURSO?>" onclick="desplegar2(this)"><i class="fas fa-calendar-times ico"></i></a>  
             </div>
         </nav>
         <nav id="nav4" class="oculto">
           <div class="icon-bar">
-              <a href="?rm=3&rt=1&a=3"  id="subenla7" onclick="desplegar2(this)"><i class="fas fa-file-alt ico"></i></a> 
-              <a href="?rm=3&rt=2&a=3"   id="subenla8" onclick="desplegar2(this)"><i class="fas fa-file-code ico"></i></a> 
-              <a href="?rm=3&rt=3&a=3" id="subenla9" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
+              <a href="?rm=3&rt=1&a=3"  id="subenla7" title="<?=AÑADIR_PROYECTO?>" onclick="desplegar2(this)"><i class="fas fa-file-alt ico"></i></a> 
+              <a href="?rm=3&rt=2&a=3"   id="subenla8" title="<?=MODIFICAR_PROYECTO?>" onclick="desplegar2(this)"><i class="fas fa-file-code ico"></i></a> 
+              <a href="?rm=3&rt=3&a=3" id="subenla9" title="<?=BAJA_PROYECTO?>" onclick="desplegar2(this)"><i class="fas fa-file-excel ico"></i></a> 
             </div>
         </nav>
         <nav id="nav5">
           <div class="icon-bar3">
-              <a href="?rm=4&rt=1&a=3" id="subenla10" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
-              <a href="?rm=4&rt=2&a=3" class="active" id="subenla11" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
+              <a href="?rm=4&rt=1&a=3" id="subenla10" title="<?=INDPHO?>" onclick="desplegar2(this)"><i class="fas fa-camera ico"></i></a> 
+              <a href="?rm=4&rt=2&a=3" class="active" title="<?=ADMINCOM?>" id="subenla11" onclick="desplegar2(this)"><i class="fas fa-comments ico"></i></a>  
             </div>
         </nav>
             <section id="commentarioscpanel">

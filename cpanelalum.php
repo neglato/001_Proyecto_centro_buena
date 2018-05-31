@@ -14,6 +14,9 @@ if($_SESSION['lang']==1){
 if(!isset($_SESSION['user'])){
     header('Location: index.php');
 }
+if($_SESSION['tipo']!=2){
+    header('Location: cpanel.php');
+}
 $activo=3;
 ?>
 <html lang="es">
@@ -204,8 +207,8 @@ $activo=3;
         </nav>
         <nav id="navAlum">
           <div class="icon-bar">
-              <a href="cpanelalum.php?a=3&rm=2&rt=1&idp=<?=$idp?>" id="subenlace1" class="active"><span><?= TEXT ?></span><i class="fas fa-file-alt ico"></i></a> 
-              <a href="cpanelalum.php?a=3&rm=2&rt=2&idp=<?=$idp?>" id="subenlace2"><span><?= PHOTO ?></span><i class="fas fa-images ico"></i></a> 
+              <a href="cpanelalum.php?a=3&rm=2&rt=1&idp=<?=$idp?>" id="subenlace1" title="<?=TEXT?>" class="active"><i class="fas fa-file-alt ico"></i></a> 
+              <a href="cpanelalum.php?a=3&rm=2&rt=2&idp=<?=$idp?>" title="<?=PHOTO?>" id="subenlace2"><i class="fas fa-images ico"></i></a> 
             </div>
         </nav>
         <section id="fotosindex">
@@ -265,8 +268,8 @@ $activo=3;
         </nav>
         <nav id="navAlum">
           <div class="icon-bar">
-              <a href="cpanelalum.php?a=3&rm=2&rt=1&idp=<?=$idp?>" id="subenlace1" ><span><?= TEXT ?></span><i class="fas fa-file-alt ico"></i></a> 
-              <a href="cpanelalum.php?a=3&rm=2&rt=2&idp=<?=$idp?>" id="subenlace2" class="active"><span><?= PHOTO ?></span><i class="fas fa-images ico"></i></a>  
+              <a href="cpanelalum.php?a=3&rm=2&rt=1&idp=<?=$idp?>" title="<?=TEXT?>" id="subenlace1" ><i class="fas fa-file-alt ico"></i></a> 
+              <a href="cpanelalum.php?a=3&rm=2&rt=2&idp=<?=$idp?>" title="<?=PHOTO?>" id="subenlace2" class="active"><i class="fas fa-images ico"></i></a>  
             </div>
         </nav>
         <section id="fotosindex">

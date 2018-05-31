@@ -16,6 +16,9 @@ if($_SESSION['lang']==1){
 if(!isset($_SESSION['user'])){
     header('Location: index.php');
 }
+if($_SESSION['tipo']!=1){
+    header('Location: cpanel.php');
+}
 include('_include/variables.php');
 $activo=3;
 ?>

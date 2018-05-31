@@ -70,7 +70,7 @@ define('MODIFICAR_CURSO','Modificar curso');
 define('BAJA_CURSO','Eliminar curso');
 define('AÑADIR_PROYECTO','Añadir proyecto');
 define('MODIFICAR_PROYECTO','Modificar proyecto');
-define('BAJA_PROYECTO','Eliminar proyecto');
+define('BAJA_PROYECTO','Quitar publicación de un proyecto');
 define('ALUMN','Alumno');
 define('PRIVI','Privilegio: ');
 define('ELIGEPRIVI','Grado de privilegio');
@@ -228,3 +228,6 @@ define('USINS','Alumno inscrito correctamente');
 define('USRACT','Actuales');
 define('NOUSRDISP','No hay alumnos disponibles');
 define('NOUSRINS','No hay alumnos inscritos');
+//nuevo 31/05
+define('INDPHO','Fotos de la página de inicio');
+define('ADMINCOM','Eliminar comenatios de un proyecto');
