@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+ob_start();
 session_start(); 
 include('_include/variables.php');
 if(isset($_SESSION['lang'])){
@@ -197,6 +198,16 @@ $activo=3;
         /*pestaña de redactar*/
     }else if (isset($_GET['rm']) && $_GET['rm']==2 && isset($_GET['rt']) && $_GET['rt']==1){ 
     $idp=$_GET['idp'];
+    $compUsr=$_SESSION['user'];
+        //comprobamos que el $get sea correcto
+        $comprobacion=consulta ($conexion, "SELECT * FROM proyectos 
+                            WHERE mostrar LIKE 0 AND id_proyecto in(SELECT id_proyecto 
+                                                                    FROM usuproy 
+                                                                    WHERE id_proyecto LIKE $idp AND id_user like $compUsr)");
+        $comProy=mysqli_num_rows($comprobacion);
+        if($comProy==0){
+            header('Location: index.php');
+        }
     $_SESSION['ajax']=$idp;
     ?>
                <nav id="nav1">
@@ -259,7 +270,17 @@ $activo=3;
         comienza subir imagenes*/
     }else if(isset($_GET['rm']) && $_GET['rm']==2 && isset($_GET['rt']) && $_GET['rt']==2){ 
     $idp=$_GET['idp'];
-    ?>
+        $compUsr=$_SESSION['user'];
+           //comprobamos que el $get sea correcto
+        $comprobacion=consulta ($conexion, "SELECT * FROM proyectos 
+                            WHERE mostrar LIKE 0 AND id_proyecto in(SELECT id_proyecto 
+                                                                    FROM usuproy 
+                                                                    WHERE id_proyecto LIKE $idp AND id_user like $compUsr)");
+        $comProy=mysqli_num_rows($comprobacion);
+        if($comProy==0){
+            header('Location: index.php');
+        }
+        ?>
             <nav id="nav1">
             <div class="icon-bar">
               <a href="cpanelalum.php?a=3&rm=1" id="enlace1"><span><?= YAPUB ?></span><i class="fas fa-file ico"></i><i class="far fa-check-circle ico"></i></a> 
@@ -483,6 +504,9 @@ jQuery('#defaults').lwMultiSelect();
         /*FIn de borrar imagenes
         fin de la pestaña no publicados
         fin cpanel alumno*/
+    }else{
+        header('Location: cpanel.php');
+        exit();
     }
     include('_include/footer.php');
     ?>
@@ -490,3 +514,6 @@ jQuery('#defaults').lwMultiSelect();
     <script src="_js/funcionescpanel.js"></script>
 </body>
 </html>
+<?php
+ob_end_flush();
+?>

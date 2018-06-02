@@ -208,11 +208,18 @@ $activo=3;
                 if(isset($idu)){
                     $RESULT2 = consulta($conexion,"SELECT * FROM usuarios WHERE id_user ='" . $idu . "'"); 
                     $info=mysqli_fetch_array($RESULT2);
-                    $_SESSION['uid']=$idu;
-                }elseif ($_POST['id_user'] !="-1"){
+                    $_SESSION['uid']=$idu;    
+                }
+                if(isset($_POST['id_user'])){
+                    if($_POST['id_user']== -1){
+                        $_SESSION['msgmod2']= SELUSR;
+                     header('Location: cpaneladmin.php?rm=1&rt=2&a=3');
+                    exit();   
+                    }elseif ($_POST['id_user'] !=-1){
                     $RESULT2 = consulta($conexion,"SELECT * FROM usuarios WHERE id_user ='" . $_POST['id_user'] . "'"); 
                     $info=mysqli_fetch_array($RESULT2);
                     $_SESSION['uid']=$_POST['id_user'];
+                }
                 }
             ?>
         <fieldset>
@@ -252,9 +259,9 @@ $activo=3;
                         </select>
             <button type="submit" id="boton"><div id="edit"><?=MODPER?></div><i class="fas fa-save edicion"></i></button>
             <p id="error"><?php
-                            if(isset($_SESSION['msgmod'])){
-                                echo $_SESSION['msgmod'];
-                                unset($_SESSION['msgmod']);
+                            if(isset($_SESSION['msgmod2'])){
+                                echo $_SESSION['msgmod2'];
+                                unset($_SESSION['msgmod2']);
                             } ?></p>
             </form>
         </fieldset>
@@ -457,11 +464,18 @@ Comienza eliminar usuario*/
                     $RESULT2 = consulta($conexion,"SELECT * FROM cursos WHERE id_curso ='" . $cid . "'"); 
                     $info=mysqli_fetch_array($RESULT2);
                     $_SESSION['cid']=$cid;
-                }elseif ($_POST['id_curso'] !="-1"){
+                }
+                if(isset($_POST['id_curso'])){
+                    if ($_POST['id_curso'] !=-1){
                     $RESULT2 = consulta($conexion,"SELECT * FROM cursos WHERE id_curso ='" . $_POST['id_curso'] . "'"); 
                     $info=mysqli_fetch_array($RESULT2);
                     $_SESSION['cid']=$_POST['id_curso'];
+                }else{
+                    $_SESSION['msgmodcour']= SELCURSO;
+                     header('Location: cpaneladmin.php?rm=2&rt=2&a=3');
+                    exit();    
                 }
+            }
             ?>
         <fieldset>
             <legend><?=MODIFICAR_CURSO?></legend>
@@ -701,11 +715,18 @@ Comienza eliminar curso*/
                     $info=mysqli_fetch_array($RESULT2);
                     $_SESSION['pid']=$pid;
                     unset($pid);
-                }elseif ($_POST['id_proy'] != -1){
+                }
+                if(isset($_POST['id_proy'])){
+                if ($_POST['id_proy'] != -1){
                     $RESULT2 = consulta($conexion,"SELECT * FROM proyectos WHERE id_proyecto ='" . $_POST['id_proy'] . "' and mostrar like 0"); 
                     $info=mysqli_fetch_array($RESULT2);
                     $_SESSION['pid']=$_POST['id_proy'];
+                }else{
+                    $_SESSION['msgmodproy2']= DEBCHO;
+                     header('Location: cpaneladmin.php?rm=3&rt=2&a=3');
+                    exit(); 
                 }
+            }
             ?>
            <fieldset>
             <legend><?=MODIFICAR_PROYECTO?></legend>
@@ -1290,7 +1311,10 @@ Comienza eliminar curso*/
         <?php
     /*Fin comentarios
     Fin del cpanel admin*/
-    }
+    }else{
+            header('Location: cpanel.php');
+            exit();
+        }
     include('_include/footer.php');
     ob_end_flush();
     ?>

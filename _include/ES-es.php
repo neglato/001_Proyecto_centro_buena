@@ -130,7 +130,7 @@ define('NOMES','Nombre (ES)');
 define('NAMES','Nombre (EN)');
 define('FOOBL','Todos los campos son obligatorios');
 define('DESPUB','EL proyecto ha sido ocultado');
-define('DEBCHO','Debes seleccionar un poryecto');
+define('DEBCHO','Debes seleccionar un proyecto');
 define('CURS','Curso');
 define('USRR','Usuario');
 define('NONOM','El proyecto ya existe');
@@ -231,3 +231,9 @@ define('NOUSRINS','No hay alumnos inscritos');
 //nuevo 31/05
 define('INDPHO','Fotos de la página de inicio');
 define('ADMINCOM','Eliminar comenatios de un proyecto');
+//nuevo 01/06
+define('SELUSR','Debes seleccionar un usuario');
+define('SELCURSO','Debes seleccionar un curso');
+//nuevo 02/06
+define('PASSCOD','Código recuperar:');
+define('PASSCODFAIL','Código de recuperacion erróneo');

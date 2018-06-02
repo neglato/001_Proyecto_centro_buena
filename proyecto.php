@@ -21,9 +21,20 @@ if(isset($_GET['idp'])){
     $idp=$_GET['idp'];
     if(isset($_SESSION['tipo'])){
         if($_SESSION['tipo']== 1){
+            $compUsr=$_SESSION['user'];
     $select=consulta2($conexion,"SELECT * FROM proyectos where id_proyecto like $idp");
     $totalFilas= mysqli_num_rows($select);
     $row=mysqli_fetch_array($select);
+            //si no esta publicado, comprobamos que el usuario que est intentanco acceder sea su coordinador
+            if($row['mostrar'] == 0){
+                $comprobar=consulta2($conexion, "SELECT * FROM usuproy WHERE id_proyecto like $idp and id_user like $compUsr");
+                $totalComp=mysqli_num_rows($comprobar);
+                if($totalComp == 0){
+                    header('Location: cursos.php?a=1');
+                    mysqli_close($conexion);
+                    exit();
+                }
+            }
     $nombre_pro=$row['nombre_pro'];
     $name_pro=$row['name_pro'];
         }else{

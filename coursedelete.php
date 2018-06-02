@@ -18,7 +18,7 @@ if(!isset($_POST['id_curso'])){
     header('Location: cpaneladmin.php?rm=2&rt=3&a=3');
     exit();
 }
-if($_POST['id_curso']!=""){
+if($_POST['id_curso']!=-1){
     include('_include/conexion.php');
     include('_include/funciones.php');
     $cid=$_POST['id_curso'];
@@ -32,6 +32,11 @@ if($_POST['id_curso']!=""){
      $home="_cursos/$nomCurso";
     rmdir($home);
    header('Location: cpaneladmin.php?rm=2&rt=3&a=3');
+    mysqli_close($conexion);
+    exit();
+}else{
+     $_SESSION['msgdelcour']=SELCURSO;
+    header('Location: cpaneladmin.php?rm=2&rt=3&a=3');
     mysqli_close($conexion);
     exit();
 }

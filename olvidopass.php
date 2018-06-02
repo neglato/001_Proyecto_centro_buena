@@ -37,15 +37,44 @@ if(isset($_POST['email'])){
     $email=$_POST['email'];
     $usuario= consulta($conexion, "SELECT * FROM usuarios where email like '$email'");
     $totalUsu=mysqli_num_rows($usuario);
+    $user=mysqli_fetch_array($usuario);
+    $idUsuario=$user['id_user'];
     if($totalUsu == 0){
          $_SESSION['msgemail']=FAILMAIL;
         header('Location: olvidopass.php');
         mysqli_close($conexion);
         exit();
     }else{
+/*generamos un codigo aleatorio alfanumerico para enviarlo por email*/
+function generarCodigo($id,$conexion)
+{
+    //creamos la variable codigo
+    $codigo = "";
+    $longitud=30;
+    $tipo=0;
+    //caracteres a ser utilizados
+    $caracteres="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    //el maximo de caracteres a usar
+    $max=strlen($caracteres)-1;
+    //creamos un for para generar el codigo aleatorio utilizando parametros min y max
+    for($i=0;$i < $longitud;$i++)
+    {
+        $codigo.=$caracteres[rand(0,$max)];
+    }
+    //convertimos el coadigo generado a md5
+    $codigoMd5=md5($codigo);
+    //realizamos el insert en la tabla olvidopass
+    $insert=consulta ($conexion, "UPDATE usuarios 
+                                    SET codigo_recuperacion = \"$codigoMd5\"
+                                    WHERE id_user like $id");
+    //regresamos codigo como valor
+    return $codigo;
+    //pintamos el codigo
+    echo $codigo;
+}
         $usu=mysqli_fetch_array($usuario);
-        $nombre=$usu['nombre'];
-        $idu=$usu['id_user'];
+        $nombre=$user['nombre'];
+        $idu=$user['id_user'];
         //enviamos el correo
         require_once('_include/PHPMailerAutoload.php'); 
 
@@ -80,7 +109,8 @@ $mail->isHTML(true); // Set email format to HTML
 $mail->Subject = 'Cambio de contraseña solicitado';
 $mail->Body    = "<h1>¡Hola $nombre!</h1>
                     <p>Ha solicitado un cambio de contraseña, para poder reestrablecerla debe acceder al siguiente enlace, de no haberla solicitado, ignore este email:<br>
-                    <a href=\"$enlacePass".$idu."\">Reestablecer contraseña</a></p>";
+                    <a href=\"$enlacePass".$idu."\">Reestablecer contraseña</a></p>
+                    <p>Introduzca el siguiente código: ".generarCodigo($idUsuario,$conexion)."</p>";
 
 if(!$mail->send()) {
   echo 'Error al enviar email';

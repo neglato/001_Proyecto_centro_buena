@@ -859,6 +859,9 @@ $activo=3;
     ?>
     
 <?php
+    }else{
+        header('Location: cpanel.php');
+        exit();
     }
     ?>
 

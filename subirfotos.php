@@ -39,12 +39,18 @@ if(!isset($_FILES["files"])){
             $cursoN= consulta ($conexion, "select * from cursos where id_curso like $curso");
             $fila= mysqli_fetch_array($cursoN);
             $nomCurso= $fila['curso'];
-            print_r ($_FILES["files"]);
             /*si ya existe no hacemos nada*/
         $max = sizeof($_FILES["files"]["name"]);
         $i;
     
         for($i = 0; $i < $max;$i++){
+            if($_FILES["files"]["type"][$i] != "image/jpeg" && $_FILES["files"]["type"][$i] != "image/jpg" && $_FILES["files"]["type"][$i] != "image/png" && $_FILES["files"]["type"][$i] != "image/bmp"){
+                if($max == 1){
+                    echo $max;
+                    header("Location: cpanelalum.php?a=3&rm=2&rt=2&idp=$idp");
+                    exit();
+                }
+            }else{
             $foto=$_FILES["files"]["name"][$i];
             $img="_cursos/".$nomCurso."/".$nombre_pro."/".$foto."";
             if(file_exists($img) == true){
@@ -55,6 +61,7 @@ if(!isset($_FILES["files"])){
             $uploadfile_temporal=$foto; 
             $uploadfile_nombre=$img;
             move_uploaded_file($tmp, $img);
+            }
             }
         }
         unset($_SESSION['msgalfot']);

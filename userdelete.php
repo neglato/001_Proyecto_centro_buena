@@ -19,7 +19,7 @@ if(!isset($_POST['id_user'])){
     header('Location: cpaneladmin.php?rm=1&rt=3&a=3');
     exit();
 }
-if($_POST['id_user']!=""){
+if($_POST['id_user']!=-1){
     $idu=$_POST['id_user'];
     include('_include/conexion.php');
     include('_include/funciones.php');
@@ -78,6 +78,10 @@ if(!$mail->send()) {
 }
     //fin correo
    header('Location: cpaneladmin.php?rm=1&rt=3&a=3');
+    exit();
+}else{
+    $_SESSION['msgdel']=SELUSR;
+    header('Location: cpaneladmin.php?rm=1&rt=3&a=3');
     exit();
 }
 ob_end_flush();

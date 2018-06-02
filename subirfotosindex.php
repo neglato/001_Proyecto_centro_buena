@@ -38,6 +38,13 @@ if(!isset($_FILES["files"])){
         $i;
     
         for($i = 0; $i < $max;$i++){
+            if($_FILES["files"]["type"][$i] != "image/jpeg" && $_FILES["files"]["type"][$i] != "image/jpg" && $_FILES["files"]["type"][$i] != "image/png" && $_FILES["files"]["type"][$i] != "image/bmp"){
+                if($max == 1){
+                    echo $max;
+                    header("Location: cpaneladmin.php?a=3&rm=4&rt=1&idp=$idp");
+                    exit();
+                }
+            }else{
             $foto=$_FILES["files"]["name"][$i];
             $img="_img/imagenes_ies/".$foto."";
             if(file_exists($img) == true){
@@ -48,6 +55,7 @@ if(!isset($_FILES["files"])){
             $uploadfile_temporal=$foto; 
             $uploadfile_nombre=$img;
             move_uploaded_file($tmp, $img);
+            }
             }
         }
         unset($_SESSION['msgalfot']);
