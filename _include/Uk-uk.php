@@ -198,7 +198,7 @@ define('CACRES','characters remaining');
 define('EJTEXT','Write your comment here (maximum 255 characters)');
 define('MAKECOM','Post your comment');
 define('COMMENTS','Comments');
-define('SAY','say');
+define('SAY','says');
 define('INTNAME','Enter name');
 //nuevo 06/05
 define('AUNNOCOM','No comments yet. Be the first to comment!');

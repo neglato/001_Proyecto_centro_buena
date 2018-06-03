@@ -545,7 +545,9 @@ input:checked + .slider:before {
     }
     #adduser fieldset form p, #usermod fieldset form p, #addcourse fieldset form p, #coursemod fieldset form p,#addproy fieldset form p{
         width: 20%;
-        margin-left: 12.5%;
+        margin-right: 4.5%;
+        margin-left: 8%;
+        text-align: right;
     }
     #adduser fieldset form button, #usermod fieldset form button, #addcourse fieldset form button, #coursemod fieldset form button, #addproy fieldset form button{
         margin:10px 12.5% 10px 67.5%;

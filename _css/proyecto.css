@@ -248,6 +248,9 @@ section #participado #propar a #p2{
     #yacom #comentar h2 input{
         width: 40%;
     }
+    #nomuser{
+        margin-left: 0px!important;
+    }
     /*Slide escritorio*/
     .container {
         width: 65%;

@@ -39,7 +39,6 @@ if(!isset($_POST['nombre']) || !isset($_POST['apellidos']) ||!isset($_POST['emai
             $total2=mysqli_num_rows($RESULT2);
             /*si no existe*/
                 if($total1 == 0){
-
                 /*guardamos el home antiguo y el nuevo*/
                     $oldemail=$info2['email'];
                     $oldhome="_users/".$oldemail."";
