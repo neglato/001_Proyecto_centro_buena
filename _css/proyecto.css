@@ -1,8 +1,8 @@
-section #submenu{
+#submenu{
     background-color: limegreen;
     width: 100%;
 }
-section #submenu p{
+#submenu p{
     color: #1a5ad4;
     font-size: 1.3em;
     padding: 3px 0 5px 0;
@@ -216,7 +216,38 @@ section #participado #propar a #p2{
   opacity: 1;
 }
 /*FIn slide show*/
-@media (min-width: 900px) {
+@media (min-width: 980px) {
+    section{
+        width: 80%!important;
+        margin: 10px auto!important;
+    }
+    #participado #propar legend{
+        font-size: 1.3em;
+    }
+    #participado #propar p{
+        font-size: 1.2em;
+        padding-left: 10%;
+    }
+    #participado #propar #p2{
+        padding-left:0px!important;
+    }
+    #yacom #comentarios legend{
+        font-size: 1.3em;
+    }
+    #yacom #comentar legend{
+        font-size: 1.3em;
+    }
+    #yacom #comentar h2{
+        margin-left: 2.5%!important;
+        padding-left: 0px!important;
+    }
+    #yacom #comentar h2 p{
+        text-align: left!important;
+        width: 10%!important;
+    }
+    #yacom #comentar h2 input{
+        width: 40%;
+    }
     /*Slide escritorio*/
     .container {
         width: 65%;

@@ -97,8 +97,7 @@ $activo=1;
   <?php
     include('_include/header.php');
     ?>
-  <section>
-     <article id="submenu">
+    <article id="submenu">
          <p><?=POY?>
          <?php
         if(isset($_SESSION['lang'])){
@@ -113,6 +112,7 @@ $activo=1;
          ?>
          </p>
      </article>
+  <section>
       <?php
       /*$proyecto=consulta($conexion,"SELECT * FROM proyectos where id_proyecto like $idp and mostrar like 1");
       $totalFilas= mysqli_num_rows($proyecto);
