@@ -1,13 +1,13 @@
 footer{
     text-align: center;
-    background-color: limegreen;
+    background-color: rgb(5, 137, 25);
     height: 30px;
     clear: both;
 }
 footer article{
     width: 50%;
     float: left;
-     background-color: limegreen;
+     background-color: rgb(5, 137, 25);
 }
 footer article ul li{
     display: inline-block;
@@ -16,7 +16,8 @@ footer article ul li a, footer article p{
     font-size: 1.5em;
     text-decoration: none;
     cursor: pointer;
-    color: #1a5ad4;
+    color: white;
+    font-weight: 900;
 }
 footer #dyl{
     display: none;
@@ -28,21 +29,21 @@ footer #dyl{
     footer #dyl{
         display: block;
         width: 100%;
-        color: #1a5ad4;
+        color: white;
         margin-top: -2px;
         clear: both;
     }
     footer #dyl #localizacion{
-        border-right: 3px solid #1a5ad4;
+        border-right: 3px solid cadetblue;
     }
     footer #dyl #localizacion, footer #dyl #dp{
         width: 50%;
         float: left;
-        background-color: limegreen;
+        background-color: rgb(5, 137, 25);
         height: 320px;
         padding-top: 10px;
-        border-bottom: 2px solid #1a5ad4;
-        border-top: 2px solid #1a5ad4;
+        border-bottom: 2px solid cadetblue;
+        border-top: 2px solid cadetblue;
         
     }
     footer #dyl #dp h1, footer #dyl #dp p{
