@@ -186,7 +186,7 @@ $activo=3;
                         //comprobamos que el valor del formulario no sea -1
                         if(isset($_POST['id_proyecto'])){
                         if($_POST['id_proyecto']== -1){
-                            $_SESSION['msgprofe']=DEBCHO;
+                            $_SESSION['msgusr2proy']=DEBCHO;
                             header('Location: cpanelprofe.php?rm=1&rt=2&a=3');
                             exit();
                         }else{

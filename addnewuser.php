@@ -162,7 +162,7 @@ include('_include/variables.php');
 
                         $mail->Subject = 'Ha sido registrado';
                         $mail->Body    = "<h1>¡Hola $nombre!</h1>
-                                        <p>Usted ha sido registrado en la APP de Planes y Proyectos de IES Delgado Hernandez</p>
+                                        <p>Usted ha sido registrado en la APP de Planes y Proyectos de IES Delgado Hernandez, su contraseña inicial es el propio email usado en el registro, que deberá ser cambiada en el primer inicio de sesión por motivos de seguridad</p>
                                          <p>Puede Acceder a la App desde el siguiente enlace:</p>
                                         <p>$enlaceEmail</p>";
 

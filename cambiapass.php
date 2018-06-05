@@ -24,7 +24,7 @@ $num=sizeof($urlact)-1;
 /*guardamos en $urlact el valor de la ultima posicion del array*/
 $urlact=$urlact[$num];
 /* y le asignamos su valor a $_SESSION['urlact']*/
-$_SESSION['urlact2']=$urlact;
+$_SESSION['urlact']=$urlact;
 $activo=3;
 ?>
 <html lang="es">
@@ -250,16 +250,16 @@ if(!$mail->send()) {
   echo 'Mail enviado correctamente';
 }
         //Fin correo
-
-                if ($_SESSION['urlact'] == ""){
-                 header('Location: index.php');
-                    mysqli_close($conexion);
-                    exit();
-                }else{
-                   header('Location: '.$_SESSION['urlact'].'');
-                    exit();
-                    mysqli_close($conexion);
-                }
+                    if(!isset($_SESSION['urlact2'])){
+                        header('Location: index.php');
+                        mysqli_close($conexion);
+                        exit();
+                    }else{
+                        header("Location:".$_SESSION['urlact2'].".php");
+                         mysqli_close($conexion);
+                        exit();
+                    }
+                    
             }
         }
 

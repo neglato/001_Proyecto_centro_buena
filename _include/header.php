@@ -62,6 +62,8 @@ $num=sizeof($urlact)-1;
 $urlact=$urlact[$num];
 /* y le asignamos su valor a $_SESSION['urlact']*/
 $_SESSION['urlact']=$urlact;
+/*creamos una segunda variable para usarla en cambiapass y olvido pass*/
+$_SESSION['urlact2']=$_SESSION['urlact'];
 if(isset($_SESSION['password']) && isset($_SESSION['email']) && $_SESSION['password']== md5($_SESSION['email'])){
     header('Location: cambiapass.php');
 }
