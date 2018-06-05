@@ -255,7 +255,7 @@ if(!$mail->send()) {
                         mysqli_close($conexion);
                         exit();
                     }else{
-                        header("Location:".$_SESSION['urlact2'].".php");
+                        header("Location:".$_SESSION['urlact2']."");
                          mysqli_close($conexion);
                         exit();
                     }
