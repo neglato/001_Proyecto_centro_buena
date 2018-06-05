@@ -65,7 +65,11 @@
             'width':350,
           chartArea: {left:40,top:40,bottom:10,width:'80%',height:'80%'},
           //colors:['#363d91','#be2d2d'],
+            legendTextStyle: {color: 'rgb(5, 137, 25)'},
           pieSliceTextStyle: {color: 'black'},
+          titleTextStyle: { color:'rgb(5, 137, 25)',
+                          fontSize: 15,
+                            fontWeigth: 900},
           pieSliceText: 'percentage',
           is3D: true,
         };
@@ -95,7 +99,11 @@
           fontSize: 12,
           'width':350,
           chartArea: {left:40,top:40,bottom:10,width:'80%',height:'80%'},
+           legendTextStyle: {color: 'rgb(5, 137, 25)'},
           pieSliceTextStyle: {color: 'black'},
+          titleTextStyle: { color:'rgb(5, 137, 25)',
+                          fontSize: 15,
+                            fontWeigth: 900},
           pieSliceText: 'percentage',
           is3D: true,
         };

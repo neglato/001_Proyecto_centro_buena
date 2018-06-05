@@ -6,11 +6,11 @@
        </article>
        <article id="dp">
            <h1><?=DIREC?></h1>
-           <p><?=CALLE?> Dalí nº 1</p>
+           <p><?=CALLE?> Dalí, 1</p>
            <h1><?=LOCA?></h1>
            <p>Bollullos Par del Condado (Huelva)</p>
            <h1><?=TLF?></h1>
-           <p>959-342-987</p>
+           <p>959 439 921</p>
        </article>
     </article>
        <article id="redes">

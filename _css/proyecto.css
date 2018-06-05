@@ -1,9 +1,9 @@
 #submenu{
-    background-color: limegreen;
+    background-color: rgb(5, 137, 25);
     width: 100%;
 }
 #submenu p{
-    color: #1a5ad4;
+    color: white;
     font-size: 1.3em;
     padding: 3px 0 5px 0;
     padding-left: 17%;
@@ -28,7 +28,7 @@ section #yacom fieldset{
 }
 section #yacom fieldset h2{
     font-size: 1.1em;
-    color: limegreen;
+    color: rgb(5, 137, 25);
     padding-left: 20px;
 }
 #comtext{
@@ -43,13 +43,15 @@ section #yacom fieldset h2{
     margin-left: 2%;
 }
 .edicion{
-    font-size: 1.5em;
-    color: #1a5ad4;
+    font-size: 2em;
+    padding: 3px;
+    color: white;
+    font-weight: inherit;
 }
 section #yacom #comentar article form button{
-    height: 30px;
+    height: 40px;
     width: 20%;
-    background-color: limegreen;
+    background-color: rgb(5, 137, 25);
     margin: 10px 5% 10px 75%;
     cursor: pointer;
 }
@@ -62,18 +64,20 @@ section #yacom #comentar article form button{
     display: block;
 }
 #carac{
-    background-color: #1a5ad4;
+    background-color: antiquewhite;
     border: none;
-    color: limegreen;
+    color: rgb(5, 137, 25);
     font-size: 1em;
     text-align: center;
+    font-weight: 700;
 }
 section #yacom fieldset p{
-    color: limegreen;
+    color: rgb(5, 137, 25);
     font-size: 1em;
+    font-weight: 700;
 }
 section #participado, section #yacom{
-    background-color:#1a5ad4;
+    background-color:antiquewhite;
     padding-bottom: 10px;
 }
 section #participado #propar{
@@ -83,10 +87,11 @@ section #yacom #comentarios{
     margin: 0 auto;
 }
 section #participado #propar, section #yacom #comentarios, section #yacom #comentar{
-    border: 2px solid limegreen;
+    border: 2px solid rgb(5, 137, 25);
     width: 98%;
     font-size: 1.2em;
     padding-bottom: 10px;
+    font-weight: 700;
 }
 section #yacom #comentar h2 p{
     width: 25%;
@@ -98,19 +103,19 @@ section #yacom #comentar h2 p{
 }
 section #participado #propar legend, section  article #comentarios legend,section  article #comentar legend{
     text-align: center;
-    color: limegreen;
+    color: rgb(5, 137, 25);
 }
 section #participado #propar a{
     display: block;
     text-decoration: none;
-    color: limegreen;
+    color: rgb(5, 137, 25);
     width: 100%;
     float: left;
     clear: both;
 }
 section #participado #propar a p{
     width: 60%;
-    color: limegreen;
+    color: rgb(5, 137, 25);
     float: left;
     text-align: left;
     margin-left: 2%;
@@ -155,7 +160,7 @@ section #participado #propar a #p2{
   width: auto;
   padding: 16px;
   margin-top: -50px;
-  color:limegreen;
+  color:rgb(5, 137, 25);
   font-weight: bold;
   font-size: 20px;
   border-radius: 0 3px 3px 0;
@@ -177,7 +182,7 @@ section #participado #propar a #p2{
 
 /* Number text (1/3 etc) */
 .numbertext {
-  color: limegreen;
+  color: rgb(5, 137, 25);
     font-weight: bolder;
   font-size: 15px;
   padding: 8px 12px;
@@ -190,7 +195,7 @@ section #participado #propar a #p2{
   text-align: center;
   background-color: #222;
   padding: 2px 16px;
-  color: limegreen;
+  color: rgb(5, 137, 25);
     font-weight: bolder;
 }
 

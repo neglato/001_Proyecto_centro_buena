@@ -256,7 +256,7 @@ $activo=3;
                       })();
 
                     </script>
-                               <button type="submit" id=btnborrar><i class="fas fa-save edicion"></i></button>
+                               <button type="submit" id=btnborrar><i class="far fa-save edicion"></i></button>
                                                   <p id="error"><?php
                                                 if(isset($_SESSION['msguser2proy'])){
                                                     echo $_SESSION['msguser2proy'];
@@ -311,7 +311,7 @@ $activo=3;
                         
                     </select>
                    
-                    <button type="submit" name="usu2proy" id="btnprofe" class="submit"><i class="fas fa-save edicion"></i></button>
+                    <button type="submit" name="usu2proy" id="btnprofe" class="submit"><i class="far fa-save edicion"></i></button>
                         <p id="error">
                            <?php
                                 if(isset($_SESSION['msgprofeproy'])){
@@ -458,7 +458,7 @@ $activo=3;
                       })();
 
                     </script>
-                               <button type="submit" id=btnborrar><i class="fas fa-times edicion2"></i></button>
+                               <button type="submit" id=btnborrar><i class="fa fa-times edicion2"></i></button>
                                                   <p id="error"><?php
                                                 if(isset($_SESSION['msguserdelproy'])){
                                                     echo $_SESSION['msguserdelproy'];
@@ -570,7 +570,7 @@ $activo=3;
                <legend><?=PROYOK?></legend>
                
                <?php if($totalFilas==0){ ?>
-                <p id="error">
+                <p id="errorNo">
                            <?php
                                 $_SESSION['msgprofe']=PROYP;
                                     echo $_SESSION['msgprofe'];
@@ -776,7 +776,7 @@ $activo=3;
                     exit();
                 }elseif($_POST['tipo'] != -1){
                     $idproy=$_POST['tipo'];
-                    $_SESSION['tipo']=$idproy;
+                    $_SESSION['tipo2']=$idproy;
             ?>
               <fieldset id="proyedi">
                <legend><?=CAMNOM?></legend>
@@ -787,7 +787,7 @@ $activo=3;
                        ?>
                         <p><?=NOMES?>:</p><input type="text"  name="newnombre" value="<?= $plan['nombre_pro']?>" required>
                         <p><?=NAMES?>:</p><input type="text"  name="newnombreuk" value="<?= $plan['name_pro']?>" required>
-                        <button type="submit" id="buttonedicion"><i class="fas fa-save edicion"></i></button>
+                        <button type="submit" id="buttonedicion"><i class="far fa-save edicion"></i></button>
                         <p id="error">
                            <?php
                                 if(isset($_SESSION['msgprofe'])){
@@ -815,7 +815,7 @@ $activo=3;
         $nomb=$_POST['newnombre'];
         $nombuk=$_POST['newnombreuk'];
         //Recuperamos el id del proyecto y el nombre viejo para modificar la carpeta y el codigo del curso
-        $idproy=$_SESSION['tipo'];
+        $idproy=$_SESSION['tipo2'];
         $CONS = consulta($conexion,"SELECT * FROM proyectos WHERE id_proyecto=$idproy and mostrar like 0"); 
         $dato=mysqli_fetch_array($CONS);
         $oldnomb=$dato['nombre_pro'];
@@ -853,7 +853,7 @@ $activo=3;
             
         header('Location: cpanelprofe.php?rm=2&rt=3&a=3');
         $_SESSION['msgprofe']=MODYES;
-        unset($_SESSION['tipo']);
+        unset($_SESSION['tipo2']);
         exit();
     }}
     ?>

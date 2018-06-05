@@ -289,7 +289,7 @@ $activo=1;
                                 echo $_SESSION['msgcomment'];
                                 unset($_SESSION['msgcomment']);
                             } ?></p>
-                <button type="submit"><i class="fas fa-save edicion"></i></button>
+                <button type="submit"><i class="far fa-save edicion"></i></button>
             </form>
              </article>
           </fieldset>

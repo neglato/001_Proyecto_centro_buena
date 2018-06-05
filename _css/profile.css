@@ -4,7 +4,7 @@ section fieldset figure{
     margin: 5px auto;
 }
 section fieldset{
-    border: 2px solid limegreen;
+    border: 2px solid rgb(5, 137, 25);
     padding-bottom: 10px;
     width: 98%;
     margin: 0 auto;
@@ -16,8 +16,12 @@ section #perfil{
 }
 section fieldset legend{
     font-size: 1.3em;
-    color: limegreen;
+    color: rgb(5, 137, 25);
     text-align: center;
+    font-weight: 900;
+}
+section #dp legend{
+    color: rgb(5, 137, 25);
 }
 section fieldset figure figcaption{
     display: none;
@@ -25,16 +29,17 @@ section fieldset figure figcaption{
 section fieldset figure img{
     width: 100%;
     border-radius: 80px;
+    border: 5px solid rgb(5, 137, 25);
 } 
 section fieldset article{
-    background-color: #1a5ad4;
+    background-color: antiquewhite;
     padding-bottom: 10px;
 }
 section fieldset article label, section fieldset article p{
-    color: limegreen;
+    color: rgb(5, 137, 25);
     font-size: 1.4em;
     margin-top: 5px;
-    
+    font-weight: 900;
     
 }
 section fieldset article p{
@@ -42,7 +47,7 @@ section fieldset article p{
     margin-left: 10%;
 }
 section fieldset article button{
-    background-color: limegreen;
+    background-color: rgb(5, 137, 25);
     font-size: 1.2em;
     width: 15%;
     margin:5% 5% 5% 80%;
@@ -52,8 +57,10 @@ section fieldset article button #edit{
     display: none;
 }
 .editar{
-    font-size: 1.5em;
-    color: #1a5ad4;
+    font-size: 1.7em;
+    padding: 5px;
+    color: white;
+    font-weight: inherit;
     
 }
 /*Editar Perfil*/
@@ -61,8 +68,9 @@ section fieldset article button #edit{
     display: none;
 }
 .cancel{
-    font-size: 1.5em;
+    font-size: 1.7em;
     color: darkred;
+    padding: 3.5px;
 }
 section fieldset article #buttonsyc button #edit{
     display: none;
@@ -116,14 +124,15 @@ section fieldset article #fotoperfil #pc{
 #error{
     margin: 0px !important;
     width: 100%!important;
-    color: red;
+    color: Darkred;
     clear: both;
     text-align: center;
+    font-weight: 900;
 }
 section fieldset legend{
     font-size: 1.3em;
-    color: limegreen;
-    text-align: left;
+    color: color: rgb(5, 137, 25);;
+    text-align: center;
     margin-left: 10%;
 }
 section #perfil  article #fotoperfil,section #perfil  article #datosperfil{
@@ -147,11 +156,11 @@ padding: 20px 0;
 }
 #dp, #propar{
     width: 98%;
-    border: 2px solid limegreen;
+    border: 2px solid rgb(5, 137, 25);
 }
 #propar a{
     text-decoration: none;
-    color: limegreen;
+    color: rgb(5, 137, 25);
 }
 section #perfil article #datosperfil form #buttonsyc  button{
     margin:0 0 0 10%;
@@ -177,7 +186,7 @@ section #perfil #pass button{
 }
 section #perfil #separar{
     height: 10px;
-    background-color: #1a5ad4;
+    background-color: antiquewhite;
 }
 #separar2{
     display: none;
@@ -198,7 +207,7 @@ section #perfil #separar{
         background-color: antiquewhite;
     }
     section{
-        background-color: #1a5ad4;
+        background-color: antiquewhite;
         width: 75%;
         margin: 0px auto;
         border-bottom: 4px solid antiquewhite;
@@ -210,9 +219,9 @@ section #perfil #separar{
         height: 210px;
     }
         section #perfil article{
-        float: left;
         width: 60%;
         clear: none;
+        float: left;
     }
     section #perfil .editandoperfil{
         float: left;
@@ -233,7 +242,7 @@ section #perfil #separar{
         width: 290px;
         clear: both;
         margin-left: 10px;
-        height: 288px;
+        height: 300px;
         margin-right: 0;
         display: inline-block;
         float: left;
@@ -296,7 +305,7 @@ section #perfil #separar{
     position: relative;
 }
     section #fotoperfilpc button{
-    background-color: limegreen;
+    background-color: rgb(5, 137, 25);;
     font-size: 1.2em;
     margin:5% 5% 5% 80%;
     text-align: center;
@@ -306,25 +315,39 @@ section #perfil #separar{
     margin: 0px !important;
     top: 25px;
     width: 100%!important;
-    color: red;
+    color: darkred;
     clear: both;
     text-align: center;
     position: relative;
     font-size: 1.3em;
 }
+.errorpass{
+    clear: both;
+    width: 100%!important;
+    color: darkred;
+    text-align: center!important;
+    margin: 5px auto!important;
+    font-size: 1.2em;
+}
+section #perfil #pass button{
+    margin:0px 0 0 32.5%;
+    width: 35%;
+    display: inline-block;
+}
     section #perfil #pass input{
     width: 80%;
     font-size: 1.4em;
     margin: 30px auto 0 auto;
-        display: block;
+    display: block;
 }
     section #perfil #pass p{
     margin:0 40% 0 10%;
     width: 50%;
     display: block;
-        text-align: left;
+    text-align: left;
 }
     section #perfil #pass{
-        height: 288px;
+        height: 300px;
+        margin-top: -2.5px;
     }
 

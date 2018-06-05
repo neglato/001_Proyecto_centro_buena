@@ -34,7 +34,7 @@ nav#nav1{
     width: 25%; 
     padding: 5px 0; 
     transition: all 0.3s ease; 
-    color: limegreen; 
+    color: white; 
     font-size: 20px; 
 }
 .icon-bar3 a {
@@ -44,7 +44,7 @@ nav#nav1{
     width: 50%; 
     padding: 5px 0; 
     transition: all 0.3s ease; 
-    color: limegreen; 
+    color: white; 
     font-size: 20px;
 }
 /*parte de borrar comentarios*/
@@ -81,7 +81,7 @@ nav#nav1{
 /*resto de panels*/
 .icon-bar, .icon-bar2, .icon-bar3 {
     width: 100%; 
-    background-color: #1a5ad4; 
+    background-color: cadetblue; 
     overflow: auto; 
 }
 .icon-bar a {
@@ -91,7 +91,7 @@ nav#nav1{
     width: 33.3%; 
     padding: 5px 0; 
     transition: all 0.3s ease; 
-    color: limegreen; 
+    color: white; 
     font-size: 20px; 
     
 }
@@ -101,12 +101,12 @@ nav#nav1{
 
 .icon-bar a:hover,.icon-bar2 a:hover,.icon-bar3 a:hover{
     background-color: #535353; 
-    color: limegreen;
+    color: white;
 }
 
 .icon-bar a.active,.icon-bar2 a.active, .icon-bar3 a.active{
-    background-color: limegreen; 
-    color: #1a5ad4;
+    background-color: rgb(5, 137, 25); 
+    color: white;
 }
 
 nav.oculto{
@@ -124,23 +124,24 @@ nav.oculto{
 #adduser, #usermod, #userdel, #user2proy, #userdelproy, #addcourse, #coursemod, #addproy,#proydel,#proypublic,#proyNOpublic,#proyedit, #fotosindex, #commentarioscpanel{
     margin: 0px;
     width: 100%;
-    background-color:#1a5ad4; 
+    background-color:antiquewhite; 
     padding-bottom: 10px;
     
 }
 #adduser fieldset, #usermod fieldset, #userdel fieldset, #user2proy fieldset, #userdelproy fieldset, #addcourse fieldset, #coursemod fieldset, #addproy fieldset, #proydel fieldset, #proypublic fieldset,#proyNOpublic fieldset,#proyedit fieldset, #fotosindex fieldset, #commentarioscpanel fieldset {
     width: 98%;
     margin: 0px auto;
-    border: 2px solid limegreen;
+    border: 2px solid rgb(5, 137, 25);
     margin-bottom: 10px;
 }
 #adduser fieldset legend, #fotosindex fieldset legend, #usermod fieldset legend, #userdel fieldset legend, #user2proy fieldset legend, #userdelproy fieldset legend, #addcourse fieldset legend, #coursemod fieldset legend, #addproy fieldset legend, #proydel fieldset legend, #proypublic fieldset legend,#proyNOpublic fieldset legend,#proyedit fieldset legend,#actual legend, #commentarioscpanel fieldset legend {
     font-size: 1.3em;
-    color: limegreen;
+    color: rgb(5, 137, 25);
     text-align: center;
+    font-weight: 700;
 }
 #adduser>fieldset >form>p, #usermod fieldset>form>p, #userdel>fieldset>form>p, #user2proy>fieldset>#pc>form>p, #user2proy>fieldset>#movil>form>p #userdelproy>fieldset>form>p,#addcourse>fieldset>form>p, #coursemod>fieldset>form>p, #addproy>fieldset>form>p, #proydel>fieldset>form>p,#proyedit>fieldset>form>p, #commentarioscpanel fieldset>form>p{
-    color: limegreen;
+    color: rgb(5, 137, 25);
     font-size: 1.3em;
     margin-top: 5px;
     margin-left: 5%;
@@ -148,9 +149,10 @@ nav.oculto{
     display: inline-block;
     float: left;
     clear: both;
+    font-weight: 600;
 }
 #selecproy{
-    color: limegreen;
+    color: rgb(5, 137, 25);
     font-size: 1.3em;
     text-align: center;
 }
@@ -166,6 +168,15 @@ nav.oculto{
     width: 80%;
     text-align: center;
 }
+#errorNo{
+     width: 98%!important;
+    color: rgb(5, 137, 25)!important;
+    text-align: center!important;
+    font-size: 1.4em;
+    margin: 5px auto 0!important;
+    display: block;
+    font-weight: 600;
+}
 #user2proy fieldset #imvproy{
     margin: 0 10%;
 }
@@ -173,7 +184,7 @@ nav.oculto{
     width: 100%;
     text-align: center;
     font-size: 1.5em;
-    color: limegreen;
+    color: rgb(5, 137, 25);
 }
 #adduser fieldset input,#adduser fieldset select,#usermod fieldset select,#usermod fieldset input, #userdel fieldset select, #user2proy fieldset select, #userdelproy fieldset select, #addcourse fieldset input, #coursemod fieldset form input, #proyadd fieldset form input, #addproy fieldset input,#proyedit fieldset select,#proyedit fieldset input, #coursemod fieldset form select, #addproy fieldset form select{
     width: 55%;
@@ -195,11 +206,12 @@ nav.oculto{
 
 a#proyprof{
     width: 98%!important;
-    color: limegreen;
+    color: rgb(5, 137, 25);
     text-decoration: none;
     //text-align: center!important;
     font-size: 1.4em;
     margin: 5px auto 5px!important;
+    font-weight: 700;
 }
 
 #error{
@@ -216,7 +228,7 @@ a#proyprof{
 #adduser fieldset form button, #usermod fieldset form button, #fotosindex fieldset form button, #userdel fieldset form button, #user2proy fieldset form button , #userdelproy fieldset form button, #addcourse fieldset form button, #coursemod fieldset form button, #addproy fieldset form button, #proydel fieldset form button,#proyedit fieldset button , #btnborrar, #commentarioscpanel fieldset form button{
     height: 30px;
     width: 20%;
-    background-color: limegreen;
+    background-color: rgb(5, 137, 25);
     margin: 10px 5% 10px 75%;
     cursor: pointer;
 }
@@ -236,7 +248,7 @@ a#proyprof{
 
 .edicion{
     font-size: 1.5em;
-    color: #1a5ad4;
+    color: white;
     
 }
 .edicion2{
@@ -255,11 +267,12 @@ a#proyprof{
 word-break: break-all!important;
 width: 50%!important;
 margin-left: 3%!important;
- color: limegreen;
+ color: rgb(5, 137, 25);
  font-size: 1.3em;
  margin-top: 20px;
 display: inline-block;
 float: left;
+    font-weight: 700;
 }
 .arriba{
     transform: rotate(-180deg);
@@ -279,7 +292,8 @@ float: left;
     text-align: center;
      margin-bottom: 10px;
      font-size: 1.2em;
-     color: limegreen;
+     color: rgb(5, 137, 25);
+     font-weight: 700;
 }
 .coments .textocom{
     width: 70%;
@@ -289,14 +303,18 @@ float: left;
 }
 .coments .textocom p{
     font-size: 1.3em;
-    color: limegreen;
+    color: rgb(5, 137, 25);
+    font-weight: 700;
+    text-align: left;
 }
 .coments .textocom h2{
-    color: limegreen;
+    color: rgb(5, 137, 25);
+    text-align: left;
 }
 .coments .buttoncom{
     width: 30%;
     float: left;
+    
 }
 /*Parte de redactar e imagenes alumnos*/
 .oculto{
@@ -317,7 +335,7 @@ float: left;
     margin: 10px auto;
 }
 #fotosact table tr td{
-    background-color: antiquewhite;
+    background-color: white;
     width: 50%;
 }
 #fotosact table td p{
@@ -348,13 +366,13 @@ div#piechart_3d, div#piechart_3d2{
 
 #myProgress {
   width: 80%;
-  background-color: limegreen;
+  background-color: cadetblue;
   margin: 20px auto 30px;
 }
 #myBar {
     width: 0%;
     height: 20px;
-    background-color: #1a5ad4;
+    background-color: rgb(5, 137, 25);
     text-align: center; 
     line-height: 20px; 
     color: white; 
@@ -370,12 +388,12 @@ div#piechart_3d, div#piechart_3d2{
 }
 
 #titbar>span, #textbar>span{
-    color: #1a5ad4;
+    color: rgb(5, 137, 25);
     font-size: 1.2em;
     font-weight: bold;
 }
 tbody{
-    border: 2px solid #1a5ad4;
+    border: 2px solid rgb(5, 137, 25);
 }
 #tabladatos{
     width: 90%;
@@ -387,8 +405,8 @@ tbody{
     border-collapse: collapse;
 }
 th {
-    background-color: limegreen;
-    color: #1a5ad4;
+    background-color: cadetblue;
+    color: white;
     width: 33%;
 }
 
@@ -398,11 +416,13 @@ th, td {
 }
 #tabladatos table tr td a{
     text-decoration: none;
-    color: #1a5ad4;
+    color: rgb(5, 137, 25);
+    font-weight: 700;
 }
 td{
-    color: #1a5ad4;
+    color: rgb(5, 137, 25);
     width: 33%;
+    font-weight: 700;
 }
 
 tr:nth-child(even){
@@ -473,10 +493,10 @@ input:checked + .slider:before {
 #suma,#sumaAll,#resta,#restaAll{
     height: 30px;
     width: 25%;
-    background-color: limegreen;
+    background-color: rgb(5, 137, 25);
     cursor: pointer;
-    color: #1a5ad4;
-    font-weight: bold;
+    color: white;
+    font-size:1.1em ;
 }
 
 #suma{
@@ -533,7 +553,7 @@ input:checked + .slider:before {
     tbody{
         width: 660px;
         display: block;
-        margin-left: 19%;
+        margin-left: 19%!important;
     }
     th {
     width: 220px;
@@ -598,8 +618,7 @@ input:checked + .slider:before {
     }
     #fotosindex tbody{
         width: 100%;
-        margin-left: 1%;
-        border-bottom: 0px;
+        margin-left: 5%!important;
     }
     #fotosindex  tbody th,#fotosindex tbody td, #fotosindex tbody tr {
     border-bottom: none!important;

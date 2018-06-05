@@ -189,7 +189,7 @@ header #pc{
 }
 #login fieldset{
     border: 5px solid rgb(5, 137, 25);
-    background-color: #5a9cf7;
+    background-color: cadetblue;
 }
 #login fieldset form #idh{
     display: none;
@@ -208,6 +208,7 @@ header #pc{
     float: left;
     clear: both;
     font-weight: 900;
+    color: white;
 
 }
 #login fieldset form #inputs input[type=email], #login fieldset form #inputs input[type=password]{
@@ -239,16 +240,20 @@ header #pc{
     margin-left: 5%;
     font-weight: 900;
 }
+#opaco #login fieldset form p{
+    text-align: right;
+    margin-right: 2%!important;
+}
 #login fieldset form #msg{
-    color: red;
-    margin: auto;
-    text-align: center;
+    color: darkred;
+    margin: auto!important;
+    text-align: center!important;
 }
 /*mensage logout*/
 #logout{
-    width: 100%;
+    width: 80%;
     color: darkred;
-    font-size: 1.2em;
+    font-size: 0.9em!important;
 }
 /*Diseño de escritorio*/
 @media (min-width: 980px) {
@@ -310,11 +315,11 @@ header #pc{
         width: 70%;
     }
     #logout{
-    width: 20%;
+    width: 30%;
     color: darkred!important;
     font-size: 1em!important;
     position: absolute;
-    left: 70%;
+    left: 65%;
 }
     header #lys #saludo{
         padding-top: 3.5%;
@@ -387,7 +392,9 @@ header #pc{
         float: left;
         margin: 10% 0 2% 5%;
         font-weight: 900;
-        
+    }
+    #login fieldset form #idh p{
+        text-align: left;
     }
     #login fieldset form #inputs{
         clear: both;
@@ -406,7 +413,8 @@ header #pc{
     #login fieldset form>p{
         text-align: right;
         margin-right: 5%;
-        font-size: 1.3em;
+        font-size: 1em;
+        font-weight: inherit;
     }
     #login fieldset form #buttons button[type=button],#login fieldset form #buttons button[type=submit]{
         height: 30px;

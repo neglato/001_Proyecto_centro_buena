@@ -24,7 +24,7 @@ $num=sizeof($urlact)-1;
 /*guardamos en $urlact el valor de la ultima posicion del array*/
 $urlact=$urlact[$num];
 /* y le asignamos su valor a $_SESSION['urlact']*/
-$_SESSION['urlact']=$urlact;
+$_SESSION['urlact2']=$urlact;
 $activo=3;
 ?>
 <html lang="es">

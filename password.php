@@ -26,7 +26,7 @@ if($_POST['oldpass'] == "" or $_POST['newpass'] == "" or $_POST['confpass'] == "
     $id=$_SESSION['user'];
     $oldpass=$_POST['oldpass'];
     $oldpass=$chorizo1.$oldpass.$chorizo2;
-    $oldpass=md5($oldpass)/*"64f5088480973464637fefd371de4c4f"*/;
+    $oldpass=md5($oldpass);
     $newpass=$_POST['newpass'];
     $newpass=$chorizo1.$newpass.$chorizo2;
     $newpass=md5($newpass);

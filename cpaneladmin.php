@@ -151,7 +151,7 @@ $activo=3;
                             <option value="1" ><?=PROFE?></option>
                             <option value="2" ><?=ALUM?></option>
                         </select>
-            <button type="submit" id="boton"><div id="edit"><?=MODPER?></div><i class="fas fa-save edicion"></i></button>
+            <button type="submit" id="boton"><div id="edit"><?=MODPER?></div><i class="far fa-save edicion"></i></button>
             <p id="error"><?php
                             if(isset($_SESSION['msgadd'])){
                                 echo $_SESSION['msgadd'];
@@ -979,11 +979,11 @@ Comienza eliminar curso*/
                 <legend><?=SUBFOTOS?></legend>
 <style type="text/css">
   .demo-droppable {
-    background: #08c;
-    color: limegreen;
+    background: cadetblue!important;
+    color: white;
     padding: 100px 0;
     text-align: center;
-    border: 2px solid limegreen;
+    border: 2px solid rgb(5, 137, 25);
       margin: 10px auto;
       width: 95%;
   }
@@ -1214,7 +1214,7 @@ Comienza eliminar curso*/
                                     echo $nombrePro;
                                     }?>
                    </legend>
-                        <p id="error">
+                        <p id="errorNo">
                            <?php
                                 $_SESSION['msgprofe']=NO_COMENTARIO;
                                     echo $_SESSION['msgprofe'];

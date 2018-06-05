@@ -210,7 +210,7 @@ define('DELYES','Comentario eliminado correctamente');
 //nuevo 20/05
 define('TOLVPASS','Se le enviará un email con un enlace desde el cual podra reestablecer su contraseña');
 define('FAILMAIL','El email introducido no está registrado');
-define('TCPASS','Introduzca una nueva contraseña, recuerde que no puede coincidir con su email');
+define('TCPASS','Introduzca una nueva contraseña además del código de recuperación que recibió en el correo, recuerde que la contraseña no puede coincidir con su email');
 define('SINCOIN','Sin coincidencias');
 //nuevo 27/05
 define('EDITPROY','Editar proyecto');

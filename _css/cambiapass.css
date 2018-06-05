@@ -1,16 +1,17 @@
 section article{
-    background-color: #1a5ad4;
+    background-color: antiquewhite;
     padding-bottom: 10px;
 }
 section #text{
-    border-top: 2px solid limegreen;
+    border-top: 2px solid cadetblue;
 }
 section #text p{
     padding-top: 10px;
     width: 95%;
     margin: 0px auto;
-    color: limegreen;
+    color: rgb(5, 137, 25);
     font-size: 1.4em;
+    font-weight: 700;
 }
 section article fieldset{
     width: 98%;
@@ -21,7 +22,8 @@ section article fieldset{
 section article fieldset legend{
     text-align: center;
     font-size: 1.4em;
-    color: limegreen;
+    color: rgb(5, 137, 25);
+    font-weight: 900;
 }
 section article fieldset form button #edit{
     display: none;
@@ -31,8 +33,7 @@ section article fieldset form button{
     margin-top: 20px;
     width: 35%;
     display: inline-block;
-    background-color: limegreen;
-    color:  #1a5ad4;
+    background-color: rgb(5, 137, 25);
     
 }
 section article fieldset form p{
@@ -41,8 +42,9 @@ section article fieldset form p{
     display: inline-block;
     float: left;
     clear: both;  
-    color: limegreen;
+    color: rgb(5, 137, 25);
     font-size: 1.4em;
+    font-weight: 700;
 }
 section article fieldset form input{
     width: 55%;
@@ -62,7 +64,7 @@ section article fieldset form input{
 }
 .editar{
     font-size: 1.5em;
-    color: #1a5ad4;
+    color: white;
 }
 #lys{
     background-color: antiquewhite!important;

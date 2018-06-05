@@ -86,7 +86,7 @@ $activo=3;
             <ul>
                <?php
                 if($totalFilas == 0){ ?>
-                    <p id="error">
+                    <p id="errorNo">
                            <?php
                                 $_SESSION['msgprofe']=PROYP;
                                     echo $_SESSION['msgprofe'];
@@ -154,7 +154,7 @@ $activo=3;
             <ul>
                <?php
                 if($totalFilas2==0){ ?>
-                <p id="error">
+                <p id="errorNo">
                            <?php
                                 $_SESSION['msgprofe']=NOPUBROY;
                                     echo $_SESSION['msgprofe'];
@@ -229,7 +229,7 @@ $activo=3;
             <script src="/ruta-a-wysihtml5/dist/wysihtml5-0.3.0.min.js"></script>
                 <?php 
                     /*recuperamos el nombre del proyecto*/
-                     $ProyAct = consulta($conexion, "select * from proyectos where id_proyecto like $idp");                                     $rowProy=mysqli_fetch_array($ProyAct);
+                     $ProyAct = consulta($conexion, "select * from proyectos where id_proyecto like $idp");                               $rowProy=mysqli_fetch_array($ProyAct);
                      $nombre_pro=$rowProy['nombre_pro'];                                                                       
                      $name_pro=$rowProy['name_pro'];
                      $contenido=$rowProy['contenido'];
@@ -310,7 +310,7 @@ $activo=3;
                     $row=mysqli_fetch_array($CurAct);
                     $curso=$row['curso'];
                 if($totalImg == 0){?>
-                    <p style="color:limegreen;font-size:1.3em;text-align:center;"><?=NOFOTS?></p>
+                    <p style="color:rgb(5, 137, 25);font-weight:700;font-size:1.3em;text-align:center;"><?=NOFOTS?></p>
                 <?php }else{?>
                 <table>
                     <tr>
@@ -337,11 +337,11 @@ $activo=3;
                 <legend><?=SUBFOTOS?></legend>
 <style type="text/css">
   .demo-droppable {
-    background: #08c;
-    color: limegreen;
+    background: cadetblue;
+    color: white;
     padding: 100px 0;
     text-align: center;
-    border: 2px solid limegreen;
+    border: 2px solid rgb(5, 137, 25);
       margin: 10px auto;
       width: 95%;
   }
@@ -443,7 +443,7 @@ $activo=3;
                     $imgAct= consulta($conexion,"SELECT * from imgproy where id_proyecto like $idp");
                 $totalImg= mysqli_num_rows($imgAct);
                 if($totalImg == 0){?>
-                    <p style="color:limegreen;font-size:1.3em;text-align:center;"><?=NOFOTS?></p>
+                    <p style="color:rgb(5, 137, 25);font-weight:700;font-size:1.3em;text-align:center;"><?=NOFOTS?></p>
                 <?php }else{
                     ?>
                     <div id="textImg">
