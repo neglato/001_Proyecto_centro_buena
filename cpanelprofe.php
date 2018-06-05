@@ -206,7 +206,7 @@ $activo=3;
                                             AND baja like 0");
                     $totalnoPar= mysqli_num_rows($noPar);
                         if($totalnoPar==0){?>
-                        <p id="error"><?=NOUSRDISP?></p>
+                        <p id="errorNo"><?=NOUSRDISP?></p>
                         <?php
                             unset($_SESSION['msguser2proy']);
                         }else{
@@ -409,7 +409,7 @@ $activo=3;
                                             AND baja like 0");
                     $totalnoPar= mysqli_num_rows($noPar);
                         if($totalnoPar==0){?>
-                            <p id="error"><?=NOUSRINS?></p>
+                            <p id="errorNo"><?=NOUSRINS?></p>
                             <?php
                             unset($_SESSION['msguserdelproy']);
                         }else{
