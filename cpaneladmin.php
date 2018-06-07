@@ -139,13 +139,13 @@ $activo=3;
         <fieldset>
             <legend><?=AÑADIR_USUARIO?></legend>
             <form action="addnewuser.php" method="post" enctype="multipart/form-data">
-            <p><?=NOMBRE?></p><input type="text"  name="nombre" required>
-           <p><?=APELLIDOS?></p><input type="text"  name="apellidos" required>
+            <p><?=NOMBRE?></p><input type="text"  name="nombre" required maxlength="255">
+           <p><?=APELLIDOS?></p><input type="text"  name="apellidos" required maxlength="255">
            <p><?=SEXO?></p><select name=sexo required>
                             <option value="0" ><?=HOM?></option>
                             <option value="1" ><?=MUJ?></option>
                         </select>
-           <p>Email : </p><input type="email" name="email" required onblur="comprobarEmail(this.value)">
+           <p>Email : </p><input type="email" name="email" required onblur="comprobarEmail(this.value)" maxlength="255">
            <p><?=PRIVI?></p><select name=tipo>
                             <option value="0" ><?=ADMIN?></option>
                             <option value="1" ><?=PROFE?></option>
@@ -206,7 +206,13 @@ $activo=3;
             }
             if(isset($_POST['id_user']) || isset($idu)){
                 if(isset($idu)){
-                    $RESULT2 = consulta($conexion,"SELECT * FROM usuarios WHERE id_user ='" . $idu . "'"); 
+                    $RESULT2 = consulta($conexion,"SELECT * FROM usuarios WHERE id_user ='" . $idu . "'");
+                    $siNo=mysqli_num_rows($RESULT2);
+                    if($siNo == 0){
+                    $_SESSION['msgmod2']= SELUSR;
+                     header('Location: cpaneladmin.php?rm=1&rt=2&a=3');
+                    exit(); 
+                    }
                     $info=mysqli_fetch_array($RESULT2);
                     $_SESSION['uid']=$idu;    
                 }
@@ -216,7 +222,13 @@ $activo=3;
                      header('Location: cpaneladmin.php?rm=1&rt=2&a=3');
                     exit();   
                     }elseif ($_POST['id_user'] !=-1){
-                    $RESULT2 = consulta($conexion,"SELECT * FROM usuarios WHERE id_user ='" . $_POST['id_user'] . "'"); 
+                    $RESULT2 = consulta($conexion,"SELECT * FROM usuarios WHERE id_user ='" . $_POST['id_user'] . "'");
+                    $siNo=mysqli_num_rows($RESULT2);
+                        if($siNo == 0){
+                    $_SESSION['msgmod2']= SELUSR;
+                     header('Location: cpaneladmin.php?rm=1&rt=2&a=3');
+                    exit(); 
+                    }
                     $info=mysqli_fetch_array($RESULT2);
                     $_SESSION['uid']=$_POST['id_user'];
                 }
@@ -225,8 +237,8 @@ $activo=3;
         <fieldset>
             <legend><?=MODIFICAR_USUARIO?></legend>
             <form action="modifyuser.php" method="post" enctype="multipart/form-data">
-            <p><?=NOMBRE?></p><input type="text"  name="nombre" required value="<?=$info['nombre']?>">
-           <p><?=APELLIDOS?></p><input type="text"  name="apellidos" required value="<?=$info['apellidos']?>">
+            <p><?=NOMBRE?></p><input type="text"  name="nombre" required value="<?=$info['nombre']?>" maxlength="255">
+           <p><?=APELLIDOS?></p><input type="text"  name="apellidos" required value="<?=$info['apellidos']?>" maxlength="255">
            <p><?=SEXO?></p><select name=sexo required>
                             <option value="0"  <?php
                                                     if($info['sexo']== 0){
@@ -239,7 +251,7 @@ $activo=3;
                                                     }
                                                     ?>><?=MUJ?></option>
                         </select>
-           <p>Email : </p><input type="email" name="email" required value="<?=$info['email']?>">
+           <p>Email : </p><input type="email" name="email" required value="<?=$info['email']?>" maxlength="255">
            <p><?=PRIVI?></p><select name=tipo>
                             <option value="0" <?php
                                                     if($info['tipo']== 0){
@@ -406,7 +418,7 @@ Comienza eliminar usuario*/
         <fieldset>
             <legend><?=AÑADIR_CURSO?></legend>
             <form action="addnewcourse.php" method="post" enctype="multipart/form-data">
-            <p><?=CUR?></p><input type="text"  name="nombre" required placeholder="<?=EJ?> 2016-2017">
+            <p><?=CUR?></p><input type="text"  name="nombre" required placeholder="<?=EJ?> 2016-2017" maxlength="255">
             <button type="submit" id="boton"><div id="edit">añadir curso</div><i class="fas fa-save edicion"></i></button>
             <p id="error"><?php
                             if(isset($_SESSION['msgaddcourse'])){
@@ -462,12 +474,31 @@ Comienza eliminar usuario*/
             if(isset($_POST['id_curso']) || isset($cid)){
                 if(isset($cid)){
                     $RESULT2 = consulta($conexion,"SELECT * FROM cursos WHERE id_curso ='" . $cid . "'"); 
+                    $siNo=mysqli_num_rows($RESULT2);
+                    if($siNo == 0){
+                    $_SESSION['msgmodcour']= SELCURSO;
+                    header("Location: cpaneladmin.php?rm=2&rt=2&a=3&cid=$cid");
+                    exit();   
+                    }
                     $info=mysqli_fetch_array($RESULT2);
                     $_SESSION['cid']=$cid;
                 }
                 if(isset($_POST['id_curso'])){
                     if ($_POST['id_curso'] !=-1){
-                    $RESULT2 = consulta($conexion,"SELECT * FROM cursos WHERE id_curso ='" . $_POST['id_curso'] . "'"); 
+                        $idCurso=htmlentities($_POST['id_curso']);
+                    $RESULT2 = consulta($conexion,"SELECT * FROM cursos WHERE id_curso ='" . $idCurso . "'"); 
+                    $siNo=mysqli_num_rows($RESULT2);
+                    if($siNo == 0){
+                    $_SESSION['msgmodcour']= SELCURSO;
+                    header("Location: cpaneladmin.php?rm=2&rt=2&a=3");
+                    exit();   
+                    }
+                    $siNo=mysqli_num_rows($RESULT2);
+                    if($siNo == 0){
+                    $_SESSION['msgmodcour']= SELCURSO;
+                     //header('Location: cpaneladmin.php?rm=2&rt=2&a=3');
+                    exit();   
+                    }
                     $info=mysqli_fetch_array($RESULT2);
                     $_SESSION['cid']=$_POST['id_curso'];
                 }else{
@@ -480,7 +511,7 @@ Comienza eliminar usuario*/
         <fieldset>
             <legend><?=MODIFICAR_CURSO?></legend>
             <form action="modifycourse.php" method="post" enctype="multipart/form-data">
-            <p><?=CUR?></p><input type="text"  name="nombre" required value="<?=$info['curso']?>">
+            <p><?=CUR?></p><input type="text"  name="nombre" required value="<?=$info['curso']?>" maxlength="255">
             <button type="submit" id="boton"><div id="edit"><?=MODPER?></div><i class="fas fa-save edicion"></i></button>
             <p id="error"><?php
                             if(isset($_SESSION['msgmodcour'])){
@@ -630,8 +661,8 @@ Comienza eliminar curso*/
         <fieldset>
             <legend><?=AÑADIR_PROYECTO?></legend>
             <form action="addnewproyect.php" method="post" enctype="multipart/form-data">
-            <p><?=NOMES?>:</p><input type="text"  name="nombre" required>
-            <p><?=NAMES?>:</p><input type="text"  name="name" required>
+            <p><?=NOMES?>:</p><input type="text"  name="nombre" required maxlength="255">
+            <p><?=NAMES?>:</p><input type="text"  name="name" required maxlength="255">
                 <p><?=CUR?> </p>
                     <select name="id_curso" id="icur">
                     <option value="-1"><?=SELCUR?></option>
@@ -711,7 +742,14 @@ Comienza eliminar curso*/
             }
             if(isset($_POST['id_proy']) || isset($pid)){
                 if(isset($pid)){
-                    $RESULT2 = consulta($conexion,"SELECT * FROM proyectos WHERE id_proyecto ='" . $pid . "' and mostrar like 0"); 
+                    $RESULT2 = consulta($conexion,"SELECT * FROM proyectos WHERE id_proyecto ='" . $pid . "' and mostrar like 0");
+                    //Comprobamos que exista el proyecto seleccionado y k esta de baja*/
+                    $siNo=mysqli_num_rows($RESULT2);
+                    if($siNo == 0){
+                        $_SESSION['msgmodproy2']= DEBCHO;
+                        header('Location: cpaneladmin.php?rm=3&rt=2&a=3');
+                        exit(); 
+                    }
                     $info=mysqli_fetch_array($RESULT2);
                     $_SESSION['pid']=$pid;
                     unset($pid);
@@ -719,6 +757,12 @@ Comienza eliminar curso*/
                 if(isset($_POST['id_proy'])){
                 if ($_POST['id_proy'] != -1){
                     $RESULT2 = consulta($conexion,"SELECT * FROM proyectos WHERE id_proyecto ='" . $_POST['id_proy'] . "' and mostrar like 0"); 
+                       $siNo=mysqli_num_rows($RESULT2);
+                    if($siNo == 0){
+                        $_SESSION['msgmodproy2']= DEBCHO;
+                        header('Location: cpaneladmin.php?rm=3&rt=2&a=3');
+                        exit(); 
+                    }
                     $info=mysqli_fetch_array($RESULT2);
                     $_SESSION['pid']=$_POST['id_proy'];
                 }else{
@@ -731,8 +775,8 @@ Comienza eliminar curso*/
            <fieldset>
             <legend><?=MODIFICAR_PROYECTO?></legend>
             <form action="modifyproyect.php" method="post" enctype="multipart/form-data">
-            <p><?=NOMES?>:</p><input type="text"  name="nombre" required value="<?=$info['nombre_pro']?>">
-            <p><?=NAMES?>:</p><input type="text"  name="name" required value="<?=$info['name_pro']?>">
+            <p><?=NOMES?>:</p><input type="text"  name="nombre" required value="<?=$info['nombre_pro']?>" maxlength="255">
+            <p><?=NAMES?>:</p><input type="text"  name="name" required value="<?=$info['name_pro']?>" maxlength="255">
             <p id="selectcurso"><?=CUR?> </p>
                     <select name="id_curso" id="icur">
                     <option value="-1"><?=SELCUR?></option>
@@ -1191,7 +1235,7 @@ Comienza eliminar curso*/
                     header('Location: ?rm=4&rt=2&a=3');
                     exit();
                 }
-                $idp=$_POST['id_proyAd'];
+                $idp=htmlentities($_POST['id_proyAd']);
             }
                 /*sacamos todos los comentarios del proyecto selccionado*/
                 $comments=consulta($conexion,"SELECT * FROM comentarios where id_proyecto like $idp");

@@ -15,7 +15,7 @@ if(!isset($_SESSION['user'])){
     header('Location: index.php');
     exit();
 }
-if(!isset($_POST['nombre']) || !isset($_POST['name']) || !isset($_POST['id_curso']) || !isset($_POST['id_coor'])){
+if($_POST['nombre'] == "" || $_POST['name'] =="" || $_POST['id_curso'] == "" || $_POST['id_coor']== ""){
     $_SESSION['msgmodproy']=ALLFIELDS;
     header('Location: cpaneladmin.php?rm=3&rt=2&a=3&pid='.$pid.'');
     exit;
@@ -25,10 +25,26 @@ if(!isset($_POST['nombre']) || !isset($_POST['name']) || !isset($_POST['id_curso
             include('_include/funciones.php');
                     $pid=$_SESSION['pid'];
                     unset($_SESSION['pid']);
-                    $nombre=$_POST['nombre'];
-                    $name=$_POST['name'];
-                    $idCurso=$_POST['id_curso'];
-                    $coor=$_POST['id_coor'];
+                    $nombre=htmlentities($_POST['nombre']);
+                    $name=htmlentities($_POST['name']);
+                    $idCurso=htmlentities($_POST['id_curso']);
+                    /*comprbamos que exista el curso*/
+                    $coCur=consulta($conexion,"SELECT * FROM cursos WHERE id_curso like $idCurso");
+                    $siNoCurso=mysqli_num_rows($coCur);
+                    if($siNoCurso == 0){
+                        $_SESSION['msgmodproy']=INVCURSO;
+                        header('Location: cpaneladmin.php?rm=3&rt=2&a=3&pid='.$pid.'');
+                        exit();
+                    }
+                    $coor=htmlentities($_POST['id_coor']);
+                    /*Comprobamos el coordinador*/
+                    $coCoor=consulta($conexion,"SELECT * FROM usuarios WHERE id_user ='$coor' AND tipo like 1 AND tipo like 1");
+                    $siNoCoor=mysqli_num_rows($coCoor);
+                    if($siNoCoor == 0){
+                        $_SESSION['msgmodproy']=INVCOORD;
+                        header('Location: cpaneladmin.php?rm=3&rt=2&a=3&pid='.$pid.'');
+                        exit();
+                    }
             /*comprobamos si existe algun proyecto con el nombre introducido en el curso elegido*/
                 $porNombre = consulta($conexion,"SELECT * FROM proyectos WHERE nombre_pro ='" . $nombre . "' and id_curso like $idCurso"); 
                 $infoNombre=mysqli_fetch_array($porNombre);

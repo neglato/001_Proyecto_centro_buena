@@ -6,10 +6,13 @@
     if (!isset($_SESSION['user'])){
         header('Location: index.php');
     }
-$nombre=$_POST['nombre'];
-$apellidos=$_POST['apellidos'];
-$email=$_POST['correo'];
-$sexo=$_POST['genero'];
+$nombre=htmlentities($_POST['nombre']);
+$apellidos=htmlentities($_POST['apellidos']);
+$email=htmlentities($_POST['correo']);
+$sexo=htmlentities($_POST['genero']);
+if($sexo != 0 || $sexo !=1){
+    $sexo=0;
+}
 $id=$_SESSION['user'];
 $_SESSION['nombre']=$nombre;
 $update=consulta($conexion,"UPDATE usuarios SET nombre='{$nombre}', apellidos='{$apellidos}',sexo='{$sexo}', email='{$email}' where id_user like '{$id}' and baja like 0");

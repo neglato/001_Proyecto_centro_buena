@@ -24,13 +24,19 @@ if($_POST['oldpass'] == "" or $_POST['newpass'] == "" or $_POST['confpass'] == "
     
 }else{
     $id=$_SESSION['user'];
-    $oldpass=$_POST['oldpass'];
+    $oldpass=htmlentities($_POST['oldpass']);
     $oldpass=$chorizo1.$oldpass.$chorizo2;
     $oldpass=md5($oldpass);
-    $newpass=$_POST['newpass'];
+    $newpass=htmlentities($_POST['newpass']);
+    /*comprobamos que contenga mas de 8 caracteres*/
+    if(strlen($newpass)< 8){
+        $_SESSION['msgpass']=CARACMIN;
+        header('Location: profile.php?ed=1&a=2');
+        exit();
+    }
     $newpass=$chorizo1.$newpass.$chorizo2;
     $newpass=md5($newpass);
-    $confpass=$_POST['confpass'];
+    $confpass=htmlentities($_POST['confpass']);
     $confpass=$chorizo1.$confpass.$chorizo2;
     $confpass=md5($confpass);
     $pass=consulta($conexion,"SELECT * FROM usuarios where id_user like $id");

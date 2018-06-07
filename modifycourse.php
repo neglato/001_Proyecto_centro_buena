@@ -18,12 +18,13 @@ if(!isset($_POST['nombre'])){
     header('Location: cpaneladmin.php?rm=2&rt=2&a=3&cid='.$cid.'');
     exit;
 }
+$cid=$_SESSION['cid'];
         if($_POST['nombre'] !=""){
             /*comprobamos que no exista ya en la base da datos*/
             include('_include/conexion.php');
             include('_include/funciones.php');
             // Comprobamos que el formato sea correcto
-            $curso=$_POST['nombre'];
+            $curso=htmlentities($_POST['nombre']);
             /*convertimos el año en un array, diviendo el string mediante -*/
             $curso=explode("-",$curso);
             /*guardamos las 2 partes del array*/
@@ -31,19 +32,18 @@ if(!isset($_POST['nombre'])){
             $cursob=$curso[1];
             /*comprobamos que ambas tengas 4 digitos*/
             if(strlen($cursoa)!=4 || strlen($cursob)!=4){
-                $_SESSION['msgaddcourse']=INVACOUR;
+                $_SESSION['msgmodcour']=INVACOUR;
                 header('Location: cpaneladmin.php?rm=2&rt=2a=3&cid='.$cid.'');
                 exit();
             }
             /*Comprobamos que sean conscutivos*/
             if($cursob != ($cursoa+1)){
-                $_SESSION['msgaddcourse']=CONSECYEAR;
+                $_SESSION['msgmodcour']=CONSECYEAR;
                 header('Location: cpaneladmin.php?rm=2&rt=2a=3&cid='.$cid.'');
                 exit(); 
             }
             /*comprobamos si existe algun curso*/
-            $nomCurso=$_POST['nombre'];
-            $cid=$_SESSION['cid'];
+            $nomCurso=htmlentities($_POST['nombre']);
                 $RESULT1 = consulta($conexion,"SELECT * FROM cursos WHERE curso ='" . $nomCurso . "'"); 
                 $info1=mysqli_fetch_array($RESULT1);
                 $total1=mysqli_num_rows($RESULT1);

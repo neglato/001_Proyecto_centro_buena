@@ -22,7 +22,16 @@ session_start();
 if($_POST['id_proy']!=-1){
     include('_include/conexion.php');
     include('_include/funciones.php');
-    $pid=$_POST['id_proy'];
+    $pid=htmlentities($_POST['id_proy']);
+    /*buscamos el proyecto para verificaar que existe*/
+    $comprobar=consulta($conexion,"SELECT * FROM proyectos WHERE id_proyecto LIKE $pid AND mostrar like 1");
+    $siNo=mysqli_num_rows($comprobar);
+    if($siNo == 0){
+        $_SESSION['msgproydel']=DEBCHO;
+        header('Location: cpaneladmin.php?rm=3&rt=3a=3');
+        mysqli_close($conexion);
+        exit(); 
+    }
     /*hacemos el update del campo mostrar poniendolo a 0*/
     $UPDATE = consulta($conexion,"UPDATE proyectos SET 
                                                     mostrar ='0'

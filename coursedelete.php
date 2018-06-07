@@ -21,9 +21,16 @@ if(!isset($_POST['id_curso'])){
 if($_POST['id_curso']!=-1){
     include('_include/conexion.php');
     include('_include/funciones.php');
-    $cid=$_POST['id_curso'];
+    $cid=htmlentities($_POST['id_curso']);
     /*recuperamos sus datos*/
     $curso=consulta($conexion, "SELECT * from cursos where id_curso like $cid");
+    $siNo=mysqli_num_rows($curso);
+    if($siNo == 0){
+        $_SESSION['msgdelcour']=SELCURSO;
+        header('Location: cpaneladmin.php?rm=2&rt=3&a=3');
+        mysqli_close($conexion);
+        exit(); 
+    }
     $info=mysqli_fetch_array($curso);
     $nomCurso=$info['curso'];
     $delete= consulta($conexion,"DELETE FROM cursos where id_curso like $cid");

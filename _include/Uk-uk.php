@@ -236,3 +236,5 @@ define('ADMINCOM','Remove comments from a project');
 //nuevo 02/06
 define('PASSCOD','Code retrieve:');
 define('PASSCODFAIL','Bad recovery code');
+//nuevo 06/06
+define('CARACMIN','Must have at least 8 characters');

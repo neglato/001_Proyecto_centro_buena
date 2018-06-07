@@ -19,7 +19,7 @@ if(isset($_POST['search'])){
     }elseif($_POST['search']!=""){
         include('conexion.php');
         include('funciones.php');
-        $busq = $_POST['search'];
+        $busq = htmlentities($_POST['search']);
         $busqueda = consulta($conexion, "SELECT * 
                                         FROM usuarios 
                                         WHERE baja like 0

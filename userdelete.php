@@ -20,11 +20,17 @@ if(!isset($_POST['id_user'])){
     exit();
 }
 if($_POST['id_user']!=-1){
-    $idu=$_POST['id_user'];
+    $idu=htmlentities($_POST['id_user']);
     include('_include/conexion.php');
     include('_include/funciones.php');
     //Buscamos el email del usuario, para poder notificarle la baja
     $emailuser=consulta($conexion,"select email, nombre from usuarios where id_user like $idu");
+    $siNo=mysqli_num_rows($emailuser);
+    if($siNo == 0){
+    $_SESSION['msgdel']=SELUSR;
+    header('Location: cpaneladmin.php?rm=1&rt=3&a=3');
+    exit();
+    }
     $fila=mysqli_fetch_array($emailuser);
     $email=$fila['email'];
     $nomUsu=$fila['nombre'];

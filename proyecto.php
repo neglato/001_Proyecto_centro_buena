@@ -278,11 +278,11 @@ $activo=1;
             <form method="post" enctype="multipart/form-data" action="comentarios.php">
              <?php 
                     if(!isset($_SESSION['user'])){ ?>
-                <h2><p><?=NAMEFOT?>: </p><input type="text" placeholder="<?=INTNAME?>" name="user" id="nomuser"></h2>
+                <h2><p><?=NAMEFOT?>: </p><input type="text" placeholder="<?=INTNAME?>" name="user" maxlength="255" id="nomuser"></h2>
                     <?php }else{ ?>
                         <h2><?=$_SESSION['nombre']?> <?=$_SESSION['apellidos']?> <?=SAY?>:</h2>
                     <?php } ?>
-                <textarea name="mensaje" wrap=physical  onKeyDown="contador(this.form.mensaje,this.form.remLen,255);" onKeyUp="contador(this.form.mensaje,this.form.remLen,255);" id="comtext" placeholder="<?=EJTEXT?>"></textarea> 
+                <textarea name="mensaje" wrap=physical  onKeyDown="contador(this.form.mensaje,this.form.remLen,255);" onKeyUp="contador(this.form.mensaje,this.form.remLen,255);" id="comtext" placeholder="<?=EJTEXT?>" maxlength="255"></textarea> 
                        <p><input type="text" name="remLen" size="3" maxlength="255" value="255" readonly id="carac" >carácteres restantes</p>
                         <p id="error"><?php
                             if(isset($_SESSION['msgcomment'])){

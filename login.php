@@ -22,8 +22,8 @@
         if(isset($_POST['email'])  && isset($_POST['passw'])){
             //comprobar que el usuario y la contraseña coinciden con los de la BD
             
-            $e=$_POST['email'];
-            $p= $_POST['passw'];
+            $e=htmlentities($_POST['email']);
+            $p= htmlentities($_POST['passw']);
 
             $contraseña=$chorizo1.$p.$chorizo2;
             $p=md5($contraseña);

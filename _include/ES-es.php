@@ -237,3 +237,8 @@ define('SELCURSO','Debes seleccionar un curso');
 //nuevo 02/06
 define('PASSCOD','Código recuperar:');
 define('PASSCODFAIL','Código de recuperacion erróneo');
+//nuevo 06/06
+define('CARACMIN','Debe tener al menos 8 caracteres');
+//nuevo 07/06
+define('INVCURSO','El curso seleccionado es incorrecto');
+define('INVCOORD','El coordinador seleccionado es incorrecto');

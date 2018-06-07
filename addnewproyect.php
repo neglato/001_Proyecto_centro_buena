@@ -16,7 +16,6 @@ include('_include/variables.php');
     }
     if(!isset($_POST['id_curso']) || !isset($_POST['id_coor']) || !isset($_POST['nombre']) || !isset($_POST['name'])){
             $_SESSION['msgaddproy']=ALLFIELDS;
-        echo $_POST['id_curso']."/".$_POST['id_coor']."/".$_POST['nombre']."/".$_POST['name'];
             header('Location: cpaneladmin.php?rm=3&rt=1a=3');
             exit();
     }
@@ -29,10 +28,26 @@ include('_include/variables.php');
                 include('_include/conexion.php');
                 include('_include/funciones.php');
             /*Comprobamos que no exista ya en la base de datos*/
-            $nombre=$_POST['nombre'];
-            $name=$_POST['name'];
-            $curso=$_POST['id_curso'];
-            $coor=$_POST['id_coor'];
+            $nombre=htmlentities($_POST['nombre']);
+            $name=htmlentities($_POST['name']);
+            $curso=htmlentities($_POST['id_curso']);
+            /*Comprobamos que exista el curso*/
+            $cursos=consulta($conexion,"SELECT * FROM cursos WHERE id_curso like $curso");
+            $siNo1=mysqli_num_rows($cursos);
+            if($siNo1 == 0){
+                $_SESSION['msgaddproy']=INVCURSO;
+                header('Location: cpaneladmin.php?rm=3&rt=1a=3');
+                exit();
+            }
+            $coor=htmlentities($_POST['id_coor']);
+            /*comprobamos que exista el coordinador*/
+            $coordinador=consulta($conexion,"SELECT * FROM usuarios WHERE id_user like $coor AND tipo like 1 AND baja like 0");
+            $siNo2=mysqli_num_rows($coordinador);
+            if($siNo2 == 0){
+                $_SESSION['msgaddproy']=INVCOORD;
+                header('Location: cpaneladmin.php?rm=3&rt=1a=3');
+                exit();
+            }
             $resultado1 = consulta($conexion,"SELECT * from proyectos where nombre_pro='{$nombre}' and id_curso like $curso");
             $totalFilas1= mysqli_num_rows($resultado1);
             $resultado2 = consulta($conexion,"SELECT * from proyectos where name_pro='{$name}' and id_curso like $curso");

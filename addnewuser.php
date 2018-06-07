@@ -26,7 +26,7 @@ include('_include/variables.php');
                 $comprob = consulta($conexion,"SELECT * FROM usuarios WHERE id_user = '".$USER."'");
                 $info = mysqli_fetch_array($comprob); 
             
-            $email=$_POST['email'];
+            $email=htmlentities($_POST['email']);
             $resultado = consulta($conexion,"SELECT * from usuarios where email ='{$email}' and baja like 0");
             $totalFilas= mysqli_num_rows($resultado);
             if($totalFilas > 0){
@@ -99,11 +99,17 @@ include('_include/variables.php');
                             exit();
                         }
                         }else{
-                $nombre=$_POST['nombre'];
-                $apellidos=$_POST['apellidos'];
-                $sexo=$_POST['sexo'];
-                $email=$_POST['email'];
-                $tipo=$_POST['tipo'];
+                $nombre=htmlentities($_POST['nombre']);
+                $apellidos=htmlentities($_POST['apellidos']);
+                $sexo=htmlentities($_POST['sexo']);
+                        if($sexo != 0 || $sexo !=1){
+                            $sexo=0;
+                        }
+                $email=htmlentities($_POST['email']);
+                $tipo=htmlentities($_POST['tipo']);
+                        if($tipo != 0 || $tipo != 1 || $tipo != 2){
+                            $tipo= 2;
+                        }
                 $contraseña=$chorizo1.$email.$chorizo2;
                 $emailhash=md5($contraseña);
                     if($info['tipo']==0){

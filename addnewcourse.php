@@ -24,7 +24,7 @@ include('_include/variables.php');
                 include('_include/funciones.php');
             
             // Comprobamos que el formato sea correcto
-            $curso=$_POST['nombre'];
+            $curso=htmlentities($_POST['nombre']);
             /*convertimos el año en un array, diviendo el string mediante -*/
             $curso=explode("-",$curso);
             /*guardamos las 2 partes del array*/
@@ -43,7 +43,7 @@ include('_include/variables.php');
                 exit(); 
             }
             /*Comprobamos que no exista ya en la base de datos*/
-            $nombre=$_POST['nombre'];
+            $nombre=htmlentities($_POST['nombre']);
             $resultado = consulta($conexion,"SELECT * from cursos where curso ='{$nombre}'");
             $totalFilas= mysqli_num_rows($resultado);
             if($totalFilas > 0){             

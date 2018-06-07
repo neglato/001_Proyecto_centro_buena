@@ -205,8 +205,8 @@ $activo=2;
             <fieldset id="datosperfil">
             <legend><?=DATPER?></legend>
             <form action="modificar.php" method="post" enctype="multipart/form-data">
-            <p><?=NOMBRE?></p><input type="text" value="<?=$nombre?>" name="nombre">
-           <p><?=APELLIDOS?></p><input type="text" value="<?=$apellidos?>" name="apellidos">
+            <p><?=NOMBRE?></p><input type="text" value="<?=$nombre?>" name="nombre" maxlength="255">
+           <p><?=APELLIDOS?></p><input type="text" value="<?=$apellidos?>" name="apellidos" maxlength="255">
            <p><?=SEXO?></p><select name=genero>
                             <option value="0" <?php
                                                     if($sexo==0){
@@ -219,7 +219,7 @@ $activo=2;
                                                     }
                                                     ?>><?=MUJ?></option>
                         </select>
-           <p>Email : </p><input type="text" value="<?=$email?>" name="correo">
+           <p>Email : </p><input type="text" value="<?=$email?>" name="correo" maxlength="255">
             <div id="buttonsyc">
             <button onclick="cancelarCambios()" type="button"><div id="edit"><?=LOGCAN?></div><i class="fas fa-times cancel"></i></button>
             <button type="submit"><div id="edit"><?=SAV?></div><i class="far fa-save editar"></i></button>
