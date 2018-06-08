@@ -45,6 +45,9 @@ if(isset($_SESSION['lang'])){
                           <p style="color:limegreen;font-size:1.3em;text-align:center;"><?=NOCONT?></p>
                         <?php }
                     break;
+                default:
+                   echo "";
+                        break;
             }
 
     }

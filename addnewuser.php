@@ -41,11 +41,12 @@ include('_include/variables.php');
                 $contraseña=$chorizo1.$email.$chorizo2;
                 $emailhash=md5($contraseña);
                 $baja = consulta($conexion,"SELECT * from usuarios where email ='{$email}' and baja like 1");
+                $datos=mysqli_fetch_array($baja);
                 $deBaja= mysqli_num_rows($baja);
                     if($deBaja > 0){
                         $update=consulta($conexion,"UPDATE usuarios SET password='{$emailhash}', baja='0' where email like '{$email}'");
+                        $nomUSer=$datos['nombre'];
                         $_SESSION['msgadd']=USRALT;
-                        $nomUSer=$deBaja['nombre'];
                         //Enviamos un correo para avisar de la activacion de la cuenta
                         //Load composer's autoloader
                         require_once('_include/PHPMailerAutoload.php'); 

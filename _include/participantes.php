@@ -20,11 +20,12 @@ if(!isset($_SESSION['user'])){
     require_once('conexion.php');
     include('funciones.php');
     if(isset($_POST['i'])){
+        $idProy=htmlentities($_POST['i']);
         $peticion= mysqli_query($conexion,"SELECT * 
                                             FROM usuarios 
                                             WHERE id_user in (SELECT id_user
                                                                 FROM usuproy
-                                                                WHERE id_proyecto = {$_POST['i']})
+                                                                WHERE id_proyecto = $idProy)
                                             AND tipo = 2");
         $totalfilas=mysqli_num_rows($peticion);
         if($totalfilas == 0){

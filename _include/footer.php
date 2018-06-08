@@ -17,10 +17,12 @@
     <ul>
         <li><a href="https://www.youtube.com/user/IESDELGADOHERNANDEZ1" target="_blank"><i class="fab fa-youtube"></i></a></li>
         <li><a href="http://www.institutodh.net/" target="_blank"><i class="fas fa-file-alt"></i></a></li>
-        <li><a href=""></a></li>
+<!--        enlace del tipo de licencia-->
+        <li id="movilfooter"><a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" scale="0"></a><a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"></a></li>
+        <li id="pcfooter"><a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"></a></li>
     </ul>
     </article>
     <article id="copy">
-        <p>&copy; DDL / MARP</p>
+        <p> DDL / MARP</p>
     </article>
 </footer>    

@@ -238,3 +238,6 @@ define('PASSCOD','Code retrieve:');
 define('PASSCODFAIL','Bad recovery code');
 //nuevo 06/06
 define('CARACMIN','Must have at least 8 characters');
+//nuevo 07/06
+define('INVCURSO','The selected course is incorrect');
+define('INVCOORD','The selected coordinator is incorrect');

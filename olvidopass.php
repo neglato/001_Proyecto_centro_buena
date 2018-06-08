@@ -34,7 +34,7 @@ if(isset($_POST['email'])){
         exit();
     }
     /*comprobamos el email y mandamos el mensaje para reestablecer la contraseña*/
-    $email=$_POST['email'];
+    $email=htmlentities($_POST['email']);
     $usuario= consulta($conexion, "SELECT * FROM usuarios where email like '$email'");
     $totalUsu=mysqli_num_rows($usuario);
     $user=mysqli_fetch_array($usuario);
@@ -185,7 +185,7 @@ if(!$mail->send()) {
                 <fieldset id="pass">
                 <legend><?=LOGEMAIL?></legend>
                 <form action="?op=1" method="post" enctype="multipart/form-data">
-                <p><?=PHLEMAIL?>: </p><input name="email" type="email">
+                <p><?=PHLEMAIL?>: </p><input name="email" type="email" maxlength="255">
                 <p class="errorpass"><?php
                         if(isset($_SESSION['msgemail'])){
                             echo $_SESSION['msgemail'];

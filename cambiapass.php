@@ -92,8 +92,8 @@ if(isset($_POST['newpass']) && isset($_POST['confpass']) && isset($_POST['passco
     }
     if($_POST['passcode'] != ""){
     $id=$_GET['proy'];
-    $newpass=$_POST['newpass'];
-    $confpass=$_POST['confpass'];
+    $newpass=htmlentities($_POST['newpass']);
+    $confpass=htmlentities($_POST['confpass']);
     //comprbamos el codigo de recuperacion
     $codigo=consulta($conexion, "SELECT * FROM usuarios WHERE id_user like $id");
     $filaUsr=mysqli_fetch_array($codigo);
@@ -113,7 +113,13 @@ if(isset($_POST['newpass']) && isset($_POST['confpass']) && isset($_POST['passco
              $_SESSION['msgpass']=PASSISMAIL;
                 header("Location: cambiapass.php?proy=$id");
                 exit();
+            
         }
+         if(strlen($newpass)< 8){
+        $_SESSION['msgpass']=CARACMIN;
+        header('Location: cambiapass.php?proy=$id');
+        exit();
+    }
         if($newpass == $confpass){
             //pasamos la nueva contraseña a md5 con el sistema de proteccion que usamos
             $contraseña=$chorizo1.$newpass.$chorizo2;
@@ -177,8 +183,8 @@ if(isset($_POST['newpass']) && isset($_POST['confpass']) && isset($_POST['passco
     
     include('_include/funciones.php');
     include('_include/conexion.php');
-        $newpass=$_POST['newpass'];
-        $confpass=$_POST['confpass'];
+        $newpass=htmlentities($_POST['newpass']);
+        $confpass=htmlentities($_POST['confpass']);
     if(isset($_GET['proy'])){
         $id=$_GET['proy'];
     }else{
@@ -187,6 +193,12 @@ if(isset($_POST['newpass']) && isset($_POST['confpass']) && isset($_POST['passco
     if($_POST['newpass']=="" || $_POST['confpass'] == ""){
         $_SESSION['msgpass']=ALLFIELDS;
         header("Location: cambiapass.php");
+        exit();
+    }
+     /*comprobamos que contenga mas de 8 caracteres*/
+    if(strlen($newpass)< 8){
+        $_SESSION['msgpass']=CARACMIN;
+        header('Location: cambiapass.php');
         exit();
     }
         if($newpass != $confpass){
@@ -285,11 +297,11 @@ if(!$mail->send()) {
                                         echo "?proy=$id";
                                     }    
                                     ?>" method="post" enctype="multipart/form-data">
-                <p><?=NEWPASS?></p><input type="password" name="newpass">
-                <p><?=CONFPASS?></p><input type="password" name="confpass">
+                <p><?=NEWPASS?></p><input type="password" name="newpass" maxlength="255">
+                <p><?=CONFPASS?></p><input type="password" name="confpass" maxlength="255">
                 <?php
                     if(isset($_GET['proy'])){?>
-                        <p><?=PASSCOD?></p><input type="text" name="passcode">
+                        <p><?=PASSCOD?></p><input type="text" name="passcode" maxlength="255">
                     <?php
                     }                    
                     ?>

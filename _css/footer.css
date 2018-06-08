@@ -22,6 +22,9 @@ footer article ul li a, footer article p{
 footer #dyl{
     display: none;
 }
+#pcfooter{
+    display: none;
+}
 @media (min-width: 900px) {
     footer #redes{
         clear: both;
@@ -51,5 +54,14 @@ footer #dyl{
         margin-left: 20%;
         padding-bottom: 5px;
         
+    }
+    #movilfooter{
+        display: none;
+    }
+    #pcfooter{
+        display:inline-block;
+    }
+    #pcfooter img{
+        width: 70%;
     }
 }

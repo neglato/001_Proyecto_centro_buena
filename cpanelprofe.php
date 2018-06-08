@@ -42,10 +42,12 @@ $activo=3;
 ?>
     
 </head>
-
-
-<body onload="move()">
 <?php
+    if(!isset($_GET['rm'])){?>
+        <body onload="move()">
+    <?php }else{?>
+    <body>
+    <?php }
     include('_include/header.php');
     include('_include/conexion.php');
     
@@ -102,13 +104,13 @@ $activo=3;
         <fieldset>
             <legend><?=AÑADIR_USUARIO?></legend>
             <form action="addnewuser.php" method="post" enctype="multipart/form-data">
-            <p><?=NOMBRE?></p><input type="text"  name="nombre" required>
-            <p><?=APELLIDOS?></p><input type="text"  name="apellidos" required>
+            <p><?=NOMBRE?></p><input type="text"  name="nombre" required maxlength="255">
+            <p><?=APELLIDOS?></p><input type="text"  name="apellidos" required maxlength="255">
             <p><?=SEXO?></p><select name=sexo required>
                             <option value="0" ><?=HOM?></option>
                             <option value="1" ><?=MUJ?></option>
                         </select>
-            <p>Email : </p><input type="email" name="email" required onblur="comprobarEmail(this.value)">
+            <p>Email : </p><input type="email" name="email" required onblur="comprobarEmail(this.value)" maxlength="255">
             <button type="submit" id="boton"><div id="edit"><?=MODPER?></div><i class="fas fa-save edicion"></i></button>
             <p id="error">
                 <?php
@@ -166,12 +168,17 @@ $activo=3;
                                                                                     WHERE id_user = $user)
                                                             AND mostrar like 0");  
                             while ($fila = mysqli_fetch_array($RESULT)) {
+                                if(isset($_SESSION['lang'])){
+                                    
                                 if($_SESSION['lang']==0){
                                     echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] . "</option>";
                                 }elseif($_SESSION['lang']==1){
                                     echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['name_pro'] . "</option>";
                                 }
+                            }else{
+                              echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] . "</option>";  
                             }
+                        }
                         ?>
                     </select>
                         <button type="submit" id="selectbumv"><i class="fas fa-edit edicion"></i></button>
@@ -190,13 +197,21 @@ $activo=3;
                             header('Location: cpanelprofe.php?rm=1&rt=2&a=3');
                             exit();
                         }else{
-                            $proye=$_POST['id_proyecto'];
+                            $proye=htmlentities($_POST['id_proyecto']);
                             $_SESSION['iduser2proy']=$proye;
                             }
                         }
                         if(isset($_GET['u2p'])){
                                 $proye=$_GET['u2p'];
                             }
+                        /*comprobamos que exista dicho proyecto*/
+                        $compProy=consulta($conexion, "SELECT * FROM proyectos WHERE id_proyecto LIKE $proye");
+                        $siNo=mysqli_num_rows($compProy);
+                        if($siNo == 0){
+                            $_SESSION['msgusr2proy']=DEBCHO;
+                            header('Location: cpanelprofe.php?rm=1&rt=2&a=3');
+                            exit();
+                        }
                             $noPar= consulta($conexion,"SELECT * 
                                             FROM usuarios 
                                             WHERE id_user not in (SELECT id_user
@@ -283,12 +298,16 @@ $activo=3;
                                                                                     WHERE id_user = $user)
                                                             AND mostrar like 0");  
                             while ($fila = mysqli_fetch_array($RESULT)) {
+                                if(isset($_SESSION['lang'])){
                                 if($_SESSION['lang']==0){
                                     echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] . "</option>";
                                 }elseif($_SESSION['lang']==1){
                                     echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['name_pro'] . "</option>";
                                 }
-                            }
+                            }else{
+                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] . "</option>";
+                                }
+                        }
                         ?>
                     </select>
                     <p id="selectuser"><?=USUDISP?></p>
@@ -369,12 +388,16 @@ $activo=3;
                                                                                     WHERE id_user = $user)
                                                             AND mostrar like 0");  
                             while ($fila = mysqli_fetch_array($RESULT)) {
+                                if(isset($_SESSION['lang'])){
                                 if($_SESSION['lang']==0){
                                     echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] . "</option>";
                                 }elseif($_SESSION['lang']==1){
                                     echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['name_pro'] . "</option>";
                                 }
-                            }
+                            }else{
+                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] . "</option>";
+                                }
+                        }
                         ?>
                     </select>
                         <button type="submit" id="selectbumv"><i class="fas fa-edit edicion"></i></button>
@@ -485,12 +508,16 @@ $activo=3;
                                                                                     WHERE id_user = $user)
                                                             AND mostrar like 0");  
                             while ($fila = mysqli_fetch_array($RESULT)) {
+                                if(isset($_SESSION['lang'])){
                                 if($_SESSION['lang']==0){
                                     echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] . "</option>";
                                 }elseif($_SESSION['lang']==1){
                                     echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['name_pro'] . "</option>";
                                 }
-                            }
+                            }else{
+                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] . "</option>";
+                                }
+                        }
                         ?>
                     </select>
                     
@@ -745,12 +772,16 @@ $activo=3;
                        <option value="-1"><?=SELPROY?></option>
                         <?php
                             while ($fila = mysqli_fetch_array($RESULT)) {
+                                if(isset($_SESSION['lang'])){
                                 if($_SESSION['lang']==0){
                                     echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] . "</option>";
                                 }elseif($_SESSION['lang']==1){
                                     echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['name_pro'] . "</option>";
                                 }
-                            }
+                            }else{
+                                     echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] . "</option>";
+                                }
+                        }
                         ?>
                     </select>
                        
@@ -775,7 +806,17 @@ $activo=3;
                     $_SESSION['msgprofe']=SELPROY;
                     exit();
                 }elseif($_POST['tipo'] != -1){
-                    $idproy=$_POST['tipo'];
+                    $idproy=htmlentities($_POST['tipo']);
+                    /*comprobamos que tenga acceso al proyecto*/
+                    $usrAct=$_SESSION['user'];
+                    $comprobarProy=consulta($conexion,"SELECT * FROM proyectos WHERE id_proyecto like $idproy AND id_proyecto in (
+                                                                                        SELECT id_proyecto FROM usuproy WHERE id_user like $usrAct)");
+                    $siNo=mysqli_num_rows($comprobarProy);
+                    if($siNo == 0){
+                        header('Location: cpanelprofe.php?rm=2&rt=3&a=3');
+                        $_SESSION['msgprofe']=SELPROY;
+                        exit();
+                    }
                     $_SESSION['tipo2']=$idproy;
             ?>
               <fieldset id="proyedi">
@@ -785,8 +826,8 @@ $activo=3;
                         $RESULTADO = consulta($conexion, "select * from proyectos where id_proyecto like $idproy and mostrar like 0");
                         $plan = mysqli_fetch_array($RESULTADO);
                        ?>
-                        <p><?=NOMES?>:</p><input type="text"  name="newnombre" value="<?= $plan['nombre_pro']?>" required>
-                        <p><?=NAMES?>:</p><input type="text"  name="newnombreuk" value="<?= $plan['name_pro']?>" required>
+                        <p><?=NOMES?>:</p><input type="text"  name="newnombre" value="<?= $plan['nombre_pro']?>" required maxlength="255">
+                        <p><?=NAMES?>:</p><input type="text"  name="newnombreuk" value="<?= $plan['name_pro']?>" required maxlength="255">
                         <button type="submit" id="buttonedicion"><i class="far fa-save edicion"></i></button>
                         <p id="error">
                            <?php
@@ -812,8 +853,8 @@ $activo=3;
         exit();
     }elseif(isset($_POST['newnombre']) && $_POST['newnombre'] != "" && isset($_POST['newnombreuk']) && $_POST['newnombreuk'] != ""){
         //Guardamos el nuevo nombre en los 2 idiomas
-        $nomb=$_POST['newnombre'];
-        $nombuk=$_POST['newnombreuk'];
+        $nomb=htmlentities($_POST['newnombre']);
+        $nombuk=htmlentities($_POST['newnombreuk']);
         //Recuperamos el id del proyecto y el nombre viejo para modificar la carpeta y el codigo del curso
         $idproy=$_SESSION['tipo2'];
         $CONS = consulta($conexion,"SELECT * FROM proyectos WHERE id_proyecto=$idproy and mostrar like 0"); 

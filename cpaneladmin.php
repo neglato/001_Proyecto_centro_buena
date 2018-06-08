@@ -44,9 +44,13 @@ $activo=3;
 ?>
     
 </head>
-
-<body onload="move()">
 <?php
+    if(!isset($_GET['rm'])){?>
+        <body onload="move()">
+        <?php
+        }else{?>
+        <body>
+    <?php }
     if(isset($_POST['id_user']) && $_POST['id_user'] == -1){
         header('Location: cpaneladmin.php?rm=1&rt=2&a=3');
     }

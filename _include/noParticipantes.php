@@ -20,11 +20,19 @@ if(!isset($_SESSION['user'])){
     require_once('conexion.php');
     include('funciones.php');
     if(isset($_POST['q'])){
+        $idProy=htmlentities($_POST['q']);
+        //comprobamos que exista el proyecto seleccionado
+        $comProy=consulta($conexion, "SELECT * FROM proyectos WHERE id_proyecto like $idProy");
+        $siNo=mysqli_num_rows($comProy);
+        if($siNo == 0){
+          echo "<option value='-1' disabled>" . ALUMPAINS . "</option>";
+            exit();
+        }
         $peticion= mysqli_query($conexion,"SELECT * 
                                             FROM usuarios 
                                             WHERE id_user not in (SELECT id_user
                                                                   FROM usuproy
-                                                                  WHERE id_proyecto = {$_POST['q']})
+                                                                  WHERE id_proyecto = $idProy)
                                             AND tipo = 2
                                             AND baja like 0");
         $totalfilas=mysqli_num_rows($peticion);
