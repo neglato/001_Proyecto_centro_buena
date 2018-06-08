@@ -9,7 +9,7 @@
                         "text": "#d6d6d6"
             },
             "button": {
-                "background": "limegreen"
+                "background": "rgb(5, 137, 25)"
             }
         },
         "position": "bottom-right",
