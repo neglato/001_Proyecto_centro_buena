@@ -30,6 +30,7 @@ section fieldset figure img{
     width: 100%;
     border-radius: 80px;
     border: 5px solid rgb(5, 137, 25);
+    max-height: 250px;
 } 
 section fieldset article{
     background-color: antiquewhite;

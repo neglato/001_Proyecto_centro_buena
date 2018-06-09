@@ -40,7 +40,7 @@ if(isset($_POST['tipo']) && $_POST['tipo'] == -1){
     //si existen ambos ficheros...
     if(file_exists($rutaes) && file_exists($rutaen)){
         /*comprobamos su fecha de pub*/
-        if($fecha == "0000-00-00"){
+        if($fecha == "1940-01-01"){
         $UPDATE = consulta($conexion,"UPDATE proyectos SET 
                                         fecha_pub = CURRENT_DATE(),
                                         mostrar = 1 

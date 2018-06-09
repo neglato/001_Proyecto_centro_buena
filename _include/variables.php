@@ -8,12 +8,12 @@ $chorizo2="saihdsasdaidgsgldglasldjasbdbasjdhulwaywuy7aydwy7_%.-.34667/djasdjhsa
 //datos base de datos
 $equipo="localhost";
 $usuarioBBDD="root";
-$passwordBBDD="";
+$passwordBBDD="123456789";
 $nomBBDD="ies";
 //cuenta correo
 $cuenta="idhappmaster@gmail.com";
 $passEmail="adminIdh1572";
 //otros
 $olvidaPass="olvidopass.php";
-$enlacePass="http://192.168.1.24/001_Proyecto_centro_buena/cambiapass.php?proy=";
-$enlaceEmail="<a href=http://192.168.1.24/001_Proyecto_centro_buena/index.php>Planes y Proyectos del IES Delgado Hernández</a>";
+$enlacePass="http://proyectosdh.ddns.net/cambiapass.php?proy=";
+$enlaceEmail="<a href=http://proyectosdh.ddns.net/index.php>Planes y Proyectos del IES Delgado Hernández</a>";

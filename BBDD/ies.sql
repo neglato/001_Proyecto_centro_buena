@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-06-2018 a las 14:47:28
+-- Tiempo de generación: 09-06-2018 a las 16:15:47
 -- Versión del servidor: 10.1.26-MariaDB
 -- Versión de PHP: 7.1.9
 
@@ -46,7 +46,8 @@ INSERT INTO `comentarios` (`id_comentario`, `id_proyecto`, `usuario`, `comentari
 (5, 3, 'Anonimo', 'Yo estube por ayi y antonio oliva \r\nlos apalizo a todos'),
 (6, 4, 'Pablo', 'Yo estube ayi, aunque fue en \r\nbolivia, pille un avion y me plante \r\nallí, para que al final me ganase el \r\nque sale en la foto'),
 (7, 5, 'Moon', 'Jajajajajaja toda la tarde de todos \r\nlos días liados!!'),
-(10, 3, 'Domingo', 'mu bonito');
+(10, 3, 'Domingo', 'mu bonito'),
+(11, 30, 'Dani Coordinador', 'Ha quedao perfect');
 
 -- --------------------------------------------------------
 
@@ -84,6 +85,7 @@ CREATE TABLE `imagenes_ies` (
 --
 
 INSERT INTO `imagenes_ies` (`id_img`, `nombre_img`) VALUES
+(1, 'IMG_20180609_115826.jpg'),
 (2, 'hall+escalera.jpg'),
 (3, 'IES-escalera1.jpg'),
 (4, 'pasillo-profesores.jpg'),
@@ -130,7 +132,13 @@ INSERT INTO `imgproy` (`id_img`, `id_proyecto`, `imagen`) VALUES
 (27, 2, 'eco1.jpg'),
 (28, 2, 'ecoescuela2.jpg'),
 (29, 2, 'waaa005.jpg'),
-(33, 24, 'Screenshot_1.jpg');
+(33, 24, 'Screenshot_1.jpg'),
+(35, 30, 'Screenshot_20180605-160501.png'),
+(36, 30, 'Screenshot_20180605-160436.png'),
+(37, 30, 'Screenshot_20180605-075247.png'),
+(38, 30, 'Screenshot_20180604-220215.png'),
+(39, 30, 'Screenshot_20180604-202647.png'),
+(40, 30, 'Screenshot_20180604-202447.png');
 
 -- --------------------------------------------------------
 
@@ -161,8 +169,10 @@ INSERT INTO `proyectos` (`id_proyecto`, `id_curso`, `fecha_pub`, `nombre_pro`, `
 (19, 3, '2015-01-01', 'Hola', 'Hellow', '1es.php', '1en.php', 0),
 (20, 3, '2018-05-13', 'Prueba', 'Test', '1es.php', '1en.php', 0),
 (24, 1, '2018-05-13', 'Correo', 'Email', '1es.php', '1en.php', 0),
-(28, 1, '2018-05-19', 'Variable pruebas', 'Variable test', '1es.php', '1en.php', 0),
-(29, 1, '0000-00-00', 'Y', 'U', '1es.php', '1en.php', 0);
+(28, 1, '2018-06-05', 'Variable pruebas', 'Variable test', '1es.php', '1en.php', 0),
+(29, 1, '0000-00-00', 'Y', 'U', '1es.php', '1en.php', 0),
+(30, 2, '2018-06-05', 'Prueba final', 'Final test', '1es.php', '1en.php', 0),
+(31, 1, '2018-06-08', 'aaaaaaaa', 'bbbbbb', '1es.php', '1en.php', 0);
 
 -- --------------------------------------------------------
 
@@ -178,7 +188,7 @@ CREATE TABLE `usuarios` (
   `foto` varchar(255) COLLATE utf8mb4_spanish2_ci NOT NULL DEFAULT 'img.jpg',
   `email` varchar(255) COLLATE utf8mb4_spanish2_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_spanish2_ci NOT NULL,
-  `codigo_recuperacion` varchar(255) COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `codigo_recuperacion` varchar(255) COLLATE utf8mb4_spanish2_ci NOT NULL DEFAULT '',
   `baja` tinyint(1) NOT NULL DEFAULT '0',
   `tipo` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
@@ -199,14 +209,14 @@ INSERT INTO `usuarios` (`id_user`, `nombre`, `apellidos`, `sexo`, `foto`, `email
 (9, 'Julio', 'Lopez', 0, 'img.jpg', 'julio@gmail.es', '64f5088480973464637fefd371de4c4f', '', 0, 2),
 (10, 'Manuel', 'Lucero', 0, 'img.jpg', 'manue@lucero.es', '64f5088480973464637fefd371de4c4f', '', 0, 1),
 (11, 'Alberto', 'Rodriguez', 0, 'img.jpg', 'alberto@gmail.es', '64f5088480973464637fefd371de4c4f', '', 0, 2),
-(12, 'abm', 'abm', 0, 'img.jpg', 'abm@abm.com', '64f5088480973464637fefd371de4c4f', '', 1, 0),
-(13, 'Dani', 'Hhvg', 0, 'img.jpg', 'a@a.es', '64f5088480973464637fefd371de4c4f', '', 0, 2),
-(14, 'Dani', 'Fhhcf', 0, 'img.jpg', 'b@b.es', '64f5088480973464637fefd371de4c4f', '', 1, 2),
-(18, 'Ygfrh', 'Jvfhhv', 0, 'img.jpg', 'c@c.es', '64f5088480973464637fefd371de4c4f', '', 0, 1),
 (19, 'Admin', 'Admin', 0, 'img.jpg', 'idhappmaster@gmail.com', '64f5088480973464637fefd371de4c4f', '', 0, 0),
 (24, 'Miguel angel', 'Romero', 0, 'img.jpg', 'miguelangelromeropinto@gmail.com', '64f5088480973464637fefd371de4c4f', '', 1, 2),
-(31, 'Dani', 'Coordina', 0, 'img.jpg', 'dani--ef-@hotmail.com', '64f5088480973464637fefd371de4c4f', '', 0, 1),
-(58, 'Dani', 'Prueba', 0, 'img.jpg', 'neglato@gmail.com', '64f5088480973464637fefd371de4c4f', '', 0, 2);
+(63, 'Dani', 'Coordinador', 0, 'img.jpg', 'dani--ef-@hotmail.com', '64f5088480973464637fefd371de4c4f', '', 0, 1),
+(70, 'Dani', 'Prueba', 0, 'img.jpg', 'neglato@gmail.com', '64f5088480973464637fefd371de4c4f', '', 0, 2),
+(71, 'Domingo ', 'Perez Duque', 0, 'img.jpg', 'dopequ@institutodh.net', '822e42ed5a430c96d9aafabcd77d6ccb', '', 0, 1),
+(72, 'Isa', 'Base de datos', 1, 'img.jpg', 'isabjg@institutodh.net', 'e7cee3d023bac3abf3c1b6c2a9e6f2c8', '', 0, 1),
+(73, 'Pepe', 'Moscoso Garc&iacute;a', 0, 'img.jpg', 'pepemoscoso.formacion@institutodh.net', '2183d2a03e03d309bf04cdf96cbf18b2', '', 0, 1),
+(74, 'Manuel', 'Lucero', 0, 'img.jpg', 'manlucsan@institutodh.net', '0f7b74fd50e5be7c7323f0279516b6b0', '', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -243,8 +253,12 @@ INSERT INTO `usuproy` (`id_proyecto`, `id_user`) VALUES
 (19, 24),
 (20, 3),
 (20, 24),
-(28, 31),
-(29, 31);
+(24, 10),
+(28, 63),
+(28, 70),
+(29, 3),
+(31, 63),
+(31, 70);
 
 --
 -- Índices para tablas volcadas
@@ -305,7 +319,7 @@ ALTER TABLE `usuproy`
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `cursos`
@@ -317,25 +331,25 @@ ALTER TABLE `cursos`
 -- AUTO_INCREMENT de la tabla `imagenes_ies`
 --
 ALTER TABLE `imagenes_ies`
-  MODIFY `id_img` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_img` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `imgproy`
 --
 ALTER TABLE `imgproy`
-  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT de la tabla `proyectos`
 --
 ALTER TABLE `proyectos`
-  MODIFY `id_proyecto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_proyecto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- Restricciones para tablas volcadas

@@ -18,11 +18,11 @@ session_start();
 $email=$_SESSION['email'];
 $ruta="_users/".$email."/";
 $img="img.jpg";
-if($_FILES['fichero']['type'] != "image/jpeg" && $_FILES['fichero']['type'] != "image/png" && $_FILES['fichero']['type'] != "image/bmp"){
+/*if($_FILES['fichero']['type'] != "image/jpeg" && $_FILES['fichero']['type'] != "image/png" && $_FILES['fichero']['type'] != "image/bmp" && $_FILES['fichero']['type'] != "image/jpg"){
     $_SESSION['msgfoto']="Error";
     header('Location: profile.php?ed=1&a=2');
     exit();
-}
+}*/
 if(file_exists($ruta.$img) == true){
     $imgact=$ruta.$img;
     $copia=$ruta."img2.jpg";
@@ -30,11 +30,11 @@ if(file_exists($ruta.$img) == true){
     }   
 $uploadfile_temporal=$_FILES['fichero']['tmp_name']; 
 $uploadfile_nombre=$ruta."img.jpg";
-$_SESSION['msgfoto']=$_FILES['fichero']['type']/*FOTSUB*/;
+$_SESSION['msgfoto']=FOTSUB;
 
 if (is_uploaded_file($uploadfile_temporal)){ 
     move_uploaded_file($uploadfile_temporal,$uploadfile_nombre);
-    $_SESSION['msg']=$_FILES['fichero']['type']/*FOTSUB*/;
+    $_SESSION['msg']=FOTSUB;
     }else{ 
         $_SESSION['msgfoto']="Error"; 
     } 

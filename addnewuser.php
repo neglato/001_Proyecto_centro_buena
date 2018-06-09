@@ -103,12 +103,12 @@ include('_include/variables.php');
                 $nombre=htmlentities($_POST['nombre']);
                 $apellidos=htmlentities($_POST['apellidos']);
                 $sexo=htmlentities($_POST['sexo']);
-                        if($sexo != 0 || $sexo !=1){
+                        if($sexo != 0 && $sexo !=1){
                             $sexo=0;
                         }
                 $email=htmlentities($_POST['email']);
                 $tipo=htmlentities($_POST['tipo']);
-                        if($tipo != 0 || $tipo != 1 || $tipo != 2){
+                        if($tipo != 0 && $tipo != 1 && $tipo != 2){
                             $tipo= 2;
                         }
                 $contraseña=$chorizo1.$email.$chorizo2;
@@ -179,6 +179,7 @@ include('_include/variables.php');
                         } else {
                             echo 'Mail enviado correctamente';
                         }
+                        //FIn del correo
                     $home="_users/$email";
                     if (!file_exists($home)) {
                         mkdir($home, 0777, true);

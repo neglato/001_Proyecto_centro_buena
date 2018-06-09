@@ -10,7 +10,7 @@ $nombre=htmlentities($_POST['nombre']);
 $apellidos=htmlentities($_POST['apellidos']);
 $email=htmlentities($_POST['correo']);
 $sexo=htmlentities($_POST['genero']);
-if($sexo != 0 || $sexo !=1){
+if($sexo != 0 && $sexo !=1){
     $sexo=0;
 }
 $id=$_SESSION['user'];

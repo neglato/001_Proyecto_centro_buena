@@ -24,11 +24,18 @@ if(!isset($_POST['nombre']) || !isset($_POST['apellidos']) ||!isset($_POST['emai
             include('_include/funciones.php');
                     $idu=$_SESSION['uid'];
                     unset($_SESSION['uid']);
-                    $nombre=$_POST['nombre'];
-                    $apellidos=$_POST['apellidos'];
-                    $sexo=$_POST['sexo'];
-                    $email=$_POST['email'];
-                    $tipo=$_POST['tipo'];
+                    $nombre=htmlentities($_POST['nombre']);
+                    $apellidos=htmlentities($_POST['apellidos']);
+                    $sexo=htmlentities($_POST['sexo']);
+		    if($sexo != 0 && $sexo !=1){
+                            $sexo=0;
+                        }
+                    $email=htmlentities($_POST['email']);
+                    $tipo=htmlentities($_POST['tipo']);
+                        if($tipo != 0 && $tipo != 1 && $tipo != 2){
+                            $tipo= 2;
+                        }
+                    
             /*comprobamos si existe algun usuario con el email introducido*/
                 $RESULT1 = consulta($conexion,"SELECT * FROM usuarios WHERE email ='" . $email . "' and baja like 0"); 
                 $info1=mysqli_fetch_array($RESULT1);

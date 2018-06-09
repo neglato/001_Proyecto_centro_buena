@@ -59,7 +59,7 @@ include('_include/variables.php');
                 exit(); 
             }else{
                 /*creamos el curso y su carpeta home*/
-            $insert = consulta($conexion,"INSERT INTO proyectos (id_curso, nombre_pro, name_pro)  VALUES ('{$curso}','{$nombre}','{$name}')");
+            $insert = consulta($conexion,"INSERT INTO proyectos (id_curso, fecha_pub, nombre_pro, name_pro)  VALUES ('{$curso}','1940-01-01','{$nombre}','{$name}')");
             $newpro =consulta($conexion,"SELECT * from proyectos where nombre_pro='{$nombre}' and id_curso='{$curso}'");
             $newpro = mysqli_fetch_array($newpro);
             $id_pro=$newpro['id_proyecto'];
