@@ -322,17 +322,21 @@ header #pc{
     left: 65%;
 }
     header #lys #saludo{
-        padding-top: 3.5%;
+        position:absolute;
+        top: 14%;
+        right: 80px;
     }
     header #lys #saludo p{
-        color: white;
+        color: rgb(5, 137, 25);
+        text-align: right;
+        width: 100%;
     }
     header nav ul{
         width: 100%;
     }
     
     header #lang{
-        float: left;
+        float: right;
         width: 25%;
     }
     header #lang ul{
@@ -348,7 +352,7 @@ header #pc{
     }
     header #sep2{
         background-color: antiquewhite;
-        height: 50px;
+        height: 70px;
     }
     header #pc ul {
         background-color: cadetblue;
@@ -438,14 +442,45 @@ header #pc{
     
     }
     }
+    /*correccion de saludo segun resolucion*/
+    @media (min-width: 1150px) {
+        header #lys #saludo{
+            top: 15%;
+        }
+    }
+    @media (min-width: 1281px) {
+        header #lys #saludo{
+            top: 16%;
+        }
+    }
     /*cuando pase de la resolucion 1370, se centra todo y deja 2 franjas a los lados*/
 @media (min-width: 1370px) {
     body{
         width: 80%;
         margin: 0px auto;
     }
+       header #lys #saludo{
+        position:absolute;
+        top: 14%;
+        right:15%;
+    }
 }
-    
+
+    @media (min-width: 1470px) {
+        header #lys #saludo{
+            top: 14.5%;
+        }
+    }
+    @media (min-width: 1584px) {
+        header #lys #saludo{
+            top: 15.5%;
+        }
+    }
+    @media (min-width: 1680px) {
+        header #lys #saludo{
+            top: 17%;
+        }
+    }
     
   
     

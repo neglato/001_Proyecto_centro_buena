@@ -46,6 +46,7 @@ section fieldset article label, section fieldset article p{
 section fieldset article p{
     width: 85%;
     margin-left: 10%;
+    word-break:break-all;
 }
 section fieldset article button{
     background-color: rgb(5, 137, 25);
