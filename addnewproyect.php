@@ -28,7 +28,7 @@ include('_include/variables.php');
                 include('_include/conexion.php');
                 include('_include/funciones.php');
             /*Comprobamos que no exista ya en la base de datos*/
-            $nombre=htmlentities($_POST['nombre']);
+            $nombre=$_POST['nombre'];
             $name=htmlentities($_POST['name']);
             $curso=htmlentities($_POST['id_curso']);
             /*Comprobamos que exista el curso*/

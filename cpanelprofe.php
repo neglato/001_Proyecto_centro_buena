@@ -853,7 +853,7 @@ $activo=3;
         exit();
     }elseif(isset($_POST['newnombre']) && $_POST['newnombre'] != "" && isset($_POST['newnombreuk']) && $_POST['newnombreuk'] != ""){
         //Guardamos el nuevo nombre en los 2 idiomas
-        $nomb=htmlentities($_POST['newnombre']);
+        $nomb=$_POST['newnombre'];
         $nombuk=htmlentities($_POST['newnombreuk']);
         //Recuperamos el id del proyecto y el nombre viejo para modificar la carpeta y el codigo del curso
         $idproy=$_SESSION['tipo2'];

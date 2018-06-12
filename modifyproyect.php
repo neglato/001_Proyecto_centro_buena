@@ -25,7 +25,7 @@ if($_POST['nombre'] == "" || $_POST['name'] =="" || $_POST['id_curso'] == "" || 
             include('_include/funciones.php');
                     $pid=$_SESSION['pid'];
                     unset($_SESSION['pid']);
-                    $nombre=htmlentities($_POST['nombre']);
+                    $nombre=$_POST['nombre'];
                     $name=htmlentities($_POST['name']);
                     $idCurso=htmlentities($_POST['id_curso']);
                     /*comprbamos que exista el curso*/

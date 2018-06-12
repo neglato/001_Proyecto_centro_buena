@@ -54,7 +54,7 @@ $activo=3;
         <div id="sep"></div>
         <div id="sep2"></div>
         <div id="lys">
-        <spam id="saludo">
+        <spam id="saludo2">
         <?php if(isset($_SESSION['user'])){?>
          <p><?php
              switch($_SESSION['sexo']){
