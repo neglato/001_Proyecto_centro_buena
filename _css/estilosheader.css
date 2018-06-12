@@ -34,7 +34,7 @@ header #lang{
     width: 20%;
     float: right;
 }
-header #saludo{
+header #saludo2{
     display: block;
     width: 75%;
     float: left;
@@ -56,6 +56,9 @@ header #lang ul li a img{
     float: left;
 }
 header #myg{
+    display: none;
+}
+header #sep2 #saludo{
     display: none;
 }
 header #movil{
@@ -254,6 +257,7 @@ header #pc{
     width: 80%;
     color: darkred;
     font-size: 0.9em!important;
+    display: block!important;
 }
 /*Diseño de escritorio*/
 @media (min-width: 980px) {
@@ -305,31 +309,38 @@ header #pc{
     header nav #icon{
         display: none;
     }
+    header #sep2{
+        padding-right: 80px;
+    }
+    header #sep2 #saludo{
+        padding: 0px;
+        width: 100%;
+        text-align: right;
+        display: block;
+        color: rgb(5, 137, 25);
+        font-weight: 700;
+    }
     header #lys{
         width: 20%;
         float: right;
         background-color: cadetblue;
     }
-    header #lys #saludo{
-        float: left;
-        width: 70%;
+    header #lys #saludo p{
+        display: none;
     }
     #logout{
-    width: 30%;
+    width: 100%!important;
     color: darkred!important;
     font-size: 1em!important;
-    position: absolute;
-    left: 65%;
+        position: absolute;
+        left: 60%;
+    
 }
-    header #lys #saludo{
-        position:absolute;
-        top: 14%;
-        right: 80px;
+    header #lys #saludo2{
+        color: cadetblue;
     }
-    header #lys #saludo p{
-        color: rgb(5, 137, 25);
-        text-align: right;
-        width: 100%;
+    header #lys #saludo2 p{
+        display: none;
     }
     header nav ul{
         width: 100%;
@@ -438,20 +449,9 @@ header #pc{
     width: 40%;
     position: fixed; 
     left: 30%;
-    top: 7.5%;
+    /*top: 14%;*/
     
     }
-    }
-    /*correccion de saludo segun resolucion*/
-    @media (min-width: 1150px) {
-        header #lys #saludo{
-            top: 15%;
-        }
-    }
-    @media (min-width: 1281px) {
-        header #lys #saludo{
-            top: 16%;
-        }
     }
     /*cuando pase de la resolucion 1370, se centra todo y deja 2 franjas a los lados*/
 @media (min-width: 1370px) {
@@ -459,28 +459,11 @@ header #pc{
         width: 80%;
         margin: 0px auto;
     }
-       header #lys #saludo{
-        position:absolute;
-        top: 14%;
-        right:15%;
+     #logout{
+         right: 40%;
     }
 }
 
-    @media (min-width: 1470px) {
-        header #lys #saludo{
-            top: 14.5%;
-        }
-    }
-    @media (min-width: 1584px) {
-        header #lys #saludo{
-            top: 15.5%;
-        }
-    }
-    @media (min-width: 1680px) {
-        header #lys #saludo{
-            top: 17%;
-        }
-    }
     
   
     

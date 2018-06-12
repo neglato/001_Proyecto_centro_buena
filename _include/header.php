@@ -176,9 +176,24 @@ if(isset($_SESSION['password']) && isset($_SESSION['email']) && $_SESSION['passw
 <!--       Fin Barra de busqueda global con DATALIST-->
 
           </div>
-        <div id="sep2"></div>
+        <div id="sep2">
+            <spam id="saludo">
+        <?php if(isset($_SESSION['user'])){?>
+         <p><?php
+             switch($_SESSION['sexo']){
+            case 0:
+                echo BIENVH;
+                break;
+            case 1:
+                echo BIENVM;
+            break; 
+                }
+             ?> <?=$_SESSION['nombre']?></p>
+         <?php } ?>
+            </spam>
+        </div>
         <div id="lys">
-        <spam id="saludo">
+        <spam id="saludo2">
         <?php if(isset($_SESSION['user'])){?>
          <p><?php
              switch($_SESSION['sexo']){
