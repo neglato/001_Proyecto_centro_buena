@@ -1,2 +1,5 @@
 <h1>Ajedrez</h1>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum cum magni odio vitae deleniti. Quos blanditiis suscipit aut illum, eligendi reiciendis ut sit voluptatibus doloremque! Vero nobis impedit, debitis ipsum.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis sit hic doloremque soluta consequatur praesentium iusto recusandae magnam earum minus tempora cum esse temporibus ducimus quam debitis voluptates doloribus, eum.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam minima quisquam tempore doloremque fuga aut veniam, sit quia, nostrum odit a nesciunt exercitationem, beatae earum nisi sequi ipsum aliquam voluptas.</p>
+
+<p>Como cada a&ntilde;o, el d&iacute;a 25 de Abril de 2018, se celebr&oacute;&nbsp;en el IES Delgado Hern&aacute;ndez su campeonato de ajedrez, en el cual participan tanto profesores como alumnos, pudiendo batirse entre ellos.</p>
+
+<p>El ganador indiscutible fu&eacute;&nbsp;<strong>Antonio Oliva</strong>, profesor de Fisica del propio centro, gan&oacute; bastantes partidas, e incluso participi&oacute; en varias partidas simultaneamente contra alumnos y profesores por igual.</p>
