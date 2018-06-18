@@ -192,7 +192,7 @@ if(!$mail->send()) {
                             unset($_SESSION['msgemail']);
                         }
                     ?></p>
-                <button type="submit"><div id="edit"><?=SAV?></div><i class="far fa-save editar"></i></button>
+                <button type="submit"><div id="edit"><?=SAV?></div><i class="far fa-envelope editar"></i></button>
                 </form>
             </fieldset> 
     </article>
