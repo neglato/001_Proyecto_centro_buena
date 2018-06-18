@@ -8,7 +8,7 @@ $chorizo2="saihdsasdaidgsgldglasldjasbdbasjdhulwaywuy7aydwy7_%.-.34667/djasdjhsa
 //datos base de datos
 $equipo="localhost";
 $usuarioBBDD="root";
-$passwordBBDD="123456789";
+$passwordBBDD="";
 $nomBBDD="ies";
 //cuenta correo
 $cuenta="idhappmaster@gmail.com";
