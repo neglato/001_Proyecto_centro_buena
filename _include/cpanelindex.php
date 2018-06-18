@@ -151,7 +151,7 @@
                                 ?></a>            
                                     </td>
                                     <td><?=$sol['fecha_pub']?></td>
-                                    <td><a href="profilever.php?idu=<?=$sol['id_user']?>&a=2"><?=$sol['coordinador']?></a></td>
+                                    <td><a href="profilever.php?idu=<?=$sol['id_user']?>&a=4"><?=$sol['coordinador']?></a></td>
                         </tr>
                         <?php } ?>
             </table>

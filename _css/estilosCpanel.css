@@ -555,7 +555,7 @@ input:checked + .slider:before {
     tbody{
         width: 660px;
         display: block;
-        margin-left: 19%!important;
+        margin: 0px auto!important;
     }
     th {
     width: 220px;
@@ -676,7 +676,7 @@ input:checked + .slider:before {
     tbody{
         width: 798px;
         display: block;
-        margin-left: 17.5%;
+        margin: 0px auto!important;
     }
     th {
     width: 266px;
@@ -685,6 +685,6 @@ input:checked + .slider:before {
     tbody{
         width: 798px;
         display: block;
-        margin-left: 20%;
+        margin-left: 20%!important;
     }
 }

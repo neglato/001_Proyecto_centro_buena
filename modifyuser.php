@@ -37,7 +37,7 @@ if(!isset($_POST['nombre']) || !isset($_POST['apellidos']) ||!isset($_POST['emai
                         }
                     
             /*comprobamos si existe algun usuario con el email introducido*/
-                $RESULT1 = consulta($conexion,"SELECT * FROM usuarios WHERE email ='" . $email . "' and baja like 0"); 
+                $RESULT1 = consulta($conexion,"SELECT * FROM usuarios WHERE email ='" . $email . "'"); 
                 $info1=mysqli_fetch_array($RESULT1);
                 $total1=mysqli_num_rows($RESULT1);
             /*Buscamos el usuario con el id que elegimos para editarlo*/
@@ -81,7 +81,7 @@ if(!isset($_POST['nombre']) || !isset($_POST['apellidos']) ||!isset($_POST['emai
                 exit();
                     }else{
                         /*Si no es el mismo, quiere decir que lo tiene otro usuario, por lo que mandaremos el error*/
-                      $_SESSION['msgmod']=NODISP;
+                      $_SESSION['msgmod2']=NODISP;
                       header('Location: cpaneladmin.php?rm=1&rt=2&a=3&uid='.$idu.'');
                         exit();
                     }
