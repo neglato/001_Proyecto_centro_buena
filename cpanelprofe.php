@@ -161,22 +161,26 @@ $activo=3;
                         <option value="-1"><?=PROY?></option>
                         <?php
                             $user=$_SESSION['user'];
-                            $RESULT = consulta($conexion,"SELECT * 
-                                                            FROM proyectos 
-                                                            WHERE id_proyecto in (SELECT id_proyecto 
-                                                                                    FROM usuproy
-                                                                                    WHERE id_user = $user)
-                                                            AND mostrar like 0");  
+                            $RESULT = consulta($conexion,"SELECT p.nombre_pro AS nombre_pro,
+                                                 p.name_pro AS name_pro,
+                                                 p.id_proyecto AS id_proyecto,
+                                                 c.curso AS curso
+                                                FROM proyectos p
+                                                INNER JOIN cursos c ON p.id_curso = c.id_curso
+                                                WHERE id_proyecto in (SELECT id_proyecto 
+                                                                        FROM usuproy
+                                                                        WHERE id_user = $user)
+                                                AND mostrar = 0");  
                             while ($fila = mysqli_fetch_array($RESULT)) {
                                 if(isset($_SESSION['lang'])){
                                     
                                 if($_SESSION['lang']==0){
-                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] . "</option>";
+                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] ." / " . $fila['curso']. "</option>";
                                 }elseif($_SESSION['lang']==1){
-                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['name_pro'] . "</option>";
+                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['name_pro'] ." / " . $fila['curso']. "</option>";
                                 }
                             }else{
-                              echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] . "</option>";  
+                              echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] ." / " . $fila['curso']. "</option>";  
                             }
                         }
                         ?>
@@ -291,21 +295,25 @@ $activo=3;
                     
                         <?php
                             $user=$_SESSION['user'];
-                            $RESULT = consulta($conexion,"SELECT * 
-                                                            FROM proyectos 
-                                                            WHERE id_proyecto in (SELECT id_proyecto 
-                                                                                    FROM usuproy
-                                                                                    WHERE id_user = $user)
-                                                            AND mostrar like 0");  
+                            $RESULT = consulta($conexion,"SELECT p.nombre_pro AS nombre_pro,
+                                                                p.name_pro AS name_pro,
+                                                                p.id_proyecto AS id_proyecto,
+                                                                c.curso AS curso
+                                                                FROM proyectos p
+                                                                INNER JOIN cursos c ON p.id_curso = c.id_curso
+                                                                WHERE id_proyecto in (SELECT id_proyecto 
+                                                                        FROM usuproy
+                                                                        WHERE id_user = $user)
+                                                                    AND mostrar = 0");  
                             while ($fila = mysqli_fetch_array($RESULT)) {
                                 if(isset($_SESSION['lang'])){
                                 if($_SESSION['lang']==0){
-                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] . "</option>";
+                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] ." / ". $fila['curso']. "</option>";
                                 }elseif($_SESSION['lang']==1){
-                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['name_pro'] . "</option>";
+                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['name_pro'] ." / ". $fila['curso']. "</option>";
                                 }
                             }else{
-                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] . "</option>";
+                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] ." / ". $fila['curso']. "</option>";
                                 }
                         }
                         ?>
@@ -381,21 +389,25 @@ $activo=3;
                         <option value="-1"><?=PROY?></option>
                         <?php
                             $user=$_SESSION['user'];
-                            $RESULT = consulta($conexion,"SELECT * 
-                                                            FROM proyectos 
-                                                            WHERE id_proyecto in (SELECT id_proyecto 
-                                                                                    FROM usuproy
-                                                                                    WHERE id_user = $user)
-                                                            AND mostrar like 0");  
+                            $RESULT = consulta($conexion,"SELECT p.nombre_pro AS nombre_pro,
+                                                                 p.name_pro AS name_pro,
+                                                                 p.id_proyecto AS id_proyecto,
+                                                                 c.curso AS curso
+                                                                FROM proyectos p
+                                                                INNER JOIN cursos c ON p.id_curso = c.id_curso
+                                                                WHERE id_proyecto in (SELECT id_proyecto 
+                                                                                        FROM usuproy
+                                                                                        WHERE id_user = $user)
+                                                                AND mostrar = 0");  
                             while ($fila = mysqli_fetch_array($RESULT)) {
                                 if(isset($_SESSION['lang'])){
                                 if($_SESSION['lang']==0){
-                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] . "</option>";
+                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] ." / ". $fila['curso']. "</option>";
                                 }elseif($_SESSION['lang']==1){
-                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['name_pro'] . "</option>";
+                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['name_pro'] ." / ". $fila['curso']. "</option>";
                                 }
                             }else{
-                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] . "</option>";
+                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] ." / ". $fila['curso']. "</option>";
                                 }
                         }
                         ?>
@@ -501,21 +513,25 @@ $activo=3;
                     
                         <?php
                             $user=$_SESSION['user'];
-                            $RESULT = consulta($conexion,"SELECT * 
-                                                            FROM proyectos 
-                                                            WHERE id_proyecto in (SELECT id_proyecto 
-                                                                                    FROM usuproy
-                                                                                    WHERE id_user = $user)
-                                                            AND mostrar like 0");  
+                            $RESULT = consulta($conexion,"SELECT p.nombre_pro AS nombre_pro,
+                                                                 p.name_pro AS name_pro,
+                                                                 p.id_proyecto AS id_proyecto,
+                                                                 c.curso AS curso
+                                                                FROM proyectos p
+                                                                INNER JOIN cursos c ON p.id_curso = c.id_curso
+                                                                WHERE id_proyecto in (SELECT id_proyecto 
+                                                                                        FROM usuproy
+                                                                                        WHERE id_user = $user)
+                                                                AND mostrar = 0");
                             while ($fila = mysqli_fetch_array($RESULT)) {
                                 if(isset($_SESSION['lang'])){
                                 if($_SESSION['lang']==0){
-                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] . "</option>";
+                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] . " / ". $fila['curso']. "</option>";
                                 }elseif($_SESSION['lang']==1){
-                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['name_pro'] . "</option>";
+                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['name_pro'] ." / ". $fila['curso']. "</option>";
                                 }
                             }else{
-                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] . "</option>";
+                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] ." / ". $fila['curso']. "</option>";
                                 }
                         }
                         ?>
@@ -585,8 +601,12 @@ $activo=3;
       
         <?php
             $user=$_SESSION['user'];
-            $RESULT = consulta($conexion,"SELECT * 
-                                          FROM proyectos 
+            $RESULT = consulta($conexion,"SELECT p.nombre_pro AS nombre_pro,
+                                                 p.name_pro AS name_pro,
+                                                 p.id_proyecto AS id_proyecto,
+                                                 c.curso AS curso
+                                          FROM proyectos p
+                                          INNER JOIN cursos c ON p.id_curso = c.id_curso
                                           WHERE id_proyecto in (SELECT id_proyecto 
                                                                 FROM usuproy
                                                                 WHERE id_user = $user)
@@ -616,17 +636,18 @@ $activo=3;
                     $proyecto=$row['nombre_pro'];
                     $proyect=$row['name_pro'];
                     $idp=$row['id_proyecto'];
+                    $cursoName=$row['curso'];
             ?>
             <li>
             <a href="proyecto.php?a=1&idp=<?=$idp?>" id="proyprof"><?php
                             if(isset($_SESSION['lang'])){
                                 if($_SESSION['lang']==1){
-                                    echo $proyect; 
+                                    echo $proyect ." / " .$cursoName; 
                                 }else{
-                                   echo $proyecto;
+                                   echo $proyecto ." / " .$cursoName;
                                 }
                             }else{
-                                echo $proyecto;
+                                echo $proyecto ." / " .$cursoName;
                             }  
                         ?></a>
             </li>
@@ -670,8 +691,12 @@ $activo=3;
                <legend><?=PROYSTOP?></legend>
            <?php
             $user=$_SESSION['user'];
-            $RESULT = consulta($conexion,"SELECT * 
-                                          FROM proyectos 
+            $RESULT = consulta($conexion,"SELECT p.nombre_pro AS nombre_pro,
+                                                 p.name_pro AS name_pro,
+                                                 p.id_proyecto AS id_proyecto,
+                                                 c.curso AS curso
+                                          FROM proyectos p
+                                          INNER JOIN cursos c ON p.id_curso = c.id_curso
                                           WHERE id_proyecto in (SELECT id_proyecto 
                                                                 FROM usuproy
                                                                 WHERE id_user = $user)
@@ -699,17 +724,18 @@ $activo=3;
                     $proyecto=$row['nombre_pro'];
                     $proyect=$row['name_pro'];
                     $idp=$row['id_proyecto'];
+                    $cursoName=$row['curso'];
             ?>
             <li>
             <a href="proyecto.php?a=1&idp=<?=$idp?>" id="proyprof"><?php
                             if(isset($_SESSION['lang'])){
                                 if($_SESSION['lang']==1){
-                                    echo $proyect; 
+                                    echo $proyect . " / " . $cursoName; 
                                 }else{
-                                   echo $proyecto;
+                                   echo $proyecto . " / " . $cursoName;
                                 }
                             }else{
-                                echo $proyecto;
+                                echo $proyecto . " / " . $cursoName;
                             }  
                         ?></a>
             </li>
@@ -757,12 +783,16 @@ $activo=3;
 //Aqui sale el select para seleccionar un proyecto
         if(!isset($_POST['tipo'])){
             $user=$_SESSION['user'];
-            $RESULT = consulta($conexion,"SELECT * 
-                                          FROM proyectos 
+            $RESULT = consulta($conexion,"SELECT p.nombre_pro AS nombre_pro,
+                                                 p.name_pro AS name_pro,
+                                                 p.id_proyecto AS id_proyecto,
+                                                 c.curso AS curso
+                                          FROM proyectos p
+                                          INNER JOIN cursos c ON p.id_curso = c.id_curso
                                           WHERE id_proyecto in (SELECT id_proyecto 
                                                                 FROM usuproy
                                                                 WHERE id_user = $user)
-                                            and mostrar like 0"); 
+                                          AND mostrar = 0"); 
             $totalFilas= mysqli_num_rows($RESULT);?>
             <fieldset id="proyedi">
                <legend><?=PROYEDIT?></legend>
@@ -774,12 +804,12 @@ $activo=3;
                             while ($fila = mysqli_fetch_array($RESULT)) {
                                 if(isset($_SESSION['lang'])){
                                 if($_SESSION['lang']==0){
-                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] . "</option>";
+                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] . " / " .$fila['curso'] ."</option>";
                                 }elseif($_SESSION['lang']==1){
-                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['name_pro'] . "</option>";
+                                    echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['name_pro'] . " / " .$fila['curso']. "</option>";
                                 }
                             }else{
-                                     echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] . "</option>";
+                                     echo "<option value=" . $fila['id_proyecto'] . ">" . $fila['nombre_pro'] . " / " .$fila['curso']. "</option>";
                                 }
                         }
                         ?>

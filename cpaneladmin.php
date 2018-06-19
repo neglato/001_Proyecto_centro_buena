@@ -1329,17 +1329,23 @@ Comienza eliminar curso*/
                     <option value="-1"><?=PROY?></option>
                                             <?php
                     
-                    $RESULT = consulta($conexion,"SELECT * FROM proyectos where mostrar like 1"); 
+                    $RESULT = consulta($conexion,"SELECT p.id_proyecto AS id_proyecto,
+                                                         p.nombre_pro AS nombre_pro,
+                                                         p.name_pro AS name_pro,
+                                                         c.curso AS curso
+                                                    FROM proyectos p 
+                                                    INNER JOIN cursos c ON p.id_curso = c.id_curso
+                                                    where mostrar like 1"); 
                     
                     while ($fila = mysqli_fetch_array($RESULT)) { ?>
                        <option value="<?=$fila['id_proyecto']?>"><?php if(isset($_SESSION['lang'])){
                                                                             if($_SESSION['lang']==1){
-                                                                                echo $fila['name_pro']; 
+                                                                                echo $fila['name_pro']." / ". $fila['curso']; 
                                                                                     }else{
-                                                                                    echo $fila['nombre_pro'];
+                                                                                    echo $fila['nombre_pro']." / ". $fila['curso'];
                                                                                     }
                                                                                 }else{
-                                                                                echo $fila['nombre_pro'];
+                                                                                echo $fila['nombre_pro']." / ". $fila['curso'];
                                                                                 }?></option>
                        <?php
                     }    
