@@ -1,0 +1,15 @@
+introduccion --------------------- Migue
+requerimientos funcionales ------- Migue
+requerimientos no funcionales ---- Dani
+organizacion --------------------- Dani
+planificacion -------------------- Migue
+arquitectura --------------------- Migue
+estructura fisica y logica ------- Dani
+modelo de datos	------------------ Migue
+lenguajes ------------------------ Dani
+seguridad ------------------------ Dani
+test ----------------------------- Migue
+roles invitado y alumno ---------- MIgue
+roles profe y admin -------------- Dani
+conclusiones 3puntos ------------- Dani
+posibles ampliaciones ------------ Migue
